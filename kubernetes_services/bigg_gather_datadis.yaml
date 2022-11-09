@@ -1,0 +1,128 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: bigg
+  name: bigg-datadis-gather-last
+spec:
+  suspend: false
+  schedule: "0 0 * * 1,2,3,4,5,6"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  startingDeadlineSeconds: 180
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 43200
+      template:
+        spec:
+          hostAliases:
+          - ip: "10.0.88.76"
+            hostnames:
+            - "master1.internal"
+          - ip: "10.0.87.95"
+            hostnames:
+              - "master2.internal"
+          - ip: "10.0.88.132"
+            hostnames:
+              - "worker1.internal"
+          - ip: "10.0.86.33"
+            hostnames:
+              - "worker2.internal"
+          - ip: "10.0.87.145"
+            hostnames:
+              - "worker3.internal"
+          - ip: "10.0.86.214"
+            hostnames:
+              - "worker4.internal"
+          - ip: "10.0.129.220"
+            hostnames:
+              - "kafka1.internal"
+          containers:
+          - name: bigg-datadis-gather-last
+            image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
+            command: [ "python3", "-m", "gather", "-so", "Datadis", "-st", "kafka", "-p", "last" ]
+            volumeMounts:
+            - name: biggsecrets
+              mountPath: /home/ubuntu/beegroup_importing_tool/config.json
+              subPath: config.json
+
+            - name: biggsecrets
+              mountPath: /home/ubuntu/beegroup_importing_tool/.env
+              subPath: .env
+
+          volumes:
+          - name: biggsecrets
+            secret:
+              secretName: main
+              items:
+              - key: config.json
+                path: config.json
+              - key: .env
+                path: .env
+          restartPolicy: OnFailure
+          imagePullSecrets:
+          - name: registrypullsecret
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  namespace: bigg
+  name: bigg-datadis-gather-repair
+spec:
+  suspend: false
+  schedule: "0 0 * * 0"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  startingDeadlineSeconds: 180
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 43200
+      template:
+        spec:
+          hostAliases:
+          - ip: "10.0.88.76"
+            hostnames:
+            - "master1.internal"
+          - ip: "10.0.87.95"
+            hostnames:
+              - "master2.internal"
+          - ip: "10.0.88.132"
+            hostnames:
+              - "worker1.internal"
+          - ip: "10.0.86.33"
+            hostnames:
+              - "worker2.internal"
+          - ip: "10.0.87.145"
+            hostnames:
+              - "worker3.internal"
+          - ip: "10.0.86.214"
+            hostnames:
+              - "worker4.internal"
+          - ip: "10.0.129.220"
+            hostnames:
+              - "kafka1.internal"
+          containers:
+          - name: bigg-datadis-gather-repair
+            image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
+            command: [ "python3", "-m", "gather", "-so", "Datadis", "-st", "kafka", "-p", "repair" ]
+            volumeMounts:
+            - name: biggsecrets
+              mountPath: /home/ubuntu/beegroup_importing_tool/config.json
+              subPath: config.json
+
+            - name: biggsecrets
+              mountPath: /home/ubuntu/beegroup_importing_tool/.env
+              subPath: .env
+
+
+          volumes:
+          - name: biggsecrets
+            secret:
+              secretName: main
+              items:
+              - key: config.json
+                path: config.json
+              - key: .env
+                path: .env
+          restartPolicy: OnFailure
+          imagePullSecrets:
+          - name: registrypullsecret
