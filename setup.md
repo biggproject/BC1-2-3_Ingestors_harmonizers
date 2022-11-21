@@ -191,15 +191,23 @@ return co2;
 ```bash
 python3 -m harmonizer -so SimpleTariff -u icaen -mp "http://bigg-project.eu/ontology#Price.EnergyPriceGridElectricity" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -c 
 python3 -m harmonizer -so SimpleTariff -u icaen -mp "http://bigg-project.eu/ontology#Price.EnergyPriceGas" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -c 
-python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -pu "http://qudt.org/vocab/unit/KiloW-HR" -u "http://qudt.org/vocab/unit/KiloGM" -n "https://icaen.cat#" -c 
-python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGas" -pu "http://qudt.org/vocab/unit/KiloW-HR" -u "http://qudt.org/vocab/unit/KiloGM" -n "https://icaen.cat#" -c 
+python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -pu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -c 
+python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGas" -pu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -c 
 ```
 <details>
-<summary>Load from kafka</summary>
+<summary>Load from KAFKA</summary>
+
+1. start the harmonizer and store daemons:
+```bash
+python3 -m harmonizer
+python3 -m store
+```
+
+2. Launch the gather utilities
 
 ```bash
-python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_ELECSP_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaElectric -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/KiloGM" -n "https://icaen.cat#" -st kafka 
-python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_GASNAT_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaGas -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/KiloGM" -n "https://icaen.cat#" -st kafka
+python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_ELECSP_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaElectric -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -st kafka 
+python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_GASNAT_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaGas -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -st kafka 
 python3 -m gather -so SimpleTariff -f data/Tariff/Tariff_ELEC_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 -tar electricdefault -mp "http://bigg-project.eu/ontology#Price.EnergyPriceGridElectricity" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -cu "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -st kafka
 python3 -m gather -so SimpleTariff -f data/Tariff/Tariff_GASNAT_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 -tar gasdefault -mp "http://bigg-project.eu/ontology#Price.EnergyPriceGas" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -cu "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -st kafka 
 
@@ -248,7 +256,6 @@ python3 -m set_up.DeviceAggregator -cn "ES" -t "totalGasConsumption"
 echo "DeviceAggregators weather"
 python3 -m set_up.DeviceAggregator -cn "ES" -t "externalWeather"
 ```
-</details>
 
 ### 3.9. Create the Generic Buildings
 
@@ -285,6 +292,7 @@ Merge(a)-[:bigg__hasAreaType]->(at)
 Merge(s)-[:bigg__isAssociatedWithElement]->(e)
 Merge(s)-[:bigg__hasBuildingSpaceUseType{selected:true}]->(ut)
 ```
+</details>
 
 ----
 

@@ -17,15 +17,39 @@ class Mapper(object):
         BuildingConstructionElement.set_namespace(namespace)
 
     def get_mappings(self, group):
-        organization_organization = {
-            "name": "organization_main",
+        organization_gene = {
+            "name": "organization_gene",
             "class": Organization,
             "type": {
                 "origin": "static",
             },
             "params": {
                 "raw": {
-                    "subject": "generalitat-de-catalunya"
+                    "subject": "generalitat-de-catalunya",
+                }
+            },
+            "links": {
+                # "main_organization": {
+                #     "type": Bigg.hasSuperOrganization,
+                #     "link": "__all__"
+                # },
+                "organization_unfound": {
+                    "type": Bigg.hasSubOrganization,
+                    "link": "__all__"
+                }
+            }
+        }
+        organization_organization = {
+            "name": "organization_unfound",
+            "class": Organization,
+            "type": {
+                "origin": "static",
+            },
+            "params": {
+                "raw": {
+                    "subject": "no-trobat",
+                    "organizationName": "No Trobat",
+                    "organizationDivisionType": "Department"
                 }
             },
             "links": {
@@ -184,6 +208,14 @@ class Mapper(object):
                     },
                     "addressStreetName": {
                         "key": "Via",
+                        "operations": []
+                    },
+                    "addressLatitude": {
+                        "key": "Component Y",
+                        "operations": []
+                    },
+                    "addressLongitude": {
+                        "key": "Component X",
                         "operations": []
                     }
                 }
@@ -353,10 +385,10 @@ class Mapper(object):
             }
         }
         grouped_modules = {
-            "main_org": [organization_organization, building_organization, building, location_info, cadastral_info,
+            "main_org": [organization_gene, organization_organization, building_organization, building, location_info, cadastral_info,
                          building_space, gross_floor_area, gross_floor_area_under_ground, gross_floor_area_above_ground,
                          building_element],
-            "dep_org" : [department_organization, building_organization, building, location_info, cadastral_info,
+            "dep_org": [department_organization, building_organization, building, location_info, cadastral_info,
                          building_space, gross_floor_area, gross_floor_area_under_ground, gross_floor_area_above_ground,
                          building_element],
             "buildings": [building_organization, building, location_info, cadastral_info, building_space,
@@ -364,3 +396,77 @@ class Mapper(object):
                           building_element]
         }
         return grouped_modules[group]
+
+    def get_update_relationships(self, group):
+        """The relationships returned will be removed from the graph before applying the update"""
+        with_organization = {
+                Bigg.hasSubOrganization: {
+                    "rdf": {
+                        "query": """SELECT ?s ?o WHERE {{
+                            ?s <{p}> ?o. 
+                            ?o <http://bigg-project.eu/ontology#organizationDivisionType> "Building"}}""",
+                        "response": {"object": 1}
+                    },
+                    "cypher": {
+                        "query": """Match (n)-[r:{p}]-() where n.uri in {object}"""
+                    }
+                },
+                Bigg.hasAddressCountry: {
+                    "rdf": {
+                        "query": """SELECT ?s ?o WHERE {{?s <{p}> ?o}}""",
+                        "response": {"object": 0}
+                    },
+                    "cypher": {
+                        "query": """Match (n)-[r:{p}{{source:"GPG"}}]-() where n.uri in {object}"""
+                    }
+                },
+                Bigg.hasAddressProvince: {
+                    "rdf": {
+                        "query": """SELECT ?s ?o WHERE {{?s <{p}> ?o}}""",
+                        "response": {"object": 0}
+                    },
+                    "cypher": {
+                        "query": """Match (n)-[r:{p}{{source:"GPG"}}]-() where n.uri in {object}"""
+                    }
+                },
+                Bigg.hasAddressCity: {
+                    "rdf": {
+                        "query": """SELECT ?s ?o WHERE {{?s <{p}> ?o}}""",
+                        "response": {"object": 0}
+                    },
+                    "cypher": {
+                        "query": """Match (n)-[r:{p}{{source:"GPG"}}]-() where n.uri in {object}"""
+                    }
+                },
+                Bigg.hasBuildingSpaceUseType: {
+                    "rdf": {
+                        "query": """SELECT ?s ?o WHERE {{?s <{p}> ?o}}""",
+                        "response": {"object": 0}
+                    },
+                    "cypher": {
+                        "query": """Match (n)-[r:{p}{{source:"GPG"}}]-() where n.uri in {object}"""
+                    }
+                },
+                Bigg.hasArea: {
+                    "rdf": {
+                        "query": """SELECT ?s ?o WHERE {{?s <{p}> ?o}}""",
+                        "response": {"object": 0}
+                    },
+                    "cypher": {
+                        "query": """Match (n)-[r:{p}{{source:"GPG"}}]-() where n.uri in {object}"""
+                    }
+                },
+            }
+        only_buildings = {
+                Bigg.hasAddressCountry: '{source:"GPG"}',
+                Bigg.hasAddressProvince: '{source:"GPG"}',
+                Bigg.hasAddressCity: '{source:"GPG"}',
+                Bigg.hasBuildingSpaceUseType: '{source:"GPG"}',
+                Bigg.hasArea: '{source:"GPG"}'
+            }
+        relationships_to_update = {
+            "main_org": with_organization,
+            "dep_org": with_organization,
+            "buildings": only_buildings
+        }
+        return relationships_to_update[group]

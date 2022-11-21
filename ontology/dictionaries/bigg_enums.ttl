@@ -2845,6 +2845,9 @@ bigg:WindSpeed a bigg:MeasuredProperty, skos:Concept;
 bigg:BoilerModulationLevel a bigg:MeasuredProperty, skos:Concept;
   rdfs:comment "Boiler modulation level" .
 
+bigg:CO2Emissions a bigg:MeasuredProperty, skos:Concept;
+  rdfs:comment "CO2 emissions for kwh" .
+
 bigg:Naive a bigg:EstimationMethod, skos:Concept;
   bigg:considerEstimatedValues false .
 

@@ -15,7 +15,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
     ap.add_argument("--measured_property", "-mp", help="The type of the data measured", required=True)
     ap.add_argument("--co2_property", "-p", help="The type of the data that the price relates to", required=True)
     ap.add_argument("--co2_property_unit", "-pu", help="The unit of the related type", required=True)
-    ap.add_argument("--unit", "-u", help="The currency unit", required=True)
+    ap.add_argument("--unit", "-unit", help="The currency unit", required=True)
     args = ap.parse_args(arguments)
 
     hbase_conn = config['hbase_store_raw_data']
@@ -39,5 +39,5 @@ def harmonize_command_line(arguments, config=None, settings=None):
         harmonize_data_ts(dic_list, namespace=args.namespace, config=config, co2_uid=co2_uid,
                           date_ini=datetime.strptime(ts_ini, "%Y%m%d"), date_end=datetime.strptime(ts_end, "%Y%m%d"),
                           measured_property=args.measured_property, co2_property=args.co2_property,
-                          co2_property_unit=args.co2_property_unit, unit=args.unit)
+                          co2_property_unit=args.co2_property_unit, unit=args.unit, user=args.user)
 

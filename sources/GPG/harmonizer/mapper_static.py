@@ -8,7 +8,7 @@ from utils.cache import Cache
 from utils.data_transformations import *
 from ontology.namespaces_definition import Bigg, bigg_enums
 from utils.rdf.rdf_functions import generate_rdf
-from utils.rdf.save_rdf import save_rdf_with_source
+from utils.rdf.save_rdf import save_rdf_with_source, update_relationships
 from utils.utils import log_string
 from .GPG_mapping import Mapper
 from .transform_functions import *
@@ -16,52 +16,41 @@ from .transform_functions import *
 # get namespaces
 bigg = settings.namespace_mappings['bigg']
 
-
-def harmonize_organizations(x, map):
-    return map[x]
-
-
-def _organization_map(series, orgs, default):
-    x = set()
-    for item in series:
-        x.add(item)
-
+def _organization_map(org_list, orgs, default):
     resp = {}
-    for xx in x:
+    resp_bool = {}
+    for xx in org_list:
         query = slugify(xx)
         match, score = process.extractOne(query, orgs.keys())
         if score > 90:
-            resp[xx] = (orgs[match], True)
+            resp[xx] = orgs[match]
+            resp_bool[xx] = True
         else:
-            resp[xx] = (default, False)
-    return resp
+            resp[xx] = default
+            resp_bool[xx] = False
+    return resp, resp_bool
 
 
 def _get_fuzz_params(user_id, neo4j_conn):
     # Get all existing Organizations typed department
     neo = GraphDatabase.driver(**neo4j_conn)
     with neo.session() as s:
-        organization_name = s.run(f"""
-        MATCH (m:{bigg}__Organization {{userID: "{user_id}"}}) 
-        return m.uri
-        """).single().value()
         organization_names = s.run(f"""
          MATCH 
          (m:{bigg}__Organization {{userID: "{user_id}"}})-[:{bigg}__hasSubOrganization *]->
          (n:{bigg}__Organization{{{bigg}__organizationDivisionType: "Department"}})
-         RETURN n.uri
+         RETURN n.uri as uri, n.{bigg}__organizationName as name
          """)
-        dep_uri = {x.value().split("#")[1]: x.value().split("#")[1] for x in organization_names}
-    return {"orgs": dep_uri, "default": organization_name.split("#")[1]}
+        dep_uri = {slugify(x.get("name")): x.value().split("#")[1] for x in organization_names}
+    return {"orgs": dep_uri, "default": "no-trobat"}
 
 
 def fuzz_departments(df, user_id, neo4j):
-    df['department_organization_tmp'] = df['Responsable fiscal efectiu']
     fparams = _get_fuzz_params(user_id, neo4j)
-    org_map = _organization_map(df['department_organization_tmp'], **fparams)
-    harmonize_deps = partial(harmonize_organizations, map=org_map)
-    df['department_organization'] = df['department_organization_tmp'].apply(harmonize_deps).apply(lambda x: x[0])
-    df['department_organization_main'] = df['department_organization_tmp'].apply(harmonize_deps).apply(lambda x: x[1])
+    org_list = df['Responsable fiscal efectiu'].unique()
+    org_map, bool_map = _organization_map(org_list, **fparams)
+    df['department_organization'] = df['Responsable fiscal efectiu'].map(org_map)
+    df['department_organization_main'] = df['Responsable fiscal efectiu'].map(bool_map)
 
 
 def clean_dataframe(df, source):
@@ -137,6 +126,7 @@ def harmonize_data(data, **kwargs):
         main = df[df.department_organization_main==False]
         g = generate_rdf(mapper.get_mappings("main_org"), main)
         g += generate_rdf(mapper.get_mappings("dep_org"), dep)
+        update_relationships(g, mapper.get_update_relationships("main_org"), config['neo4j'])
     else:
         g = generate_rdf(mapper.get_mappings("buildings"), df)
     log_string("saving", mongo=False)

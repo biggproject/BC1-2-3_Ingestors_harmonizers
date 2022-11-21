@@ -21,6 +21,7 @@ def harmonize_data_ts(data, **kwargs):
     co2_property = kwargs['co2_property']
     co2_property_unit = kwargs['co2_property_unit']
     unit = kwargs['unit']
+    user = kwargs['user']
 
     co2_uri = co2_subject(co2_uid)
     date_ini = kwargs['date_ini']
@@ -83,14 +84,14 @@ def harmonize_data_ts(data, **kwargs):
                                  co2_uri=co2_uri, related_prop=co2_property, related_unit=co2_property_unit,
                                  unit=unit, ns_mappings=settings.namespace_mappings)
         co2_df['listKey'] = measurement_id
-        device_table = f"harmonized_online_{prop}_100_SUM_PT1H_public"
+        device_table = f"harmonized_online_{prop}_100_SUM_PT1H_{user}"
 
         save_to_hbase(co2_df.to_dict(orient="records"),
                       device_table,
                       hbase_conn2,
                       [("info", ['end', 'isReal']), ("v", ['value'])],
                       row_fields=['bucket', 'listKey', 'start'])
-        period_table = f"harmonized_batch_{prop}_100_SUM_PT1H_public"
+        period_table = f"harmonized_batch_{prop}_100_SUM_PT1H_{user}"
         save_to_hbase(co2_df.to_dict(orient="records"),
                       period_table, hbase_conn2,
                       [("info", ['end', 'isReal']), ("v", ['value'])],

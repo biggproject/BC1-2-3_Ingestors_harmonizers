@@ -25,8 +25,8 @@ def gather(arguments, config=None, settings=None):
                         log_exec=datetime.utcnow())
 
     """
-python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_ELECSP_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaElectric -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/KiloGM" -n "https://weather.beegroup-cimne.com#" -st kafka 
-python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_GASNAT_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaGas -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/KiloGM" -n "https://weather.beegroup-cimne.com#" -st kafka 
+python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_ELECSP_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaElectric -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -st kafka 
+python3 -m gather -so CO2Emissions -f data/CO2Emissions/EMISSIONS_FACT_GASNAT_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 --co2_uid cataloniaGas -mp "http://bigg-project.eu/ontology#CO2Emissions" -cp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -cpu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -st kafka 
     """
     try:
         tariff = pd.read_excel(args.file, engine="openpyxl")
