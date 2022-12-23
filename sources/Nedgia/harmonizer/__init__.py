@@ -22,7 +22,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
     hbase_conn = config['hbase_store_raw_data']
     i = 0
     hbase_table = f"raw_Nedgia_ts_invoices__{args.user}"
-    #Cache.load_cache()
+    Cache.load_cache()
     if args.type == "ts":
         for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=100):
             dic_list = []

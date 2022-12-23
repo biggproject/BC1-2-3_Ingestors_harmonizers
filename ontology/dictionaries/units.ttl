@@ -4861,6 +4861,13 @@ bigg:Euro-M2 a bigg:MeasurementUnit,
     dcterms:description "European Union Euro per squared meter"^^rdf:HTML ;
     qudt:currencyExponent 2 .
 
+
+bigg:Euro-KiloW-HR a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "Euro"@en ;
+    dcterms:description "European Union Euro per Kilo Watt Hour"^^rdf:HTML ;
+    qudt:currencyExponent 2 .
+
 unit:EuropeanCompositeUnit a bigg:EnergyEfficiencyMeasureInvestmentCurrency,
         bigg:MeasurementUnit,
         bigg:ProjectInvestmentCurrency,

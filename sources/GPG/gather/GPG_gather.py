@@ -51,7 +51,8 @@ def read_data_from_xlsx(file):
     # df["Codi_postal"] = df["Municipi"].apply(get_codi_postal)
     #df["Municipi"] = df["Municipi"].apply(get_municipi)
     df["Responsable fiscal efectiu"] = df["Responsable fiscal efectiu"].apply(remove_nan).apply(get_department)
-    df["Classificació del sòl"] = df["Classificació del sòl"].apply(remove_nan)
+    if "Classificació del sòl" in df.columns:
+        df["Classificació del sòl"] = df["Classificació del sòl"].apply(remove_nan)
     df["Ref. Cadastral"] = df["Ref. Cadastral"].apply(remove_nan)
     df.reset_index(inplace=True)
     return df.to_dict("records")
