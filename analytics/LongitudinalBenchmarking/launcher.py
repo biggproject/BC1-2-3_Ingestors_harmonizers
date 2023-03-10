@@ -14,12 +14,12 @@ import tarfile
 config = utils.utils.read_config(settings.conf_file)
 m_name = "longitudinalBenchmarking"
 info_tables_list = [
-    ("harmonized_batch_CO2Emissions_100_SUM_PT1H_icaen", "harmonized_batch_CO2Emissions_100_SUM_PT1H_icaen"),
-    ("harmonized_batch_EnergyConsumptionGas_000_SUM__icaen", "harmonized_batch_EnergyConsumptionGas_000_SUM__icaen"),
-    ("harmonized_batch_EnergyConsumptionGridElectricity_100_SUM_PT1H_icaen", "harmonized_batch_EnergyConsumptionGridElectricity_100_SUM_PT1H_icaen"),
-    ("harmonized_batch_Price.EnergyPriceGas_100_SUM_PT1H_icaen", "harmonized_batch_PriceEnergyPriceGas_100_SUM_PT1H_icaen"),
-    ("harmonized_batch_Price.EnergyPriceGridElectricity_100_SUM_PT1H_icaen","harmonized_batch_PriceEnergyPriceGridElectricity_100_SUM_PT1H_icaen"),
-    ("harmonized_batch_Temperature_100_AVG_PT1H_public", "harmonized_batch_Temperature_100_AVG_PT1H_public")
+    ("harmonized_online_CO2Emissions_100_SUM_PT1H_icaen", "harmonized_online_CO2Emissions_100_SUM_PT1H_icaen"),
+    ("harmonized_online_EnergyConsumptionGas_000_SUM__icaen", "harmonized_online_EnergyConsumptionGas_000_SUM__icaen"),
+    ("harmonized_online_EnergyConsumptionGridElectricity_100_SUM_PT1H_icaen", "harmonized_online_EnergyConsumptionGridElectricity_100_SUM_PT1H_icaen"),
+    ("harmonized_online_Price.EnergyPriceGas_100_SUM_PT1H_icaen", "harmonized_online_PriceEnergyPriceGas_100_SUM_PT1H_icaen"),
+    ("harmonized_online_Price.EnergyPriceGridElectricity_100_SUM_PT1H_icaen","harmonized_online_PriceEnergyPriceGridElectricity_100_SUM_PT1H_icaen"),
+    ("harmonized_online_Temperature_100_AVG_PT1H_public", "harmonized_online_Temperature_100_AVG_PT1H_public")
 ]
 
 
@@ -58,14 +58,14 @@ def cypher_query(building_uri, skip, limit=1000):
         }} 
         WITH n 
         MATCH (d)<-[r*1..6]-(n)
-        WHERE all(r1 in r WHERE TYPE(r1) =~"bigg__.*")
+        WHERE all(r1 in r WHERE TYPE(r1) =~"bigg__.*" and not TYPE(r1)="bigg__assessesSingleKPI" and not TYPE(r1) = "bigg__hasAnalyticalModel")
         RETURN n, [r1 in r WHERE NOT EXISTS(r1.selected) OR r1.selected=true] as r, d
     """
 
 
 def create_hive_table_from_hbase(hbase_table, namespace):
     return f"""
-        CREATE EXTERNAL TABLE IF NOT EXISTS {hbase_table[1]}(key struct<b:bigint, ts_ini:bigint, hash:string>, value float, isReal boolean, ts_end bigint) 
+        CREATE EXTERNAL TABLE IF NOT EXISTS {hbase_table[1]}(key struct<b:bigint, hash:string, ts_ini:bigint>, value float, isReal boolean, ts_end bigint) 
         ROW FORMAT DELIMITED COLLECTION ITEMS TERMINATED BY '~' 
         STORED BY 'org.apache.hadoop.hive.hbase.HBaseStorageHandler' 
         WITH SERDEPROPERTIES ('hbase.columns.mapping' = ':key, v:value, info:isReal, info:end') 
@@ -170,13 +170,16 @@ files_mr.append(f"{settings.conf_file}#{settings.conf_file}")
 files_mr.append(f".env#.env")
 files_mr.append(f"settings.py#settings.py")
 
-subprocess.call(["hdfs", "dfs", "-rm", "-r", f'tmp/{m_name}/output'],
+subprocess.call(["hdfs", "dfs", "-rm", "-r", f'tmp/{m_name}'],
                 bufsize=4096, stdout=sys.stdout, stderr=sys.stderr)
 system_call = ['mapred', 'streaming',
                  f'-Dmapreduce.map.env="{MOUNTS},{IMAGE},{RUNTYPE}"',
                  f'-Dmapreduce.reduce.env="{MOUNTS},{IMAGE},{RUNTYPE}"',
                  f'-Dmapreduce.job.name={m_name}',
-                 f'-Dmapred.reduce.tasks=30',
+                 f'-Dmapred.reduce.tasks=16',
+                 f'-Dmmapreduce.reduce.memory.mb=10240'
+                 f'-Dmapred.map.tasks.speculative.execution=false',
+                 f'-Dmapred.reduce.tasks.speculative.execution=false',
                  '-files', ",".join(files_mr),
                  "-archives", ",".join(archives),
                  '-mapper', 'mapper.py',

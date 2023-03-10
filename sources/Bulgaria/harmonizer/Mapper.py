@@ -29,6 +29,7 @@ class Mapper(object):
         EnergySaving.set_namespace(namespace)
         RenovationProject.set_namespace(namespace)
 
+
     def get_mappings(self, group):
         # building info mapping
         organization = {
@@ -163,8 +164,7 @@ class Mapper(object):
             },
             "params": {
                 "raw": {
-                    "hasAddressCountry": countries["732800/"],
-                    "addressTimeZone": "Europe/Sofia",
+                    "hasAddressCountry": countries["732800/"]
                 },
                 "mapping": {
                     "subject": {
@@ -173,6 +173,10 @@ class Mapper(object):
                     },
                     "hasAddressCity": {
                         "key": "hasAddressCity",
+                        "operations": []
+                    },
+                    "addressTimeZone": {
+                        "key": "timezone",
                         "operations": []
                     }
                 }
@@ -200,7 +204,7 @@ class Mapper(object):
                         "operations": []
                     },
                     "annualFinalEnergyConsumption": {
-                        "key": "Annual energy consumption - before_Total energy consumpion (by invoices)_kWh/a",
+                        "key": "Annual energy consumption - before_Correction (normalisation) of the consumptions_kWh/a",
                         "operations": []
                     }
                 }
@@ -224,7 +228,11 @@ class Mapper(object):
                         "operations": []
                     },
                     "energyPerformanceCertificateClass": {
-                        "key": "EPC_Date_Date",
+                        "key": "EPC_Energy class_After",
+                        "operations": []
+                    },
+                    "annualFinalEnergyConsumption": {
+                        "key": "consumption_total_after",
                         "operations": []
                     }
                 }
@@ -299,14 +307,14 @@ class Mapper(object):
                     "type": Bigg.isAssociatedWithElement,
                     "link": "subject"
                 },
-                "device": {
-                    "type": Bigg.isObservedByDevice,
-                    "link": "subject"
-                },
-                "utilityPoint": {
-                    "type": Bigg.hasUtilityPointOfDelivery,
-                    "link": "subject"
-                }
+                # "device": {
+                #     "type": Bigg.isObservedByDevice,
+                #     "link": "subject"
+                # },
+                # "utilityPoint": {
+                #     "type": Bigg.hasUtilityPointOfDelivery,
+                #     "link": "subject"
+                # }
             }
         }
 
@@ -352,14 +360,40 @@ class Mapper(object):
                 }
             },
             "links": {
-                "device": {
-                    "type": Bigg.isObservedByDevice,
-                    "link": "subject"
-                },
+                # "device": {
+                #     "type": Bigg.isObservedByDevice,
+                #     "link": "subject"
+                # },
                 "energy_efficiency_measure": {
                     "type": Bigg.isAffectedByMeasure,
                     "link": "subject"
                 },
+            }
+        }
+
+        building_space_link = {
+            "name": "building_space_link",
+            "class": BuildingSpace,
+            "type": {
+                "origin": "row"
+            },
+            "params": {
+                "mapping": {
+                    "subject": {
+                        "key": "building_space_subject",
+                        "operations": []
+                    }
+                }
+            },
+            "links": {
+                "device": {
+                    "type": Bigg.isObservedByDevice,
+                    "link": "building_space_subject"
+                },
+                "utilityPoint": {
+                    "type": Bigg.hasUtilityPointOfDelivery,
+                    "link": "building_space_subject"
+                }
             }
         }
         device = {
@@ -378,7 +412,7 @@ class Mapper(object):
                         "operations": []
                     },
                     "deviceName": {
-                        "key": "building_id",
+                        "key": "name",
                         "operations": []
                     },
                 }
@@ -392,16 +426,17 @@ class Mapper(object):
                 "origin": "row"
             },
             "params": {
-                "raw": {
-                    "hasUtilityType": to_object_property("Electricity", namespace=bigg_enums)
-                },
                 "mapping": {
                     "subject": {
                         "key": "utility_subject",
                         "operations": []
                     },
+                    "hasUtilityType": {
+                        "key": "type",
+                        "operations": []
+                    },
                     "pointOfDeliveryIDFromOrganization": {
-                        "key": "building_id",
+                        "key": "name",
                         "operations": []
                     },
                 }
@@ -409,7 +444,7 @@ class Mapper(object):
             "links": {
                 "device": {
                     "type": Bigg.hasDevice,
-                    "link": "subject"
+                    "link": "building_space_subject"
                 }
             }
         }
@@ -449,7 +484,9 @@ class Mapper(object):
         grouped_modules = {
             "building_info": [organization, location_organization, building_organization, buildings, building_space,
                               gross_floor_area, location_info, energy_performance_certificate_before,
-                              energy_performance_certificate_after, element, device, utilityPoint, project],
+                              energy_performance_certificate_after, element,  # device, utilityPoint,
+                              project],
+            "building_upods_dev": [building_space_link, device, utilityPoint],
             "eem_savings": [element, energy_efficiency_measure, project],
         }
         return grouped_modules[group]

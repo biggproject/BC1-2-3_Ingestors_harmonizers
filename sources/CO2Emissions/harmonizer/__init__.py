@@ -20,9 +20,10 @@ def harmonize_command_line(arguments, config=None, settings=None):
 
     hbase_conn = config['hbase_store_raw_data']
     i = 0
-    hbase_table = f"raw_co2emissions_ts_{args.measured_property.split('#')[1]}_PT1H_{args.user}"
+    hbase_table = f"raw_co2emissions_ts_{args.co2_property.split('#')[1]}_PT1H_{args.user}"
     Cache.load_cache()
-    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=100):
+    # TODO: Vigilar perque només funciona amb 1 key, però com que la UI ho fa diferent de moment ho deixem aixi
+    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=100000):
         dic_list = []
         for key, data1 in data:
             item = dict()

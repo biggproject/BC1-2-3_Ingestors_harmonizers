@@ -5,20 +5,32 @@ from utils.hbase import save_to_hbase
 from utils.kafka import save_to_kafka
 from utils.nomenclature import raw_nomenclature, RAW_MODE
 from utils.utils import log_string
+import utils
+from datetime import datetime, timedelta
 
 
 def gather_data(config, settings, args):
     limit = 1000
     offset = 0
-
+    opendata_import = (
+        utils.mongo.mongo_connection(config['mongo_db'])
+        [config['data_sources'][config['source']]['log_executions']])
+    try:
+        device = opendata_import.find({"_id": args.user}).limit(1)[0]
+    except IndexError:
+        device = {"_id": args.user, "last_cert": datetime(1900, 1, 1)}
+    start_date = device['last_cert']
     while True:
         log_string(f"Gather data limit={limit}, offset={offset}")
         try:
-            df = CEEE().query(limit=limit, offset=offset * limit)
-
+            df = CEEE().query(limit=limit, offset=offset * limit,
+                              where=f"data_entrada>='{start_date}'", order='data_entrada')
             save_data(data=df.to_dict(orient="records"), data_type='EnergyPerformanceCertificate',
                       row_keys=['referencia_cadastral', 'num_cas'], column_map=[("info", "all")],
                       config=config, settings=settings, args=args)
+            end_date = df.data_entrada.max()
+            opendata_import.update_one({"_id": args.user}, {"$set": {"last_cert": end_date.split('T')[0]}},
+                                       upsert=True)
             if len(df.index) == limit:
                 offset += 1
             else:

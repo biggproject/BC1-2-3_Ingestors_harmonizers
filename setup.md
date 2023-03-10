@@ -21,6 +21,7 @@ CALL n10s.graphconfig.init({ keepLangTag: true, handleMultival:"ARRAY", multival
 CALL n10s.nsprefixes.add("bigg","http://bigg-project.eu/ontology#");
 CALL n10s.nsprefixes.add("geo","http://www.geonames.org/ontology#");
 CALL n10s.nsprefixes.add("unit","http://qudt.org/vocab/unit/");
+CALL n10s.nsprefixes.add("qudt","http://qudt.org/schema/qudt/");
 CALL n10s.nsprefixes.add("wgs","http://www.w3.org/2003/01/geo/wgs84_pos#");
 CALL n10s.nsprefixes.add("rdfs","http://www.w3.org/2000/01/rdf-schema#");
 ```
@@ -124,7 +125,7 @@ python3 -m gather -so CEEC3X -f "data/CEEC3X/ceec3x-01639-2TX229LJ9.xml" -b 0163
 
 python3 -m gather -so Datadis # MR-Job
 python3 -m gather -so Weather # MR-Job
-python3 -m gather -so OpenData -n "https://icaen.cat#" -u icaen -c
+python3 -m gather -so OpenData -n "https://icaen.cat#" -u icaen -st kafka
 
 ```
 </details>
@@ -194,6 +195,7 @@ python3 -m harmonizer -so SimpleTariff -u icaen -mp "http://bigg-project.eu/onto
 python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -pu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -c 
 python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGas" -pu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -c 
 ```
+
 <details>
 <summary>Load from KAFKA</summary>
 
@@ -212,6 +214,7 @@ python3 -m gather -so SimpleTariff -f data/Tariff/Tariff_ELEC_test01.xlsx -u ica
 python3 -m gather -so SimpleTariff -f data/Tariff/Tariff_GASNAT_test01.xlsx -u icaen -di 2015-01-01 -de 2030-01-01 -tar gasdefault -mp "http://bigg-project.eu/ontology#Price.EnergyPriceGas" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -cu "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -st kafka 
 
 ```
+
 </details>
 
 ### 3.6. Link building with the closest Weather Station
@@ -359,6 +362,15 @@ python3 -m set_up.DataSources -u "bulgaria" -n "https://bulgaria.bg#" -f data/Da
 echo "co2Emisions source"
 python3 -m set_up.DataSources -u "bulgaria" -n "https://bulgaria.bg#" -f data/DataSources/bulgaria.xls -d CO2EmissionsSource
 ```
+
+```cypher
+Match(n:bigg__Organization{userID:"bulgaria"}) 
+Merge (n)-[:hasConfig]->(c:AppConfiguration{createBuilding: true, epc:"bulgaria", uploadManualData: true});
+Match(n:bigg__Organization{userID:"bulgaria"}) Match(u:bigg__Person{bigg__userName: "admin"})
+Merge (n)<-[:bigg__managesOrganization]-(u) return n;
+Match(n:bigg__Organization{userID:"bulgaria"}) Match(l:Language) where l.iso__code in ['en', 'bg']
+Merge (n)-[:hasAvailableLanguage]->(l) return n;
+```
 ### 5.2. Harmonize the static data
 Load from HBASE (recomended when re-harmonizing)
 ```bash
@@ -375,7 +387,7 @@ python3 -m store
 2. Launch the gather utilities
 
 ```bash
-python3 -m gather -so Bulgaria -f "data/Bulgaria" -u "bulgaria" -n "https://bulgaria.bg#" -t summary -st kafka
+python3 -m gather -so Bulgaria -f "data/Bulgaria" -u "bulgaria" -n "https://bulgaria.bg#" -st kafka
 ```
 </details>
 
@@ -493,15 +505,7 @@ CREATE (a:Authority {name: 'ROLE_BUILDING_ADMINISTRATOR'});
 CREATE (a:Authority {name: 'ROLE_BUILDING_USER'});
 ```
 
-### 6.3 Create Roles
-```cypher
-CREATE (a:Authority {name: 'ROLE_SUPERUSER'});
-CREATE (a:Authority {name: 'ROLE_ORGANIZATION_ADMINISTRATOR'});
-CREATE (a:Authority {name: 'ROLE_BUILDING_ADMINISTRATOR'});
-CREATE (a:Authority {name: 'ROLE_BUILDING_USER'});
-```
-
-### 6.4 Update organizations
+### 6.3 Update organizations
 ```cypher
 // Bulgaria
 MATCH (l1:Language) 

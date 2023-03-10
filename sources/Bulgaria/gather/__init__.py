@@ -9,6 +9,16 @@ import pandas as pd
 import utils
 from utils.nomenclature import RAW_MODE
 
+energy_groups = [
+    [r".*Hard.*", r".*Gas.*", r".*Others.*", r".*Heat.*", r".*Electricity.*"],  # liquid
+    [r".*Liquid.*", r".*Gas.*", r".*Others.*", r".*Heat.*", r".*Electricity.*"],  # hard
+    [r".*Liquid.*", r".*Hard.*", r".*Others.*", r".*Heat.*", r".*Electricity.*"],  # gas
+    [r".*Liquid.*", r".*Hard.*", r".*Gas.*", r".*Heat.*", r".*Electricity.*"],  # others
+    [r".*Liquid.*", r".*Hard.*", r".*Gas.*", r".*Others.*", r".*Electricity.*"],  # heat
+    [r".*Liquid.*", r".*Hard.*", r".*Gas.*", r".*Others.*", r".*Heat.*"]  # electricity
+
+]
+
 
 def gather_data(config, settings, args):
     for file in os.listdir(args.file):
@@ -18,10 +28,25 @@ def gather_data(config, settings, args):
             df.columns = ["_".join([f for f in c if not re.match("Unnamed:.*", f)]) for c in df.columns]
             df['filename'] = hashlib.md5(file.encode()).hexdigest()
             df['id'] = df.index
-
             save_data(data=df.to_dict(orient='records'), data_type="BuildingInfo",
                       row_keys=["filename", "id"],
                       column_map=[("info", "all")], config=config, settings=settings, args=args)
+            for s in range(0, 2):
+                save_data(data=df.to_dict(orient='records'), data_type=f"BuildingInfo_KPI_{s}",
+                          row_keys=["filename", "id"],
+                          column_map=[("info", "all")], config=config, settings=settings, args=args)
+            for s in range(0, 23):
+                save_data(data=df.to_dict(orient='records'), data_type=f"EEM_KPI_{s}",
+                          row_keys=["filename", "id"],
+                          column_map=[("info", "all")], config=config, settings=settings, args=args)
+            for g in energy_groups:
+                df_source = df.copy(deep=True)
+                df_source = df_source[[x for x in df_source.columns if not any([True if re.search(x1, x) else False
+                                                                                for x1 in g])]]
+                save_data(data=df_source.to_dict(orient='records'), data_type="BuildingEnergyConsumption",
+                          row_keys=["filename", "id"],
+                          column_map=[("info", "all")], config=config, settings=settings, args=args)
+
 
 def save_data(data, data_type, row_keys, column_map, config, settings, args):
     if args.store == "kafka":

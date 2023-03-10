@@ -81,15 +81,26 @@ def harmonize_command_line(arguments, config=None, settings=None):
                             k1 = re.sub("^v:", "", k1)
                             item[k1] = v
                         cups, ts = key.decode().split("~")
-                        print(cups)
                         item.update({"cups": cups.encode("utf-8")})
                         item.update({"timestamp": ts.encode("utf-8")})
                         data_list.append(item)
-                    if len(data_list) <= 0:
-                        continue
-                    i += len(data_list)
-                    log_string(f"{freq}: {i}", mongo=False)
-                    harmonize_ts_data(data_list, freq=freq, namespace=args.namespace, user=args.user, config=config)
-                    row_start = cups[:-1] + chr(ord(cups[-1])+1)
+                    row_start = cups[:-1] + chr(ord(cups[-1]) + 1)
+                for data2 in get_hbase_data_batch(hbase_conn, h_table_name, row_start=row_start,
+                                                  batch_size=1, limit=1, reverse=True):
+                    for key, row in data2:
+                        item = dict()
+                        for k, v in row.items():
+                            k1 = re.sub("^info:", "", k.decode())
+                            k1 = re.sub("^v:", "", k1)
+                            item[k1] = v
+                        cups, ts = key.decode().split("~")
+                        item.update({"cups": cups.encode("utf-8")})
+                        item.update({"timestamp": ts.encode("utf-8")})
+                        data_list.append(item)
+                if len(data_list) <= 0:
+                    continue
+                i += len(data_list)
+                log_string(f"{freq}: {i/2}", mongo=False)
+                harmonize_ts_data(data_list, freq=freq, namespace=args.namespace, user=args.user, config=config)
     else:
         raise (NotImplementedError("invalid type: [static, ts]"))

@@ -30,7 +30,7 @@
     "Electricity": "totalElectricityConsumption",
     "Gas": "totalGasConsumption"
   },
-  "Frequencies": ["PT15M","PT1H","P1D","P1M","P1Y"],
+  "Frequencies": ["P1M","P1Y"],
   "BaselineYears": [2017,2018,2019],
   "MinRatioBaseline": 0.75,
   "DataCleaning": {

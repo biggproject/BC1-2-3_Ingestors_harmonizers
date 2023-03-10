@@ -40,7 +40,7 @@ class Plugin(SourcePlugin):
 
     def get_store_table(self, message):
         if message['collection_type'] == "co2_ts":
-            prop = str(message['measured_property']).split("#")[1]
+            prop = str(message['co2_property']).split("#")[1]
             return f"raw_co2emissions_ts_{prop}_PT1H_{message['user']}"
         else:
             return None

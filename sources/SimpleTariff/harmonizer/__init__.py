@@ -22,7 +22,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
     i = 0
     hbase_table = f"raw_simpletariff_ts_{args.measured_property.split('#')[1]}_PT1H_{args.user}"
     Cache.load_cache()
-    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=100):
+    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=1000000):
         dic_list = []
         for key, data1 in data:
             item = dict()

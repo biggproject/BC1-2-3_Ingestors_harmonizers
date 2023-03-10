@@ -1,7 +1,6 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  namespace: bigg
   name: bigg-datadis-gather-last
 spec:
   suspend: false
@@ -41,16 +40,16 @@ spec:
             image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
             command: [ "python3", "-m", "gather", "-so", "Datadis", "-st", "kafka", "-p", "last" ]
             volumeMounts:
-            - name: biggsecrets
-              mountPath: /home/ubuntu/beegroup_importing_tool/config.json
+            - name: main
+              mountPath: /home/ubuntu/bigg_entrack/config.json
               subPath: config.json
 
-            - name: biggsecrets
-              mountPath: /home/ubuntu/beegroup_importing_tool/.env
+            - name: main
+              mountPath: /home/ubuntu/bigg_entrack/.env
               subPath: .env
 
           volumes:
-          - name: biggsecrets
+          - name: main
             secret:
               secretName: main
               items:
@@ -65,7 +64,6 @@ spec:
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  namespace: bigg
   name: bigg-datadis-gather-repair
 spec:
   suspend: false
@@ -105,17 +103,15 @@ spec:
             image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
             command: [ "python3", "-m", "gather", "-so", "Datadis", "-st", "kafka", "-p", "repair" ]
             volumeMounts:
-            - name: biggsecrets
-              mountPath: /home/ubuntu/beegroup_importing_tool/config.json
+            - name: main
+              mountPath: /home/ubuntu/bigg_entrack/config.json
               subPath: config.json
 
-            - name: biggsecrets
-              mountPath: /home/ubuntu/beegroup_importing_tool/.env
+            - name: main
+              mountPath: /home/ubuntu/bigg_entrack/.env
               subPath: .env
-
-
           volumes:
-          - name: biggsecrets
+          - name: main
             secret:
               secretName: main
               items:

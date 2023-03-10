@@ -39,7 +39,7 @@ def clean_all_data(df, n):
     # EPC Additional Info
     df['additional_epc_subject'] = df['num_cas'].apply(additional_epc_subject)
     df['additional_epc_uri'] = df['additional_epc_subject'].apply(lambda x: n[x])
-
+    df['data_entrada'] = pd.to_datetime(df.data_entrada).dt.tz_localize("Europe/Madrid").apply(lambda x: pd.Timestamp(x).isoformat())
     return df
 
 
@@ -75,7 +75,3 @@ def harmonize_data(data, **kwargs):
     for linked, _df in [("linked", building_linked), ("unlinked", building_unlinked)]:
         g = generate_rdf(mapper.get_mappings(linked), _df)
         save_rdf_with_source(g, config['source'], neo4j_connection)
-    df_links = df[["epc_subject"]]
-    df_links = df_links.rename(columns={"epc_subject": "device_subject"})
-    df_links['source_id'] = 6275
-    link_devices_with_source(df_links, n, neo4j_connection)

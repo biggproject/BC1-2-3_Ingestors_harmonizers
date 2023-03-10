@@ -1,9 +1,9 @@
 {
-  "storeFailed": ["https://icaen.cat#BUILDING-01010", "Building: https://icaen.cat#BUILDING-10100"],
+  "storeFailed": [],
   "PYTHON3_BIN": "/usr/bin/python3",
   "MLFlow": {
     "ModelTrainingPeriodicity": "P1M",
-    "ForceModelTraining": false,
+    "ForceModelTraining": true,
     "MLFLOW_BIN": "/usr/local/bin/mlflow",
     "TrackingUri": "http://kafka1.internal:5000"
   },

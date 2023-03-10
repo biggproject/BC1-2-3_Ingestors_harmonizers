@@ -1,6 +1,10 @@
 @base <https://bigg-project.eu/ontology#> .
 @prefix bigg: <http://bigg-project.eu/ontology#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix sou: <http://qudt.org/vocab/sou/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -2600,6 +2604,9 @@ bigg:GRC_ZONE_D a bigg:AddressClimateZone, skos:Concept;
 bigg:EnergyConsumptionOthers a bigg:MeasuredProperty, skos:Concept;
   rdfs:comment "Total energy consumption from other unspecified resources" .
 
+bigg:NOPROPERTY a bigg:MeasuredProperty, skos:Concept;
+  rdfs:comment "The measurement does not have a property" .
+
 bigg:EnergyConsumptionTotal a bigg:MeasuredProperty, skos:Concept;
   rdfs:comment "Total energy consumption" .
 
@@ -3090,3 +3097,254 @@ bigg:Transport a bigg:ZoneType, skos:Concept .
 
 bigg:Ventilation a bigg:ZoneType, skos:Concept;
   rdfs:comment "The zone is used to represent a ventilation zone." .
+
+bigg:Euro-M2 a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "Euro per m2"@en ;
+    dcterms:description "European Union Euro per squared meter"^^rdf:HTML ;
+    qudt:symbol "€/m^2" ;
+    qudt:currencyExponent 2 .
+
+bigg:BulgarianLev-M2 a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "Bulgarian Lev per m2"@en ;
+    qudt:symbol "лв/m^2" ;
+    dcterms:description "Bulgarian lev currency per squared meter"^^rdf:HTML ;
+    qudt:currencyExponent 2 .
+
+bigg:Euro-KiloW-HR a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "Euro"@en ;
+    dcterms:description "European Union Euro per Kilo Watt Hour"^^rdf:HTML ;
+    qudt:symbol "€/kWh" ;
+    qudt:currencyExponent 2 .
+
+bigg:BulgarianLev-KiloW-HR a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "Bulgarian lev per kilo watt hour"@en ;
+    dcterms:description "Bulgarian lev per Kilo Watt Hour"^^rdf:HTML ;
+    qudt:symbol "лв/kWh" ;
+    qudt:currencyExponent 2 .
+
+
+bigg:KiloGM-CO2 a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "Kilo grams CO2"@en,
+        "grams CO2"@en-us ;
+    qudt:expression "\\(kgCO2\\)."^^qudt:LatexString ;
+    qudt:hasQuantityKind quantitykind:Mass ;
+    qudt:symbol "kgCO2" ;
+    qudt:ucumCode "g.m-2.d-1{C}"^^qudt:UCUMcs .
+
+bigg:KiloGM-CO2-M2 a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "kilograms CO2 per square metre"@en,
+        "kilograms CO2 per square meter"@en-us ;
+    qudt:expression "\\(kgCO2/m^{2}\\)."^^qudt:LatexString ;
+    qudt:symbol "kgCO2/m^2" ;
+    qudt:hasQuantityKind quantitykind:MassPerArea .
+
+bigg:KiloW-HR-M2 a bigg:MeasurementUnit,
+        qudt:Unit ;
+    rdfs:label "Kilowatthourperm2"@en ;
+    dcterms:description "The kilowatt hour per m2, or kilowatt-hour per squared meter, is a unit to measure the energy consumed by surface."^^qudt:LatexString ;
+    qudt:hasQuantityKind quantitykind:Energy  ;
+    qudt:ucumCode "kW.hm2"^^qudt:UCUMcs ;
+    qudt:uneceCommonCode "KWH" ;
+    qudt:symbol "kWh/m^2" ;
+    qudt:unitOfSystem sou:CGS .
+
+bigg:KPI-EnergyCost.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Cost@en";
+  bigg:shortName "EC@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EnergyEmissions.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Emissions@en";
+  bigg:shortName "EE@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EnergyCostIntensity.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Cost Intensity@en";
+  bigg:shortName "ECI@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EnergyEmissionsIntensity.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Emissions Intensity@en";
+  bigg:shortName "EEI@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EEMEnergyUseSavings.Total.Electricity a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings@en";
+  bigg:shortName "EUS@en";
+  bigg:enegy "Electricity" .
+
+bigg:KPI-EEMEmissionsSavings.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Emissions Savings@en";
+  bigg:shortName "EES@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EEMEnergyCostSavings.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Cost Savings@en";
+  bigg:shortName "ECS@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EEMEnergyUseSavings.Total.Gas a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings@en";
+  bigg:shortName "EUS@en";
+  bigg:enegy "Gas" .
+
+bigg:KPI-EEMEnergyUseSavings.Total.Coal a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings@en";
+  bigg:shortName "EUS@en";
+  bigg:enegy "Coal" .
+
+bigg:KPI-EEMEnergyUseSavings.Total.DistrictHeating a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings@en";
+  bigg:shortName "EUS@en";
+  bigg:enegy "Distric Haeting" .
+
+bigg:KPI-EEMEnergyUseSavings.Total.Oil a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings@en";
+  bigg:shortName "EUS@en";
+  bigg:enegy "Oil" .
+
+bigg:KPI-EEMEnergyUseSavings.Total.Others a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings@en";
+  bigg:shortName "EUS@en";
+  bigg:enegy "Others" .
+
+bigg:KPI-EEMEnergyUseSavingsIntensity.Total.Electricity a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings Intensity@en";
+  bigg:shortName "EUSI@en";
+  bigg:enegy "Electricity" .
+
+bigg:KPI-EEMEmissionsSavingsIntensity.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Emissions Savings Intensity@en";
+  bigg:shortName "EESI@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EEMEnergyCostSavingsIntensity.Total.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Cost Savings Intensity@en";
+  bigg:shortName "ECSI@en";
+  bigg:enegy "Total" .
+
+bigg:KPI-EEMEnergyUseSavingsIntensity.Total.Gas a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings Intensity@en";
+  bigg:shortName "EUSI@en";
+  bigg:enegy "Gas" .
+
+bigg:KPI-EEMEnergyUseSavingsIntensity.Total.Coal a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings Intensity@en";
+  bigg:shortName "EUSI@en";
+  bigg:enegy "Coal" .
+
+bigg:KPI-EEMEnergyUseSavingsIntensity.Total.DistrictHeating a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings Intensity@en";
+  bigg:shortName "EUSI@en";
+  bigg:enegy "Distric Heating" .
+
+bigg:KPI-EEMEnergyUseSavingsIntensity.Total.Oil a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings Intensity@en";
+  bigg:shortName "EUSI@en";
+  bigg:enegy "Oil" .
+
+bigg:KPI-EEMEnergyUseSavingsIntensity.Total.Others a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Savings Intensity@en";
+  bigg:shortName "EUSI@en";
+  bigg:enegy "Others" .
+
+bigg:KPI-EEMNormalisedInvestmentCost.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Normalised Investment Cost@en";
+  bigg:shortName "NIC@en";
+  bigg:enegy "" .
+
+bigg:KPI-EEMAvoidanceCost.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Avoidance Cost@en";
+  bigg:shortName "AC@en";
+  bigg:enegy "" .
+
+bigg:KPI-EEMSimplePayback.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Simple Payback@en";
+  bigg:shortName "SP@en";
+  bigg:enegy "" .
+
+bigg:KPI-EEMNetPresentValue.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Net Present Value@en";
+  bigg:shortName "NPV@en";
+  bigg:enegy "" .
+
+bigg:KPI-EEMProfitabilityIndex.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Profitability Index@en";
+  bigg:shortName "PI@en";
+  bigg:enegy "" .
+
+bigg:KPI-EEMNetPresentValueQuotient.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Net Present Value Quotient@en";
+  bigg:shortName "NPVq@en";
+  bigg:enegy "" .
+
+bigg:KPI-EEMInternalRateOfReturn.Total a bigg:KeyPerformanceIndicator;
+  rdfs:label "Internal Rate of Return@en";
+  bigg:shortName "IRR@en";
+  bigg:enegy "" .
+
+bigg:KPI-EnergyUse.Total.Gas a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use@en";
+  bigg:shortName "EU@en";
+  bigg:enegy "Gas" .
+
+bigg:KPI-EnergyUse.Total.Coal a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use@en";
+  bigg:shortName "EU@en";
+  bigg:enegy "Coal" .
+
+bigg:KPI-EnergyUse.Total.DistrictHeating a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use@en";
+  bigg:shortName "EU@en";
+  bigg:enegy "District Heating" .
+
+bigg:KPI-EnergyUse.Total.Oil a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use@en";
+  bigg:shortName "EU@en";
+  bigg:enegy "Oil" .
+
+bigg:KPI-EnergyUse.Total.Others a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use@en";
+  bigg:shortName "EU@en";
+  bigg:enegy "Others" .
+
+bigg:KPI-EnergyUse.Total.Electricity a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use@en";
+  bigg:shortName "EU@en";
+  bigg:enegy "Electricity" .
+
+bigg:KPI-EnergyUseIntensity.Total.Gas a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Intensity@en";
+  bigg:shortName "EUI@en";
+  bigg:enegy "Gas" .
+
+bigg:KPI-EnergyUseIntensity.Total.Coal a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Intensity@en";
+  bigg:shortName "EUI@en";
+  bigg:enegy "Coal" .
+
+bigg:KPI-EnergyUseIntensity.Total.DistrictHeating a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Intensity@en";
+  bigg:shortName "EUI@en";
+  bigg:enegy "District Heating" .
+
+bigg:KPI-EnergyUseIntensity.Total.Oil a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Intensity@en";
+  bigg:shortName "EUI@en";
+  bigg:enegy "Oil" .
+
+bigg:KPI-EnergyUseIntensity.Total.Others a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Intensity@en";
+  bigg:shortName "EUI@en";
+  bigg:enegy "Others" .
+
+bigg:KPI-EnergyUseIntensity.Total.Electricity a bigg:KeyPerformanceIndicator;
+  rdfs:label "Energy Use Intensity@en";
+  bigg:shortName "EUI@en";
+  bigg:enegy "Electricity" .

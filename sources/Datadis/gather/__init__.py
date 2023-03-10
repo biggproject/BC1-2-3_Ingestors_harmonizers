@@ -24,13 +24,12 @@ def get_timeseries_data(store, policy, config, settings):
 
     # Map Reduce
     MOUNTS = 'YARN_CONTAINER_RUNTIME_DOCKER_MOUNTS=/hadoop_stack:/hadoop_stack:ro'
-    IMAGE = 'YARN_CONTAINER_RUNTIME_DOCKER_IMAGE=docker.tech.beegroup-cimne.com/mr/mr-datadis'
+    IMAGE = 'YARN_CONTAINER_RUNTIME_DOCKER_IMAGE=docker.tech.beegroup-cimne.com/jobs/importing_tool'
     RUNTYPE = 'YARN_CONTAINER_RUNTIME_TYPE=docker'
 
     datadis_job = DatadisMRJob(args=[
         '-r', 'hadoop', 'hdfs://{}'.format(input_mr),
         '--file', config_file.name,
-        '--file', 'utils#utils',
         '--jobconf', f'mapreduce.map.env={MOUNTS},{IMAGE},{RUNTYPE}',
         '--jobconf', f'mapreduce.reduce.env={MOUNTS},{IMAGE},{RUNTYPE}',
         '--jobconf', f"mapreduce.job.name=datadis_import",

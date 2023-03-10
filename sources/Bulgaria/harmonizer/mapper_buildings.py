@@ -1,7 +1,9 @@
 import hashlib
+import itertools
 from datetime import timedelta
 
 import numpy as np
+import numpy_financial as npf
 import pandas as pd
 import rdflib
 from neo4j import GraphDatabase
@@ -11,15 +13,24 @@ from thefuzz import process
 
 import settings
 from utils.cache import Cache
-from sources.Bulgaria.constants import enum_energy_efficiency_measurement_type, enum_energy_saving_type, eem_headers
 from sources.Bulgaria.harmonizer.Mapper import Mapper
 from utils.data_transformations import *
 from utils.hbase import save_to_hbase
-from utils.neo4j import create_sensor
+from utils.neo4j import create_sensor, create_KPI
 from ontology.namespaces_definition import bigg_enums, units
 from utils.rdf.rdf_functions import generate_rdf
 from utils.rdf.save_rdf import save_rdf_with_source, link_devices_with_source
 
+consumption_sources_mapping = {"Gas": "EnergyConsumptionGas",
+                               "Hard fuels": "EnergyConsumptionCoal",
+                               "Heat energy": "EnergyConsumptionDistrictHeating",
+                               "Liquid fuels": "EnergyConsumptionOil",
+                               "Others": "EnergyConsumptionOthers",
+                               "Electricity": "EnergyConsumptionGridElectricity"
+                               }
+
+device_subject_reg = r"device_subject_.*"
+utility_subject_reg = r"utility_subject_.*"
 
 def set_taxonomy(df):
     df['Type of building'] = df['Type of building'].str.strip()
@@ -45,6 +56,7 @@ def set_municipality(df):
 
 
 def clean_dataframe_building_info(df_orig, source):
+    timezone = "Europe/Sofia"
     df = df_orig.copy(deep=True)
     df['subject'] = df['filename'] + '~' + df['id'].astype(str)
     df['location_org_subject'] = df['Municipality'].apply(slugify).apply(building_department_subject)
@@ -53,18 +65,21 @@ def clean_dataframe_building_info(df_orig, source):
     df['building_name'] = df.apply(lambda x: f"{x.Municipality}:{x.name}~{x['Type of building']}", axis=1)
     df['building_id'] = df['filename'].str.slice(-5) + '~' + df['id'].astype(str)
     df['location_subject'] = df['subject'].apply(location_info_subject)
-    df['epc_date'] = pd.to_datetime(df['EPC_Date_Date'])
-    df['epc_date_before'] = df['epc_date'] - timedelta(days=365)
-    df['epc_date'] = (df['epc_date'].astype('datetime64[s]')).dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-    df['epc_date_before'] = (df['epc_date_before'].astype('datetime64[s]')).dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    df['timezone'] = timezone
+    df['epc_date'] = pd.to_datetime(df['EPC_Date_Date']).dt.tz_localize(timezone).dt.tz_convert("UTC")
+    df['epc_date_before'] = df['epc_date'] - pd.DateOffset(years=1)
+    df['epc_date'] = df['epc_date'].dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+    df['epc_date_before'] = df['epc_date_before'].dt.strftime("%Y-%m-%dT%H:%M:%SZ")
     df['epc_before_subject'] = df['subject'].apply(lambda x: x + '~before').apply(epc_subject)
     df['epc_after_subject'] = df['subject'].apply(lambda x: x + '~after').apply(epc_subject)
-
+    df["EPC_Energy class_Before"] = df["EPC_Energy class_Before"].str.strip()
+    df["EPC_Energy class_Before"] = df["EPC_Energy class_After"].str.strip()
     df['building_space_subject'] = df['subject'].apply(building_space_subject)
     df['gross_floor_area_subject'] = df['subject'].apply(partial(gross_area_subject, a_source=source))
     df['element_subject'] = df['subject'].apply(construction_element_subject)
-    df['device_subject'] = df['subject'].apply(partial(device_subject, source=source))
-    df['utility_subject'] = df['subject'].apply(delivery_subject)
+    for et in consumption_sources_mapping.values():
+        df[f'device_subject_{et}'] = (df['subject'] + f"_{et}").apply(partial(device_subject, source=source))
+        df[f'utility_subject_{et}'] = (df['subject'] + f"_{et}").apply(delivery_subject)
     df['project_subject'] = df['subject'].apply(project_subject)
     return df
 
@@ -74,11 +89,6 @@ def clean_dataframe_eem(df_orig, source):
                    r".*Savings_Heat energy.*", r".*Savings_Electricity.*", r".*Savings_Total.*",
                    r".*Savings_Emission reduction.*", r".*Savings_Finacial savings.*", r".*Investments.*", r".*Payback.*"]
     df = df_orig.copy(deep=True)
-    df['subject'] = df['filename'] + '~' + df['id'].astype(str)
-    df['element_subject'] = df['subject'].apply(construction_element_subject)
-
-    df['epc_date'] = pd.to_datetime(df['EPC_Date_Date'])
-    df['project_subject'] = df['subject'].apply(project_subject)
 
     # melt df to get 1 row for measure
     df_eem_melt = df.melt(id_vars=["subject"], value_vars=[x for x in df.columns if any([re.match(c, x) for c in eem_columns])])
@@ -111,7 +121,8 @@ def clean_dataframe_eem(df_orig, source):
     df_eem['GFA, m2'] = df_eem['subject'].map(df[['subject', 'GFA, m2']].set_index("subject")['GFA, m2'])
     df_eem['project_subject'] = df_eem['subject'].map(df[['subject', 'project_subject']].set_index("subject")['project_subject'])
     df_eem.columns = [x[0] if x[0] != "value" else x[1] for x in df_eem.columns]
-    return df_eem
+    df_kpi = bulgaria_eem_calculator(df_eem)
+    return df_eem, df_kpi
 
 
 def set_source_id(df, user, connection):
@@ -121,96 +132,572 @@ def set_source_id(df, user, connection):
     df['source_id'] = source_id
 
 
+def clean_energies_consumption(df_orig):
+    before_columns_reg = r"Annual energy consumption - before_.*"
+    after_columns_reg = r"Total from the project_Savings_.*"
+    device_subject_reg = r"device_subject_.*"
+    utility_subject_reg = r"utility_subject_.*"
+    df = df_orig.copy(deep=True)
+
+    before_columns = [x for x in df.columns if re.match(before_columns_reg, x)]
+    before_columns = {c: c.split("_")[1] for c in before_columns}
+    before_columns.update({'epc_date_before': 'start', 'epc_date': 'end',
+                           'building_space_subject': 'building_space_subject', 'source_id': 'source_id',
+                           'building_subject': 'building_subject', 'GFA, m2': 'GFA, m2'})
+    before_columns.update({c: c for c in df.columns if re.match(device_subject_reg, c)})
+    before_columns.update({c: c for c in df.columns if re.match(utility_subject_reg, c)})
+    df_consumption_before = df[list(before_columns.keys())]
+
+    after_columns = [x for x in df.columns if re.match(after_columns_reg, x)]
+    after_columns = {c: c.split("_")[2] for c in after_columns}
+    after_columns.update({'epc_date': 'start', 'building_space_subject': 'building_space_subject',
+                          'building_subject': 'building_subject', 'GFA, m2': 'GFA, m2', 'source_id': 'source_id'})
+    after_columns.update({c: c for c in df.columns if re.match(device_subject_reg, c)})
+    after_columns.update({c: c for c in df.columns if re.match(utility_subject_reg, c)})
+    df_consumption_after = df[list(after_columns.keys())]
+
+    df_consumption_before = df_consumption_before.rename(before_columns, axis=1)
+    df_consumption_after = df_consumption_after.rename(after_columns, axis=1)
+
+    df_consumption_before['start'] = pd.to_datetime(df_consumption_before['start'])
+    df_consumption_after['start'] = pd.to_datetime(df_consumption_after['start'])
+    df_consumption_before['end'] = pd.to_datetime(df_consumption_before['end'])
+    df_consumption_before['end'] = df_consumption_before['end'] - pd.DateOffset(seconds=1)
+    df_consumption_after['end'] = df_consumption_after['start'] + pd.DateOffset(years=1, seconds=-1)
+
+    existing_columns = {k: v for k, v in consumption_sources_mapping.items() if k in df_consumption_before.columns}
+    existing_devices = []
+    existing_utilities = []
+    for con_col in existing_columns.keys():
+        df_consumption_before[con_col] = df_consumption_before[con_col].astype(float)
+        df_consumption_after[con_col] = df_consumption_after[con_col].astype(float)
+        df_consumption_before[con_col] = df_consumption_before[con_col].fillna(0)
+        df_consumption_after[con_col] = df_consumption_after[con_col].fillna(0)
+        df_consumption_after[con_col] = df_consumption_before[con_col] - df_consumption_after[con_col]
+        df_consumption_after[con_col] = df_consumption_after[con_col].apply(lambda x: x if x > 0 else 0)
+        set_na = (df_consumption_after[con_col] == 0) * (df_consumption_before[con_col] == 0)
+        df_consumption_before.loc[set_na, con_col] = np.NaN
+        df_consumption_after.loc[set_na, con_col] = np.NaN
+        existing_devices.append(f"device_subject_{existing_columns[con_col]}")
+        existing_utilities.append(f"utility_subject_{existing_columns[con_col]}")
+    df_consumption_before = df_consumption_before[
+        existing_devices + existing_utilities + ["building_subject", "source_id", 'building_space_subject', "start", "end", 'GFA, m2'] +
+        list(existing_columns.keys())]
+    df_consumption_after = df_consumption_after[
+        existing_devices + existing_utilities + ["building_subject", "source_id", 'building_space_subject', "start", "end", 'GFA, m2'] +
+        list(existing_columns.keys())]
+    df_consumption = pd.concat([df_consumption_before, df_consumption_after])
+    df_consumption = df_consumption.rename(existing_columns, axis=1)
+    df_kpi_use_intensity = df_consumption[["building_subject", "start", "end", 'GFA, m2']]
+    for con_col in existing_columns.values():
+        df_kpi_use_intensity[con_col] = df_consumption[con_col]/df_kpi_use_intensity['GFA, m2'].astype(float)
+
+    df['consumption_total_after'] = df_consumption_after[list(existing_columns.keys())].sum(axis=1)
+
+    return df, \
+        df_consumption[existing_devices + existing_utilities + ["building_subject", "source_id", 'building_space_subject', "start", "end"] +
+                        list(existing_columns.values())], \
+        df_kpi_use_intensity[["building_subject", "start", "end"] + list(existing_columns.values())]
+
+
+def bulgaria_eem_calculator(df):
+    df = df.copy(deep=True)
+    lifespan_by_eem = defaultdict(lambda: 10)
+    lifespan_by_eem.update(
+        {
+            "BuildingFabricMeasure": 25,
+            "BuildingFabricMeasure.FloorMeasure": 25,
+            "BuildingFabricMeasure.RoofAndCeilingMeasure": 25,
+            "BuildingFabricMeasure.WallMeasure.WallCavityInsulation": 25,
+            "LightingMeasure": 10,
+            "RenewableGenerationMeasure": 25,
+            "HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure.HeatingAndCoolingDistributionSystemReplacement": 15,
+            "HVACAndHotWaterMeasure": 15
+        }
+    )
+    columns_mapping = {
+        "eem_subject": "eem_subject",
+        "eem_type": "eem_type",
+        "Investments": "eem_investment",
+        "Savings_Electricity": "EnergyUseSavings~EnergyConsumptionGridElectricity~KiloW-HR",
+        "Savings_Emission reduction": "EmissionsSavings~EnergyConsumptionTotal~KiloGM-CO2",
+        "Savings_Finacial savings": "EnergyCostSavings~EnergyConsumptionTotal~BulgarianLev",
+        "Savings_Gas": "EnergyUseSavings~EnergyConsumptionGas~KiloW-HR",
+        "Savings_Hard fuels": "EnergyUseSavings~EnergyConsumptionCoal~KiloW-HR",
+        "Savings_Heat energy": "EnergyUseSavings~EnergyConsumptionDistrictHeating~KiloW-HR",
+        "Savings_Liquid fuels": "EnergyUseSavings~EnergyConsumptionOil~KiloW-HR",
+        "Savings_Others": "EnergyUseSavings~EnergyConsumptionOthers~KiloW-HR",
+        "Savings_Total": "EnergyUseSavings~EnergyConsumptionTotal~KiloW-HR",
+        "subject": "building_id",
+        "epc_date": "start",
+        "GFA, m2": "building_area"
+    }
+    kpis = ["EnergyUseSavings", "EmissionsSavings", "EnergyCostSavings"]
+    discount_rate = 0.05
+
+    # Get EEM types and change column names
+    df["eem_type"] = df.measure_type.str.split("#", expand=True)[[1]]
+    df = df.drop(columns=df.columns.difference(list(columns_mapping.keys())))
+    df.columns = list(pd.Series(df.columns).replace(columns_mapping, regex=False))
+
+    # Add the lifespan and discount_rate
+    df["lifespan"] = df.eem_type.map(lifespan_by_eem)
+    df["discount_rate"] = discount_rate
+
+    # Cast to correct class
+    df["eem_investment"] = pd.to_numeric(df["eem_investment"], errors='coerce')
+    df['building_area'] = pd.to_numeric(df["building_area"], errors='coerce')
+    df['start'] = pd.to_datetime(df["start"], errors='coerce')
+    kpi_columns = list(filter(lambda i: i.startswith(tuple(kpis)), list(df.columns)))
+    for kpi_item in kpi_columns:
+        df[kpi_item] = pd.to_numeric(df[kpi_item], errors='coerce')
+
+    # Generate all the area-normalised KPIs
+    suffix_kpi = "Intensity"
+    suffix_unit_kpi = "-M2"
+    for kpi_item in kpi_columns:
+        kpi_items = kpi_item.split("~")
+        kpi_name = f"{kpi_items[0]}{suffix_kpi}"
+        kpi_unit = f"{kpi_items[2]}{suffix_unit_kpi}"
+        if kpi_name not in kpis:
+            kpis.append(kpi_name)
+        df[f"{kpi_name}~{kpi_items[1]}~{kpi_unit}"] = \
+            df[kpi_item]/pd.to_numeric(df["building_area"], errors='coerce')
+
+    df["NormalisedInvestmentCost~~BulgarianLev-M2"] = df["eem_investment"]/df["building_area"]
+    kpis.append("NormalisedInvestmentCost")
+
+    df["AvoidanceCost~~BulgarianLev-KiloW-HR"] = \
+        df["eem_investment"] / (df["EnergyUseSavings~EnergyConsumptionTotal~KiloW-HR"] * df["lifespan"])
+    kpis.append("AvoidanceCost")
+
+    df["SimplePayback~~YR"] = \
+        df["eem_investment"] / (df["EnergyCostSavings~EnergyConsumptionTotal~BulgarianLev"])
+    kpis.append("SimplePayback")
+
+    df["NetPresentValue~~BulgarianLev"] = df.apply(
+        lambda x:
+            npf.npv(x['discount_rate'],
+                    [-x['eem_investment']] + [x['EnergyCostSavings~EnergyConsumptionTotal~BulgarianLev']] * int(x['lifespan'])),
+        axis=1
+    )
+    kpis.append("NetPresentValue")
+
+    df["ProfitabilityIndex~~UNITLESS"] = (df["NetPresentValue~~BulgarianLev"] - df["eem_investment"]) / df["eem_investment"]
+    kpis.append("ProfitabilityIndex")
+
+    df["NetPresentValueQuotient~~UNITLESS"] = df["NetPresentValue~~BulgarianLev"] / df["eem_investment"]
+    kpis.append("NetPresentValueQuotient")
+
+    df["InternalRateOfReturn~~PERCENT"] = df.apply(
+        lambda x:
+            npf.irr([-x['eem_investment']] + [x['EnergyCostSavings~EnergyConsumptionTotal~BulgarianLev']] * int(x['lifespan'])),
+        axis=1
+    )
+    kpis.append("InternalRateOfReturn")
+
+    # Melt KPIs to longitudinal format
+    kpi_columns = list(filter(lambda i: i.startswith(tuple(kpis)), list(df.columns)))
+    #df = df[df[kpi_columns].notnull().all(1)] # podem tenir algun kpi a null i no el pujem, però no cal eliminar-ho tot
+    df = df[np.negative((df[kpi_columns] == 0).all(1))]
+
+    # Melt KPIs to longitudinal format
+    non_kpi_columns = list(filter(lambda i: np.logical_not(i.startswith(tuple(kpis))), list(df.columns)))
+    df = pd.melt(df, non_kpi_columns)
+    kpi_info = df.variable.str.split("~", expand=True)
+    kpi_info.columns = ["KPI", "measured_property", "unit"]
+    df = pd.concat([df, kpi_info], axis=1)
+
+    # Delete useless columns and generate final features
+    df = df.drop(columns=["variable", "lifespan", "discount_rate"])
+    df["end"] = df["start"] + pd.offsets.DateOffset(years=1, seconds=-1)
+    return df
+
+
+def clean_factor_kpi(df_orig):
+    df = df_orig.copy(deep=True)
+    df['emission_factor'] = df["Total from the project_Savings_Emission reduction_tCO2/a"].astype(float) / df["Total from the project_Savings_Total_kWh/a"].astype(float)
+    df['cost_factor'] = df["Total from the project_Savings_Finacial savings_BGN/a"].astype(float) / df["Total from the project_Savings_Total_kWh/a"].astype(float)
+    df['emission_before'] = df['emission_factor'] * df['Annual energy consumption - before_Total energy consumpion (by invoices)_kWh/a'].astype(float)
+    df['cost_before'] = df['cost_factor'] * df['Annual energy consumption - before_Total energy consumpion (by invoices)_kWh/a'].astype(float)
+    df["emission_after"] = df['emission_before'] - df["Total from the project_Savings_Emission reduction_tCO2/a"].astype(float)
+    df["cost_after"] = df['cost_before'] - df["Total from the project_Savings_Finacial savings_BGN/a"].astype(float)
+    df["emission_after"] = df["emission_after"].apply(lambda x: x if x > 0 else 0)
+    df["cost_after"] = df["cost_after"].apply(lambda x: x if x > 0 else 0)
+
+    before_columns = {'epc_date_before': 'start', 'epc_date': 'end', #'device_subject': 'device_subject',
+                      'building_subject': 'building_subject', 'GFA, m2': 'GFA, m2',
+                      'emission_before': 'EnergyEmission', 'cost_before': 'EnergyCost'}
+    df_consumption_before = df[list(before_columns.keys())]
+
+    after_columns = {'epc_date': 'start', #'device_subject': 'device_subject',
+                     'building_subject': 'building_subject', 'GFA, m2': 'GFA, m2',
+                     'emission_after': 'EnergyEmission', 'cost_after': 'EnergyCost'}
+    df_consumption_after = df[list(after_columns.keys())]
+
+    df_consumption_before = df_consumption_before.rename(before_columns, axis=1)
+    df_consumption_after = df_consumption_after.rename(after_columns, axis=1)
+
+    df_consumption_before['start'] = pd.to_datetime(df_consumption_before['start'])
+    df_consumption_after['start'] = pd.to_datetime(df_consumption_after['start'])
+    df_consumption_before['end'] = pd.to_datetime(df_consumption_before['end'])
+    df_consumption_before['end'] = df_consumption_before['end'] - pd.DateOffset(seconds=1)
+    df_consumption_after['end'] = df_consumption_after['start'] + pd.DateOffset(years=1, seconds=-1)
+    df_consumption = pd.concat([df_consumption_before, df_consumption_after])
+    df_consumption["EnergyEmissionIntensity"] = df_consumption["EnergyEmission"]/df_consumption['GFA, m2'].astype(float)
+    df_consumption["EnergyCostIntensity"] = df_consumption["EnergyCost"]/df_consumption['GFA, m2'].astype(float)
+
+    return df_consumption[['start', 'end', 'building_subject', "EnergyCost"]].rename({"EnergyCost": "EnergyConsumptionTotal"}, axis=1), \
+        df_consumption[['start', 'end', 'building_subject', "EnergyEmission"]].rename({"EnergyEmission": "EnergyConsumptionTotal"}, axis=1),\
+        df_consumption[['start', 'end', 'building_subject', "EnergyCostIntensity"]].rename({"EnergyCostIntensity": "EnergyConsumptionTotal"}, axis=1), \
+        df_consumption[['start', 'end', 'building_subject', "EnergyEmissionIntensity"]].rename({"EnergyEmissionIntensity": "EnergyConsumptionTotal"}, axis=1)
+
+
+def prepare_all(df, user, config):
+
+    set_source_id(df, user, config['neo4j'])
+    set_taxonomy(df)
+    set_municipality(df)
+    df_building = clean_dataframe_building_info(df, config['source'])
+    df_building, df_consumption, df_kpi_use_intensity = clean_energies_consumption(df_building)
+    df_measures, df_measures_kpi = clean_dataframe_eem(df_building, config['source'])
+    df_cost, df_emissions, df_cost_intensity, df_emissions_intensity = clean_factor_kpi(df_building)
+    return df_building, df_measures, df_measures_kpi, df_consumption, df_kpi_use_intensity, df_cost, df_emissions, \
+        df_cost_intensity, df_emissions_intensity
+
+
+def create_timeseries_from_element(uri_type, session, link_subject, ts_subject, unit_uri, property_uni,
+                                   measurement_uri, kpi_type_uri, freq, dt_ini, dt_end):
+    if uri_type == "SENSOR":
+        create_sensor(session=session, device_uri=link_subject, sensor_uri=ts_subject, unit_uri=unit_uri,
+                      property_uri=property_uni, estimation_method_uri=bigg_enums.Naive,
+                      measurement_uri=measurement_uri, is_regular=True,
+                      is_cumulative=False, is_on_change=False, freq=freq, agg_func="SUM",
+                      dt_ini=dt_ini,
+                      dt_end=dt_end, ns_mappings=settings.namespace_mappings)
+    elif uri_type == "SingleKPIAssessment":
+        create_KPI(session=session, calculation_item_uri=link_subject, kpi_uri_assesment=ts_subject,
+                   unit_uri=unit_uri,
+                   property_uri=property_uni, estimation_method_uri=bigg_enums.Naive,
+                   measurement_uri=measurement_uri, kpi_uri=kpi_type_uri, is_regular=True,
+                   is_cumulative=False, is_on_change=False, freq=freq, agg_func="SUM", dt_ini=dt_ini,
+                   dt_end=dt_end, ns_mappings=settings.namespace_mappings)
+
+
+def create_ts_id(uri_type, source, subject, energy_type, freq):
+    return f"{uri_type}-{source}-{subject}-{energy_type}-RAW-{freq}"
+
+
+def save_harmonized(df, config_save, n, user, config):
+    table_map = {"EnergyConsumptionGridElectricity": "Electricity",
+                 "EnergyConsumptionGas": "Gas",
+                 "EnergyConsumptionCoal": "Coal",
+                 "EnergyConsumptionDistrictHeating": "DistrictHeating",
+                 "EnergyConsumptionOil": "Oil",
+                 "EnergyConsumptionOthers": "Others",
+                 "EnergyConsumptionTotal": "Total",
+                 }
+    for energy_type in [x for x in df.columns if x not in ['device_subject', "building_subject", 'start', 'end']]:
+        energy_df = df[[config_save['linking_subject'], 'start', 'end'] + [energy_type]].rename({energy_type: "value"},
+                                                                                                axis=1)
+        energy_df = energy_df.dropna(subset=['value'])
+        energy_df['isReal'] = config_save['isReal']
+        neo = GraphDatabase.driver(**config['neo4j'])
+        hbase_conn2 = config['hbase_store_harmonized_data']
+        subject_hash_map = {}
+        for subject, consumption in df.groupby(config_save['linking_subject']):
+            with neo.session() as session:
+                link_uri = str(n[subject])
+                if 'kpi_type_uri' in config_save:
+                    kpi_str = f"{config_save['kpi_type_uri']}.{table_map[energy_type]}" if energy_type in table_map else f"{config_save['kpi_type_uri']}"
+                    kpi_type_uri = f"http://bigg-project.eu/ontology#KPI-{kpi_str}"
+                    ts_id = create_ts_id(config_save['type'], config['source'], subject,
+                                         kpi_str, config_save['freq'])
+                else:
+                    kpi_type_uri = None
+                    ts_id = create_ts_id(config_save['type'], config['source'], subject, energy_type, config_save['freq'])
+                ts_uri = str(n[ts_id])
+                measurement_id = hashlib.sha256(ts_uri.encode("utf-8"))
+                measurement_id = measurement_id.hexdigest()
+                measurement_uri = str(n[measurement_id])
+                subject_hash_map.update({subject: measurement_id})
+                unit_uri = config_save['unit_uri']
+                property_uri = config_save['property_uri_ns'][energy_type]
+                create_timeseries_from_element(config_save['type'], session, link_uri, ts_uri, unit_uri, property_uri,
+                                               measurement_uri, kpi_type_uri, config_save['freq'], consumption.start.min(), consumption.end.max())
+
+        energy_df['listKey'] = energy_df[config_save['linking_subject']].map(subject_hash_map)
+        energy_df['bucket'] = ((pd.to_datetime(energy_df['start']).values.astype(
+            int) // 10 ** 9) // settings.ts_buckets) % settings.buckets
+        energy_df['start'] = (pd.to_datetime(energy_df['start']).values.astype(int)) // 10 ** 9
+        energy_df['end'] = (pd.to_datetime(energy_df['end']).values.astype(int)) // 10 ** 9
+
+        if config_save['type'] == "SENSOR":
+            device_table = f"harmonized_online_{energy_type}_100_SUM_{config_save['freq']}_{user}"
+            period_table = f"harmonized_batch_{energy_type}_100_SUM_{config_save['freq']}_{user}"
+        elif config_save['type'] == "SingleKPIAssessment":
+            if energy_type in table_map:
+                device_table = f"harmonized_online_KPI-{config_save['kpi_type_uri']}.{table_map[energy_type]}_100_SUM_{config_save['freq']}_{user}"
+            else:
+                device_table = f"harmonized_online_KPI-{config_save['kpi_type_uri']}_100_SUM_{config_save['freq']}_{user}"
+            period_table = None
+        else:
+            print("type not known")
+            return
+        save_to_hbase(energy_df.to_dict(orient="records"), device_table, hbase_conn2,
+                      [("info", ['end', 'isReal']), ("v", ['value'])],
+                      row_fields=['bucket', 'listKey', 'start'])
+
+        if period_table:
+            save_to_hbase(energy_df.to_dict(orient="records"), period_table, hbase_conn2,
+                          [("info", ['end', 'isReal']), ("v", ['value'])],
+                          row_fields=['bucket', 'start', 'listKey'])
+
+
+def harmonize_ts_kpi(kpi_config, **kwargs):
+    namespace = kwargs['namespace']
+    user = kwargs['user']
+    n = Namespace(namespace)
+    config = kwargs['config']
+    for save_item in kpi_config:
+        save_harmonized(save_item['df'], save_item['save_config'], n, user, config)
+    print("finished")
+
+
+def harmonize_all(data, **kwargs):
+    """
+    This function will harmonize all data in one execution. It is only used when reading from HBASE directly as it
+    takes too long for kafka executions
+    :param data: The json list with the data
+    :param kwargs: the set of parameters for the harmonizer (user, namespace and config)
+    :return:
+    """
+    harmonize_static(data, **kwargs)
+    for s in range(0, 2):
+        harmonize_kpi(data, split=s, **kwargs)
+    for s in range(0, 23):
+        harmonize_eem_kpi(data, s, **kwargs)
+    harmonize_ts(data, **kwargs)
+
+
 def harmonize_static(data, **kwargs):
+    """
+    This function will harmonize only the building information.
+    :param data: The json list with the data
+    :param kwargs: the set of parameters for the harmonizer (user, namespace and config)
+    :return:
+    """
     namespace = kwargs['namespace']
     user = kwargs['user']
     n = Namespace(namespace)
     config = kwargs['config']
     df = pd.DataFrame.from_records(data)
     df = df.applymap(decode_hbase)
-    set_source_id(df, user, config['neo4j'])
-    set_taxonomy(df)
-    set_municipality(df)
+    df_building, df_measures, df_measures_kpi, df_consumption, df_kpi_use_intensity, df_cost, df_emissions, \
+        df_cost_intensity, df_emissions_intensity = prepare_all(df, user, config)
     mapper = Mapper(config['source'], n)
-    df_building = clean_dataframe_building_info(df, config['source'])
     g_building = generate_rdf(mapper.get_mappings("building_info"), df_building)
     save_rdf_with_source(g_building, config['source'], config['neo4j'])
-    link_devices_with_source(df_building, n, config['neo4j'])
-    df_measures = clean_dataframe_eem(df, config['source'])
     g_measures = generate_rdf(mapper.get_mappings("eem_savings"), df_measures)
     save_rdf_with_source(g_measures, config['source'], config['neo4j'])
-    #harmonize_ts(df_building.to_dict(orient="records"), namespace=namespace, user=user, config=config)
+    print("harmonized_static")
 
 
-def harmonize_ts(data, **kwargs):
+def harmonize_eem_kpi(data, split=None, **kwargs):
+    """
+    This function will harmonize only the EnergyCost and EnergyEmissions KPI the building information.
+    :param data: The json list with the data
+    :param split: the number of splits to run with all kpi (2)
+    :param kwargs: the set of parameters for the harmonizer (user, namespace and config)
+    :return:
+    """
+    kpi_list = [
+        ['EnergyUseSavings.EnergyConsumptionGridElectricity'],
+        ['EmissionsSavings.EnergyConsumptionTotal'],
+        ['EnergyCostSavings.EnergyConsumptionTotal'],
+        ['EnergyUseSavings.EnergyConsumptionGas'],
+        ['EnergyUseSavings.EnergyConsumptionCoal'],
+        ['EnergyUseSavings.EnergyConsumptionDistrictHeating'],
+        ['EnergyUseSavings.EnergyConsumptionOil'],
+        ['EnergyUseSavings.EnergyConsumptionOthers'],
+        ['EnergyUseSavingsIntensity.EnergyConsumptionGridElectricity'],
+        ['EmissionsSavingsIntensity.EnergyConsumptionTotal'],
+        ['EnergyCostSavingsIntensity.EnergyConsumptionTotal'],
+        ['EnergyUseSavingsIntensity.EnergyConsumptionGas'],
+        ['EnergyUseSavingsIntensity.EnergyConsumptionCoal'],
+        ['EnergyUseSavingsIntensity.EnergyConsumptionDistrictHeating'],
+        ['EnergyUseSavingsIntensity.EnergyConsumptionOil'],
+        ['EnergyUseSavingsIntensity.EnergyConsumptionOthers'],
+        ['NormalisedInvestmentCost'],
+        ['AvoidanceCost'],
+        ['SimplePayback'],
+        ['NetPresentValue'],
+        ['ProfitabilityIndex'],
+        ['NetPresentValueQuotient'],
+        ['InternalRateOfReturn']
+    ]
+
+    kpi_list = kpi_list[split]
     namespace = kwargs['namespace']
     user = kwargs['user']
     n = Namespace(namespace)
     config = kwargs['config']
-    freq = 'P1Y'
-
     df = pd.DataFrame.from_records(data)
+    df = df.applymap(decode_hbase)
+    df_building, df_measures, df_measures_kpi, df_consumption, df_kpi_use_intensity, df_cost, df_emissions, \
+        df_cost_intensity, df_emissions_intensity = prepare_all(df, user, config)
+    df_measures_kpi["KPI"] = df_measures_kpi.KPI + "." + df_measures_kpi.measured_property
+    df_measures_kpi["KPI"] = df_measures_kpi.KPI.apply(lambda x: x if x[-1] != "." else x[:-1])
+    kpi_config = []
+    for kpi in kpi_list:
+        kpi_df = df_measures_kpi.groupby("KPI").get_group(kpi)
+        try:
+            energy_type = kpi.split(".")[1]
+        except:
+            energy_type = "NOPROPERTY"
+        try:
+            unit = bigg_enums[kpi_df.unit.unique()[0]]
+        except:
+            unit = units[kpi_df.unit.unique()[0]]
+        kpi_df = kpi_df.pivot_table(index=["eem_subject", "start", "end"], columns="KPI",
+                                     values="value").reset_index()
+        if kpi_df.empty:
+            continue
 
-    neo4j_connection = config['neo4j']
+        kpi_df = kpi_df.rename({"eem_subject": "device_subject", kpi: energy_type}, axis=1)
+        kpi_config.append(
+            {
+                "df": kpi_df[["start", "end", "device_subject", energy_type]],
+                "save_config": {
+                    "type": "SingleKPIAssessment",
+                    "linking_subject": "device_subject",
+                    "isReal": False,
+                    "unit_uri": unit,
+                    "property_uri_ns": bigg_enums,
+                    "kpi_type_uri": f"EEM{kpi.split('.')[0]}.Total",
+                    "freq": "P1Y"
+                }
+            }
+        )
+    harmonize_ts_kpi(kpi_config, namespace=namespace, user=user, config=config)
+    print(f"harmonized {[x for x in kpi_list]}")
 
-    # measured_property_list = ['EnergyConsumptionOil', 'EnergyConsumptionCoal',
-    #                           'EnergyConsumptionGas', 'EnergyConsumptionOthers',
-    #                           'EnergyConsumptionDistrictHeating',
-    #                           'EnergyConsumptionGridElectricity', 'EnergyConsumptionTotal']
-    #
-    # measured_property_df = ['annual_energy_consumption_before_liquid_fuels',
-    #                         'annual_energy_consumption_before_hard_fuels',
-    #                         'annual_energy_consumption_before_gas', 'annual_energy_consumption_before_others',
-    #                         'annual_energy_consumption_before_heat_energy',
-    #                         'annual_energy_consumption_before_electricity',
-    #                         'annual_energy_consumption_before_total_consumption']
 
-    measured_property_list = ['EnergyConsumptionGas', 'EnergyConsumptionGridElectricity']
+def harmonize_kpi(data, split=None, **kwargs):
+    """
+    This function will harmonize only the EnergyCost and EnergyEmissions KPI the building information.
+    :param data: The json list with the data
+    :param split: the number of splits to run with all kpi (2)
+    :param kwargs: the set of parameters for the harmonizer (user, namespace and config)
+    :return:
+    """
+    namespace = kwargs['namespace']
+    user = kwargs['user']
+    n = Namespace(namespace)
+    config = kwargs['config']
+    df = pd.DataFrame.from_records(data)
+    df = df.applymap(decode_hbase)
+    df_building, df_measures, df_measures_kpi, df_consumption, df_kpi_use_intensity, df_cost, df_emissions, \
+        df_cost_intensity, df_emissions_intensity = prepare_all(df, user, config)
+    kpi_list = [[("EnergyCost", df_cost, units['Euro']), ("EnergyEmissions", df_emissions, bigg_enums['KiloGM-CO2'])],
+                [("EnergyCostIntensity", df_cost_intensity, bigg_enums['Euro-M2']),
+                 ("EnergyEmissionsIntensity", df_emissions_intensity, bigg_enums['KiloGM-CO2-M2'])]]
+    try:
+        kpi_list = kpi_list[split]
+    except:
+        print("the split number is too big")
+    kpi_config = []
+    for kpi, df, unit in kpi_list:
+        kpi_config.append(
+            {
+                "df": df,
+                "save_config": {
+                    "type": "SingleKPIAssessment",
+                    "linking_subject": "building_subject",
+                    "isReal": False,
+                    "unit_uri": unit,
+                    "property_uri_ns": bigg_enums,
+                    "kpi_type_uri": f"{kpi}.Total",
+                    "freq": "P1Y"
+                }
+            }
+        )
+    harmonize_ts_kpi(kpi_config, namespace=namespace, user=user, config=config)
+    print(f"harmonized {[x[0] for x in kpi_list]}")
 
-    measured_property_df = ['annual_energy_consumption_before_gas', 'annual_energy_consumption_before_electricity']
 
-    neo = GraphDatabase.driver(**neo4j_connection)
-    hbase_conn2 = config['hbase_store_harmonized_data']
+def harmonize_ts(data, **kwargs):
+    """
+    This function will harmonize for each column sent, the data for each energy type..
+    :param data: The json list with the data
+    :param kwargs: the set of parameters for the harmonizer (user, namespace and config)
+    :return:
+    """
+    namespace = kwargs['namespace']
+    user = kwargs['user']
+    config = kwargs['config']
+    n = Namespace(namespace)
+    df = pd.DataFrame.from_records(data)
+    df = df.applymap(decode_hbase)
+    df_building, df_measures, df_measures_kpi, df_consumption, df_kpi_use_intensity, df_cost, df_emissions, \
+        df_cost_intensity, df_emissions_intensity = prepare_all(df, user, config)
+    mapper = Mapper(config['source'], n)
+    for con in consumption_sources_mapping.values():
+        if any([True if re.match(fr".*{con}", x) else False for x in df_consumption.columns
+                if re.match(device_subject_reg, x)]):
+            df_tmp = df_consumption.copy(deep=True)
+            df_tmp = df_tmp.rename({f'device_subject_{con}': 'device_subject',
+                                    f'utility_subject_{con}': 'utility_subject'}, axis=1)
+            df_tmp['name'] = df_tmp['building_space_subject'].apply(lambda x: x[-5:] + "-" + con)
+            df_tmp['type'] = to_object_property(con, namespace=bigg_enums)
+            df_tmp = df_tmp.dropna(subset=[con])
+            if df_tmp.empty:
+                continue
+            g_building = generate_rdf(mapper.get_mappings("building_upods_dev"), df_tmp)
+            save_rdf_with_source(g_building, config['source'], config['neo4j'])
+            link_devices_with_source(df_tmp, n, config['neo4j'])
+            df_tmp = df_tmp[['device_subject', "building_subject", 'start', 'end', con]]
+            kpi_config = [
+                {
+                    "df": df_tmp,
+                    "save_config": {
+                        "type": "SENSOR",
+                        "linking_subject": "device_subject",
+                        "isReal": False,
+                        "unit_uri": units["KiloW-HR"],
+                        "property_uri_ns": bigg_enums,
+                        "freq": "P1Y"
+                    }
+                }
+            ]
+            harmonize_ts_kpi(kpi_config, namespace=namespace, user=user, config=config)
+            print(f"harmonized {[x for x in df_consumption if x not in ['device_subject', 'building_subject', 'start', 'end']]}")
+    kpi_config = [
+        {
+            "df": df_kpi_use_intensity,
+            "save_config": {
+                "type": "SingleKPIAssessment",
+                "linking_subject": "building_subject",
+                "isReal": False,
+                "unit_uri": bigg_enums["KiloW-HR-M2"],
+                "property_uri_ns": bigg_enums,
+                "kpi_type_uri": "EnergyUseIntensity.Total",
+                "freq": "P1Y"
+            }
+        },
+        {
+            "df": df_tmp,
+            "save_config": {
+                "type": "SingleKPIAssessment",
+                "linking_subject": "building_subject",
+                "isReal": False,
+                "unit_uri": units["KiloW-HR"],
+                "property_uri_ns": bigg_enums,
+                "kpi_type_uri": "EnergyUse.Total",
+                "freq": "P1Y"
+            }
+        }
+    ]
+    harmonize_ts_kpi(kpi_config, namespace=namespace, user=user, config=config)
+    print(f"harmonized {[x for x in df_kpi_use_intensity if x not in ['device_subject', 'building_subject', 'start', 'end']]}")
 
-    with neo.session() as session:
-        for i in range(len(measured_property_list)):
-            print(measured_property_list[i])
-            for index, row in df.iterrows():
-                device_uri = str(n[row['device_subject']])
-
-                sensor_id = sensor_subject(config['source'], row['subject'], measured_property_list[i], "RAW",
-                                           freq)
-                sensor_uri = str(n[sensor_id])
-                measurement_id = hashlib.sha256(sensor_uri.encode("utf-8"))
-                measurement_id = measurement_id.hexdigest()
-                measurement_uri = str(n[measurement_id])
-
-                create_sensor(session=session, device_uri=device_uri, sensor_uri=sensor_uri, unit_uri=units["KiloW-HR"],
-                              property_uri=bigg_enums[measured_property_list[i]], estimation_method_uri=bigg_enums.Naive,
-                              measurement_uri=measurement_uri, is_regular=True,
-                              is_cumulative=False, is_on_change=False, freq=freq, agg_func="SUM", dt_ini=pd.Timestamp(row['epc_date_before']),
-                              dt_end=pd.Timestamp(row['epc_date']), ns_mappings=settings.namespace_mappings)
-            reduced_df = df[[measured_property_df[i]]]
-
-            reduced_df['listKey'] = measurement_id
-            reduced_df['isReal'] = False
-            reduced_df['bucket'] = ((pd.to_datetime(df['epc_date_before']).values.astype(int) // 10 ** 9) // settings.ts_buckets) % settings.buckets
-            reduced_df['start'] = (pd.to_datetime(df['epc_date_before']).values.astype(int)) // 10 ** 9
-            reduced_df['end'] = (pd.to_datetime(df['epc_date']).values.astype(int)) // 10 ** 9
-
-            reduced_df.rename(
-                columns={measured_property_df[i]: "value"},
-                inplace=True)
-
-            device_table = f"harmonized_online_{measured_property_list[i]}_100_SUM_{freq}_{user}"
-
-            save_to_hbase(reduced_df.to_dict(orient="records"), device_table, hbase_conn2,
-                          [("info", ['end', 'isReal']), ("v", ['value'])],
-                          row_fields=['bucket', 'listKey', 'start'])
-
-            period_table = f"harmonized_batch_{measured_property_list[i]}_100_SUM_{freq}_{user}"
-
-            save_to_hbase(reduced_df.to_dict(orient="records"), period_table, hbase_conn2,
-                          [("info", ['end', 'isReal']), ("v", ['value'])],
-                          row_fields=['bucket', 'start', 'listKey'])
-        print("finished")

@@ -136,6 +136,10 @@ class Mapper(object):
                         "key": "qualificaci_de_consum_d",
                         "operations": []
                     },
+                    "energyPerformanceCertificateDateOfAssessment": {
+                        "key": "data_entrada",
+                        "operations": []
+                    },
                     "C02EmissionsClass": {
                         "key": "qualificacio_d_emissions",
                         "operations": []

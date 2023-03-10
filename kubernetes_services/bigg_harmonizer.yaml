@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: bigg
   name:	bigg-harmonizer
 spec:
   replicas: 10
@@ -41,12 +40,13 @@ spec:
         - name: bigg-harmonizer
           image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
           command: ["python3", "-m", "harmonizer"]
+          # command: ["/bin/sh", "-ec", "sleep 1000"]
           volumeMounts:
-          - name: biggsecrets
-            mountPath: /home/ubuntu/beegroup_importing_tool/config.json
+          - name: main
+            mountPath: /home/ubuntu/bigg_entrack/config.json
             subPath: config.json
-          - name: biggsecrets
-            mountPath: /home/ubuntu/beegroup_importing_tool/.env
+          - name: main
+            mountPath: /home/ubuntu/bigg_entrack/.env
             subPath: .env
 
 
@@ -54,7 +54,7 @@ spec:
         - name: registrypullsecret
             
       volumes:
-        - name: biggsecrets
+        - name: main
           secret:
             secretName: main
             items:

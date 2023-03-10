@@ -18,6 +18,7 @@ class LongitudinalBenchmarkingMap(Map):
     def __init__(self):
         self.shared_folder = "/user/ubuntu/tmp/longitudinalBenchmarking/shared_input"
         self.timeseries_shared = {}
+        self.non_building = set()
 
     def finish(self):
         fs = pyhdfs.HdfsClient(hosts="master1.internal:9870", user_name="ubuntu")
@@ -31,6 +32,8 @@ class LongitudinalBenchmarkingMap(Map):
             fs.append(filename, "\n".join(data['data'])+"\n")
             for b in data['building_list']:
                 print(f"{b}\t{pickle.dumps({'file': filename, 'hash': ts_hash, 'meta': 'shared_file'})}")
+        for ts_hash in self.non_building:
+            print(ts_hash, file=sys.stderr)
 
     def map(self, line):
         ts_hash, start, end, value, is_real = line.split("\t")
@@ -45,9 +48,9 @@ class LongitudinalBenchmarkingMap(Map):
             with open(f"buildings_hash/{ts_hash}.json", "r") as f:
                 building_list = json.load(f)[ts_hash]
         except:
-            print(ts_hash, file=sys.stderr)
+            self.non_building.add(ts_hash)
             return
-        if len(building_list) > 1:
+        if len(building_list) > 0:
             # if we have more than 1 buildings, we optimize it by creating a shared file and read it from R directly
             try:
                 self.timeseries_shared[ts_hash]['data'].append(f'{start};{end};{value};{is_real}')
@@ -58,9 +61,10 @@ class LongitudinalBenchmarkingMap(Map):
                 }
             print("reporter:counter: CUSTOM, NbRecords_file,1", file=sys.stderr)
         else:
-            for b in building_list:
-                print(f"{b}\t{pickle.dumps({'point': {'start': start, 'end': end, 'value': value, 'isReal': is_real}, 'hash': ts_hash, 'meta': 'timeseries' })}")
-                print("reporter:counter: CUSTOM, NbRecords,1", file=sys.stderr)
+            self.non_building.add(ts_hash)
+            # for b in building_list:
+            #     print(f"{b}\t{pickle.dumps({'point': {'start': start, 'end': end, 'value': value, 'isReal': is_real}, 'hash': ts_hash, 'meta': 'timeseries' })}")
+            #     print("reporter:counter: CUSTOM, NbRecords,1", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ import re
 import utils
 from utils.cache import Cache
 from utils.nomenclature import RAW_MODE
-from .mapper_buildings import harmonize_static
+from .mapper_buildings import harmonize_all
 
 
 def harmonize_command_line(arguments, config=None, settings=None):
@@ -18,7 +18,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
     hbase_table = utils.nomenclature.raw_nomenclature("Bulgaria", RAW_MODE.STATIC, data_type="BuildingInfo",
                                                       user=args.user)
     i = 0
-    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=100):
+    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=50):
         dic_list = []
         print("parsing hbase")
         for u_c, x in data:
@@ -32,5 +32,4 @@ def harmonize_command_line(arguments, config=None, settings=None):
             dic_list.append(item)
         print("parsed. Mapping...")
         i += len(dic_list)
-        print(i)
-        harmonize_static(dic_list, namespace=args.namespace, user=args.user, config=config)
+        harmonize_all(dic_list, namespace=args.namespace, user=args.user, config=config)
