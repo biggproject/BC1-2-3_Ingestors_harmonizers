@@ -18,25 +18,12 @@ def prepare_df_clean_all(df, user, neo4j):
     nif_map = get_nif_map(user, neo4j)
     df.loc[:, 'source_id'] = df.nif.map(nif_map)
     df.loc[:, 'device_subject'] = df.cups.apply(partial(device_subject, source="DatadisSource"))
-
-
-def get_nif_map(user, conn):
-    neo = GraphDatabase.driver(**conn)
-    with neo.session() as session:
-        nif_map = session.run(f"""
-        Match (n:DatadisSource)<-[:hasSource]-()<-[:bigg__hasSubOrganization*0..]-(bigg__Organization{{userID:"{user}"}})
-        RETURN n.username as nif, id(n) as id""").data()
-    df = pd.DataFrame.from_records(nif_map)
-    df.set_index("nif", inplace=True)
-    return df.id.to_dict()
-
-
-def prepare_df_clean_linked(df):
-    df.loc[:, 'location_subject'] = df.NumEns.apply(id_zfill).apply(location_info_subject)
+    df.loc[:, 'utility_point_subject'] = df.utility_point_id.apply(delivery_subject)
+    df.loc[:, 'device_location_subject'] = df.device_subject.apply(location_info_subject)
     province_dic = Cache.province_dic_ES
     province_fuzz = partial(fuzzy_dictionary_match,
-                           map_dict=fuzz_params(province_dic, ['ns1:name']),
-                           default=None)
+                            map_dict=fuzz_params(province_dic, ['ns1:name']),
+                            default=None)
     unique_prov = df['province'].unique()
     province_map = {x: province_fuzz(x) for x in unique_prov}
     df.loc[:, 'hasAddressProvince'] = df.province.map(province_map)
@@ -57,8 +44,22 @@ def prepare_df_clean_linked(df):
         unique_city = grouped.municipality.unique()
         city_map = {k: city_fuzz(k) for k in unique_city}
         df.loc[df['province'] == prov_k, 'hasAddressCity'] = grouped.municipality.map(city_map)
+
+
+def get_nif_map(user, conn):
+    neo = GraphDatabase.driver(**conn)
+    with neo.session() as session:
+        nif_map = session.run(f"""
+        Match (n:DatadisSource)<-[:hasSource]-()<-[:bigg__hasSubOrganization*0..]-(bigg__Organization{{userID:"{user}"}})
+        RETURN n.username as nif, id(n) as id""").data()
+    df = pd.DataFrame.from_records(nif_map)
+    df.set_index("nif", inplace=True)
+    return df.id.to_dict()
+
+
+def prepare_df_clean_linked(df):
+    df.loc[:, 'location_subject'] = df.NumEns.apply(id_zfill).apply(location_info_subject)
     df.loc[:, 'building_space_subject'] = df.NumEns.apply(id_zfill).apply(building_space_subject)
-    df.loc[:, 'utility_point_subject'] = df.cups.apply(delivery_subject)
 
 
 def harmonize_data(data, **kwargs):
@@ -76,7 +77,9 @@ def harmonize_data(data, **kwargs):
     with neo.session() as ses:
         cups_code = get_cups_id_link(ses, user, settings.namespace_mappings)
 
-    df.loc[:, 'NumEns'] = df.cups.map(cups_code)
+    df.loc[:, 'utility_point_id'] = df.cups.str[:20]
+
+    df.loc[:, 'NumEns'] = df.utility_point_id.map(cups_code)  # map cups with first 20 characters
 
     prepare_df_clean_all(df, user, config['neo4j'])
     linked_supplies = df[df["NumEns"].isna()==False]

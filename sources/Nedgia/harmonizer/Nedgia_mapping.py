@@ -56,7 +56,7 @@ class Mapping(object):
                         "operations": []
                     },
                     "pointOfDeliveryIDFromOrganization": {
-                        "key": 'CUPS',
+                        "key": 'utility_point_id',
                         "operations": []
                     },
                 }
@@ -94,6 +94,6 @@ class Mapping(object):
 
         grouped_modules = {
             "linked": [building_space, utility_point, device],
-            "unlinked": [device]
+            "unlinked": [utility_point, device]
         }
         return grouped_modules[group]

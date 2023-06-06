@@ -17,7 +17,7 @@ CREATE CONSTRAINT n10s_unique_uri ON (r:Resource) ASSERT r.uri IS UNIQUE
 # Set up the database (all the time after reset)
 - run in neo4j:
 ```cypher
-CALL n10s.graphconfig.init({ keepLangTag: true, handleMultival:"ARRAY", multivalPropList:["http://www.w3.org/2000/01/rdf-schema#label", "http://www.w3.org/2000/01/rdf-schema#comment", "http://www.geonames.org/ontology#officialName"]});
+CALL n10s.graphconfig.init({ keepLangTag: true, handleMultival:"ARRAY", multivalPropList:["http://bigg-project.eu/ontology#kpiType","http://bigg-project.eu/ontology#shortName","http://www.w3.org/2000/01/rdf-schema#label", "http://www.w3.org/2000/01/rdf-schema#comment", "http://www.geonames.org/ontology#officialName"]});
 CALL n10s.nsprefixes.add("bigg","http://bigg-project.eu/ontology#");
 CALL n10s.nsprefixes.add("geo","http://www.geonames.org/ontology#");
 CALL n10s.nsprefixes.add("unit","http://qudt.org/vocab/unit/");
@@ -190,8 +190,8 @@ return co2;
 
 ### 3.5. Load tariff and co2 timeseries
 ```bash
-python3 -m harmonizer -so SimpleTariff -u icaen -mp "http://bigg-project.eu/ontology#Price.EnergyPriceGridElectricity" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -c 
-python3 -m harmonizer -so SimpleTariff -u icaen -mp "http://bigg-project.eu/ontology#Price.EnergyPriceGas" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -c 
+python3 -m harmonizer -so SimpleTariff -u icaen -mp "http://bigg-project.eu/ontology#Price" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -c 
+python3 -m harmonizer -so SimpleTariff -u icaen -mp "http://bigg-project.eu/ontology#Price" -pp "http://bigg-project.eu/ontology#EnergyConsumptionGas" -ppu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://qudt.org/vocab/unit/Euro" -n "https://icaen.cat#" -c 
 python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGridElectricity" -pu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -c 
 python3 -m harmonizer -so CO2Emissions -u icaen -mp "http://bigg-project.eu/ontology#CO2Emissions" -p "http://bigg-project.eu/ontology#EnergyConsumptionGas" -pu "http://qudt.org/vocab/unit/KiloW-HR" -unit "http://bigg-project.eu/ontology#KiloGM-CO2" -n "https://icaen.cat#" -c 
 ```
@@ -363,14 +363,6 @@ echo "co2Emisions source"
 python3 -m set_up.DataSources -u "bulgaria" -n "https://bulgaria.bg#" -f data/DataSources/bulgaria.xls -d CO2EmissionsSource
 ```
 
-```cypher
-Match(n:bigg__Organization{userID:"bulgaria"}) 
-Merge (n)-[:hasConfig]->(c:AppConfiguration{createBuilding: true, epc:"bulgaria", uploadManualData: true});
-Match(n:bigg__Organization{userID:"bulgaria"}) Match(u:bigg__Person{bigg__userName: "admin"})
-Merge (n)<-[:bigg__managesOrganization]-(u) return n;
-Match(n:bigg__Organization{userID:"bulgaria"}) Match(l:Language) where l.iso__code in ['en', 'bg']
-Merge (n)-[:hasAvailableLanguage]->(l) return n;
-```
 ### 5.2. Harmonize the static data
 Load from HBASE (recomended when re-harmonizing)
 ```bash
@@ -491,92 +483,81 @@ python3 -m set_up.DeviceAggregator -cn "BG" -t "externalWeather" -cn BG
 
 ### 6.1 Create Languages
 ```cypher
-CREATE (a:Language {name: 'Castellano', labels: ['Castellano@es', 'Spanish@en', 'Castellà@ca', 'испански@bg'], iso__code:'es'});
-CREATE (b:Language {name: 'Catalán', labels: ['Catalán@es', 'Catalan@en', 'Català@ca', 'каталонски@bg'], iso__code:'ca'});
-CREATE (c:Language {name: 'Inglés', labels: ['Inglés@es', 'English@en', 'Anglès@ca', 'Английски@bg'], iso__code:'en'});
-CREATE (d:Language {name: 'Búlgaro', labels: ['Búlgaro@es', 'Bulgarian@en', 'Búlgar@ca', 'български@bg'], iso__code:'bg'});
+Merge(a:Language{iso__code: 'es'}) SET a.name='Castellano', a.labels=['Castellano@es', 'Spanish@en', 'Castellà@ca', 'испански@bg'];
+Merge(a:Language{iso__code: 'ca'}) SET a.name='Catalán', a.labels=['Catalán@es', 'Catalan@en', 'Català@ca', 'каталонски@bg'];
+Merge(a:Language{iso__code: 'en'}) SET a.name='Inglés', a.labels=['Inglés@es', 'English@en', 'Anglès@ca', 'Английски@bg'];
+Merge(a:Language{iso__code: 'bg'}) SET a.name='Búlgaro', a.labels=['Búlgaro@es', 'Bulgarian@en', 'Búlgar@ca', 'български@bg'];
 ```
 
 ### 6.2 Create Roles
 ```cypher
-CREATE (a:Authority {name: 'ROLE_SUPERUSER'});
-CREATE (a:Authority {name: 'ROLE_ORGANIZATION_ADMINISTRATOR'});
-CREATE (a:Authority {name: 'ROLE_BUILDING_ADMINISTRATOR'});
-CREATE (a:Authority {name: 'ROLE_BUILDING_USER'});
+Merge (a:Authority {name: 'ROLE_SUPERUSER'});
+Merge (a:Authority {name: 'ROLE_ORGANIZATION_ADMINISTRATOR'});
+Merge (a:Authority {name: 'ROLE_BUILDING_ADMINISTRATOR'});
+Merge (a:Authority {name: 'ROLE_BUILDING_USER'});
 ```
 
 ### 6.3 Update organizations
 ```cypher
 // Bulgaria
-MATCH (l1:Language) 
-WHERE l1.name = 'Búlgaro' 
-MATCH (o1:bigg__Organization) 
-WHERE o1.bigg__organizationName='Bulgaria' 
-AND o1.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o1)-[r1:hasAvailableLanguage {selected: false, languageByDefault: true}]->(l1);
-MATCH (l2:Language) 
-WHERE l2.name = 'Inglés' 
-MATCH (o2:bigg__Organization) 
-WHERE o2.bigg__organizationName='Bulgaria' 
-AND o2.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o2)-[r2:hasAvailableLanguage {selected: true, languageByDefault: false}]->(l2); 
+MATCH (l1:Language{iso__code: 'bg'}) 
+MATCH (l2:Language{iso__code: 'en'}) 
+MATCH (o1:bigg__Organization{userID:'bulgaria'}) 
+Merge (o1)-[:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l1)
+Merge (o1)-[:hasAvailableLanguage {selected: true, languageByDefault: true}]->(l2); 
 
 // Generalitat
-MATCH (l3:Language) 
-WHERE l3.name = 'Catalán' 
-MATCH (o3:bigg__Organization) 
-WHERE o3.bigg__organizationName='Generalitat de Catalunya' 
-AND o3.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o3)-[r3:hasAvailableLanguage {selected: true, languageByDefault: true}]->(l3);
-MATCH (l4:Language) 
-WHERE l4.name = 'Castellano' 
-MATCH (o4:bigg__Organization) 
-WHERE o4.bigg__organizationName='Generalitat de Catalunya' 
-AND o4.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o4)-[r4:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l4);
-MATCH (l5:Language) 
-WHERE l5.name = 'Inglés' 
-MATCH (o5:bigg__Organization) 
-WHERE o5.bigg__organizationName='Generalitat de Catalunya' 
-AND o5.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o5)-[r5:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l5);
+MATCH (l1:Language{iso__code: 'ca'}) 
+MATCH (l2:Language{iso__code: 'es'}) 
+MATCH (l3:Language{iso__code: 'en'}) 
+MATCH (o1:bigg__Organization{userID:'icaen'}) 
+Merge (o1)-[:hasAvailableLanguage {selected: true, languageByDefault: true}]->(l1)
+Merge (o1)-[:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l2)
+Merge (o1)-[:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l3)
 
 // Infraestructures
-MATCH (l6:Language) 
-WHERE l6.name = 'Catalán' 
-MATCH (o6:bigg__Organization) 
-WHERE o6.bigg__organizationName='Infraestructures' 
-AND o6.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o6)-[r6:hasAvailableLanguage {selected: true, languageByDefault: true}]->(l6);
-MATCH (l7:Language) 
-WHERE l7.name = 'Castellano' 
-MATCH (o7:bigg__Organization) 
-WHERE o7.bigg__organizationName='Infraestructures' 
-AND o7.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o7)-[r7:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l7);
-MATCH (l8:Language) 
-WHERE l8.name = 'Inglés' 
-MATCH (o8:bigg__Organization) 
-WHERE o8.bigg__organizationName='Infraestructures' 
-AND o8.bigg__organizationDivisionType CONTAINS 'Organization' 
-CREATE (o8)-[r8:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l8);
+MATCH (l1:Language{iso__code: 'ca'}) 
+MATCH (l2:Language{iso__code: 'es'}) 
+MATCH (l3:Language{iso__code: 'en'}) 
+MATCH (o1:bigg__Organization{userID:'icat'}) 
+Merge (o1)-[:hasAvailableLanguage {selected: true, languageByDefault: true}]->(l1)
+Merge (o1)-[:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l2)
+Merge (o1)-[:hasAvailableLanguage {selected: false, languageByDefault: false}]->(l3)
 ```
 
-### 6.5 Create and link users
+### 6.4 Update organization settings
 ```cypher
-CREATE (p:bigg__Person:Resource {bigg__name: 'Admin', bigg__userName: 'admin', blocked: false, createDate: datetime('2022-07-15T10:00:00.000000000Z'), email: 'admin@fake', lastModifiedDate: datetime('2022-07-15T10:00:00.000000000Z'), lastName: 'admin', password: 'encripted_password', validated:true, uri:"https://cimne.beegroup.com/users#admin"});
-// hasRole
-MATCH (p:bigg__Person) WHERE p.bigg__userName='admin' 
-MATCH (a:Authority) WHERE a.name='ROLE_SUPERUSER' 
-CREATE (p)-[:hasRole]->(a);
-// bigg__managesOrganization
-MATCH (p:bigg__Person) WHERE p.bigg__userName='admin' 
-MATCH (o:bigg__Organization) WHERE o.bigg__organizationDivisionType CONTAINS'Organization' 
-CREATE (p)-[r:bigg__managesOrganization]->(o);
+Match(n:bigg__Organization{userID:"bulgaria"}) 
+Merge (n)-[:hasConfig]->(c:AppConfiguration{createBuilding: true, epc:"bulgaria", uploadManualData: true});
+Match(n:bigg__Organization{userID:"icaen"}) 
+Merge (n)-[:hasConfig]->(c:AppConfiguration{createBuilding: false, epc:"CEEX3X", uploadManualData: false});
+Match(n:bigg__Organization{userID:"icat"}) 
+Merge (n)-[:hasConfig]->(c:AppConfiguration{createBuilding: false, epc:"CEEX3X", uploadManualData: false});
+```
+
+### 6.5 Create superuser 
+```cypher
+//CREATE USER
+Merge (p:bigg__Person:Resource {uri:"https://cimne.beegroup.com/users#admin"})
+SET p.bigg__name='Admin', p.bigg__userName='admin', p.blocked= false, 
+    p.createDate= datetime('2022-07-15T10:00:00.000000000Z'), p.email= 'admin@fake', 
+    p.lastModifiedDate= datetime('2022-07-15T10:00:00.000000000Z'), p.lastName= 'admin', 
+    p.password= 'encripted_password', p.validated= true;
+//ROLE
+MATCH (p:bigg__Person{bigg__userName:'admin'})
+MATCH (a:Authority{name:'ROLE_SUPERUSER'})
+MERGE (p)-[:hasRole]->(a);
+
+// LINK ORGANIZATIONS
+MATCH (p:bigg__Person{bigg__userName:'admin'})
+MATCH (o:bigg__Organization) WHERE not o.userID is null
+MERGE (p)-[:bigg__managesOrganization]->(o);
+
 // hasDefaultLanguage
-MATCH (p:bigg__Person) 
-WHERE p.bigg__userName='admin' 
-MATCH (l:Language) 
-WHERE l.name='Castellano' 
+MATCH (p:bigg__Person{bigg__userName:'admin'})
+MATCH (l:Language{name:'Catalán'}) 
 CREATE (p)-[r:hasDefaultLanguage]->(l);
 ```
+
+# BUILD DOCKER
+   docker buildx build --platform linux/amd64,linux/arm64 --push -t docker.tech.beegroup-cimne.com/jobs/importing_tool . --provenance false

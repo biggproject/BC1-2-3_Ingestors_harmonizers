@@ -403,9 +403,6 @@ class Mapper(object):
                 "origin": "row"
             },
             "params": {
-                "raw": {
-                    "hasDeviceType": to_object_property("Meter.EnergyMeter", namespace=bigg_enums)
-                },
                 "mapping": {
                     "subject": {
                         "key": "device_subject",
@@ -415,6 +412,11 @@ class Mapper(object):
                         "key": "name",
                         "operations": []
                     },
+                    "hasDeviceType": {
+                        "key": "device_type",
+                        "operations": []
+                    },
+
                 }
             }
         }
@@ -432,7 +434,7 @@ class Mapper(object):
                         "operations": []
                     },
                     "hasUtilityType": {
-                        "key": "type",
+                        "key": "utility_type",
                         "operations": []
                     },
                     "pointOfDeliveryIDFromOrganization": {

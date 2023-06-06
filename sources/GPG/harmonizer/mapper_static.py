@@ -100,6 +100,7 @@ def clean_dataframe(df, source):
 
     df['building_element'] = df['Num ens'].apply(id_zfill).apply(construction_element_subject)
     try:
+        df.loc[df['Codi_postal'] > 'nan', 'Codi_postal'] = ''
         df['Codi_postal'] = df['Codi_postal'].apply(id_zfill)
     except:
         df['Codi_postal'] = ""

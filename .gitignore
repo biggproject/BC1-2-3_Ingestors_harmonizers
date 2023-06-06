@@ -6,3 +6,4 @@ __pycache__/
 config_*.json
 config_files
 data/
+export/

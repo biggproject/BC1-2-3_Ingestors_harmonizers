@@ -35,7 +35,7 @@ def gather_data(config, settings, args):
                 save_data(data=df.to_dict(orient='records'), data_type=f"BuildingInfo_KPI_{s}",
                           row_keys=["filename", "id"],
                           column_map=[("info", "all")], config=config, settings=settings, args=args)
-            for s in range(0, 23):
+            for s in range(0, 25):
                 save_data(data=df.to_dict(orient='records'), data_type=f"EEM_KPI_{s}",
                           row_keys=["filename", "id"],
                           column_map=[("info", "all")], config=config, settings=settings, args=args)

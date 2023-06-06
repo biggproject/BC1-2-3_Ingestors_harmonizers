@@ -18,6 +18,8 @@ class LongitudinalBenchmarkingMap(Map):
     def __init__(self):
         self.shared_folder = "/user/ubuntu/tmp/longitudinalBenchmarking/shared_input"
         self.timeseries_shared = {}
+        with open('building_key.keymap', 'r') as f:
+            self.building_keys = json.load(f)
         self.non_building = set()
 
     def finish(self):
@@ -31,7 +33,8 @@ class LongitudinalBenchmarkingMap(Map):
                 pass
             fs.append(filename, "\n".join(data['data'])+"\n")
             for b in data['building_list']:
-                print(f"{b}\t{pickle.dumps({'file': filename, 'hash': ts_hash, 'meta': 'shared_file'})}")
+                print(f"{self.building_keys[b]}\t{pickle.dumps({'building': b, 'file': filename, 'hash': ts_hash, 'meta': 'shared_file'})}", file=sys.stderr)
+                print(f"{self.building_keys[b]}\t{pickle.dumps({'building': b, 'file': filename, 'hash': ts_hash, 'meta': 'shared_file'})}")
         for ts_hash in self.non_building:
             print(ts_hash, file=sys.stderr)
 

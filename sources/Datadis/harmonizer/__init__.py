@@ -40,7 +40,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
                                   user=args.user, source="datadis", config=config)
     elif args.type == "ts":
         hbase = happybase.Connection(**hbase_conn)
-        ts_tables = [x for x in hbase.tables() if re.match(rf"raw_Datadis_ts_EnergyConsumptionGridElectricity_.*", x.decode())]
+        ts_tables = [x for x in hbase.tables() if re.match(rf"raw_Datadis_ts_EnergyConsumptionGridElectricity_PT1H_.*", x.decode())]
         for h_table_name in ts_tables:
             i = 0
             freq = h_table_name.decode().split("_")[4]
@@ -60,6 +60,8 @@ def harmonize_command_line(arguments, config=None, settings=None):
                     continue
                 i += len(data_list)
                 log_string(f"{freq}: {i}", mongo=False)
+                if i < 64000000:
+                    continue
                 harmonize_ts_data(data_list, freq=freq, namespace=args.namespace, user=args.user, config=config)
     elif args.type == "fast-ts":
         hbase = happybase.Connection(**hbase_conn)

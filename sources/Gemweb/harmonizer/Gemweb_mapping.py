@@ -1,5 +1,5 @@
 from .transform_functions import ref_cadastral
-from ontology.namespaces_definition import Bigg, bigg_enums, units
+from ontology.namespaces_definition import Bigg, bigg_enums, units, countries
 from ontology.bigg_classes import Organization, Building, LocationInfo, CadastralInfo, BuildingSpace, \
      Area, Device, BuildingConstructionElement, UtilityPointOfDelivery
 from slugify import slugify as slugify
@@ -75,13 +75,12 @@ class Mapping(object):
                 "origin": "row"
             },
             "params": {
+                "raw": {
+                    "hasAddressCountry": to_object_property("2510769/", namespace=countries),
+                },
                 "mapping": {
                     "subject": {
                         "key": "location_info",
-                        "operations": []
-                    },
-                    "hasAddressCountry": {
-                        "key": "hasAddressCountry",
                         "operations": []
                     },
                     "hasAddressProvince": {
@@ -231,7 +230,7 @@ class Mapping(object):
                         "operations": []
                     },
                     "pointOfDeliveryIDFromOrganization": {
-                        "key": "cups",
+                        "key": "utility_point_id",
                         "operations": []
                     },
                     "hasUtilityType": {
@@ -268,12 +267,60 @@ class Mapping(object):
                         "operations": []
                     }
                 }
+            },
+            "links": {
+                "device_location_info": {
+                    "type": Bigg.hasDeviceLocationInfo,
+                    "link": "dev_gem_id"
+                }
             }
         }
 
+        device_location_info = {
+            "name": "device_location_info",
+            "class": LocationInfo,
+            "type": {
+                "origin": "row"
+            },
+            "params": {
+                "raw": {
+                    "hasAddressCountry": to_object_property("2510769/", namespace=countries),
+                },
+                "mapping": {
+                    "subject": {
+                        "key": "device_location_info",
+                        "operations": []
+                    },
+                    "hasAddressProvince": {
+                        "key": "hasAddressProvince",
+                        "operations": []
+                    },
+                    "hasAddressCity": {
+                        "key": "hasAddressCity",
+                        "operations": []
+                    },
+                    "addressPostalCode": {
+                        "key": "codi_postal",
+                        "operations": []
+                    },
+                    "addressStreetName": {
+                        "key": "direccio",
+                        "operations": []
+                    },
+                    "addressLongitude": {
+                        "key": "longitud",
+                        "operations": []
+                    },
+                    "addressLatitude": {
+                        "key": "latitud",
+                        "operations": []
+                    }
+                }
+            }
+        }
         grouped_modules = {
             "linked": [building, location_info, cadastral_info, building_space,
-                       gross_floor_area, building_element, device, utility_point],
-            "unlinked": [device]
+                       gross_floor_area, building_element, device, utility_point, device_location_info],
+            "unlinked": [utility_point, device, device_location_info]
         }
         return grouped_modules[group]

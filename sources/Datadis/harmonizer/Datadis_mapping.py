@@ -80,7 +80,7 @@ class Mapping(object):
             },
             "params": {
                 "raw": {
-                    "hasUtilityType": to_object_property("Electricity", namespace=bigg_enums)
+                    "hasUtilityType": to_object_property("ElectricUtility", namespace=bigg_enums)
                 },
                 "mapping": {
                     "subject": {
@@ -88,7 +88,7 @@ class Mapping(object):
                         "operations": []
                     },
                     "pointOfDeliveryIDFromOrganization": {
-                        "key": 'cups',
+                        "key": 'utility_point_id',
                         "operations": []
                     },
                 }
@@ -97,6 +97,38 @@ class Mapping(object):
                 "device": {
                     "type": Bigg.hasDevice,
                     "link": "cups"
+                }
+            }
+        }
+
+        device_location_info = {
+            "name": "device_location_info",
+            "class": LocationInfo,
+            "type": {
+                "origin": "row"
+            },
+            "params": {
+                "mapping": {
+                    "subject": {
+                        "key": "device_location_subject",
+                        "operations": []
+                    },
+                    "hasAddressProvince": {
+                        "key": 'hasAddressProvince',
+                        "operations": []
+                    },
+                    "hasAddressCity": {
+                        "key": 'hasAddressCity',
+                        "operations": []
+                    },
+                    "addressPostalCode": {
+                        "key": 'postalCode',
+                        "operations": []
+                    },
+                    "addressStreetName": {
+                        "key": 'address',
+                        "operations": []
+                    }
                 }
             }
         }
@@ -121,11 +153,17 @@ class Mapping(object):
                         "operations": []
                     }
                 }
+            },
+            "links": {
+                "device_location_info": {
+                    "type": Bigg.hasDeviceLocationInfo,
+                    "link": "cups"
+                }
             }
         }
 
         grouped_modules = {
-            "linked": [location_info, building_space, utility_point, device],
-            "unlinked": [device]
+            "linked": [location_info, building_space, utility_point, device, device_location_info],
+            "unlinked": [utility_point, device, device_location_info]
         }
         return grouped_modules[group]

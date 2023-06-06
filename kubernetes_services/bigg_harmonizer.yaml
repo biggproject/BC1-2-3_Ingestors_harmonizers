@@ -40,7 +40,7 @@ spec:
         - name: bigg-harmonizer
           image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
           command: ["python3", "-m", "harmonizer"]
-          # command: ["/bin/sh", "-ec", "sleep 1000"]
+          #command: ["/bin/sh", "-ec", "sleep 1000"]
           volumeMounts:
           - name: main
             mountPath: /home/ubuntu/bigg_entrack/config.json

@@ -18,6 +18,7 @@ def recursive_g(rdf_obj, subject_lst, graph, depth):
     if depth <= 0:
         return graph
     nxt_subjects = []
+    print(subject_lst, file=sys.stderr)
     for subject in subject_lst:
         q1 = get_graph_single_query(subject)
         r1 = rdf_obj.query(q1)

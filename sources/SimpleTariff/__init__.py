@@ -40,7 +40,7 @@ class Plugin(SourcePlugin):
 
     def get_store_table(self, message):
         if message['collection_type'] == "tariff_ts":
-            prop = str(message['measured_property']).split("#")[1]
+            prop = str(message['priced_property']).split("#")[1]
             return f"raw_simpletariff_ts_{prop}_PT1H_{message['user']}"
         else:
             return None

@@ -4,17 +4,19 @@ library(reticulate)
 library(data.table)
 library(jsonlite)
 setwd(getwd())
-settings <- fromJSON("reducer_lib/Rconfig.json")
-source("reducer_lib/read_input.R")
+current_path <- "reducer_lib"
+benchmarking_path="reducer_lib/LongitudinalBenchmarking"
+settings <- fromJSON(paste(benchmarking_path, "config.json", sep="/"))
+source(paste(current_path, "read_input.R", sep="/"))
+source(paste(current_path, "module.R", sep="/"))
 
-source("reducer_lib/module.R")
 use_python(settings$PYTHON3_BIN, required = T)
 
-source_python("reducer_lib/unpickle.py")
-source_python("reducer_lib/extract_building.py")
+source_python(paste(current_path,"unpickle.py", sep="/"))
+source_python(paste(current_path,"extract_building.py", sep="/"))
 
 get_building_rdf<-function(building_subject){
-  for (f in list.files(pattern=".*.ttl")){ 
+  for (f in list.files(pattern=".*.ttl")){
     invisible(buildingsRdf <- rdf_parse(get_subgraph_from_rdf(f, building_subject) , format="turtle"))
     if (length(buildingsRdf) > 0){
       return(buildingsRdf)
@@ -23,10 +25,11 @@ get_building_rdf<-function(building_subject){
   return(NULL)
 }
 
-reduce = function(key, values){
+reduce = function(index, values){
   #key<-x$key$X1
   #values<-x$values
   list_data <- apply(data.frame(values), 1, read_pickle)
+  key <- list_data[[1]]$building
   timeseries <- list()
 #   ts_list <- list_data[lapply(list_data, function(x){x$meta})=="timeseries"]
 #   ts_df <- rbindlist(lapply(ts_list, function(x){c(x$point, x$hash)}), fill = TRUE)
@@ -55,7 +58,7 @@ reduce = function(key, values){
     write(paste0("\t", key, " not found"), file=stderr())
   }else{
     write(paste0("\t", key, " launch_module"), file=stderr())
-    launch_module(graph, timeseries)
+    launch_module(key, graph, lapply(timeseries, FUN=function(x){return(as.data.frame(x))}))
   }
 }
 

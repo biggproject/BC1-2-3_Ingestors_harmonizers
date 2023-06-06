@@ -53,7 +53,7 @@ def harmonize_data_ts(data, **kwargs):
     df['end'] = df['end'].astype('int')
 
     # Calculate kWh
-    df['value'] = df['Consumo kWh ATR'].fillna(0) + df['Consumo kWh GLP'].fillna(0)
+    df['value'] = df['Consumo kWh ATR'].fillna(0).astype(float) + df['Consumo kWh GLP'].fillna(0).astype(float)
 
     # isReal
     df['isReal'] = df["Tipo Lectura"].map(defaultdict(lambda : False, {"ESTIMADA": False, "REAL": True}))
@@ -104,11 +104,11 @@ def harmonize_data_ts(data, **kwargs):
 
 def prepare_df_clean_all(df):
     df['device_subject'] = df.CUPS.apply(partial(device_subject, source="nedgia"))
-
+    df['utility_point_subject'] = df.utility_point_id.apply(delivery_subject)
 
 def prepare_df_clean_linked(df):
     df['building_space_subject'] = df.NumEns.apply(building_space_subject)
-    df['utility_point_subject'] = df.CUPS.apply(delivery_subject)
+
 
 
 def harmonize_data_device(data, **kwargs):
@@ -126,7 +126,8 @@ def harmonize_data_device(data, **kwargs):
         datasource = nedgia_datasource['id(s)']
     with neo.session() as session:
         device_id = get_cups_id_link(session, user, settings.namespace_mappings)
-    df['NumEns'] = df.CUPS.map(device_id)
+    df.loc[:, 'utility_point_id'] = df.CUPS.str[:20]
+    df['NumEns'] = df.utility_point_id.map(device_id)
     df["source_id"] = datasource
     prepare_df_clean_all(df)
     linked_supplies = df[df["NumEns"].isna() == False]
