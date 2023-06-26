@@ -1,305 +1,385 @@
 
-bigg:Office a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Public or private structure where administrative work is performed" .
 
-bigg:Office.PublicOffice a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Publicly owned structure where administrative work is performed";
-  skos:broader bigg:Office .
 
-bigg:Office.PrivateOffice a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Privetely owned structure where administrative work is performed";
-  skos:broader bigg:Office .
 
-bigg:Retail a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Wholesale and retail trade buildings" .
+bigg:EducationAndResearch.ExtracurricularEducationCenter a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Център за извънкласно обучение"@bg, "Centre d'educació extraescolar"@ca, "Extracurricular Education Center"@en, "Centro de educación extraescolar"@es ;
+    rdfs:comment "Education premises related to activities that fall outside the school, college, or university curriculum. This category includes music, language, and art schools", "Education premises related to activities that fall outside the school, college, or university curriculum. This category includes music, language, and art schools"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.Laboratory a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Лаборатория"@bg, "Laboratori"@ca, "Laboratory"@en, "Laboratorio"@es ;
+    rdfs:comment "Building equipped for scientific experiments, research, or for the manufacture of drugs or chemicals", "Building equipped for scientific experiments, research, or for the manufacture of drugs or chemicals"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.MilitaryOrPoliceAcademy a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Военна или полицейска академия"@bg, "Acadèmia militar o policial"@ca, "Military Or Police Academy"@en, "Academia militar o policial"@es ;
+    rdfs:comment "Premises for the training of the military or police forces", "Premises for the training of the military or police forces"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.OtherEducationAndResearch a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други Образование и научни изследвания"@bg, "Altres Educació i Investigació"@ca, "Other Education And Research"@en, "Otros Educación e Investigación"@es ;
+    rdfs:comment "Other facilities used for educational purposes and research", "Other facilities used for educational purposes and research"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.Preschool a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Детска градина"@bg, "Preescolar"@ca, "Preschool"@en, "Preescolar"@es ;
+    rdfs:comment "Preschool education premises including kindergartens and daycare centers", "Preschool education premises including kindergartens and daycare centers"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.PrimarySchool a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Основно училище"@bg, "Escola primària"@ca, "Primary School"@en, "Escuela primaria"@es ;
+    rdfs:comment "Education premises including primary schools and elementary schools", "Education premises including primary schools and elementary schools"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.ResearchCenter a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Изследователски център"@bg, "Centre de recerca"@ca, "Research Center"@en, "Centro de investigación"@es ;
+    rdfs:comment "Premises of a center or institute funded for doing research", "Premises of a center or institute funded for doing research"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.SecondarySchool a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Средно училище"@bg, "Escola secundària"@ca, "Secondary School"@en, "Escuela secundaria"@es ;
+    rdfs:comment "Education premises including secondary schools, middle schools, high school", "Education premises including secondary schools, middle schools, high school"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:EducationAndResearch.University a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Университет"@bg, "Universitat"@ca, "University"@en, "Universidad"@es ;
+    rdfs:comment "Higher education premises including college, universities, technical schools, and professional schools", "Higher education premises including college, universities, technical schools, and professional schools"@en ;
+    skos:broader bigg:EducationAndResearch .
+
+bigg:Healthcare.DayCareHospital a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Дневен медицински център"@bg, "Hospital de dia"@ca, "Day Care Hospital"@en, "Hospital de día"@es ;
+    rdfs:comment "Premises that include urgent care centers and outpatient clinics", "Premises that include urgent care centers and outpatient clinics"@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Healthcare.HomelessShelter a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Приют за бездомни"@bg, "Alberg per a indigents"@ca, "Homeless Shelter"@en, "Albergue para indigentes"@es ;
+    rdfs:comment "Temporary residence for homeless individuals and families", "Temporary residence for homeless individuals and families"@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Healthcare.Hospital a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Болница"@bg, "Hospital"@ca, "Hospital"@en, "Hospital"@es ;
+    rdfs:comment "Premises that provide temporary to long-term inpatient services", "Premises that provide temporary to long-term inpatient services"@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Healthcare.Mortuary a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Гробище"@bg, "Tanatori"@ca, "Mortuary"@en, "Tanatorio"@es ;
+    rdfs:comment "Premises that are used for the storage of human corpses awaiting identification, or removal for autopsy or disposal by burial, cremation or otherwise", "Premises that are used for the storage of human corpses awaiting identification, or removal for autopsy or disposal by burial, cremation or otherwise"@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Healthcare.NursingHome a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Дом за възрастни хора"@bg, "Llar de gent gran"@ca, "Nursing Home"@en, "Hogar de ancianos"@es ;
+    rdfs:comment "Facility for special care needs including senior care community and nursing homes for people with disabilities", "Facility for special care needs including senior care community and nursing homes for people with disabilities"@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Healthcare.OtherHealthcare a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други здравни заведения"@bg, "Altres centres de salut"@ca, "Other Healthcare"@en, "Otros centros de salud"@es ;
+    rdfs:comment "Buildings dedicated to other health care services ", "Buildings dedicated to other health care services "@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Healthcare.PrimaryCareCenterOrClinic a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Център или клиника за първична медицинска помощ"@bg, "Centre d'atenció primària o clínica"@ca, "Primary Care Center Or Clinic"@en, "Centro de atención primaria o clínica"@es ;
+    rdfs:comment "Premises to receive people making an initial approach to a medical practitioner or clinic for advice or treatment", "Premises to receive people making an initial approach to a medical practitioner or clinic for advice or treatment"@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Healthcare.VeterinaryClinic a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Ветеринарна клиника"@bg, "Clínica veterinària"@ca, "Veterinary Clinic"@en, "Clínica veterinaria"@es ;
+    rdfs:comment "Premises that provide services for the prevention, diagnosis, treatment, and health care of animal populations", "Premises that provide services for the prevention, diagnosis, treatment, and health care of animal populations"@en ;
+    skos:broader bigg:Healthcare .
+
+bigg:Hospitality.CafeOrBar a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Кафене или бар"@bg, "Cafè o bar"@ca, "Cafe Or Bar"@en, "Café o bar"@es ;
+    rdfs:comment "Premise where light food, alcoholic drinks or refreshments are served", "Premise where light food, alcoholic drinks or refreshments are served"@en ;
+    skos:broader bigg:Hospitality .
+
+bigg:Hospitality.Canteen a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Заведение за хранене"@bg, "Cantina"@ca, "Canteen"@en, "Cantina"@es ;
+    rdfs:comment "Restaurant provided by an organization such as a college, factory, or company for its students or staff", "Restaurant provided by an organization such as a college, factory, or company for its students or staff"@en ;
+    skos:broader bigg:Hospitality .
+
+bigg:Hospitality.Guesthouse a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Къща за гости"@bg, "Casa d'hostes"@ca, "Guesthouse"@en, "Casa de huéspedes"@es ;
+    rdfs:comment "Small, privately owned homesteay that offers lodging", "Small, privately owned homesteay that offers lodging"@en ;
+    skos:broader bigg:Hospitality .
+
+bigg:Hospitality.Hostel a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Хостел"@bg, "Alberg"@ca, "Hostel"@en, "Albergue"@es ;
+    rdfs:comment "Lodging with limited amenities for a specific group of people, such as students, workers, or travellers", "Lodging with limited amenities for a specific group of people, such as students, workers, or travellers"@en ;
+    skos:broader bigg:Hospitality .
+
+bigg:Hospitality.Hotel a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Хотел"@bg, "Hotel"@ca, "Hotel"@en, "Hotel"@es ;
+    rdfs:comment "Lodging with extended amenities that includes resorts", "Lodging with extended amenities that includes resorts"@en ;
+    skos:broader bigg:Hospitality .
+
+bigg:Hospitality.OtherHospitality a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други хотелиерски услуги"@bg, "Un altre tipus d'hostaleria"@ca, "Other Hospitality"@en, "Otro tipo de hostelería"@es ;
+    rdfs:comment "Building used to offer other hospitality services", "Building used to offer other hospitality services"@en ;
+    skos:broader bigg:Hospitality .
+
+bigg:Hospitality.Restaurant a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Ресторант"@bg, "Restaurant"@ca, "Restaurant"@en, "Restaurante"@es ;
+    rdfs:comment "Premises for preparation and food service which includes waiting services", "Premises for preparation and food service which includes waiting services"@en ;
+    skos:broader bigg:Hospitality .
+
+bigg:Industrial.Warehouse a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Склад"@bg, "Magatzem"@ca, "Warehouse"@en, "Almacén"@es ;
+    rdfs:comment "Premises with warehousing and storage facilities such as bulk farm products", "Premises with warehousing and storage facilities such as bulk farm products"@en ;
+    skos:broader bigg:Industrial .
+
+bigg:Industrial.WasteManagementFacility a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Съоръжение/ инсталация за управление на отпадъци"@bg, "Instal·lació de gestió de residus"@ca, "Waste Management Facility"@en, "Instalación de gestión de residuos"@es ;
+    rdfs:comment "Premises designed to perform the activities and actions required to manage waste from its inception to its final disposal", "Premises designed to perform the activities and actions required to manage waste from its inception to its final disposal"@en ;
+    skos:broader bigg:Industrial .
+
+bigg:Multi-use a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Многофункционална употреба"@bg, "Multiusos"@ca, "Multi-use"@en, "Multiusos"@es ;
+    rdfs:comment "Building dedicated to multiple uses", "Building dedicated to multiple uses"@en .
+
+bigg:Office.PrivateOffice a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Частен офис"@bg, "Oficina privada"@ca, "Private Office"@en, "Oficina privada"@es ;
+    rdfs:comment "Privetely owned structure where administrative work is performed", "Privetely owned structure where administrative work is performed"@en ;
+    skos:broader bigg:Office .
+
+bigg:Office.PublicOffice a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Държавни служби"@bg, "Oficina pública"@ca, "Public Office"@en, "Oficina pública"@es ;
+    rdfs:comment "Publicly owned structure where administrative work is performed", "Publicly owned structure where administrative work is performed"@en ;
+    skos:broader bigg:Office .
+
+bigg:Other a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други"@bg, "Altres"@ca, "Other"@en, "Otros"@es ;
+    rdfs:comment "Building dedicated to other uses", "Building dedicated to other uses"@en .
+
+bigg:Public.CourtHouse a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Съдебна палата"@bg, "Palau de Justícia"@ca, "Court House"@en, "Palacio de Justicia"@es ;
+    rdfs:comment "Building in which a judicial court is held", "Building in which a judicial court is held"@en ;
+    skos:broader bigg:Public .
+
+bigg:Public.FireStation a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Пожарна станция"@bg, "Parc de bombers"@ca, "Fire Station"@en, "Parque de bomberos"@es ;
+    rdfs:comment "Structure for storing firefighting apparatus such as fire engines and related vehicles, personal protective equipment, and other specialized equipment", "Structure for storing firefighting apparatus such as fire engines and related vehicles, personal protective equipment, and other specialized equipment"@en ;
+    skos:broader bigg:Public .
+
+bigg:Public.MonumentalComplex a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Монументален комплекс"@bg, "Complex Monumental"@ca, "Monumental Complex"@en, "Complejo Monumental"@es ;
+    rdfs:comment "Monument building or monument complex", "Monument building or monument complex"@en ;
+    skos:broader bigg:Public .
+
+bigg:Public.MunicipalHall a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Общинска зала"@bg, "Sala Municipal"@ca, "Municipal Hall"@en, "Sala Municipal"@es ;
+    rdfs:comment "Multi-use municipal space or hall", "Multi-use municipal space or hall"@en ;
+    skos:broader bigg:Public .
+
+bigg:Public.OtherPublic a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други обществени"@bg, "Altres públics"@ca, "Other Public"@en, "Otros públicos"@es ;
+    rdfs:comment "Any other public building or structure that does not belong to the previous categories", "Any other public building or structure that does not belong to the previous categories"@en ;
+    skos:broader bigg:Public .
+
+bigg:Public.OtherPublicAuthorityFacilities a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други обекти на публичната власт"@bg, "Altres instal·lacions de les autoritats públiques"@ca, "Other Public Authority Facilities"@en, "Otras instalaciones de las autoridades públicas"@es ;
+    rdfs:comment "Headquarters of other public authorities", "Headquarters of other public authorities"@en ;
+    skos:broader bigg:Public .
+
+bigg:Public.Penitentiary a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Затвори"@bg, "Penitenciari"@ca, "Penitentiary"@en, "Penitenciario"@es ;
+    rdfs:comment "Penitentiary or correctional facility", "Penitentiary or correctional facility"@en ;
+    skos:broader bigg:Public .
+
+bigg:Public.PoliceStation a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Полицейски участък"@bg, "Comissaria de policia"@ca, "Police Station"@en, "Comisaría de policía"@es ;
+    rdfs:comment "Headquarters of a police force", "Headquarters of a police force"@en ;
+    skos:broader bigg:Public .
+
+bigg:RecreationAndCulture.Cinema a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Кино"@bg, "Cinema"@ca, "Cinema"@en, "Cine"@es ;
+    rdfs:comment "Building where films are shown for public entertainment", "Building where films are shown for public entertainment"@en ;
+    skos:broader bigg:RecreationAndCulture .
+
+bigg:RecreationAndCulture.CulturalOrSocialCenter a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Културен или социален център"@bg, "Centre cultural o social"@ca, "Cultural Or Social Center"@en, "Centro cultural o social"@es ;
+    rdfs:comment "Building or complex used to promotes culture and arts or to offer community services", "Building or complex used to promotes culture and arts or to offer community services"@en ;
+    skos:broader bigg:RecreationAndCulture .
+
+bigg:RecreationAndCulture.Library a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Библиотека"@bg, "Biblioteca"@ca, "Library"@en, "Biblioteca"@es ;
+    rdfs:comment "Premises containing collections of books and periodicals for use or borrowing by the public or the members of an institution", "Premises containing collections of books and periodicals for use or borrowing by the public or the members of an institution"@en ;
+    skos:broader bigg:RecreationAndCulture .
+
+bigg:RecreationAndCulture.Museum a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Музей"@bg, "Museu"@ca, "Museum"@en, "Museo"@es ;
+    rdfs:comment "Building in which objects of historical, scientific, artistic, or cultural interest are stored and exhibited", "Building in which objects of historical, scientific, artistic, or cultural interest are stored and exhibited"@en ;
+    skos:broader bigg:RecreationAndCulture .
+
+bigg:RecreationAndCulture.OtherReacreationAndCulture a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други Отдих и култура"@bg, "Altres activitats de lleure i cultura"@ca, "Other Reacreation And Culture"@en, "Otras actividades de ocio y cultura"@es ;
+    rdfs:comment "Other facilities related to cultural, entertainment, or recreational activities", "Other facilities related to cultural, entertainment, or recreational activities"@en ;
+    skos:broader bigg:RecreationAndCulture .
+
+bigg:RecreationAndCulture.ReligiousFacilities a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Религиозни обекти "@bg, "Instal·lacions religioses"@ca, "Religious Facilities"@en, "Instalaciones religiosas"@es ;
+    rdfs:comment "Religious public assembly premises including churches, monasteries, synagogues, mosques, and temples", "Religious public assembly premises including churches, monasteries, synagogues, mosques, and temples"@en ;
+    skos:broader bigg:RecreationAndCulture .
+
+bigg:RecreationAndCulture.Theatre a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Театър"@bg, "Teatre"@ca, "Theatre"@en, "Teatro"@es ;
+    rdfs:comment "Building in which plays and other dramatic performances are given", "Building in which plays and other dramatic performances are given"@en ;
+    skos:broader bigg:RecreationAndCulture .
+
+bigg:ResidentialHousing.DetachedSingleFamilyHousing a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Самостоятелни еднофамилни жилища"@bg, "Habitatge unifamiliar aïllat"@ca, "Detached Single Family Housing"@en, "Vivienda unifamiliar aislada"@es ;
+    rdfs:comment "A dwelling unit inhabited by a single family completely separated by open space on all sides", "A dwelling unit inhabited by a single family completely separated by open space on all sides"@en ;
+    skos:broader bigg:ResidentialHousing .
+
+bigg:ResidentialHousing.MultiFamilyFiveOrMoreStoreys a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Многофамилни - пет или повече етажа"@bg, "Multifamiliar de cinc o més pisos"@ca, "Multi Family Five Or More Storeys"@en, "Multifamiliar de cinco o más pisos"@es ;
+    rdfs:comment "A dwelling unit inhabited by multiple families that is developed on 5 or more storeys", "A dwelling unit inhabited by multiple families that is developed on 5 or more storeys"@en ;
+    skos:broader bigg:ResidentialHousing .
+
+bigg:ResidentialHousing.MultiFamilyOneToFourStoreys a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Многофамилни п от един до четири етажа"@bg, "Multifamiliar d'una a quatre plantes"@ca, "Multi Family One To Four Storeys"@en, "Multifamiliar de una a cuatro plantas"@es ;
+    rdfs:comment "A dwelling unit inhabited by multiple families that is developed on 1 to 4 storeys", "A dwelling unit inhabited by multiple families that is developed on 1 to 4 storeys"@en ;
+    skos:broader bigg:ResidentialHousing .
+
+bigg:ResidentialHousing.OtherSingleFamilyHousing a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други еднофамилни жилищни сгради"@bg, "Altres habitatges unifamiliars"@ca, "Other Single Family Housing"@en, "Otras viviendas unifamiliares"@es ;
+    rdfs:comment "Any other type of dwelling unit inhabited by a single family", "Any other type of dwelling unit inhabited by a single family"@en ;
+    skos:broader bigg:ResidentialHousing .
+
+bigg:ResidentialHousing.ResidentialGarage a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "гараж"@bg, "Garatge residencial"@ca, "Residential Garage"@en, "Garaje residencial"@es ;
+    rdfs:comment "Structure for storing a vehicle or vehicles that may separate or attached to a home", "Structure for storing a vehicle or vehicles that may separate or attached to a home"@en ;
+    skos:broader bigg:ResidentialHousing .
+
+bigg:Retail.CommercialActivity a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Търговска дейност"@bg, "Activitat comercial"@ca, "Commercial Activity"@en, "Actividad comercial"@es ;
+    rdfs:comment "Premises for the retail of merchandise such as furniture , electronics and appliance, food and beverage, health and personal care , clothing, books and music, and office supplies, stationery and gift stores. Malls or shopping centers are excluded.", "Premises for the retail of merchandise such as furniture , electronics and appliance, food and beverage, health and personal care , clothing, books and music, and office supplies, stationery and gift stores. Malls or shopping centers are excluded."@en ;
+    skos:broader bigg:Retail .
+
+bigg:Retail.ExhibitionCenter a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Изложбен център"@bg, "Centre d'exposicions"@ca, "Exhibition Center"@en, "Centro de exposiciones"@es ;
+    rdfs:comment "Large building where major trade fairs are held", "Large building where major trade fairs are held"@en ;
+    skos:broader bigg:Retail .
+
+bigg:Retail.Market a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Пазар"@bg, "Mercat"@ca, "Market"@en, "Mercado"@es ;
+    rdfs:comment "Building for the gathering of people for the purchase and sale of provisions, livestock, and other commodities", "Building for the gathering of people for the purchase and sale of provisions, livestock, and other commodities"@en ;
+    skos:broader bigg:Retail .
+
+bigg:Retail.OtherRetail a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други търговски обекти"@bg, "Altres comerços"@ca, "Other Retail"@en, "Otros comercios"@es ;
+    rdfs:comment "Other wholesale and retail buildings", "Other wholesale and retail buildings"@en ;
+    skos:broader bigg:Retail .
+
+bigg:Retail.ShoppingMall a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Търговски център"@bg, "Centre comercial"@ca, "Shopping Mall"@en, "Centro comercial"@es ;
+    rdfs:comment "Premises comprised of small to large retailers, restaurants, and entertainment establishments located indoor or outdoor", "Premises comprised of small to large retailers, restaurants, and entertainment establishments located indoor or outdoor"@en ;
+    skos:broader bigg:Retail .
+
+bigg:Retail.Supermarket a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Супермаркет"@bg, "Supermercat"@ca, "Supermarket"@en, "Supermercado"@es ;
+    rdfs:comment "Retailer supplying a wide range of products including groceries", "Retailer supplying a wide range of products including groceries"@en ;
+    skos:broader bigg:Retail .
+
+bigg:SportsAndWellnessFacilities.FitnessCenter a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Фитнес център"@bg, "Gimnàs"@ca, "Fitness Center"@en, "Gimnasio"@es ;
+    rdfs:comment "Fitness center premises for active physical fitness conditioning including aerobic dance or exercise centers, or weight training centers", "Fitness center premises for active physical fitness conditioning including aerobic dance or exercise centers, or weight training centers"@en ;
+    skos:broader bigg:SportsAndWellnessFacilities .
+
+bigg:SportsAndWellnessFacilities.Spa a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "СПА"@bg, "Spa"@ca, "Spa"@en, "Spa"@es ;
+    rdfs:comment "Commercial establishment offering health and beauty treatment through such means as steam baths, exercise equipment, and massage", "Commercial establishment offering health and beauty treatment through such means as steam baths, exercise equipment, and massage"@en ;
+    skos:broader bigg:SportsAndWellnessFacilities .
+
+bigg:SportsAndWellnessFacilities.SportsCenter a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Спортен център"@bg, "Centre esportiu"@ca, "Sports Center"@en, "Centro deportivo"@es ;
+    rdfs:comment "A building where different sports can be played", "A building where different sports can be played"@en ;
+    skos:broader bigg:SportsAndWellnessFacilities .
+
+bigg:SportsAndWellnessFacilities.SportsHall a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Спортна зала"@bg, "Poliesportiu"@ca, "Sports Hall"@en, "Polideportivo"@es ;
+    rdfs:comment "A building or part of a building in which sports are played such as stadiums and arenas", "A building or part of a building in which sports are played such as stadiums and arenas"@en ;
+    skos:broader bigg:SportsAndWellnessFacilities .
+
+bigg:SportsAndWellnessFacilities.SwimmingPool a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Плувен басейн"@bg, "Piscina"@ca, "Swimming Pool"@en, "Piscina"@es ;
+    rdfs:comment "Indoor or outdoor recreation premises for swimming or wave pool for fitness or recreational purposes", "Indoor or outdoor recreation premises for swimming or wave pool for fitness or recreational purposes"@en ;
+    skos:broader bigg:SportsAndWellnessFacilities .
+
+bigg:TransportRelated.AirportBuilding a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Сграда на летището"@bg, "Edifici de l´aeroport"@ca, "Airport Building"@en, "Edificio del aeropuerto"@es ;
+    rdfs:comment "Airport building", "Airport building"@en ;
+    skos:broader bigg:TransportRelated .
+
+bigg:TransportRelated.BusStation a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Автогара"@bg, "Estació d'autobusos"@ca, "Bus Station"@en, "Estación de autobuses"@es ;
+    rdfs:comment "Bus station building", "Bus station building"@en ;
+    skos:broader bigg:TransportRelated .
+
+bigg:TransportRelated.OtherTransportRelatedBuilding a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Други сгради, свързани с транспорта"@bg, "Altres edificis relacionats amb el transport"@ca, "Other Transport Related Building"@en, "Otros edificios relacionados con el transporte"@es ;
+    rdfs:comment "Other building which use is related to transport and mobility", "Other building which use is related to transport and mobility"@en ;
+    skos:broader bigg:TransportRelated .
+
+bigg:TransportRelated.ParkingGarage a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Паркинг гараж"@bg, "Aparcament"@ca, "Parking Garage"@en, "Aparcamiento"@es ;
+    rdfs:comment "Enclosed, partially enclosed, or open parking premises including attached garage, underground parking, uncovered driveways or lots, and covered carports", "Enclosed, partially enclosed, or open parking premises including attached garage, underground parking, uncovered driveways or lots, and covered carports"@en ;
+    skos:broader bigg:TransportRelated .
+
+bigg:TransportRelated.PortBuilding a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Пристанищна сграда"@bg, "Edifici portuari"@ca, "Port Building"@en, "Edificio portuario"@es ;
+    rdfs:comment "Port building", "Port building"@en ;
+    skos:broader bigg:TransportRelated .
+
+bigg:TransportRelated.TrainStation a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Жп гара"@bg, "Estació de tren"@ca, "Train Station"@en, "Estación de tren"@es ;
+    rdfs:comment "Train station building", "Train station building"@en ;
+    skos:broader bigg:TransportRelated .
+
+bigg:Unknown a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Неизвестно"@bg, "Desconegut"@ca, "Unknown"@en, "Desconocido"@es ;
+    rdfs:comment "Building which use or purpose is unknow to the user", "Building which use or purpose is unknow to the user"@en .
+
+bigg:Industrial a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Индустриални"@bg, "Industrial"@ca, "Industrial"@en, "Industrial"@es ;
+    rdfs:comment "Premises that include food processing, manufacturing, high tech, metal processing, pulp and paper firms", "Premises that include food processing, manufacturing, high tech, metal processing, pulp and paper firms"@en .
+
+bigg:Office a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Офис"@bg, "Oficina"@ca, "Office"@en, "Oficina"@es ;
+    rdfs:comment "Public or private structure where administrative work is performed", "Public or private structure where administrative work is performed"@en .
+
+bigg:ResidentialHousing a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Жилищни сгради"@bg, "Habitatges residencials"@ca, "Residential Housing"@en, "Viviendas residenciales"@es ;
+    rdfs:comment "Building designed to provide accomodation and related services to families and individuals", "Building designed to provide accomodation and related services to families and individuals"@en .
+
+bigg:SportsAndWellnessFacilities a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Спортни и уелнес сгради"@bg, "Instal·lacions esportives i de benestar"@ca, "Sports And Wellness Facilities"@en, "Instalaciones deportivas y de bienestar"@es ;
+    rdfs:comment "Facilities used for sports, physical activities and for body treatments ", "Facilities used for sports, physical activities and for body treatments "@en .
+
+bigg:Retail a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Търговия на дребно"@bg, "Comerç minorista"@ca, "Retail"@en, "Comercio minorista"@es ;
+    rdfs:comment "Wholesale and retail trade buildings", "Wholesale and retail trade buildings"@en .
+
+bigg:TransportRelated a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Транспортна дейност"@bg, "Relacionats amb el transport"@ca, "Transport Related"@en, "Relacionados con el transporte"@es ;
+    rdfs:comment "Building which use is related to transport and mobility", "Building which use is related to transport and mobility"@en .
+
+bigg:Hospitality a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Хотелски услуги"@bg, "Hostaleria"@ca, "Hospitality"@en, "Hostelería"@es ;
+    rdfs:comment "Building used to offer services including lodging, food and drink service, event planning, theme parks, and transportation. It includes hotels, restaurants and bars", "Building used to offer services including lodging, food and drink service, event planning, theme parks, and transportation. It includes hotels, restaurants and bars"@en .
+
+bigg:RecreationAndCulture a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Отдих и култура"@bg, "Oci i Cultura"@ca, "Recreation And Culture"@en, "Ocio y Cultura"@es ;
+    rdfs:comment "Cultural, entertainment, or recreational facilities", "Cultural, entertainment, or recreational facilities"@en .
+
+bigg:Healthcare a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Здравна служба"@bg, "Sanitat"@ca, "Healthcare"@en, "Sanidad"@es ;
+    rdfs:comment "Premises that host health care services for the maintenance and improvement of physical and mental health", "Premises that host health care services for the maintenance and improvement of physical and mental health"@en .
+
+bigg:Public a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Обществена"@bg, "Públic"@ca, "Public"@en, "Público"@es ;
+    rdfs:comment "Any other public building or structure that does not belong to the previous categories", "Any other public building or structure that does not belong to the previous categories"@en .
+
+bigg:EducationAndResearch a bigg:BuildingSpaceUseType, skos:Concept ;
+    rdfs:label "Образование и научни изследвания"@bg, "Educació i investigació"@ca, "Education And Research"@en, "Educación e investigación"@es ;
+    rdfs:comment "Facilities used for educational purposes and research", "Facilities used for educational purposes and research"@en .
 
-bigg:Retail.ShoppingMall a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises comprised of small to large retailers, restaurants, and entertainment establishments located indoor or outdoor";
-  skos:broader bigg:Retail .
-
-bigg:Retail.Supermarket a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Retailer supplying a wide range of products including groceries";
-  skos:broader bigg:Retail .
-
-bigg:Retail.Market a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building for the gathering of people for the purchase and sale of provisions, livestock, and other commodities";
-  skos:broader bigg:Retail .
-
-bigg:Retail.CommercialActivity a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises for the retail of merchandise such as furniture , electronics and appliance, food and beverage, health and personal care , clothing, books and music, and office supplies, stationery and gift stores. Malls or shopping centers are excluded.";
-  skos:broader bigg:Retail .
-
-bigg:Retail.ExhibitionCenter a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Large building where major trade fairs are held";
-  skos:broader bigg:Retail .
-
-bigg:Retail.OtherRetail a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Other wholesale and retail buildings";
-  skos:broader bigg:Retail .
-
-bigg:Hospitality a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building used to offer services including lodging, food and drink service, event planning, theme parks, and transportation. It includes hotels, restaurants and bars" .
-
-bigg:Hospitality.CafeOrBar a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premise where light food, alcoholic drinks or refreshments are served";
-  skos:broader bigg:Hospitality .
-
-bigg:Hospitality.Canteen a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Restaurant provided by an organization such as a college, factory, or company for its students or staff";
-  skos:broader bigg:Hospitality .
-
-bigg:Hospitality.Restaurant a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises for preparation and food service which includes waiting services";
-  skos:broader bigg:Hospitality .
-
-bigg:Hospitality.Hostel a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Lodging with limited amenities for a specific group of people, such as students, workers, or travellers";
-  skos:broader bigg:Hospitality .
-
-bigg:Hospitality.Guesthouse a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Small, privately owned homesteay that offers lodging";
-  skos:broader bigg:Hospitality .
-
-bigg:Hospitality.Hotel a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Lodging with extended amenities that includes resorts";
-  skos:broader bigg:Hospitality .
-
-bigg:Hospitality.OtherHospitality a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building used to offer other hospitality services";
-  skos:broader bigg:Hospitality .
-
-bigg:RecreationAndCulture a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Cultural, entertainment, or recreational facilities" .
-
-bigg:RecreationAndCulture.Cinema a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building where films are shown for public entertainment";
-  skos:broader bigg:RecreationAndCulture .
-
-bigg:RecreationAndCulture.Theatre a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building in which plays and other dramatic performances are given";
-  skos:broader bigg:RecreationAndCulture .
-
-bigg:RecreationAndCulture.Museum a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building in which objects of historical, scientific, artistic, or cultural interest are stored and exhibited";
-  skos:broader bigg:RecreationAndCulture .
-
-bigg:RecreationAndCulture.CulturalOrSocialCenter a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building or complex used to promotes culture and arts or to offer community services";
-  skos:broader bigg:RecreationAndCulture .
-
-bigg:RecreationAndCulture.Library a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises containing collections of books and periodicals for use or borrowing by the public or the members of an institution";
-  skos:broader bigg:RecreationAndCulture .
-
-bigg:RecreationAndCulture.ReligiousFacilities a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Religious public assembly premises including churches, monasteries, synagogues, mosques, and temples";
-  skos:broader bigg:RecreationAndCulture .
-
-bigg:RecreationAndCulture.OtherReacreationAndCulture a bigg:BuildingSpaceUseType,
-    skos:Concept;
-  rdfs:comment "Other facilities related to cultural, entertainment, or recreational activities";
-  skos:broader bigg:RecreationAndCulture .
-
-bigg:Healthcare a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises that host health care services for the maintenance and improvement of physical and mental health" .
-
-bigg:Healthcare.PrimaryCareCenterOrClinic a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises to receive people making an initial approach to a medical practitioner or clinic for advice or treatment";
-  skos:broader bigg:Healthcare .
-
-bigg:Healthcare.DayCareHospital a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises that include urgent care centers and outpatient clinics";
-  skos:broader bigg:Healthcare .
-
-bigg:Healthcare.Hospital a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises that provide temporary to long-term inpatient services";
-  skos:broader bigg:Healthcare .
-
-bigg:Healthcare.NursingHome a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Facility for special care needs including senior care community and nursing homes for people with disabilities";
-  skos:broader bigg:Healthcare .
-
-bigg:Healthcare.HomelessShelter a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Temporary residence for homeless individuals and families";
-  skos:broader bigg:Healthcare .
-
-bigg:Healthcare.VeterinaryClinic a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises that provide services for the prevention, diagnosis, treatment, and health care of animal populations";
-  skos:broader bigg:Healthcare .
-
-bigg:Healthcare.Mortuary a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises that are used for the storage of human corpses awaiting identification, or removal for autopsy or disposal by burial, cremation or otherwise";
-  skos:broader bigg:Healthcare .
-
-bigg:Healthcare.OtherHealthcare a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Buildings dedicated to other health care services ";
-  skos:broader bigg:Healthcare .
-
-bigg:EducationAndResearch a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Facilities used for educational purposes and research" .
-
-bigg:EducationAndResearch.Preschool a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Preschool education premises including kindergartens and daycare centers";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.PrimarySchool a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Education premises including primary schools and elementary schools";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.SecondarySchool a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Education premises including secondary schools, middle schools, high school";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.University a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Higher education premises including college, universities, technical schools, and professional schools";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.MilitaryOrPoliceAcademy a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises for the training of the military or police forces";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.ExtracurricularEducationCenter a bigg:BuildingSpaceUseType,
-    skos:Concept;
-  rdfs:comment "Education premises related to activities that fall outside the school, college, or university curriculum. This category includes music, language, and art schools";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.ResearchCenter a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises of a center or institute funded for doing research";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.Laboratory a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building equipped for scientific experiments, research, or for the manufacture of drugs or chemicals";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:EducationAndResearch.OtherEducationAndResearch a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Other facilities used for educational purposes and research";
-  skos:broader bigg:EducationAndResearch .
-
-bigg:SportsAndWellnessFacilities a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Facilities used for sports, physical activities and for body treatments " .
-
-bigg:SportsAndWellnessFacilities.FitnessCenter a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Fitness center premises for active physical fitness conditioning including aerobic dance or exercise centers, or weight training centers";
-  skos:broader bigg:SportsAndWellnessFacilities .
-
-bigg:SportsAndWellnessFacilities.Spa a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Commercial establishment offering health and beauty treatment through such means as steam baths, exercise equipment, and massage";
-  skos:broader bigg:SportsAndWellnessFacilities .
-
-bigg:SportsAndWellnessFacilities.SwimmingPool a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Indoor or outdoor recreation premises for swimming or wave pool for fitness or recreational purposes";
-  skos:broader bigg:SportsAndWellnessFacilities .
-
-bigg:SportsAndWellnessFacilities.SportsHall a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "A building or part of a building in which sports are played such as stadiums and arenas";
-  skos:broader bigg:SportsAndWellnessFacilities .
-
-bigg:SportsAndWellnessFacilities.SportsCenter a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "A building where different sports can be played";
-  skos:broader bigg:SportsAndWellnessFacilities .
-
-bigg:Public a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Any other public building or structure that does not belong to the previous categories" .
-
-bigg:Public.MonumentalComplex a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Monument building or monument complex";
-  skos:broader bigg:Public .
-
-bigg:Public.CourtHouse a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building in which a judicial court is held";
-  skos:broader bigg:Public .
-
-bigg:Public.FireStation a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Structure for storing firefighting apparatus such as fire engines and related vehicles, personal protective equipment, and other specialized equipment";
-  skos:broader bigg:Public .
-
-bigg:Public.PoliceStation a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Headquarters of a police force";
-  skos:broader bigg:Public .
-
-bigg:Public.OtherPublicAuthorityFacilities a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Headquarters of other public authorities";
-  skos:broader bigg:Public .
-
-bigg:Public.Penitentiary a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Penitentiary or correctional facility";
-  skos:broader bigg:Public .
-
-bigg:Public.MunicipalHall a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Multi-use municipal space or hall";
-  skos:broader bigg:Public .
-
-bigg:Public.OtherPublic a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Any other public building or structure that does not belong to the previous categories";
-  skos:broader bigg:Public .
-
-bigg:ResidentialHousing a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building designed to provide accomodation and related services to families and individuals" .
-
-bigg:ResidentialHousing.DetachedSingleFamilyHousing a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "A dwelling unit inhabited by a single family completely separated by open space on all sides";
-  skos:broader bigg:ResidentialHousing .
-
-bigg:ResidentialHousing.OtherSingleFamilyHousing a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Any other type of dwelling unit inhabited by a single family";
-  skos:broader bigg:ResidentialHousing .
-
-bigg:ResidentialHousing.MultiFamilyOneToFourStoreys a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "A dwelling unit inhabited by multiple families that is developed on 1 to 4 storeys";
-  skos:broader bigg:ResidentialHousing .
-
-bigg:ResidentialHousing.MultiFamilyFiveOrMoreStoreys a bigg:BuildingSpaceUseType,
-    skos:Concept;
-  rdfs:comment "A dwelling unit inhabited by multiple families that is developed on 5 or more storeys";
-  skos:broader bigg:ResidentialHousing .
-
-bigg:ResidentialHousing.ResidentialGarage a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Structure for storing a vehicle or vehicles that may separate or attached to a home";
-  skos:broader bigg:ResidentialHousing .
-
-bigg:TransportRelated a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building which use is related to transport and mobility" .
-
-bigg:TransportRelated.BusStation a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Bus station building";
-  skos:broader bigg:TransportRelated .
-
-bigg:TransportRelated.TrainStation a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Train station building";
-  skos:broader bigg:TransportRelated .
-
-bigg:TransportRelated.PortBuilding a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Port building";
-  skos:broader bigg:TransportRelated .
-
-bigg:TransportRelated.AirportBuilding a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Airport building";
-  skos:broader bigg:TransportRelated .
-
-bigg:TransportRelated.ParkingGarage a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Enclosed, partially enclosed, or open parking premises including attached garage, underground parking, uncovered driveways or lots, and covered carports";
-  skos:broader bigg:TransportRelated .
-
-bigg:TransportRelated.OtherTransportRelatedBuilding a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Other building which use is related to transport and mobility";
-  skos:broader bigg:TransportRelated .
-
-bigg:Industrial a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises that include food processing, manufacturing, high tech, metal processing, pulp and paper firms" .
-
-bigg:Industrial.WasteManagementFacility a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises designed to perform the activities and actions required to manage waste from its inception to its final disposal";
-  skos:broader bigg:Industrial .
-
-bigg:Industrial.Warehouse a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Premises with warehousing and storage facilities such as bulk farm products";
-  skos:broader bigg:Industrial .
-
-bigg:Other a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building dedicated to other uses" .
-
-bigg:Multi-use a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building dedicated to multiple uses" .
-
-bigg:Unknown a bigg:BuildingSpaceUseType, skos:Concept;
-  rdfs:comment "Building which use or purpose is unknow to the user" .

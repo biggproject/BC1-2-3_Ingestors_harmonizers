@@ -265,6 +265,14 @@ class Mapping(object):
                     "hasDeviceType": {
                         "key": "hasDeviceType",
                         "operations": []
+                    },
+                    "contractedPower": {
+                        "key": "contractedPower",
+                        "operations": []
+                    },
+                    "tariff": {
+                        "key": "tarifa_acces",
+                        "operations": []
                     }
                 }
             },

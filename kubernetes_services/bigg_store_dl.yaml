@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name:	bigg-store-dl
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
       app: bigg-store-dl

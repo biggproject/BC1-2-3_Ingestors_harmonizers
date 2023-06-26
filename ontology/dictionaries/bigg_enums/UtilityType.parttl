@@ -1,51 +1,55 @@
 
-bigg:OtherUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament (Altres)"@ca, "Suministro (Otros)"@es, "Supply(Other)"@en .
 
-bigg:TotalUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament Total"@ca, "Suministro Total"@es, "Supply Total"@en .
 
-bigg:ElectricUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament Elèctric"@ca, "Suministro Eléctrico"@es, "Electric Supply"@en .
 
-bigg:GasUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Gas"@ca, "Suministro de Gas"@es, "Gas Supply"@en .
-
-bigg:LPGUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de LPG"@ca, "Suministro de LPG"@es, "LPG Supply"@en .
-
-bigg:WaterUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament d'Aigua"@ca, "Suministro de Agua"@es, "Water Supply"@en .
-
-bigg:DieselUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Gasoil"@ca, "Suministro de Gasóleo"@es, "Diesel Supply"@en .
-
-bigg:HeavyFuelUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Combustibles Pesats"@ca, "Suministro de Combustibles Pesados"@es, "Heavy Fuel Supply"@en .
-
-bigg:CoalUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Carbó"@ca, "Suministro de Carbón"@es, "Coal Supply"@en .
-
-bigg:DistrictHeatingUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Calor"@ca, "Suministro de Calor"@es, "Heat Supply"@en .
-
-bigg:DistrictCoolingUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Fred"@ca, "Suministro de Frio"@es, "Coal Supply"@en .
+bigg:BiofuelsUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Биогорива"@bg, "Biocombustibles "@ca, "Subministrament de Biofuel"@ca, "Biofuel Supply"@en, "Biofuels"@en, "Biocombustibles "@es, "Suministro de Biofuel"@es .
 
 bigg:CHPUtility a bigg:UtilityType, skos:Concept ;
-  rdfs:label "Subministrament de Cogeneració"@ca, "Suministro de Cogeneración"@es, "CHP Supply"@en .
+    rdfs:label "Когенерация"@bg, "Cogeneració "@ca, "Subministrament de Cogeneració"@ca, "CHP Supply"@en, "Combined Heating Power "@en, "Cogeneración "@es, "Suministro de Cogeneración"@es .
 
-bigg:WoodUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Fusta"@ca, "Suministro de Madera"@es, "Wood Supply"@en .
+bigg:CoalUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Въглища"@bg, "Carbó"@ca, "Subministrament de Carbó"@ca, "Coal"@en, "Coal Supply"@en, "Carbón"@es, "Suministro de Carbón"@es .
 
-bigg:PelletsUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Pellets"@ca, "Suministro de Pellets"@es, "Pellets Supply"@en .
+bigg:DieselUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Дизелово гориво/промишлен газьол"@bg, "Gasoil"@ca, "Subministrament de Gasoil"@ca, "Diesel Oil"@en, "Diesel Supply"@en, "Gasoleo"@es, "Suministro de Gasóleo"@es .
 
-bigg:BiofuelsUtility a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Biofuel"@ca, "Suministro de Biofuel"@es, "Biofuel Supply"@en .
+bigg:DistrictCoolingUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Централизирано охлаждане"@bg, "Subministrament de Fred"@ca, "Xarxa de refrigeració "@ca, "Coal Supply"@en, "District cooling"@en, "Red de refigeración"@es, "Suministro de Frio"@es .
 
-bigg:RenewableElectricityUtilityAuto-Consumption a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament d'Auto Consum"@ca, "Suministro de Auto Consumo"@es, "Auto Consumption Supply"@en .
+bigg:DistrictHeatingUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Централизирано отопление"@bg, "Subministrament de Calor"@ca, "Xarxa de calor "@ca, "Heat Energy"@en, "Heat Supply"@en, "Red de calefacción"@es, "Suministro de Calor"@es .
 
-bigg:SolarThermal a bigg:UtilityType, skos:Concept;
-  rdfs:label "Subministrament de Solar Tèrmica"@ca, "Suministro de Solar Térmica"@es, "Solar Thermal Supply"@en .
+bigg:ElectricUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Електрическа енергия"@bg, "Electricitat"@ca, "Subministrament Elèctric"@ca, "Electric Supply"@en, "Electricity"@en, "Electricidad"@es, "Suministro Eléctrico"@es .
+
+bigg:GasUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Природен газ"@bg, "Gas"@ca, "Subministrament de Gas"@ca, "Gas"@en, "Gas Supply"@en, "Gas"@es, "Suministro de Gas"@es .
+
+bigg:HeavyFuelUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Мазут"@bg, "Fuel"@ca, "Subministrament de Combustibles Pesats"@ca, "Heavy Fuel Oil"@en, "Heavy Fuel Supply"@en, "Fuel"@es, "Suministro de Combustibles Pesados"@es .
+
+bigg:LPGUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Пропан-Бутан"@bg, "Gas Liquat del Pretoli "@ca, "Subministrament de LPG"@ca, "LPG Supply"@en, "Liquified Petroleum Gas"@en, "Gas Liquado de Petróleo"@es, "Suministro de LPG"@es .
+
+bigg:OtherUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Altres"@ca, "Subministrament (Altres)"@ca, "Other"@en, "Supply(Other)"@en, "Otros"@es, "Suministro (Otros)"@es .
+
+bigg:PelletsUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Пелети"@bg, "Pellets"@ca, "Subministrament de Pellets"@ca, "Pellets"@en, "Pellets Supply"@en, "Pellets"@es, "Suministro de Pellets"@es .
+
+bigg:RenewableElectricityUtilityAuto-Consumption a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Енергия от фотоволтаици за собствено потребление"@bg, "Autoconsum FV"@ca, "Subministrament d'Auto Consum"@ca, "Auto Consumption Supply"@en, "Electric Auto-consumption"@en, "Autoconsumo FV"@es, "Suministro de Auto Consumo"@es .
+
+bigg:SolarThermal a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Слънчева топлинна енергия "@bg, "Solar tèrmica"@ca, "Subministrament de Solar Tèrmica"@ca, "Solar Thermal Supply"@en, "Solar thermal "@en, "Solar térmica"@es, "Suministro de Solar Térmica"@es .
+
+bigg:TotalUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Общо"@bg, "Subministrament Total"@ca, "Total "@ca, "Supply Total"@en, "Total"@en, "Suministro Total"@es, "Total"@es .
+
+bigg:WaterUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Вода"@bg, "Aigua"@ca, "Subministrament d'Aigua"@ca, "Water"@en, "Water Supply"@en, "Agua"@es, "Suministro de Agua"@es .
+
+bigg:WoodUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Дърва"@bg, "Fusta"@ca, "Subministrament de Fusta"@ca, "Wood"@en, "Wood Supply"@en, "Madera"@es, "Suministro de Madera"@es .
+

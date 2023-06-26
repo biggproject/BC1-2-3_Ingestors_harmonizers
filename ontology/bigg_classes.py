@@ -144,7 +144,7 @@ class StatePoint(BIGGObjects):
 class WeatherStation(BIGGObjects):
     __rdf_type__ = ['Bigg.WeatherStation', 'Bigg.DataProvider', 'Bigg.Thing']
 
-    def __init__(self, subject, comment=None,label=None,latitude=None,longitude=None,hasDeviceInputProtocol=None,hasDeviceInputSignalType=None,hasDeviceType=None,hasHistory=None,hasSensor=None,hasState=None,isPartOfDeviceAggregator=None,observes=None):
+    def __init__(self, subject, comment=None,label=None,latitude=None,longitude=None,hasDeviceInputProtocol=None,hasDeviceInputSignalType=None,hasDeviceLocationInfo=None,hasDeviceType=None,hasHistory=None,hasSensor=None,hasState=None,isPartOfDeviceAggregator=None,observes=None):
         super().__init__(subject)
         self.comment = comment
         self.label = label
@@ -152,6 +152,7 @@ class WeatherStation(BIGGObjects):
         self.longitude = longitude
         self.hasDeviceInputProtocol = hasDeviceInputProtocol
         self.hasDeviceInputSignalType = hasDeviceInputSignalType
+        self.hasDeviceLocationInfo = hasDeviceLocationInfo
         self.hasDeviceType = hasDeviceType
         self.hasHistory = hasHistory
         self.hasSensor = hasSensor
@@ -163,7 +164,7 @@ class WeatherStation(BIGGObjects):
 class State(BIGGObjects):
     __rdf_type__ = ['Bigg.State', 'Bigg.TimeSeriesList', 'Bigg.Thing']
 
-    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None,hasStatePoint=None,hasStateType=None,hasStateUnit=None):
+    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None,hasEstimationMethod=None,hasMeasuredProperty=None,hasStatePoint=None,hasStateType=None,hasStateUnit=None):
         super().__init__(subject)
         self.comment = comment
         self.label = label
@@ -174,6 +175,8 @@ class State(BIGGObjects):
         self.timeSeriesIsRegular = timeSeriesIsRegular
         self.timeSeriesStart = timeSeriesStart
         self.timeSeriesTimeAggregationFunction = timeSeriesTimeAggregationFunction
+        self.hasEstimationMethod = hasEstimationMethod
+        self.hasMeasuredProperty = hasMeasuredProperty
         self.hasStatePoint = hasStatePoint
         self.hasStateType = hasStateType
         self.hasStateUnit = hasStateUnit
@@ -182,7 +185,7 @@ class State(BIGGObjects):
 class Sensor(BIGGObjects):
     __rdf_type__ = ['Bigg.Sensor', 'Bigg.TimeSeriesList', 'Bigg.Thing']
 
-    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None,hasMeasurement=None,hasMeasurementUnit=None,hasOutputProtocol=None,hasOutputSignalType=None,hasSensorReadingType=None):
+    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None,hasEstimationMethod=None,hasMeasuredProperty=None,hasMeasurement=None,hasMeasurementUnit=None,hasOutputProtocol=None,hasOutputSignalType=None,hasSensorReadingType=None):
         super().__init__(subject)
         self.comment = comment
         self.label = label
@@ -193,6 +196,8 @@ class Sensor(BIGGObjects):
         self.timeSeriesIsRegular = timeSeriesIsRegular
         self.timeSeriesStart = timeSeriesStart
         self.timeSeriesTimeAggregationFunction = timeSeriesTimeAggregationFunction
+        self.hasEstimationMethod = hasEstimationMethod
+        self.hasMeasuredProperty = hasMeasuredProperty
         self.hasMeasurement = hasMeasurement
         self.hasMeasurementUnit = hasMeasurementUnit
         self.hasOutputProtocol = hasOutputProtocol
@@ -225,10 +230,11 @@ class BuildingSpace(BIGGObjects):
 class Device(BIGGObjects):
     __rdf_type__ = ['Bigg.Device', 'Bigg.DataProvider', 'Bigg.Element', 'Bigg.Thing']
 
-    def __init__(self, subject, comment=None,label=None,deviceIDFromOrganization=None,deviceInstallationDate=None,deviceLicenceVersionNumber=None,deviceManufacturer=None,deviceModel=None,deviceName=None,deviceNumberOfOutputs=None,deviceOperatingSystem=None,deviceRemovalDate=None,deviceSerialNumber=None,deviceThresholdValue=None,hasDeviceInputProtocol=None,hasDeviceInputSignalType=None,hasDeviceType=None,hasHistory=None,hasSensor=None,hasState=None,isPartOfDeviceAggregator=None,observes=None,hasSubElement=None,isAffectedByMeasure=None,isAssociatedWithSpace=None,isContainedInSpace=None,maintainsElement=None,isContainedInSystem=None):
+    def __init__(self, subject, comment=None,label=None,contractedPower=None,deviceIDFromOrganization=None,deviceInstallationDate=None,deviceLicenceVersionNumber=None,deviceManufacturer=None,deviceModel=None,deviceName=None,deviceNumberOfOutputs=None,deviceOperatingSystem=None,deviceRemovalDate=None,deviceSerialNumber=None,deviceThresholdValue=None,distributor=None,maxPowerAPM=None,maxPowerBEI=None,renoteManagement=None,selfConsumption=None,tariff=None,tension=None,hasDeviceInputProtocol=None,hasDeviceInputSignalType=None,hasDeviceLocationInfo=None,hasDeviceType=None,hasHistory=None,hasSensor=None,hasState=None,isPartOfDeviceAggregator=None,observes=None,hasSubElement=None,isAffectedByMeasure=None,isAssociatedWithSpace=None,isContainedInSpace=None,maintainsElement=None,isContainedInSystem=None):
         super().__init__(subject)
         self.comment = comment
         self.label = label
+        self.contractedPower = contractedPower
         self.deviceIDFromOrganization = deviceIDFromOrganization
         self.deviceInstallationDate = deviceInstallationDate
         self.deviceLicenceVersionNumber = deviceLicenceVersionNumber
@@ -240,8 +246,16 @@ class Device(BIGGObjects):
         self.deviceRemovalDate = deviceRemovalDate
         self.deviceSerialNumber = deviceSerialNumber
         self.deviceThresholdValue = deviceThresholdValue
+        self.distributor = distributor
+        self.maxPowerAPM = maxPowerAPM
+        self.maxPowerBEI = maxPowerBEI
+        self.renoteManagement = renoteManagement
+        self.selfConsumption = selfConsumption
+        self.tariff = tariff
+        self.tension = tension
         self.hasDeviceInputProtocol = hasDeviceInputProtocol
         self.hasDeviceInputSignalType = hasDeviceInputSignalType
+        self.hasDeviceLocationInfo = hasDeviceLocationInfo
         self.hasDeviceType = hasDeviceType
         self.hasHistory = hasHistory
         self.hasSensor = hasSensor
@@ -426,7 +440,7 @@ class SingleKPIAssessment(BIGGObjects):
 class KPIAssessment(BIGGObjects):
     __rdf_type__ = ['Bigg.KPIAssessment', 'Bigg.TimeSeriesList', 'Bigg.Thing']
 
-    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None,hasKPIUnit=None,isEstimatedByModel=None,quantifiesKPI=None):
+    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None,hasEstimationMethod=None,hasMeasuredProperty=None,hasKPIUnit=None,isEstimatedByModel=None,quantifiesKPI=None):
         super().__init__(subject)
         self.comment = comment
         self.label = label
@@ -437,6 +451,8 @@ class KPIAssessment(BIGGObjects):
         self.timeSeriesIsRegular = timeSeriesIsRegular
         self.timeSeriesStart = timeSeriesStart
         self.timeSeriesTimeAggregationFunction = timeSeriesTimeAggregationFunction
+        self.hasEstimationMethod = hasEstimationMethod
+        self.hasMeasuredProperty = hasMeasuredProperty
         self.hasKPIUnit = hasKPIUnit
         self.isEstimatedByModel = isEstimatedByModel
         self.quantifiesKPI = quantifiesKPI
@@ -850,17 +866,6 @@ class MeasurementUnit(BIGGObjects):
         self.label = label
         
         
-class TimeseriesList(BIGGObjects):
-    __rdf_type__ = ['Bigg.TimeseriesList', 'Bigg.Thing']
-
-    def __init__(self, subject, comment=None,label=None,hasEstimationMethod=None,hasMeasuredProperty=None):
-        super().__init__(subject)
-        self.comment = comment
-        self.label = label
-        self.hasEstimationMethod = hasEstimationMethod
-        self.hasMeasuredProperty = hasMeasuredProperty
-        
-        
 class ObservableItem(BIGGObjects):
     __rdf_type__ = ['Bigg.ObservableItem', 'Bigg.Thing']
 
@@ -915,7 +920,7 @@ class DeviceAggregator(BIGGObjects):
 class TimeSeriesList(BIGGObjects):
     __rdf_type__ = ['Bigg.TimeSeriesList', 'Bigg.Thing']
 
-    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None):
+    def __init__(self, subject, comment=None,label=None,timeSeriesEnd=None,timeSeriesFrequency=None,timeSeriesIsCumulative=None,timeSeriesIsOnChange=None,timeSeriesIsRegular=None,timeSeriesStart=None,timeSeriesTimeAggregationFunction=None,hasEstimationMethod=None,hasMeasuredProperty=None):
         super().__init__(subject)
         self.comment = comment
         self.label = label
@@ -926,17 +931,20 @@ class TimeSeriesList(BIGGObjects):
         self.timeSeriesIsRegular = timeSeriesIsRegular
         self.timeSeriesStart = timeSeriesStart
         self.timeSeriesTimeAggregationFunction = timeSeriesTimeAggregationFunction
+        self.hasEstimationMethod = hasEstimationMethod
+        self.hasMeasuredProperty = hasMeasuredProperty
         
         
 class DataProvider(BIGGObjects):
     __rdf_type__ = ['Bigg.DataProvider', 'Bigg.Thing']
 
-    def __init__(self, subject, comment=None,label=None,hasDeviceInputProtocol=None,hasDeviceInputSignalType=None,hasDeviceType=None,hasHistory=None,hasSensor=None,hasState=None,isPartOfDeviceAggregator=None,observes=None):
+    def __init__(self, subject, comment=None,label=None,hasDeviceInputProtocol=None,hasDeviceInputSignalType=None,hasDeviceLocationInfo=None,hasDeviceType=None,hasHistory=None,hasSensor=None,hasState=None,isPartOfDeviceAggregator=None,observes=None):
         super().__init__(subject)
         self.comment = comment
         self.label = label
         self.hasDeviceInputProtocol = hasDeviceInputProtocol
         self.hasDeviceInputSignalType = hasDeviceInputSignalType
+        self.hasDeviceLocationInfo = hasDeviceLocationInfo
         self.hasDeviceType = hasDeviceType
         self.hasHistory = hasHistory
         self.hasSensor = hasSensor
@@ -1367,4 +1375,16 @@ class EnergyPerformanceCertificate(BIGGObjects):
         self.lightingPrimaryEnergyClass = lightingPrimaryEnergyClass
         self.lightingPrimaryEnergyConsumption = lightingPrimaryEnergyConsumption
         self.hasAdditionalInfo = hasAdditionalInfo
+        
+        
+class ResourceType(BIGGObjects):
+    __rdf_type__ = ['Bigg.ResourceType', 'Bigg.Thing']
+
+    def __init__(self, subject, comment=None,label=None,relatedDeviceType=None,relatedMeasuredProperty=None,relatedUtilityType=None):
+        super().__init__(subject)
+        self.comment = comment
+        self.label = label
+        self.relatedDeviceType = relatedDeviceType
+        self.relatedMeasuredProperty = relatedMeasuredProperty
+        self.relatedUtilityType = relatedUtilityType
         

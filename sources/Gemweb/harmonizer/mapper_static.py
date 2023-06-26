@@ -44,9 +44,9 @@ def clean_prepare_all_df(df):
     municipality_dic = Cache.municipality_dic_ES
     for prov_k, prov_uri in province_map.items():
         if prov_uri is None:
-            df.loc[df['province'] == prov_k, 'hasAddressCity'] = None
+            df.loc[df['provincia'] == prov_k, 'hasAddressCity'] = None
             continue
-        grouped = df.groupby("province").get_group(prov_k)
+        grouped = df.groupby("provincia").get_group(prov_k)
         city_fuzz = partial(fuzzy_dictionary_match,
                             map_dict=fuzz_params(
                                 municipality_dic,
@@ -56,8 +56,10 @@ def clean_prepare_all_df(df):
                             default=None)
         unique_city = grouped.poblacio.unique()
         city_map = {k: city_fuzz(k) for k in unique_city}
-        df.loc[df['province'] == prov_k, 'hasAddressCity'] = grouped.poblacio.map(city_map)
+        df.loc[df['provincia'] == prov_k, 'hasAddressCity'] = grouped.poblacio.map(city_map)
 
+    df['contractedPower'] = "P1: "+df.pot_contract_p1.astype(str) + " " + "P2: "+df.pot_contract_p2.astype(str) + " " \
+                            + "P3: "+df.pot_contract_p3.astype(str)
 
 def clean_prepare_linked_df(df):
     df['building'] = df.num_ens.apply(building_subject)

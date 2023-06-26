@@ -1,28 +1,32 @@
+
+
+
+
 bigg:CadastralParcelArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Superfície de la Parcel·la Cadastral "@ca, "Cadastral Parcel Area"@en, "Superficie de la parcela catastral"@es ;
-    rdfs:comment "The area of the cadastral parcel over which the building is constriucted" .
+    rdfs:label "Площ на парцела по кадастър"@bg, "Superfície de la Parcel·la Cadastral "@ca, "Cadastral Parcel Area"@en, "Superficie de la parcela catastral"@es ;
+    rdfs:comment "The area of the cadastral parcel over which the building is constriucted", "The area of the cadastral parcel over which the building is constriucted"@en .
 
 bigg:CooledFloorArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Superfície Refrigerada"@ca, "Cooled Floor Area"@en, "Superficie refrigerada"@es ;
-    rdfs:comment "Part of the net floor area that is cooled or air conditioned" .
+    rdfs:label "Площ на охлаждания обем"@bg, "Superfície Refrigerada"@ca, "Cooled Floor Area"@en, "Superficie refrigerada"@es ;
+    rdfs:comment "Part of the net floor area that is cooled or air conditioned", "Part of the net floor area that is cooled or air conditioned"@en .
 
 bigg:GrossFloorArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Superfície Bruta"@ca, "Gross Floor Area"@en, "Superficie bruta"@es ;
-    rdfs:comment "Sum of the floor areas of all building spaces measured from the external faces of the exterior walls" .
+    rdfs:label "Обща, разгъната застроена площ (под и над нивото на терена)"@bg, "Superfície Bruta"@ca, "Gross Floor Area"@en, "Superficie bruta"@es, "Superficie construida"@es ;
+    rdfs:comment "Sum of the floor areas of all building spaces measured from the external faces of the exterior walls", "Sum of the floor areas of all building spaces measured from the external faces of the exterior walls"@en .
 
 bigg:GrossFloorAreaAboveGround a bigg:AreaType, skos:Concept ;
-    rdfs:label "Superfície Bruta Sobre rasant "@ca, "Gross Floor Area Above Ground"@en, "Superficie bruta sobre el suelo"@es ;
-    rdfs:comment "Part of the gross floor area above ground" .
+    rdfs:label "Разгъната застроена площ (над нивото на терена)"@bg, "Superfície Bruta Sobre rasant "@ca, "Gross Floor Area Above Ground"@en, "Superficie bruta sobre el suelo"@es, "Superficie construida sobre el suelo"@es ;
+    rdfs:comment "Part of the gross floor area above ground", "Part of the gross floor area above ground"@en .
 
 bigg:GrossFloorAreaUnderGround a bigg:AreaType, skos:Concept ;
-    rdfs:label "Superfície Bruta Sota rasant"@ca, "Gross Floor Area Under Ground"@en, "Superficie bruta bajo tierra"@es ;
-    rdfs:comment "Part of the gross floor area below ground" .
+    rdfs:label "Разгъната застроена площ (под нивото на терена)"@bg, "Superfície Bruta Sota rasant"@ca, "Gross Floor Area Under Ground"@en, "Superficie bruta bajo tierra"@es, "Superficie construida bajo tierra"@es ;
+    rdfs:comment "Part of the gross floor area below ground", "Part of the gross floor area below ground"@en .
 
 bigg:HeatedFloorArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Superfície Calefactada "@ca, "Heated Floor Area"@en, "Superficie Calefactada"@es ;
-    rdfs:comment "Part of the net floor area that is heated" .
+    rdfs:label "Отопляема площ"@bg, "Superfície Calefactada "@ca, "Heated Floor Area"@en, "Superficie Calefactada"@es, "Superficie calefactada"@es ;
+    rdfs:comment "Part of the net floor area that is heated", "Part of the net floor area that is heated"@en .
 
 bigg:NetFloorArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Superfície Neta"@ca, "Net Floor Area"@en, "Superficie neta "@es ;
-    rdfs:comment "Gross floor area, excluding the area occupied by walls and partitions, the circulation area (where people walk), and the mechanical area (where there is mechanical equipment), i.e., gross floor area reduced by the area for structural components" .
+    rdfs:label "Нетна застроена площ"@bg, "Superfície Neta"@ca, "Net Floor Area"@en, "Superficie neta "@es, "Superficie útil"@es ;
+    rdfs:comment "Gross floor area, excluding the area occupied by walls and partitions, the circulation area (where people walk), and the mechanical area (where there is mechanical equipment), i.e., gross floor area reduced by the area for structural components", "Gross floor area, excluding the area occupied by walls and partitions, the circulation area (where people walk), and the mechanical area (where there is mechanical equipment), i.e., gross floor area reduced by the area for structural components"@en .
 

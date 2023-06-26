@@ -33,7 +33,7 @@ CALL n10s.nsprefixes.add("rdfs","http://www.w3.org/2000/01/rdf-schema#");
 Create the dictionaries, when they are already translated
 ```bash
 echo "add translation to previously created dictionaries"
-python3 -m set_up.Dictionaries -a load_translate
+python3 -m set_up.Dictionaries -a load
 ```
 
 <details>
@@ -41,11 +41,11 @@ python3 -m set_up.Dictionaries -a load_translate
 
 ```bash
 echo "create dictionaries without translation"
-python3 -m set_up.Dictionaries -a load
+python3 -m set_up.Dictionaries -a load_translate(deprecated)
 echo "create translation files for the taxonomies"
-python3 -m set_up.Dictionaries -a create
+python3 -m set_up.Dictionaries -a create(deprecated)
 echo "add translation to previously created dictionaries"
-python3 -m set_up.Dictionaries -a translate
+python3 -m set_up.Dictionaries -a translate(deprecated)
 ```
 </details>
 

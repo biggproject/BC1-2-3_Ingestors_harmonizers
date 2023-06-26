@@ -1,147 +1,162 @@
 
-bigg:BuildingEnergyManagementSystem a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A software system to automate building controls, also known as an Energy Management Control Systems (EMCS)." .
 
-bigg:IfcDistributionControlElement a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A building automation device that is used to impart control over elements of one of its systems" .
 
-bigg:IfcDistributionControlElement.IfcFlowInstrument a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A flow instrument reads and displays the value of a particular property of a system at a point, or displays the difference in the value of a property between two points.";
-  skos:broader bigg:IfcDistributionControlElement .
 
-bigg:IfcDistributionControlElement.IfcSensor a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A device that measures a physical quantity and converts it into a signal which can be read by an observer or by an instrument";
-  skos:broader bigg:IfcDistributionControlElement .
+bigg:BuildingEnergyManagementSystem a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Система за управление на енергията в сградата"@bg, "Sistema de gestió energètica de l'edifici"@ca, "Building Energy Management System"@en, "Sistema de gestión de energía del edificio"@es ;
+    rdfs:comment "A software system to automate building controls, also known as an Energy Management Control Systems (EMCS).", "A software system to automate building controls, also known as an Energy Management Control Systems (EMCS)."@en .
 
-bigg:IfcDistributionControlElement.IfcSensor.LightSensor a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A passive device that convert photons into an electrical signal output";
-  skos:broader bigg:IfcDistributionControlElement.IfcSensor .
+bigg:IfcDistributionControlElement.IfcFlowInstrument a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Инструмент за измерване във флуиди"@bg, "Instrument de flux"@ca, "Flow Instrument"@en, "Instrumento de flujo"@es ;
+    rdfs:comment "A flow instrument reads and displays the value of a particular property of a system at a point, or displays the difference in the value of a property between two points.", "A flow instrument reads and displays the value of a particular property of a system at a point, or displays the difference in the value of a property between two points."@en ;
+    skos:broader bigg:IfcDistributionControlElement .
 
-bigg:IfcDistributionControlElement.IfcSensor.OccupancySensor a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A motion detecting device used to detect the presence of a person, oftern used to automatically control one of the building systems";
-  skos:broader bigg:IfcDistributionControlElement.IfcSensor .
+bigg:IfcDistributionControlElement.IfcSensor.LightSensor a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Сензор за светлина"@bg, "Sensor de llum"@ca, "Light Sensor"@en, "Sensor de luz"@es ;
+    rdfs:comment "A passive device that convert photons into an electrical signal output", "A passive device that convert photons into an electrical signal output"@en ;
+    skos:broader bigg:IfcDistributionControlElement.IfcSensor .
 
-bigg:IfcDistributionControlElement.IfcSensor.TemperatureSensor a bigg:DeviceType,
-    skos:Concept;
-  rdfs:comment "An electronic device that converts the measurement of the temperature of its environment into electronic data";
-  skos:broader bigg:IfcDistributionControlElement.IfcSensor .
+bigg:IfcDistributionControlElement.IfcSensor.OccupancySensor a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Сензор за присъствие"@bg, "Sensor d'ocupació"@ca, "Occupancy Sensor"@en, "Sensor de ocupación"@es ;
+    rdfs:comment "A motion detecting device used to detect the presence of a person, oftern used to automatically control one of the building systems", "A motion detecting device used to detect the presence of a person, oftern used to automatically control one of the building systems"@en ;
+    skos:broader bigg:IfcDistributionControlElement.IfcSensor .
 
-bigg:IfcDistributionControlElement.IfcSensor.PressureSensor a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An electronic device that converts the measurement of the pressure of its environment into electronic data";
-  skos:broader bigg:IfcDistributionControlElement.IfcSensor .
+bigg:IfcDistributionControlElement.IfcSensor.PressureSensor a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Сензор за налягане"@bg, "Sensor de pressió"@ca, "Pressure Sensor"@en, "Sensor de presión"@es ;
+    rdfs:comment "An electronic device that converts the measurement of the pressure of its environment into electronic data", "An electronic device that converts the measurement of the pressure of its environment into electronic data"@en ;
+    skos:broader bigg:IfcDistributionControlElement.IfcSensor .
 
-bigg:IfcDistributionControlElement.Timer a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An automatic mechanism for activating a device at a preset time";
-  skos:broader bigg:IfcDistributionControlElement .
+bigg:IfcDistributionControlElement.IfcSensor.TemperatureSensor a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Температурен сензор"@bg, "Sensor de temperatura"@ca, "Temperature Sensor"@en, "Sensor de temperatura"@es ;
+    rdfs:comment "An electronic device that converts the measurement of the temperature of its environment into electronic data", "An electronic device that converts the measurement of the temperature of its environment into electronic data"@en ;
+    skos:broader bigg:IfcDistributionControlElement.IfcSensor .
 
-bigg:IfcDistributionControlElement.Thermostat a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A device that automatically regulates temperature, or that activates a device when the temperature reaches a certain point";
-  skos:broader bigg:IfcDistributionControlElement .
+bigg:IfcDistributionControlElement.Thermostat a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Термостат"@bg, "Termòstat"@ca, "Thermostat"@en, "Termostato"@es ;
+    rdfs:comment "A device that automatically regulates temperature, or that activates a device when the temperature reaches a certain point", "A device that automatically regulates temperature, or that activates a device when the temperature reaches a certain point"@en ;
+    skos:broader bigg:IfcDistributionControlElement .
 
-bigg:Meter a bigg:DeviceType, skos:Concept;
-  rdfs:label "Comptador"@ca, "Contador"@es, "Meter"@en;
-  rdfs:comment "A device built to accurately detect and display a quantity in a form readable by a human being" .
+bigg:IfcDistributionControlElement.Timer a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Таймер"@bg, "Temporitzador"@ca, "Timer"@en, "Temporizador"@es ;
+    rdfs:comment "An automatic mechanism for activating a device at a preset time", "An automatic mechanism for activating a device at a preset time"@en ;
+    skos:broader bigg:IfcDistributionControlElement .
 
-bigg:Meter.IfcFlowMeter a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A flow meter is a device that is used to measure the flow rate in a system.";
-  rdfs:label "Comptador de Flux"@ca, "Contador de Flujo"@es, "Flow Meter"@en;
-  skos:broader bigg:Meter .
+bigg:Meter.EnergyMeter.AnalogMeter a bigg:DeviceType, skos:Concept ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.IfcFlowMeter.Water a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A flow meter used to measure the water flow consumption";
-  rdfs:label "Comptador d'Aigua"@ca, "Contador de Agua"@es, "Water Meter"@en;
-  skos:broader bigg:Meter.IfcFlowMeter .
+bigg:Meter.EnergyMeter.Biofuels a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Biofuels"@ca, "Biofuels Meter"@en, "Contador de Biofuels"@es ;
+    rdfs:comment "An energy meter used to measure the biofuels consumption", "An energy meter used to measure the biofuels consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter a bigg:DeviceType, skos:Concept;
-  rdfs:label "Comptador d'Energia"@ca, "Contador de Energía"@es, "Energy Meter"@en;
-  skos:broader bigg:Meter .
+bigg:Meter.EnergyMeter.CHP a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Cogeneració"@ca, "CHP Meter"@en, "Contador de Cogeneración"@es ;
+    rdfs:comment "An energy meter used to measure the CHP consumption", "An energy meter used to measure the CHP consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Other a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure other  consumptions";
-  rdfs:label "Comptador d'Energia (Altres)"@ca, "Contador de Energía (Otras)"@es, "Energy Meter (Other)"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Coal a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Carbó"@ca, "Coal Meter"@en, "Contador de Carbón"@es ;
+    rdfs:comment "An energy meter used to measure the coal consumption", "An energy meter used to measure the coal consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Total a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the combined set of  consumptions";
-  rdfs:label "Comptador d'Energia Total"@ca, "Contador de Energía Total"@es, "Total Energy Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Cool a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Fred"@ca, "Cool Meter"@en, "Contador de Frio"@es ;
+    rdfs:comment "An energy meter used to measure the District Cooling consumption", "An energy meter used to measure the District Cooling consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Electricity a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the electricity consumption";
-  rdfs:label "Comptador d'Electricitat"@ca, "Contador de Electricidad"@es, "Electricity Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Diesel a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Gasoil"@ca, "Diesel Meter"@en, "Contador de Gasóleo"@es ;
+    rdfs:comment "An energy meter used to measure the diesel consumption", "An energy meter used to measure the diesel consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Gas a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the gas consumption";
-  rdfs:label "Comptador de Gas"@ca, "Contador de Gas"@es, "Gas Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Electricity a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador d'Electricitat"@ca, "Electricity Meter"@en, "Contador de Electricidad"@es ;
+    rdfs:comment "An energy meter used to measure the electricity consumption", "An energy meter used to measure the electricity consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.LPG a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the LPG consumption";
-  rdfs:label "Comptador de LPG"@ca, "Contador de LPG"@es, "LPG Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Gas a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Gas"@ca, "Gas Meter"@en, "Contador de Gas"@es ;
+    rdfs:comment "An energy meter used to measure the gas consumption", "An energy meter used to measure the gas consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Diesel a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the diesel consumption";
-  rdfs:label "Comptador de Gasoil"@ca, "Contador de Gasóleo"@es, "Diesel Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Heat a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Calor"@ca, "Heat Meter"@en, "Contador de Calor"@es ;
+    rdfs:comment "An energy meter used to measure the District Heating consumption", "An energy meter used to measure the District Heating consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.HeavyFuel a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the heavy fuel consumption";
-  rdfs:label "Comptador de Combustible Pesat"@ca, "Contador de Combustible Pesado"@es, "Heavy Fuel Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.HeavyFuel a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Combustible Pesat"@ca, "Heavy Fuel Meter"@en, "Contador de Combustible Pesado"@es ;
+    rdfs:comment "An energy meter used to measure the heavy fuel consumption", "An energy meter used to measure the heavy fuel consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Coal a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the coal consumption";
-  rdfs:label "Comptador de Carbó"@ca, "Contador de Carbón"@es, "Coal Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.LPG a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de LPG"@ca, "LPG Meter"@en, "Contador de LPG"@es ;
+    rdfs:comment "An energy meter used to measure the LPG consumption", "An energy meter used to measure the LPG consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Heat a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the District Heating consumption";
-  rdfs:label "Comptador de Calor"@ca, "Contador de Calor"@es, "Heat Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Other a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador d'Energia (Altres)"@ca, "Energy Meter (Other)"@en, "Contador de Energía (Otras)"@es ;
+    rdfs:comment "An energy meter used to measure other  consumptions", "An energy meter used to measure other  consumptions"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Cool a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the District Cooling consumption";
-  rdfs:label "Comptador de Fred"@ca, "Contador de Frio"@es, "Cool Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Pellets a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Pellets"@ca, "Pellets Meter"@en, "Contador de Pellets"@es ;
+    rdfs:comment "An energy meter used to measure the pellets consumption", "An energy meter used to measure the pellets consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.CHP a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the CHP consumption";
-  rdfs:label "Comptador de Cogeneració"@ca, "Contador de Cogeneración"@es, "CHP Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.RenewableElectricityAuto-Consumption a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador d'Energia Auto-Consumida"@ca, "Auto-Consumption Energy Meter"@en, "Contador de Energía Auto-Consumida"@es ;
+    rdfs:comment "An energy meter used to measure the renewable electricity consumption", "An energy meter used to measure the renewable electricity consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Wood a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the wood consumption";
-  rdfs:label "Comptador de Fusta"@ca, "Contador de Madera"@es, "Wood Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.SmartMeter a bigg:DeviceType, skos:Concept ;
+    rdfs:comment "A smart meter is usually an electronic device that records consumption of electric energy in intervals of an hour or less and communicates that information at least daily back to the utility for monitoring and billing.", "A smart meter is usually an electronic device that records consumption of electric energy in intervals of an hour or less and communicates that information at least daily back to the utility for monitoring and billing."@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Pellets a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the pellets consumption";
-  rdfs:label "Comptador de Pellets"@ca, "Contador de Pellets"@es, "Pellets Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.SolarThermal a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Solar Térmica"@ca, "Solar Thermal Meter"@en, "Contador de Solar Tèrmica"@es ;
+    rdfs:comment "An energy meter used to measure the solar thermal consumption", "An energy meter used to measure the solar thermal consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.Biofuels a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the biofuels consumption";
-  rdfs:label "Comptador de Biofuels"@ca, "Contador de Biofuels"@es, "Biofuels Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Total a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador d'Energia Total"@ca, "Total Energy Meter"@en, "Contador de Energía Total"@es ;
+    rdfs:comment "An energy meter used to measure the combined set of  consumptions", "An energy meter used to measure the combined set of  consumptions"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.RenewableElectricityAuto-Consumption a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the renewable electricity consumption";
-  rdfs:label "Comptador d'Energia Auto-Consumida"@ca, "Contador de Energía Auto-Consumida"@es, "Auto-Consumption Energy Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.EnergyMeter.Wood a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Fusta"@ca, "Wood Meter"@en, "Contador de Madera"@es ;
+    rdfs:comment "An energy meter used to measure the wood consumption", "An energy meter used to measure the wood consumption"@en ;
+    skos:broader bigg:Meter.EnergyMeter .
 
-bigg:Meter.EnergyMeter.SolarThermal a bigg:DeviceType, skos:Concept;
-  rdfs:comment "An energy meter used to measure the solar thermal consumption";
-  rdfs:label "Comptador de Solar Térmica"@ca, "Contador de Solar Tèrmica"@es, "Solar Thermal Meter"@en;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.IfcFlowMeter.Water a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador d'Aigua"@ca, "Water Meter"@en, "Contador de Agua"@es ;
+    rdfs:comment "A flow meter used to measure the water flow consumption", "A flow meter used to measure the water flow consumption"@en ;
+    skos:broader bigg:Meter.IfcFlowMeter .
 
-bigg:Meter.EnergyMeter.SmartMeter a bigg:DeviceType, skos:Concept;
-  rdfs:comment "A smart meter is usually an electronic device that records consumption of electric energy in intervals of an hour or less and communicates that information at least daily back to the utility for monitoring and billing.";
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:OtherDevice a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Друго устройство"@bg, "Un altre dispositiu"@ca, "Other Device"@en, "Otro dispositivo"@es ;
+    rdfs:comment "Other device type", "Other device type"@en .
 
-bigg:Meter.EnergyMeter.AnalogMeter a bigg:DeviceType, skos:Concept;
-  skos:broader bigg:Meter.EnergyMeter .
+bigg:Meter.IfcFlowMeter a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador de Flux"@ca, "Flow Meter"@en, "Contador de Flujo"@es ;
+    rdfs:comment "A flow meter is a device that is used to measure the flow rate in a system.", "A flow meter is a device that is used to measure the flow rate in a system."@en ;
+    skos:broader bigg:Meter .
 
-bigg:OtherDevice a bigg:DeviceType, skos:Concept;
-  rdfs:comment "Other device type" .
+bigg:Meter a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Измервателен уред"@bg, "Comptador"@ca, "Meter"@en, "Contador"@es ;
+    rdfs:comment "A device built to accurately detect and display a quantity in a form readable by a human being", "A device built to accurately detect and display a quantity in a form readable by a human being"@en .
+
+bigg:IfcDistributionControlElement a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Елемент за контрол на разпределението"@bg, "Element de control de distribució"@ca, "Distribution Control Element"@en, "Elemento de control de distribución"@es ;
+    rdfs:comment "A building automation device that is used to impart control over elements of one of its systems", "A building automation device that is used to impart control over elements of one of its systems"@en .
+
+bigg:IfcDistributionControlElement.IfcSensor a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Сензор"@bg, "Sensor"@ca, "Sensor"@en, "Sensor "@es ;
+    rdfs:comment "A device that measures a physical quantity and converts it into a signal which can be read by an observer or by an instrument", "A device that measures a physical quantity and converts it into a signal which can be read by an observer or by an instrument"@en ;
+    skos:broader bigg:IfcDistributionControlElement .
+
+bigg:Meter.EnergyMeter a bigg:DeviceType, skos:Concept ;
+    rdfs:label "Comptador d'Energia"@ca, "Energy Meter"@en, "Contador de Energía"@es ;
+    rdfs:comment "Energy meter"@en ;
+    skos:broader bigg:Meter .
+

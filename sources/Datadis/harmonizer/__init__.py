@@ -16,7 +16,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
     ap = argparse.ArgumentParser(description='Mapping of Datadis data to neo4j.')
     ap.add_argument("--user", "-u", help="The main organization name", required=True)
     ap.add_argument("--namespace", "-n", help="The subjects namespace uri", required=True)
-    ap.add_argument("--type", "-t", help="The type to import [static] or [ts]", required=True)
+    ap.add_argument("--type", "-t", choices=['ts', 'static', 'fast-ts'], help="The type to import static/ts/fast-ts", required=True)
     args = ap.parse_args(arguments)
     hbase_conn = config['hbase_store_raw_data']
     i = 0
@@ -36,6 +36,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
                 continue
             i += len(supplies)
             log_string(i, mongo=False)
+            print([supply['cups'] for supply in supplies])
             harmonize_static_data(supplies, namespace=args.namespace,
                                   user=args.user, source="datadis", config=config)
     elif args.type == "ts":

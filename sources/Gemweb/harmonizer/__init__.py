@@ -50,7 +50,6 @@ def harmonize_command_line(arguments, config=None, settings=None):
         df = supplies_df.join(building_df, on='id_centres_consum', lsuffix="supply", rsuffix="building", how="left")
         harmonize_data(df.to_dict(orient="records"), namespace=args.namespace, user=args.user, config=config)
 
-
 # if __name__ == "__main__":
 #     pass
     # parser = argparse.ArgumentParser(description='Mapping of Gemweb data to neo4j.')

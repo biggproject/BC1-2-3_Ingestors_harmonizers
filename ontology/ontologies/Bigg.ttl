@@ -381,6 +381,9 @@ bigg:Element a owl:Class ;
     rdfs:label "Element" ;
     rdfs:subClassOf bigg:ObservableItem .
 
+bigg:LocationInfo a owl:Class ;
+    rdfs:label "Location Info" .
+
 bigg:aggregatesSpace a owl:ObjectProperty ;
     rdfs:label "aggregates space" ;
     rdfs:domain bigg:DeviceAggregator ;
@@ -405,6 +408,11 @@ bigg:containsHistoryDevices a owl:ObjectProperty ;
     rdfs:label "contains history devices" ;
     rdfs:domain bigg:DeviceHistory ;
     rdfs:range bigg:DataProvider .
+
+bigg:contractedPower a owl:DatatypeProperty ;
+    rdfs:label "contracted power" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
 
 bigg:deviceAggregatorFormula a owl:DatatypeProperty ;
     rdfs:label "device aggregator formula" ;
@@ -481,6 +489,11 @@ bigg:deviceThresholdValue a owl:DatatypeProperty ;
     rdfs:domain bigg:Device ;
     rdfs:range xsd:float .
 
+bigg:distributor a owl:DatatypeProperty ;
+    rdfs:label "distributor" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
+
 bigg:end a owl:DatatypeProperty ;
     rdfs:label "end" ;
     rdfs:domain bigg:TimeSeriesPoint ;
@@ -511,6 +524,10 @@ bigg:hasDeviceInputSignalType a owl:ObjectProperty ;
     rdfs:domain bigg:DataProvider ;
     rdfs:range bigg:DeviceInputSignalType .
 
+bigg:hasDeviceLocationInfo a owl:ObjectProperty ;
+    rdfs:label "has device location info" ;
+    rdfs:domain bigg:DataProvider .
+
 bigg:hasDeviceType a owl:ObjectProperty ;
     rdfs:label "has device type" ;
     rdfs:domain bigg:DataProvider ;
@@ -518,7 +535,7 @@ bigg:hasDeviceType a owl:ObjectProperty ;
 
 bigg:hasEstimationMethod a owl:ObjectProperty ;
     rdfs:label "has estimation method" ;
-    rdfs:domain bigg:TimeseriesList ;
+    rdfs:domain bigg:TimeSeriesList ;
     rdfs:range bigg:EstimationMethod .
 
 bigg:hasHistory a owl:ObjectProperty ;
@@ -528,7 +545,7 @@ bigg:hasHistory a owl:ObjectProperty ;
 
 bigg:hasMeasuredProperty a owl:ObjectProperty ;
     rdfs:label "has measured property" ;
-    rdfs:domain bigg:TimeseriesList ;
+    rdfs:domain bigg:TimeSeriesList ;
     rdfs:range bigg:MeasuredProperty .
 
 bigg:hasMeasurement a owl:ObjectProperty ;
@@ -621,6 +638,16 @@ bigg:isReal a owl:DatatypeProperty ;
     rdfs:domain bigg:TimeSeriesPoint ;
     rdfs:range xsd:boolean .
 
+bigg:maxPowerAPM a owl:DatatypeProperty ;
+    rdfs:label "max power a p m" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
+
+bigg:maxPowerBEI a owl:DatatypeProperty ;
+    rdfs:label "max power b e i" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
+
 bigg:observes a owl:ObjectProperty ;
     rdfs:label "observes" ;
     rdfs:domain bigg:DataProvider ;
@@ -631,10 +658,30 @@ bigg:pointOfDeliveryIDFromOrganization a owl:DatatypeProperty ;
     rdfs:domain bigg:UtilityPointOfDelivery ;
     rdfs:range xsd:string .
 
+bigg:renoteManagement a owl:DatatypeProperty ;
+    rdfs:label "renote management" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
+
+bigg:selfConsumption a owl:DatatypeProperty ;
+    rdfs:label "self consumption" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
+
 bigg:start a owl:DatatypeProperty ;
     rdfs:label "start" ;
     rdfs:domain bigg:TimeSeriesPoint ;
     rdfs:range xsd:dateTime .
+
+bigg:tariff a owl:DatatypeProperty ;
+    rdfs:label "tariff" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
+
+bigg:tension a owl:DatatypeProperty ;
+    rdfs:label "tension" ;
+    rdfs:domain bigg:Device ;
+    rdfs:range xsd:string .
 
 bigg:timeSeriesEnd a owl:DatatypeProperty ;
     rdfs:label "time series end" ;
@@ -732,9 +779,6 @@ bigg:MeasuredProperty a owl:Class ;
 bigg:MeasurementUnit a owl:Class ;
     rdfs:label "Measurement Unit" .
 
-bigg:TimeseriesList a owl:Class ;
-    rdfs:label "Timeseries List" .
-
 bigg:WeatherStation a owl:Class ;
     rdfs:label "Weather Station" ;
     rdfs:subClassOf bigg:DataProvider .
@@ -766,12 +810,14 @@ bigg:DeviceAggregator a owl:Class ;
 bigg:TimeSeriesList a owl:Class ;
     rdfs:label "Time Series List" .
 
+bigg:DataProvider a owl:Class ;
+    rdfs:label "Data Provider" .
+
 bigg:Device a owl:Class ;
     rdfs:label "Device" ;
     rdfs:subClassOf bigg:DataProvider .
 
-bigg:DataProvider a owl:Class ;
-    rdfs:label "Data Provider" .
+
 
 # building-element
 
@@ -2027,4 +2073,33 @@ bigg:EnergyPerformanceCertificateAdditionalInfo a owl:Class ;
 
 bigg:EnergyPerformanceCertificate a owl:Class ;
     rdfs:label "Energy Performance Certificate" .
+
+# extensions-resources
+
+bigg:relatedDeviceType a owl:ObjectProperty ;
+    rdfs:label "related device type" ;
+    rdfs:domain bigg:ResourceType ;
+    rdfs:range bigg:UtilityType .
+
+bigg:relatedMeasuredProperty a owl:ObjectProperty ;
+    rdfs:label "related measured property" ;
+    rdfs:domain bigg:ResourceType ;
+    rdfs:range bigg:MeasuredProperty .
+
+bigg:relatedUtilityType a owl:ObjectProperty ;
+    rdfs:label "related utility type" ;
+    rdfs:domain bigg:ResourceType ;
+    rdfs:range bigg:DeviceType .
+
+bigg:DeviceType a owl:Class ;
+    rdfs:label "Device Type" .
+
+bigg:MeasuredProperty a owl:Class ;
+    rdfs:label "Measured Property" .
+
+bigg:UtilityType a owl:Class ;
+    rdfs:label "Utility Type" .
+
+bigg:ResourceType a owl:Class ;
+    rdfs:label "Resource Type" .
 

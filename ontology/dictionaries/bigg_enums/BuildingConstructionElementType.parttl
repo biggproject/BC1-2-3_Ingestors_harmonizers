@@ -1,71 +1,95 @@
 
-bigg:IfcWall a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A vertical construction in a premises that creates an enclosed building space" .
 
-bigg:IfcWall.ExternalWall a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "Outer walls of a building including the ones adjoining to another building and the ones abutting on an interior open space";
-  skos:broader bigg:IfcWall .
 
-bigg:IfcWall.ExternalWall.IfcCurtainWall a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "Outer covering of a building in which the outer walls are non-structural, utilized only to keep the weather out and the occupants in";
-  skos:broader bigg:IfcWall.ExternalWall .
 
-bigg:IfcWall.InternalWall a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "Walls providing separation between the internal spaces of a building";
-  skos:broader bigg:IfcWall .
+bigg:Floor.SolidFloor a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Твърд под"@bg, "Pis sòlid"@ca, "Solid Floor"@en, "Piso Sólido"@es ;
+    rdfs:comment "A floor that consists of a layer of concrete", "A floor that consists of a layer of concrete"@en ;
+    skos:broader bigg:Floor .
 
-bigg:RoofOrCeiling a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "The exterior (roof) or internal (ceiling) structure forming the upper covering of the building" .
+bigg:Floor.SuspendedFloor a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "двоен под тип \"Гредоред\""@bg, "Terra suspès"@ca, "Suspended Floor"@en, "Suelo suspendido"@es ;
+    rdfs:comment "A ground floor with a void underneath the structure", "A ground floor with a void underneath the structure"@en ;
+    skos:broader bigg:Floor .
 
-bigg:RoofOrCeiling.PitchedRoof a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A roof that is formed by surfaces sloping downward with an angle of more than 20°";
-  skos:broader bigg:RoofOrCeiling .
+bigg:IfcDoor.AutomaticDoor a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Автоматична врата"@bg, "Porta automàtica"@ca, "Automatic Door"@en, "Puerta automática"@es ;
+    rdfs:comment "A door equipped with a power-operated mechanism and controls that open and close the door automatically", "A door equipped with a power-operated mechanism and controls that open and close the door automatically"@en ;
+    skos:broader bigg:IfcDoor .
 
-bigg:RoofOrCeiling.FlatRoof a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A roof that is flat or formed by surfaces sloping downward with an angle of less than 20°";
-  skos:broader bigg:RoofOrCeiling .
+bigg:IfcSlab a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Плоча"@bg, "Llosa"@ca, "Slab"@en, "Losa"@es ;
+    rdfs:comment "Provides the lower support (floor) or upper construction (roof slab) in any space in a building.", "Provides the lower support (floor) or upper construction (roof slab) in any space in a building."@en .
 
-bigg:RoofOrCeiling.ReflectiveRoof a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A reflective or cool roof is a roof coated with a high solar reflectance material that reflects sunlight and reduces the temperature and heat gain of the struture";
-  skos:broader bigg:RoofOrCeiling .
+bigg:IfcWall.ExternalWall.IfcCurtainWall a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Окачена фасада "@bg, "Mur cortina"@ca, "Curtain Wall"@en, "Muro cortina"@es ;
+    rdfs:comment "Outer covering of a building in which the outer walls are non-structural, utilized only to keep the weather out and the occupants in", "Outer covering of a building in which the outer walls are non-structural, utilized only to keep the weather out and the occupants in"@en ;
+    skos:broader bigg:IfcWall.ExternalWall .
 
-bigg:RoofOrCeiling.GreenRoof a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A roof that is partially or completely covered with vegetation and a growing medium, planted over a waterproofing membrane";
-  skos:broader bigg:RoofOrCeiling .
+bigg:IfcWall.InternalWall a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Вътрешна стена"@bg, "Mur interior"@ca, "Internal Wall"@en, "Pared Interior"@es ;
+    rdfs:comment "Walls providing separation between the internal spaces of a building", "Walls providing separation between the internal spaces of a building"@en ;
+    skos:broader bigg:IfcWall .
 
-bigg:RoofOrCeiling.LoftCeiling a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "The covering ceiling of the space located inside the sloping roof of a building";
-  skos:broader bigg:RoofOrCeiling .
+bigg:IfcWindow a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Прозорец "@bg, "Finestra"@ca, "Window"@en, "Ventana"@es ;
+    rdfs:comment "An opening in the wall of a building fitted with glass in a frame", "An opening in the wall of a building fitted with glass in a frame"@en .
 
-bigg:Floor a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A horizontal construction in a building that creates the base of an enclosed space" .
+bigg:OtherBuildingConstructionElement a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Друг елемент от конструкцията на сградата"@bg, "Un altre Element de Construcció d'Edifici"@ca, "Other Building Construction Element"@en, "Otro Elemento de Construccion de Edificio"@es ;
+    rdfs:comment "Other building construction element", "Other building construction element"@en .
 
-bigg:Floor.SuspendedFloor a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A ground floor with a void underneath the structure";
-  skos:broader bigg:Floor .
+bigg:RoofOrCeiling.FlatRoof a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Плосък покрив"@bg, "Sostre pla"@ca, "Flat Roof"@en, "Tejado plano"@es ;
+    rdfs:comment "A roof that is flat or formed by surfaces sloping downward with an angle of less than 20°", "A roof that is flat or formed by surfaces sloping downward with an angle of less than 20°"@en ;
+    skos:broader bigg:RoofOrCeiling .
 
-bigg:Floor.SolidFloor a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A floor that consists of a layer of concrete";
-  skos:broader bigg:Floor .
+bigg:RoofOrCeiling.GreenRoof a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Зелен покрив"@bg, "Sostre verd"@ca, "Green Roof"@en, "Techo verde"@es ;
+    rdfs:comment "A roof that is partially or completely covered with vegetation and a growing medium, planted over a waterproofing membrane", "A roof that is partially or completely covered with vegetation and a growing medium, planted over a waterproofing membrane"@en ;
+    skos:broader bigg:RoofOrCeiling .
 
-bigg:IfcSlab a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "Provides the lower support (floor) or upper construction (roof slab) in any space in a building." .
+bigg:RoofOrCeiling.LoftCeiling a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Таван на таванско/подпокривно помещение"@bg, "Sostre sotacoberta "@ca, "Loft Ceiling"@en, "Techo bajocubierta"@es ;
+    rdfs:comment "The covering ceiling of the space located inside the sloping roof of a building", "The covering ceiling of the space located inside the sloping roof of a building"@en ;
+    skos:broader bigg:RoofOrCeiling .
 
-bigg:IfcWindow a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "An opening in the wall of a building fitted with glass in a frame" .
+bigg:RoofOrCeiling.PitchedRoof a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Скатен покрив"@bg, "Sostre inclinat"@ca, "Pitched Roof"@en, "Techo inclinado"@es ;
+    rdfs:comment "A roof that is formed by surfaces sloping downward with an angle of more than 20°", "A roof that is formed by surfaces sloping downward with an angle of more than 20°"@en ;
+    skos:broader bigg:RoofOrCeiling .
 
-bigg:Skylight a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A window fitted in the roof or ceiling of a building, typically inclined or horizontal" .
+bigg:RoofOrCeiling.ReflectiveRoof a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Светлоотразителен покрив"@bg, "Sostre reflectant"@ca, "Reflective Roof"@en, "Techo reflectante"@es ;
+    rdfs:comment "A reflective or cool roof is a roof coated with a high solar reflectance material that reflects sunlight and reduces the temperature and heat gain of the struture", "A reflective or cool roof is a roof coated with a high solar reflectance material that reflects sunlight and reduces the temperature and heat gain of the struture"@en ;
+    skos:broader bigg:RoofOrCeiling .
 
-bigg:IfcDoor a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A surface component that is operable and separates two spaces in a building" .
+bigg:ShadingSystem a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Засенчваща система"@bg, "Sistema d'ombrejat"@ca, "Shading System"@en, "Sistema de sombreado"@es ;
+    rdfs:comment "A system that can be added inside or outside of a fenestration system to block or redirects some amount of the solar radiation coming through the fenestration system", "A system that can be added inside or outside of a fenestration system to block or redirects some amount of the solar radiation coming through the fenestration system"@en .
 
-bigg:IfcDoor.AutomaticDoor a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A door equipped with a power-operated mechanism and controls that open and close the door automatically";
-  skos:broader bigg:IfcDoor .
+bigg:Skylight a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Покривен прозорец"@bg, "Lluernari"@ca, "Skylight"@en, "Claraboya"@es ;
+    rdfs:comment "A window fitted in the roof or ceiling of a building, typically inclined or horizontal", "A window fitted in the roof or ceiling of a building, typically inclined or horizontal"@en .
 
-bigg:ShadingSystem a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "A system that can be added inside or outside of a fenestration system to block or redirects some amount of the solar radiation coming through the fenestration system" .
+bigg:IfcDoor a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Врата "@bg, "Porta"@ca, "Door"@en, "Puerta"@es ;
+    rdfs:comment "A surface component that is operable and separates two spaces in a building", "A surface component that is operable and separates two spaces in a building"@en .
 
-bigg:OtherBuildingConstructionElement a bigg:BuildingConstructionElementType, skos:Concept;
-  rdfs:comment "Other building construction element" .
+bigg:IfcWall.ExternalWall a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Външна стена"@bg, "Mur exterior"@ca, "External Wall"@en, "Pared externa"@es ;
+    rdfs:comment "Outer walls of a building including the ones adjoining to another building and the ones abutting on an interior open space", "Outer walls of a building including the ones adjoining to another building and the ones abutting on an interior open space"@en ;
+    skos:broader bigg:IfcWall .
+
+bigg:Floor a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Под"@bg, "Terra"@ca, "Floor"@en, "Suelo"@es ;
+    rdfs:comment "A horizontal construction in a building that creates the base of an enclosed space", "A horizontal construction in a building that creates the base of an enclosed space"@en .
+
+bigg:IfcWall a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Стена "@bg, "Mur"@ca, "Wall"@en, "Muro"@es ;
+    rdfs:comment "A vertical construction in a premises that creates an enclosed building space", "A vertical construction in a premises that creates an enclosed building space"@en .
+
+bigg:RoofOrCeiling a bigg:BuildingConstructionElementType, skos:Concept ;
+    rdfs:label "Покрив или таван"@bg, "Coberta o sostre"@ca, "Roof Or Ceiling"@en, "Cubierta o Techo"@es ;
+    rdfs:comment "The exterior (roof) or internal (ceiling) structure forming the upper covering of the building", "The exterior (roof) or internal (ceiling) structure forming the upper covering of the building"@en .
+
