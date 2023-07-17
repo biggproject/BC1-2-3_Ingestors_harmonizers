@@ -87,8 +87,8 @@ def gather_ts(config, settings, args):
         '--file', 'sources/Ixon/gather/vpn_files/vpn_template_4.ovpn',
         '--file', 'sources/Ixon/gather/vpn_files/vpn_template_5.ovpn',
         '--file', f'{config_file.name}',
-        '--jobconf', 'mapreduce.map.env={},{},{}'.format(MOUNTS, IMAGE, RUNTYPE),  # PRIVILEGED, DISABLE),
-        '--jobconf', 'mapreduce.reduce.env={},{},{}'.format(MOUNTS, IMAGE, RUNTYPE),  # PRIVILEGED, DISABLE),
+        '--jobconf', 'mapreduce.map..env={},{},{}'.format(MOUNTS, IMAGE, RUNTYPE),  # PRIVILEGED, DISABLE),
+        '--jobconf', 'mapreduce.reduce..env={},{},{}'.format(MOUNTS, IMAGE, RUNTYPE),  # PRIVILEGED, DISABLE),
         '--jobconf', 'mapreduce.job.name=importing_tool_gather_ixon',
         '--jobconf', 'mapreduce.job.reduces=5'
     ])
