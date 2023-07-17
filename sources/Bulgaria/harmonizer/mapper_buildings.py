@@ -293,7 +293,7 @@ def bulgaria_eem_calculator(df):
     )
     kpis.append("NetPresentValue")
 
-    df["ProfitabilityIndex~~UNITLESS"] = (df["NetPresentValue~~BulgarianLev"] - df["eem_investment"]) / df["eem_investment"]
+    df["ProfitabilityIndex~~UNITLESS"] = (df["NetPresentValue~~BulgarianLev"] + df["eem_investment"]) / df["eem_investment"]
     kpis.append("ProfitabilityIndex")
 
     df["NetPresentValueQuotient~~UNITLESS"] = df["NetPresentValue~~BulgarianLev"] / df["eem_investment"]
@@ -304,6 +304,7 @@ def bulgaria_eem_calculator(df):
             npf.irr([-x['eem_investment']] + [x['EnergyCostSavings~EnergyConsumptionTotal~BulgarianLev']] * int(x['lifespan'])),
         axis=1
     )
+    df["InternalRateOfReturn~~PERCENT"] = df["InternalRateOfReturn~~PERCENT"].apply(lambda x: x*100)
     kpis.append("InternalRateOfReturn")
 
     # Melt KPIs to longitudinal format

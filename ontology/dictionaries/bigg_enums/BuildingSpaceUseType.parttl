@@ -74,7 +74,7 @@ bigg:Healthcare.NursingHome a bigg:BuildingSpaceUseType, skos:Concept ;
 
 bigg:Healthcare.OtherHealthcare a bigg:BuildingSpaceUseType, skos:Concept ;
     rdfs:label "Други здравни заведения"@bg, "Altres centres de salut"@ca, "Other Healthcare"@en, "Otros centros de salud"@es ;
-    rdfs:comment "Buildings dedicated to other health care services ", "Buildings dedicated to other health care services "@en ;
+    rdfs:comment "Buildings dedicated to other health care services ", "Buildings dedicated to other health care services"@en ;
     skos:broader bigg:Healthcare .
 
 bigg:Healthcare.PrimaryCareCenterOrClinic a bigg:BuildingSpaceUseType, skos:Concept ;
@@ -216,7 +216,7 @@ bigg:RecreationAndCulture.OtherReacreationAndCulture a bigg:BuildingSpaceUseType
     skos:broader bigg:RecreationAndCulture .
 
 bigg:RecreationAndCulture.ReligiousFacilities a bigg:BuildingSpaceUseType, skos:Concept ;
-    rdfs:label "Религиозни обекти "@bg, "Instal·lacions religioses"@ca, "Religious Facilities"@en, "Instalaciones religiosas"@es ;
+    rdfs:label "Религиозни обекти"@bg, "Instal·lacions religioses"@ca, "Religious Facilities"@en, "Instalaciones religiosas"@es ;
     rdfs:comment "Religious public assembly premises including churches, monasteries, synagogues, mosques, and temples", "Religious public assembly premises including churches, monasteries, synagogues, mosques, and temples"@en ;
     skos:broader bigg:RecreationAndCulture .
 
@@ -353,7 +353,7 @@ bigg:ResidentialHousing a bigg:BuildingSpaceUseType, skos:Concept ;
 
 bigg:SportsAndWellnessFacilities a bigg:BuildingSpaceUseType, skos:Concept ;
     rdfs:label "Спортни и уелнес сгради"@bg, "Instal·lacions esportives i de benestar"@ca, "Sports And Wellness Facilities"@en, "Instalaciones deportivas y de bienestar"@es ;
-    rdfs:comment "Facilities used for sports, physical activities and for body treatments ", "Facilities used for sports, physical activities and for body treatments "@en .
+    rdfs:comment "Facilities used for sports, physical activities and for body treatments ", "Facilities used for sports, physical activities and for body treatments"@en .
 
 bigg:Retail a bigg:BuildingSpaceUseType, skos:Concept ;
     rdfs:label "Търговия на дребно"@bg, "Comerç minorista"@ca, "Retail"@en, "Comercio minorista"@es ;

@@ -135,7 +135,7 @@ bigg:HVACAndHotWaterElement.FinalElements.IfcSpaceHeater.Radiator a bigg:Buildin
     skos:broader bigg:HVACAndHotWaterElement.FinalElements.IfcSpaceHeater .
 
 bigg:HVACAndHotWaterElement.FinalElements.OtherFinalElement a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "Other final elements of the HVAC and hot water system ", "Other final elements of the HVAC and hot water system "@en ;
+    rdfs:comment "Other final elements of the HVAC and hot water system ", "Other final elements of the HVAC and hot water system"@en ;
     skos:broader bigg:HVACAndHotWaterElement.FinalElements .
 
 bigg:HVACAndHotWaterElement.FinalElements.RadiantFloorOrCeiling a bigg:BuildingSystemElementType, skos:Concept ;
@@ -208,7 +208,7 @@ bigg:IfcEnergyConversionDevice.IfcBurner a bigg:BuildingSystemElementType, skos:
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcChiller a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol. ", "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol. "@en ;
+    rdfs:comment "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol. ", "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol."@en ;
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcCoil a bigg:BuildingSystemElementType, skos:Concept ;
@@ -220,7 +220,7 @@ bigg:IfcEnergyConversionDevice.IfcCondenser a bigg:BuildingSystemElementType, sk
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcCooledBeam a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space. ", "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space. "@en ;
+    rdfs:comment "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space. ", "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space."@en ;
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcCoolingTower a bigg:BuildingSystemElementType, skos:Concept ;
@@ -276,7 +276,7 @@ bigg:IfcEnergyConversionDevice.IfcUnitaryEquipment a bigg:BuildingSystemElementT
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcFlowController.IfcAirTerminalBox a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork. ", "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork. "@en ;
+    rdfs:comment "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork. ", "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork."@en ;
     skos:broader bigg:IfcFlowController .
 
 bigg:IfcFlowController.IfcDamper a bigg:BuildingSystemElementType, skos:Concept ;
@@ -406,7 +406,7 @@ bigg:HVACAndHotWaterElement.DistributionAndStorageElements.HeatRecoveryUnit a bi
     skos:broader bigg:HVACAndHotWaterElement.DistributionAndStorageElements .
 
 bigg:HVACAndHotWaterElement.FinalElements.IfcSpaceHeater a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area. ", "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area. "@en ;
+    rdfs:comment "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area. ", "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area."@en ;
     skos:broader bigg:HVACAndHotWaterElement.FinalElements .
 
 bigg:BuildingFabricElement a bigg:BuildingSystemElementType, skos:Concept ;
@@ -444,7 +444,7 @@ bigg:LightingElement.Luminaire a bigg:BuildingSystemElementType, skos:Concept ;
     skos:broader bigg:LightingElement .
 
 bigg:HVACAndHotWaterElement.FinalElements a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "Final elements of the HVAC and hot water system ", "Final elements of the HVAC and hot water system "@en ;
+    rdfs:comment "Final elements of the HVAC and hot water system ", "Final elements of the HVAC and hot water system"@en ;
     skos:broader bigg:HVACAndHotWaterElement .
 
 bigg:LightingElement.Luminaire.IfcLamp a bigg:BuildingSystemElementType, skos:Concept ;
@@ -455,7 +455,7 @@ bigg:RefrigerationElement a bigg:BuildingSystemElementType, skos:Concept ;
     rdfs:comment "Elements of the refrigeration system of the building (does not include space cooling system elements)", "Elements of the refrigeration system of the building (does not include space cooling system elements)"@en .
 
 bigg:IfcFlowController a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system. ", "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system. "@en .
+    rdfs:comment "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system. ", "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system."@en .
 
 bigg:ElectricPowerElement.PowerSystemElement a bigg:BuildingSystemElementType, skos:Concept ;
     rdfs:comment "Elements of the electric power system of the building", "Elements of the electric power system of the building"@en ;

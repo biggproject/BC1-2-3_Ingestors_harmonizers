@@ -9,8 +9,8 @@ bigg:Cooling a bigg:MeasuredPropertyComponent, skos:Concept ;
     rdfs:label "Refrigeració"@ca, "Cooling"@en, "Refrigeración"@es .
 
 bigg:Heating a bigg:MeasuredPropertyComponent, skos:Concept ;
-    rdfs:label "Calefacció "@ca, "Heating"@en, "Calefacción"@es .
+    rdfs:label "Calefacció"@ca, "Heating"@en, "Calefacción"@es .
 
 bigg:Total a bigg:MeasuredPropertyComponent, skos:Concept ;
-    rdfs:label "Total "@ca, "Total"@en, "Total"@es .
+    rdfs:label "Total"@ca, "Total"@en, "Total"@es .
 

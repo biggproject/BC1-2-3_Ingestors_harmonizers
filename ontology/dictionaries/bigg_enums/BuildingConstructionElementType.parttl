@@ -22,7 +22,7 @@ bigg:IfcSlab a bigg:BuildingConstructionElementType, skos:Concept ;
     rdfs:comment "Provides the lower support (floor) or upper construction (roof slab) in any space in a building.", "Provides the lower support (floor) or upper construction (roof slab) in any space in a building."@en .
 
 bigg:IfcWall.ExternalWall.IfcCurtainWall a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Окачена фасада "@bg, "Mur cortina"@ca, "Curtain Wall"@en, "Muro cortina"@es ;
+    rdfs:label "Окачена фасада"@bg, "Mur cortina"@ca, "Curtain Wall"@en, "Muro cortina"@es ;
     rdfs:comment "Outer covering of a building in which the outer walls are non-structural, utilized only to keep the weather out and the occupants in", "Outer covering of a building in which the outer walls are non-structural, utilized only to keep the weather out and the occupants in"@en ;
     skos:broader bigg:IfcWall.ExternalWall .
 
@@ -32,7 +32,7 @@ bigg:IfcWall.InternalWall a bigg:BuildingConstructionElementType, skos:Concept ;
     skos:broader bigg:IfcWall .
 
 bigg:IfcWindow a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Прозорец "@bg, "Finestra"@ca, "Window"@en, "Ventana"@es ;
+    rdfs:label "Прозорец"@bg, "Finestra"@ca, "Window"@en, "Ventana"@es ;
     rdfs:comment "An opening in the wall of a building fitted with glass in a frame", "An opening in the wall of a building fitted with glass in a frame"@en .
 
 bigg:OtherBuildingConstructionElement a bigg:BuildingConstructionElementType, skos:Concept ;
@@ -50,7 +50,7 @@ bigg:RoofOrCeiling.GreenRoof a bigg:BuildingConstructionElementType, skos:Concep
     skos:broader bigg:RoofOrCeiling .
 
 bigg:RoofOrCeiling.LoftCeiling a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Таван на таванско/подпокривно помещение"@bg, "Sostre sotacoberta "@ca, "Loft Ceiling"@en, "Techo bajocubierta"@es ;
+    rdfs:label "Таван на таванско/подпокривно помещение"@bg, "Sostre sotacoberta"@ca, "Loft Ceiling"@en, "Techo bajocubierta"@es ;
     rdfs:comment "The covering ceiling of the space located inside the sloping roof of a building", "The covering ceiling of the space located inside the sloping roof of a building"@en ;
     skos:broader bigg:RoofOrCeiling .
 
@@ -73,7 +73,7 @@ bigg:Skylight a bigg:BuildingConstructionElementType, skos:Concept ;
     rdfs:comment "A window fitted in the roof or ceiling of a building, typically inclined or horizontal", "A window fitted in the roof or ceiling of a building, typically inclined or horizontal"@en .
 
 bigg:IfcDoor a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Врата "@bg, "Porta"@ca, "Door"@en, "Puerta"@es ;
+    rdfs:label "Врата"@bg, "Porta"@ca, "Door"@en, "Puerta"@es ;
     rdfs:comment "A surface component that is operable and separates two spaces in a building", "A surface component that is operable and separates two spaces in a building"@en .
 
 bigg:IfcWall.ExternalWall a bigg:BuildingConstructionElementType, skos:Concept ;
@@ -86,7 +86,7 @@ bigg:Floor a bigg:BuildingConstructionElementType, skos:Concept ;
     rdfs:comment "A horizontal construction in a building that creates the base of an enclosed space", "A horizontal construction in a building that creates the base of an enclosed space"@en .
 
 bigg:IfcWall a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Стена "@bg, "Mur"@ca, "Wall"@en, "Muro"@es ;
+    rdfs:label "Стена"@bg, "Mur"@ca, "Wall"@en, "Muro"@es ;
     rdfs:comment "A vertical construction in a premises that creates an enclosed building space", "A vertical construction in a premises that creates an enclosed building space"@en .
 
 bigg:RoofOrCeiling a bigg:BuildingConstructionElementType, skos:Concept ;

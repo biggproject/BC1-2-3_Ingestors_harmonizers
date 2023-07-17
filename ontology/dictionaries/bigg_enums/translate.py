@@ -5,6 +5,7 @@ import pandas as pd
 from rdflib.namespace import RDFS
 
 label_uri_map={
+    "bigg:formula": "http://bigg-project.eu/ontology#formula",
     "rdfs:label": "http://www.w3.org/2000/01/rdf-schema#label",
     "rdfs:comment": "http://www.w3.org/2000/01/rdf-schema#comment",
     "bigg:shortName": "http://bigg-project.eu/ontology#shortName",
@@ -27,8 +28,8 @@ class A:
 a = A()
 a.create = False
 a.headers = "/Users/eloigabal/Developement/CIMNE/bigg_entrack/ontology/dictionaries/bigg_enums/Headers.headttl"
-a.source = "/Users/eloigabal/Developement/CIMNE/bigg_entrack/ontology/dictionaries/bigg_enums/KeyPerformanceIndicator.parttl"
-a.file = "/Users/eloigabal/Developement/CIMNE/bigg_entrack/ontology/enchancement/KeyPerformanceIndicator.xlsx"
+a.source = "/Users/eloigabal/Developement/CIMNE/bigg_entrack/ontology/dictionaries/bigg_enums/UtilityType.parttl"
+a.file = "/Users/eloigabal/Developement/CIMNE/bigg_entrack/ontology/enhancement/UtilityType.xlsx"
 """
 
 with open(a.headers) as headf:
@@ -61,8 +62,22 @@ else:
     df.set_index("uri", inplace=True)
     for uri, lang_dic in df.iterrows():
         for i, v in lang_dic.items():
+            try:
+                predicate, lang = i.split("@")
+            except:
+                predicate = i
+                lang = None
             if isinstance(v, str):
-                graph.add((rdflib.URIRef(uri), rdflib.URIRef(label_uri_map[i.split("@")[0]]), rdflib.Literal(v, lang=str(i.split("@")[1]))))
+                to_remove = [x for x in graph.triples((rdflib.URIRef(uri), rdflib.URIRef(label_uri_map[predicate]), None))]
+                if lang:
+                    to_remove = [x for x in to_remove if x[2].language == lang]
+                for r in to_remove:
+                    graph.remove(r)
+                if lang:
+                    graph.add((rdflib.URIRef(uri), rdflib.URIRef(label_uri_map[predicate]), rdflib.Literal(v.strip(), lang=str(lang))))
+                else:
+                    graph.add((rdflib.URIRef(uri), rdflib.URIRef(label_uri_map[predicate]), rdflib.Literal(v.strip())))
+
     news = graph.serialize()
 
     for head in h.split("\n"):
@@ -81,6 +96,7 @@ for x in ${class[@]}; do
 class=("AreaType" "BuildingConstructionElementType" "BuildingSpaceUseType" "BuildingSystemElementType" "DeviceType" "EnergyEfficiencyMeasureType" "KeyPerformanceIndicator" "MeasuredProperty" "MeasuredPropertyComponent" "ModelType" "UtilityType")
 
 for x in ${class[@]}; do
+    echo $x
     python3 ontology/dictionaries/bigg_enums/translate.py -s ontology/dictionaries/bigg_enums/$x.parttl --headers ontology/dictionaries/bigg_enums/Headers.headttl --file ontology/enhancement/$x.xlsx;
     done
 """

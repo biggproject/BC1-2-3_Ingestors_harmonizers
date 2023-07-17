@@ -27,7 +27,7 @@ bigg:SUM a bigg:AggregationFunction, skos:Concept .
 
 
 bigg:CadastralParcelArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Площ на парцела по кадастър"@bg, "Superfície de la Parcel·la Cadastral "@ca, "Cadastral Parcel Area"@en, "Superficie de la parcela catastral"@es ;
+    rdfs:label "Площ на парцела по кадастър"@bg, "Superfície de la Parcel·la Cadastral"@ca, "Cadastral Parcel Area"@en, "Superficie de la parcela catastral"@es ;
     rdfs:comment "The area of the cadastral parcel over which the building is constriucted", "The area of the cadastral parcel over which the building is constriucted"@en .
 
 bigg:CooledFloorArea a bigg:AreaType, skos:Concept ;
@@ -35,23 +35,23 @@ bigg:CooledFloorArea a bigg:AreaType, skos:Concept ;
     rdfs:comment "Part of the net floor area that is cooled or air conditioned", "Part of the net floor area that is cooled or air conditioned"@en .
 
 bigg:GrossFloorArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Обща, разгъната застроена площ (под и над нивото на терена)"@bg, "Superfície Bruta"@ca, "Gross Floor Area"@en, "Superficie bruta"@es, "Superficie construida"@es ;
+    rdfs:label "Обща, разгъната застроена площ (под и над нивото на терена)"@bg, "Superfície Bruta"@ca, "Gross Floor Area"@en, "Superficie construida"@es ;
     rdfs:comment "Sum of the floor areas of all building spaces measured from the external faces of the exterior walls", "Sum of the floor areas of all building spaces measured from the external faces of the exterior walls"@en .
 
 bigg:GrossFloorAreaAboveGround a bigg:AreaType, skos:Concept ;
-    rdfs:label "Разгъната застроена площ (над нивото на терена)"@bg, "Superfície Bruta Sobre rasant "@ca, "Gross Floor Area Above Ground"@en, "Superficie bruta sobre el suelo"@es, "Superficie construida sobre el suelo"@es ;
+    rdfs:label "Разгъната застроена площ (над нивото на терена)"@bg, "Superfície Bruta Sobre rasant"@ca, "Gross Floor Area Above Ground"@en, "Superficie construida sobre el suelo"@es ;
     rdfs:comment "Part of the gross floor area above ground", "Part of the gross floor area above ground"@en .
 
 bigg:GrossFloorAreaUnderGround a bigg:AreaType, skos:Concept ;
-    rdfs:label "Разгъната застроена площ (под нивото на терена)"@bg, "Superfície Bruta Sota rasant"@ca, "Gross Floor Area Under Ground"@en, "Superficie bruta bajo tierra"@es, "Superficie construida bajo tierra"@es ;
+    rdfs:label "Разгъната застроена площ (под нивото на терена)"@bg, "Superfície Bruta Sota rasant"@ca, "Gross Floor Area Under Ground"@en, "Superficie construida bajo tierra"@es ;
     rdfs:comment "Part of the gross floor area below ground", "Part of the gross floor area below ground"@en .
 
 bigg:HeatedFloorArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Отопляема площ"@bg, "Superfície Calefactada "@ca, "Heated Floor Area"@en, "Superficie Calefactada"@es, "Superficie calefactada"@es ;
+    rdfs:label "Отопляема площ"@bg, "Superfície Calefactada"@ca, "Heated Floor Area"@en, "Superficie calefactada"@es ;
     rdfs:comment "Part of the net floor area that is heated", "Part of the net floor area that is heated"@en .
 
 bigg:NetFloorArea a bigg:AreaType, skos:Concept ;
-    rdfs:label "Нетна застроена площ"@bg, "Superfície Neta"@ca, "Net Floor Area"@en, "Superficie neta "@es, "Superficie útil"@es ;
+    rdfs:label "Нетна застроена площ"@bg, "Superfície Neta"@ca, "Net Floor Area"@en, "Superficie útil"@es ;
     rdfs:comment "Gross floor area, excluding the area occupied by walls and partitions, the circulation area (where people walk), and the mechanical area (where there is mechanical equipment), i.e., gross floor area reduced by the area for structural components", "Gross floor area, excluding the area occupied by walls and partitions, the circulation area (where people walk), and the mechanical area (where there is mechanical equipment), i.e., gross floor area reduced by the area for structural components"@en .
 
 
@@ -78,7 +78,7 @@ bigg:IfcSlab a bigg:BuildingConstructionElementType, skos:Concept ;
     rdfs:comment "Provides the lower support (floor) or upper construction (roof slab) in any space in a building.", "Provides the lower support (floor) or upper construction (roof slab) in any space in a building."@en .
 
 bigg:IfcWall.ExternalWall.IfcCurtainWall a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Окачена фасада "@bg, "Mur cortina"@ca, "Curtain Wall"@en, "Muro cortina"@es ;
+    rdfs:label "Окачена фасада"@bg, "Mur cortina"@ca, "Curtain Wall"@en, "Muro cortina"@es ;
     rdfs:comment "Outer covering of a building in which the outer walls are non-structural, utilized only to keep the weather out and the occupants in", "Outer covering of a building in which the outer walls are non-structural, utilized only to keep the weather out and the occupants in"@en ;
     skos:broader bigg:IfcWall.ExternalWall .
 
@@ -88,7 +88,7 @@ bigg:IfcWall.InternalWall a bigg:BuildingConstructionElementType, skos:Concept ;
     skos:broader bigg:IfcWall .
 
 bigg:IfcWindow a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Прозорец "@bg, "Finestra"@ca, "Window"@en, "Ventana"@es ;
+    rdfs:label "Прозорец"@bg, "Finestra"@ca, "Window"@en, "Ventana"@es ;
     rdfs:comment "An opening in the wall of a building fitted with glass in a frame", "An opening in the wall of a building fitted with glass in a frame"@en .
 
 bigg:OtherBuildingConstructionElement a bigg:BuildingConstructionElementType, skos:Concept ;
@@ -106,7 +106,7 @@ bigg:RoofOrCeiling.GreenRoof a bigg:BuildingConstructionElementType, skos:Concep
     skos:broader bigg:RoofOrCeiling .
 
 bigg:RoofOrCeiling.LoftCeiling a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Таван на таванско/подпокривно помещение"@bg, "Sostre sotacoberta "@ca, "Loft Ceiling"@en, "Techo bajocubierta"@es ;
+    rdfs:label "Таван на таванско/подпокривно помещение"@bg, "Sostre sotacoberta"@ca, "Loft Ceiling"@en, "Techo bajocubierta"@es ;
     rdfs:comment "The covering ceiling of the space located inside the sloping roof of a building", "The covering ceiling of the space located inside the sloping roof of a building"@en ;
     skos:broader bigg:RoofOrCeiling .
 
@@ -129,7 +129,7 @@ bigg:Skylight a bigg:BuildingConstructionElementType, skos:Concept ;
     rdfs:comment "A window fitted in the roof or ceiling of a building, typically inclined or horizontal", "A window fitted in the roof or ceiling of a building, typically inclined or horizontal"@en .
 
 bigg:IfcDoor a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Врата "@bg, "Porta"@ca, "Door"@en, "Puerta"@es ;
+    rdfs:label "Врата"@bg, "Porta"@ca, "Door"@en, "Puerta"@es ;
     rdfs:comment "A surface component that is operable and separates two spaces in a building", "A surface component that is operable and separates two spaces in a building"@en .
 
 bigg:IfcWall.ExternalWall a bigg:BuildingConstructionElementType, skos:Concept ;
@@ -142,7 +142,7 @@ bigg:Floor a bigg:BuildingConstructionElementType, skos:Concept ;
     rdfs:comment "A horizontal construction in a building that creates the base of an enclosed space", "A horizontal construction in a building that creates the base of an enclosed space"@en .
 
 bigg:IfcWall a bigg:BuildingConstructionElementType, skos:Concept ;
-    rdfs:label "Стена "@bg, "Mur"@ca, "Wall"@en, "Muro"@es ;
+    rdfs:label "Стена"@bg, "Mur"@ca, "Wall"@en, "Muro"@es ;
     rdfs:comment "A vertical construction in a premises that creates an enclosed building space", "A vertical construction in a premises that creates an enclosed building space"@en .
 
 bigg:RoofOrCeiling a bigg:BuildingConstructionElementType, skos:Concept ;
@@ -225,7 +225,7 @@ bigg:Healthcare.NursingHome a bigg:BuildingSpaceUseType, skos:Concept ;
 
 bigg:Healthcare.OtherHealthcare a bigg:BuildingSpaceUseType, skos:Concept ;
     rdfs:label "Други здравни заведения"@bg, "Altres centres de salut"@ca, "Other Healthcare"@en, "Otros centros de salud"@es ;
-    rdfs:comment "Buildings dedicated to other health care services ", "Buildings dedicated to other health care services "@en ;
+    rdfs:comment "Buildings dedicated to other health care services ", "Buildings dedicated to other health care services"@en ;
     skos:broader bigg:Healthcare .
 
 bigg:Healthcare.PrimaryCareCenterOrClinic a bigg:BuildingSpaceUseType, skos:Concept ;
@@ -367,7 +367,7 @@ bigg:RecreationAndCulture.OtherReacreationAndCulture a bigg:BuildingSpaceUseType
     skos:broader bigg:RecreationAndCulture .
 
 bigg:RecreationAndCulture.ReligiousFacilities a bigg:BuildingSpaceUseType, skos:Concept ;
-    rdfs:label "Религиозни обекти "@bg, "Instal·lacions religioses"@ca, "Religious Facilities"@en, "Instalaciones religiosas"@es ;
+    rdfs:label "Религиозни обекти"@bg, "Instal·lacions religioses"@ca, "Religious Facilities"@en, "Instalaciones religiosas"@es ;
     rdfs:comment "Religious public assembly premises including churches, monasteries, synagogues, mosques, and temples", "Religious public assembly premises including churches, monasteries, synagogues, mosques, and temples"@en ;
     skos:broader bigg:RecreationAndCulture .
 
@@ -504,7 +504,7 @@ bigg:ResidentialHousing a bigg:BuildingSpaceUseType, skos:Concept ;
 
 bigg:SportsAndWellnessFacilities a bigg:BuildingSpaceUseType, skos:Concept ;
     rdfs:label "Спортни и уелнес сгради"@bg, "Instal·lacions esportives i de benestar"@ca, "Sports And Wellness Facilities"@en, "Instalaciones deportivas y de bienestar"@es ;
-    rdfs:comment "Facilities used for sports, physical activities and for body treatments ", "Facilities used for sports, physical activities and for body treatments "@en .
+    rdfs:comment "Facilities used for sports, physical activities and for body treatments ", "Facilities used for sports, physical activities and for body treatments"@en .
 
 bigg:Retail a bigg:BuildingSpaceUseType, skos:Concept ;
     rdfs:label "Търговия на дребно"@bg, "Comerç minorista"@ca, "Retail"@en, "Comercio minorista"@es ;
@@ -671,7 +671,7 @@ bigg:HVACAndHotWaterElement.FinalElements.IfcSpaceHeater.Radiator a bigg:Buildin
     skos:broader bigg:HVACAndHotWaterElement.FinalElements.IfcSpaceHeater .
 
 bigg:HVACAndHotWaterElement.FinalElements.OtherFinalElement a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "Other final elements of the HVAC and hot water system ", "Other final elements of the HVAC and hot water system "@en ;
+    rdfs:comment "Other final elements of the HVAC and hot water system ", "Other final elements of the HVAC and hot water system"@en ;
     skos:broader bigg:HVACAndHotWaterElement.FinalElements .
 
 bigg:HVACAndHotWaterElement.FinalElements.RadiantFloorOrCeiling a bigg:BuildingSystemElementType, skos:Concept ;
@@ -744,7 +744,7 @@ bigg:IfcEnergyConversionDevice.IfcBurner a bigg:BuildingSystemElementType, skos:
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcChiller a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol. ", "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol. "@en ;
+    rdfs:comment "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol. ", "A chiller is a device used to remove heat from a liquid via a vapor-compression or absorption refrigeration cycle to cool a fluid, typically water or a mixture of water and glycol."@en ;
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcCoil a bigg:BuildingSystemElementType, skos:Concept ;
@@ -756,7 +756,7 @@ bigg:IfcEnergyConversionDevice.IfcCondenser a bigg:BuildingSystemElementType, sk
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcCooledBeam a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space. ", "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space. "@en ;
+    rdfs:comment "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space. ", "A cooled beam (or chilled beam) is a device typically used to cool air by circulating a fluid such as chilled water through exposed finned tubes above a space."@en ;
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcEnergyConversionDevice.IfcCoolingTower a bigg:BuildingSystemElementType, skos:Concept ;
@@ -812,7 +812,7 @@ bigg:IfcEnergyConversionDevice.IfcUnitaryEquipment a bigg:BuildingSystemElementT
     skos:broader bigg:IfcEnergyConversionDevice .
 
 bigg:IfcFlowController.IfcAirTerminalBox a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork. ", "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork. "@en ;
+    rdfs:comment "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork. ", "An air terminal box typically participates in an HVAC duct distribution system and is used to control or modulate the amount of air delivered to its downstream ductwork."@en ;
     skos:broader bigg:IfcFlowController .
 
 bigg:IfcFlowController.IfcDamper a bigg:BuildingSystemElementType, skos:Concept ;
@@ -942,7 +942,7 @@ bigg:HVACAndHotWaterElement.DistributionAndStorageElements.HeatRecoveryUnit a bi
     skos:broader bigg:HVACAndHotWaterElement.DistributionAndStorageElements .
 
 bigg:HVACAndHotWaterElement.FinalElements.IfcSpaceHeater a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area. ", "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area. "@en ;
+    rdfs:comment "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area. ", "Space heaters utilize a combination of radiation and/or natural convection using a heating source such as electricity, steam or hot water to heat a limited space or area."@en ;
     skos:broader bigg:HVACAndHotWaterElement.FinalElements .
 
 bigg:BuildingFabricElement a bigg:BuildingSystemElementType, skos:Concept ;
@@ -980,7 +980,7 @@ bigg:LightingElement.Luminaire a bigg:BuildingSystemElementType, skos:Concept ;
     skos:broader bigg:LightingElement .
 
 bigg:HVACAndHotWaterElement.FinalElements a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "Final elements of the HVAC and hot water system ", "Final elements of the HVAC and hot water system "@en ;
+    rdfs:comment "Final elements of the HVAC and hot water system ", "Final elements of the HVAC and hot water system"@en ;
     skos:broader bigg:HVACAndHotWaterElement .
 
 bigg:LightingElement.Luminaire.IfcLamp a bigg:BuildingSystemElementType, skos:Concept ;
@@ -991,7 +991,7 @@ bigg:RefrigerationElement a bigg:BuildingSystemElementType, skos:Concept ;
     rdfs:comment "Elements of the refrigeration system of the building (does not include space cooling system elements)", "Elements of the refrigeration system of the building (does not include space cooling system elements)"@en .
 
 bigg:IfcFlowController a bigg:BuildingSystemElementType, skos:Concept ;
-    rdfs:comment "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system. ", "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system. "@en .
+    rdfs:comment "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system. ", "The distribution flow element IfcFlowController defines the occurrence of elements of a distribution system that are used to regulate flow through a distribution system."@en .
 
 bigg:ElectricPowerElement.PowerSystemElement a bigg:BuildingSystemElementType, skos:Concept ;
     rdfs:comment "Elements of the electric power system of the building", "Elements of the electric power system of the building"@en ;
@@ -1080,17 +1080,17 @@ bigg:Meter.EnergyMeter.Diesel a bigg:DeviceType, skos:Concept ;
     skos:broader bigg:Meter.EnergyMeter .
 
 bigg:Meter.EnergyMeter.Electricity a bigg:DeviceType, skos:Concept ;
-    rdfs:label "Comptador d'Electricitat"@ca, "Electricity Meter"@en, "Contador de Electricidad"@es ;
+    rdfs:label "Електромер"@bg, "Comptador d'Electricitat"@ca, "Electricity Meter"@en, "Contador de Electricidad"@es ;
     rdfs:comment "An energy meter used to measure the electricity consumption", "An energy meter used to measure the electricity consumption"@en ;
     skos:broader bigg:Meter.EnergyMeter .
 
 bigg:Meter.EnergyMeter.Gas a bigg:DeviceType, skos:Concept ;
-    rdfs:label "Comptador de Gas"@ca, "Gas Meter"@en, "Contador de Gas"@es ;
+    rdfs:label "Газомер"@bg, "Comptador de Gas"@ca, "Gas Meter"@en, "Contador de Gas"@es ;
     rdfs:comment "An energy meter used to measure the gas consumption", "An energy meter used to measure the gas consumption"@en ;
     skos:broader bigg:Meter.EnergyMeter .
 
 bigg:Meter.EnergyMeter.Heat a bigg:DeviceType, skos:Concept ;
-    rdfs:label "Comptador de Calor"@ca, "Heat Meter"@en, "Contador de Calor"@es ;
+    rdfs:label "Топломер"@bg, "Comptador de Calor"@ca, "Heat Meter"@en, "Contador de Calor"@es ;
     rdfs:comment "An energy meter used to measure the District Heating consumption", "An energy meter used to measure the District Heating consumption"@en ;
     skos:broader bigg:Meter.EnergyMeter .
 
@@ -1148,7 +1148,7 @@ bigg:OtherDevice a bigg:DeviceType, skos:Concept ;
     rdfs:comment "Other device type", "Other device type"@en .
 
 bigg:Meter.IfcFlowMeter a bigg:DeviceType, skos:Concept ;
-    rdfs:label "Comptador de Flux"@ca, "Flow Meter"@en, "Contador de Flujo"@es ;
+    rdfs:label "Дебитомер"@bg, "Comptador de Flux"@ca, "Flow Meter"@en, "Contador de Flujo"@es ;
     rdfs:comment "A flow meter is a device that is used to measure the flow rate in a system.", "A flow meter is a device that is used to measure the flow rate in a system."@en ;
     skos:broader bigg:Meter .
 
@@ -1161,12 +1161,12 @@ bigg:IfcDistributionControlElement a bigg:DeviceType, skos:Concept ;
     rdfs:comment "A building automation device that is used to impart control over elements of one of its systems", "A building automation device that is used to impart control over elements of one of its systems"@en .
 
 bigg:IfcDistributionControlElement.IfcSensor a bigg:DeviceType, skos:Concept ;
-    rdfs:label "Сензор"@bg, "Sensor"@ca, "Sensor"@en, "Sensor "@es ;
+    rdfs:label "Сензор"@bg, "Sensor"@ca, "Sensor"@en, "Sensor"@es ;
     rdfs:comment "A device that measures a physical quantity and converts it into a signal which can be read by an observer or by an instrument", "A device that measures a physical quantity and converts it into a signal which can be read by an observer or by an instrument"@en ;
     skos:broader bigg:IfcDistributionControlElement .
 
 bigg:Meter.EnergyMeter a bigg:DeviceType, skos:Concept ;
-    rdfs:label "Comptador d'Energia"@ca, "Energy Meter"@en, "Contador de Energía"@es ;
+    rdfs:label "Измервател на енергия"@bg, "Comptador d'Energia"@ca, "Energy Meter"@en, "Contador de Energía"@es ;
     rdfs:comment "Energy meter"@en ;
     skos:broader bigg:Meter .
 
@@ -1176,7 +1176,7 @@ bigg:Meter.EnergyMeter a bigg:DeviceType, skos:Concept ;
 
 bigg:BuildingFabricMeasure.AirInfiltrationMeasure.AirCurtainsInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Монтаж на въздушни завеси"@bg, "Instal·lació de cortina d’aire"@ca, "Air Curtains Installation"@en, "Instalación de cortina de aire"@es ;
-    rdfs:comment "Installation of a fan-powered air curtain over openings that lead to the exterior or to non-climatized spaces ", "Instal·lació de cortina d’aire"@ca, "Installation of a fan-powered air curtain over openings that lead to the exterior or to non-climatized spaces "@en, "Instalación de cortina de aire"@es ;
+    rdfs:comment "Installation of a fan-powered air curtain over openings that lead to the exterior or to non-climatized spaces ", "Instal·lació de cortina d’aire"@ca, "Installation of a fan-powered air curtain over openings that lead to the exterior or to non-climatized spaces"@en, "Instalación de cortina de aire"@es ;
     skos:broader bigg:BuildingFabricMeasure.AirInfiltrationMeasure .
 
 bigg:BuildingFabricMeasure.AirInfiltrationMeasure.DraughtProofing a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1190,7 +1190,7 @@ bigg:BuildingFabricMeasure.AirInfiltrationMeasure.OtherAirInfiltrationMeasure a 
     skos:broader bigg:BuildingFabricMeasure.AirInfiltrationMeasure .
 
 bigg:BuildingFabricMeasure.ComprehensiveBuildingFabricRenovation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Цялостно сградно обновяване "@bg, "Renovació integral de l’estructura de l’edificació"@ca, "Comprehensive Building Fabric Renovation"@en, "Renovación integral de la estructura de la edificación"@es ;
+    rdfs:label "Цялостно сградно обновяване"@bg, "Renovació integral de l’estructura de l’edificació"@ca, "Comprehensive Building Fabric Renovation"@en, "Renovación integral de la estructura de la edificación"@es ;
     rdfs:comment "Comprehensive intervention on the building fabric that aims at improving the energy efficiency of the building (eg. modernization, retroﬁt, or upgrade)", "Renovació integral de l’estructura de l’edificació"@ca, "Comprehensive intervention on the building fabric that aims at improving the energy efficiency of the building (eg. modernization, retroﬁt, or upgrade)"@en, "Renovación integral de la estructura de la edificación"@es ;
     skos:broader bigg:BuildingFabricMeasure .
 
@@ -1271,7 +1271,7 @@ bigg:BuildingFabricMeasure.RoofAndCeilingMeasure.ReflectiveRoofCoating a bigg:En
 
 bigg:BuildingFabricMeasure.RoofAndCeilingMeasure.RoofWaterproofing a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Хидроизолация на покрива"@bg, "Impermeabilització del sostre"@ca, "Roof Waterproofing"@en, "Impermeabilización del techo"@es ;
-    rdfs:comment "Addition of a waterproof layer to the building roof to prevent the penetration of water into the structure ", "Impermeabilització del sostre"@ca, "Addition of a waterproof layer to the building roof to prevent the penetration of water into the structure "@en, "Impermeabilización del techo"@es ;
+    rdfs:comment "Addition of a waterproof layer to the building roof to prevent the penetration of water into the structure ", "Impermeabilització del sostre"@ca, "Addition of a waterproof layer to the building roof to prevent the penetration of water into the structure"@en, "Impermeabilización del techo"@es ;
     skos:broader bigg:BuildingFabricMeasure.RoofAndCeilingMeasure .
 
 bigg:BuildingFabricMeasure.ShadingMeasure.AutomaticShadingSystemInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1336,7 +1336,7 @@ bigg:BuildingFabricMeasure.WallMeasure.WallInternalInsulation a bigg:EnergyEffic
 
 bigg:BuildingFabricMeasure.WallMeasure.WallWaterproofing a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Хидроизолация на стени"@bg, "Impermeabilització de la façana"@ca, "Wall Waterproofing"@en, "Impermeabilización de la fachada"@es ;
-    rdfs:comment "Addition of a waterproof layer to the building walls to prevent the penetration of water into the structure ", "Impermeabilització de la façana"@ca, "Addition of a waterproof layer to the building walls to prevent the penetration of water into the structure "@en, "Impermeabilización de la fachada"@es ;
+    rdfs:comment "Addition of a waterproof layer to the building walls to prevent the penetration of water into the structure ", "Impermeabilització de la façana"@ca, "Addition of a waterproof layer to the building walls to prevent the penetration of water into the structure"@en, "Impermeabilización de la fachada"@es ;
     skos:broader bigg:BuildingFabricMeasure.WallMeasure .
 
 bigg:BuildingFabricMeasure.WindowMeasure.OtherWindowMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1421,7 +1421,7 @@ bigg:ElectricPowerSystemMeasure.PowerSystemMeasure.ElectricDistributionPanelRepl
 
 bigg:ElectricPowerSystemMeasure.PowerSystemMeasure.OtherPowerSystemMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Други мерки за енергийната система"@bg, "Altres millores del sistema elèctric"@ca, "Other Power System Measure"@en, "Otras mejoras del sistema eléctrico"@es ;
-    rdfs:comment "Other measure that affects the building power system ", "Altres millores del sistema elèctric"@ca, "Other measure that affects the building power system "@en, "Otras mejoras del sistema eléctrico"@es ;
+    rdfs:comment "Other measure that affects the building power system ", "Altres millores del sistema elèctric"@ca, "Other measure that affects the building power system"@en, "Otras mejoras del sistema eléctrico"@es ;
     skos:broader bigg:ElectricPowerSystemMeasure.PowerSystemMeasure .
 
 bigg:ElectricPowerSystemMeasure.PowerSystemMeasure.PowerFactorCorrection a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1431,7 +1431,7 @@ bigg:ElectricPowerSystemMeasure.PowerSystemMeasure.PowerFactorCorrection a bigg:
 
 bigg:ElectricPowerSystemMeasure.PowerSystemMeasure.PowerSystemCompleteUpgrade a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Цялостно обновяване на ел. захранващата система"@bg, "Actualització completa del sistema elèctric"@ca, "Power System Complete Upgrade"@en, "Actualización completa del sistema eléctrico"@es ;
-    rdfs:comment "Complete upgrade and renovation of the building electric power system ", "Actualització completa del sistema elèctric"@ca, "Complete upgrade and renovation of the building electric power system "@en, "Actualización completa del sistema eléctrico"@es ;
+    rdfs:comment "Complete upgrade and renovation of the building electric power system ", "Actualització completa del sistema elèctric"@ca, "Complete upgrade and renovation of the building electric power system"@en, "Actualización completa del sistema eléctrico"@es ;
     skos:broader bigg:ElectricPowerSystemMeasure.PowerSystemMeasure .
 
 bigg:ElectricPowerSystemMeasure.PowerSystemMeasure.PowerSystemTransformersReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1461,7 +1461,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProdu
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProductionMeasure.HeatAndCoolHeatExchangersReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на топлообменници за отопление и охлаждане"@bg, "Substitució dels intercanviadors de calor per a la producció calor i fred"@ca, "Heat And Cool Heat Exchangers Replacement"@en, "Sustitución de los intercambiadores de calor para la producción calor y frío"@es ;
-    rdfs:comment "Replacement of heat exchangers ", "Substitució dels intercanviadors de calor per a la producció calor i fred"@ca, "Replacement of heat exchangers "@en, "Sustitución de los intercambiadores de calor para la producción calor y frío"@es ;
+    rdfs:comment "Replacement of heat exchangers ", "Substitució dels intercanviadors de calor per a la producció calor i fred"@ca, "Replacement of heat exchangers"@en, "Sustitución de los intercambiadores de calor para la producción calor y frío"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProductionMeasure.HeatAndCoolHeatPumpReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1471,7 +1471,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProdu
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProductionMeasure.HeatAndCoolProductionFuelConversion a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Производство на топлина и студ - Подмяна на горивна база"@bg, "Substitució amb conversió de combustible per producció de calor i fred"@ca, "Heat And Cool Production Fuel Conversion"@en, "Sustitución con conversión de combustible por producción de calor y frío"@es ;
-    rdfs:comment "Replacement of the system with one that operates with a different fuel source ", "Substitució amb conversió de combustible per producció de calor i fred"@ca, "Replacement of the system with one that operates with a different fuel source "@en, "Sustitución con conversión de combustible por producción de calor y frío"@es ;
+    rdfs:comment "Replacement of the system with one that operates with a different fuel source ", "Substitució amb conversió de combustible per producció de calor i fred"@ca, "Replacement of the system with one that operates with a different fuel source"@en, "Sustitución con conversión de combustible por producción de calor y frío"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatAndCoolProductionMeasure.HeatAndCoolProductionSystemInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1511,7 +1511,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolin
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure.HeatingAndCoolingDistributionBalancingAndFlowRegulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Балансиране на системите за отопление и охлаждане и регулиране на дебита"@bg, "Regulació i equilibri del cabal del sistema de distribució de calefacció i refrigeració"@ca, "Heating And Cooling Distribution Balancing And Flow Regulation"@en, "Regulación y equilibrio del caudal del sistema de distribución de calefacción y refrigeración"@es ;
-    rdfs:comment "Optimization of the heating/cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) ", "Regulació i equilibri del cabal del sistema de distribució de calefacció i refrigeració"@ca, "Optimization of the heating/cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) "@en, "Regulación y equilibrio del caudal del sistema de distribución de calefacción y refrigeración"@es ;
+    rdfs:comment "Optimization of the heating/cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) ", "Regulació i equilibri del cabal del sistema de distribució de calefacció i refrigeració"@ca, "Optimization of the heating/cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers)"@en, "Regulación y equilibrio del caudal del sistema de distribución de calefacción y refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure.HeatingAndCoolingDistributionFanReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1520,7 +1520,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolin
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure.HeatingAndCoolingDistributionOtherComponentReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Подмяна на други елементи от системата за разпределение на отопление и охлаждане "@bg, "Substitució d’un altres components del sistema de distribució de calefacció i refrigeració"@ca, "Heating And Cooling Distribution Other Component Replacement"@en, "Sustitución de otros componentes del sistema de distribución de calefacción y refrigeración"@es ;
+    rdfs:label "Подмяна на други елементи от системата за разпределение на отопление и охлаждане"@bg, "Substitució d’un altres components del sistema de distribució de calefacció i refrigeració"@ca, "Heating And Cooling Distribution Other Component Replacement"@en, "Sustitución de otros componentes del sistema de distribución de calefacción y refrigeración"@es ;
     rdfs:comment "Replacement or installation of other distribution elements (eg. valves or filters)", "Substitució d’un altres components del sistema de distribució de calefacció i refrigeració"@ca, "Replacement or installation of other distribution elements (eg. valves or filters)"@en, "Sustitución de otros componentes del sistema de distribución de calefacción y refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure .
 
@@ -1531,7 +1531,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolin
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure.HeatingAndCoolingDistributionSystemReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на разпределителната система за отопление и охлаждане"@bg, "Substitució integral del sistema de distribució de calefacció i refrigeració"@ca, "Heating And Cooling Distribution System Replacement"@en, "Sustitución integral del sistema de distribución de calefacción y refrigeración"@es ;
-    rdfs:comment "Complete change of the heating and cooling distribution system ", "Substitució integral del sistema de distribució de calefacció i refrigeració"@ca, "Complete change of the heating and cooling distribution system "@en, "Sustitución integral del sistema de distribución de calefacción y refrigeración"@es ;
+    rdfs:comment "Complete change of the heating and cooling distribution system ", "Substitució integral del sistema de distribució de calefacció i refrigeració"@ca, "Complete change of the heating and cooling distribution system"@en, "Sustitución integral del sistema de distribución de calefacción y refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure.HeatingAndCoolingDuctsInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1571,7 +1571,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolin
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingFinalElementsMeasure.HeatingAndCoolingUnderfloorInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Инсталация за подово отопление и охлаждане"@bg, "Instal·lació de terra radiant per calefacció i refrigeració"@ca, "Heating And Cooling Underfloor Installation"@en, "Instalación de suelo radiante para calefacción y refrigeración"@es ;
-    rdfs:comment "Installation of an underfloor heating/cooling system ", "Instal·lació de terra radiant per calefacció i refrigeració"@ca, "Installation of an underfloor heating/cooling system "@en, "Instalación de suelo radiante para calefacción y refrigeración"@es ;
+    rdfs:comment "Installation of an underfloor heating/cooling system ", "Instal·lació de terra radiant per calefacció i refrigeració"@ca, "Installation of an underfloor heating/cooling system"@en, "Instalación de suelo radiante para calefacción y refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingFinalElementsMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingFinalElementsMeasure.OtherHeatingAndCoolingFinalElementsMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1591,7 +1591,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWater
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWaterProductionMeasure.HeatAndHotWaterHeatExchangersReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на топлообменници за отопление и БГВ"@bg, "Substitució de l’intercanviador de calor per calefacció i ACS"@ca, "Heat And Hot Water Heat Exchangers Replacement"@en, "Sustitución del intercambiador de calor por calefacción y ACS"@es ;
-    rdfs:comment "Replacement of heat exchangers ", "Substitució de l’intercanviador de calor per calefacció i ACS"@ca, "Replacement of heat exchangers "@en, "Sustitución del intercambiador de calor por calefacción y ACS"@es ;
+    rdfs:comment "Replacement of heat exchangers ", "Substitució de l’intercanviador de calor per calefacció i ACS"@ca, "Replacement of heat exchangers"@en, "Sustitución del intercambiador de calor por calefacción y ACS"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWaterProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWaterProductionMeasure.HeatAndHotWaterHeatPumpReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1606,7 +1606,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWater
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWaterProductionMeasure.HeatAndHotWaterProductionFuelConversion a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Производство на топлинна енергия и БГВ - Подмяна на горивна база"@bg, "Substitució de caldera per calefacció i ACS amb canvi de combustible"@ca, "Heat And Hot Water Production Fuel Conversion"@en, "Sustitución de caldera por calefacción y ACS con cambio de combustible"@es ;
-    rdfs:comment "Replacement of the hot water production system with one that operates with a different fuel source ", "Substitució de caldera per calefacció i ACSamb canvi de combustible"@ca, "Replacement of the hot water production system with one that operates with a different fuel source "@en, "Sustitución de caldera por calefacción y ACS con cambio de combustible"@es ;
+    rdfs:comment "Replacement of the hot water production system with one that operates with a different fuel source ", "Substitució de caldera per calefacció i ACSamb canvi de combustible"@ca, "Replacement of the hot water production system with one that operates with a different fuel source"@en, "Sustitución de caldera por calefacción y ACS con cambio de combustible"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWaterProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatAndHotWaterProductionMeasure.HeatAndHotWaterProductionSystemInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1641,7 +1641,7 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatingAndHotWa
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatingAndHotWaterDistributionAndStorageMeasure.HeatAndHotWaterDistributionSystemReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на системата за разпределение на топлинна енергия и БГВ"@bg, "Substitució del sistema de distribució de calor per calefacció i ACS"@ca, "Heat And Hot Water Distribution System Replacement"@en, "Sustitución del sistema de distribución de calor por calefacción y ACS"@es ;
-    rdfs:comment "Complete change of the hot water distribution system ", "Substitució del sistema de distribució de calor per calefacció i ACS"@ca, "Complete change of the hot water distribution system "@en, "Sustitución del sistema de distribución de calor por calefacción y ACS"@es ;
+    rdfs:comment "Complete change of the hot water distribution system ", "Substitució del sistema de distribució de calor per calefacció i ACS"@ca, "Complete change of the hot water distribution system"@en, "Sustitución del sistema de distribución de calor por calefacción y ACS"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatingAndHotWaterDistributionAndStorageMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatingAndHotWaterDistributionAndStorageMeasure.HeatAndHotWaterPipesInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1691,7 +1691,7 @@ bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolProductionMeasure.CoolingCo
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolProductionMeasure.CoolingHeatExchangerReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Инсталиране на термостат за охлаждане"@bg, "Instal·lació de termòstats de refrigeració"@ca, "Cooling Thermostat Installation"@en, "Instalación de termostatos para el control del sistema de refrigeración"@es ;
-    rdfs:comment "Replacement of heat exchangers ", "Instal·lació de termòstats de refrigeració"@ca, "Replacement of heat exchangers "@en, "Instalación de termostatos para el control del sistema de refrigeración"@es ;
+    rdfs:comment "Replacement of heat exchangers ", "Instal·lació de termòstats de refrigeració"@ca, "Replacement of heat exchangers"@en, "Instalación de termostatos para el control del sistema de refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolProductionMeasure.CoolingHeatPumpReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1721,7 +1721,7 @@ bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolProductionMeasure.OtherCool
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingControlMeasure.CoolingStopStartOptimization a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на други компоненти от системите за разпределени на охлаждането"@bg, "Substitució d’altres components del sistema de distribució de refrigeració"@ca, "Cooling Distribution Other Component Replacement"@en, "Sustitución o instalación de otros elementos de distribución (por ejemplo, válvulas o filtros)"@es ;
-    rdfs:comment "Implementation of a control to optimize the start/stop of the cooling system to reach the temperature setpoint ", "Substitució d’altres components del sistema de distribució de refrigeració"@ca, "Implementation of a control to optimize the start/stop of the cooling system to reach the temperature setpoint "@en, "Sustitución o instalación de otros elementos de distribución (por ejemplo, válvulas o filtros)"@es ;
+    rdfs:comment "Implementation of a control to optimize the start/stop of the cooling system to reach the temperature setpoint ", "Substitució d’altres components del sistema de distribució de refrigeració"@ca, "Implementation of a control to optimize the start/stop of the cooling system to reach the temperature setpoint"@en, "Sustitución o instalación de otros elementos de distribución (por ejemplo, válvulas o filtros)"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingControlMeasure .
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingControlMeasure.CoolingTemperatureSensorInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1751,7 +1751,7 @@ bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMe
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure.CoolingDistributionBalancingAndFlowRegulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Инсталиране на резервоар за съхранение на студова енергия"@bg, "Instal·lació d’un dipòsit d’emmagatzematge de refrigeració"@ca, "Cooling Storage Tank Installation"@en, "Instalación o sustitución del depósito de almacenamiento de agua fría"@es ;
-    rdfs:comment "Optimization of the cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) ", "Instal·lació d’un dipòsit d’emmagatzematge de refrigeració"@ca, "Optimization of the cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) "@en, "Instalación o sustitución del depósito de almacenamiento de agua fría"@es ;
+    rdfs:comment "Optimization of the cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) ", "Instal·lació d’un dipòsit d’emmagatzematge de refrigeració"@ca, "Optimization of the cooling distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers)"@en, "Instalación o sustitución del depósito de almacenamiento de agua fría"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure .
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure.CoolingDistributionFanReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1771,7 +1771,7 @@ bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMe
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure.CoolingDistributionSystemReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Преместване на охладителни уреди от системата за охлаждане"@bg, "Reubicació dels elements finals de refrigeració"@ca, "Cooling Final Elements Relocation"@en, "Cambio de la ubicación de los elementos finales del sistema de refrigeración"@es ;
-    rdfs:comment "Complete change of the cooling distribution system ", "Reubicació dels elements finals de refrigeració"@ca, "Complete change of the cooling distribution system "@en, "Cambio de la ubicación de los elementos finales del sistema de refrigeración"@es ;
+    rdfs:comment "Complete change of the cooling distribution system ", "Reubicació dels elements finals de refrigeració"@ca, "Complete change of the cooling distribution system"@en, "Cambio de la ubicación de los elementos finales del sistema de refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure .
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure.CoolingDuctsInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1790,7 +1790,7 @@ bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMe
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure .
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure.CoolingPipesSubstitution a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Мярка за производство на студ "@bg, "Millora de producció de refrigeració"@ca, "Cool Production Measure"@en, "Mejora de producción de refrigeración"@es ;
+    rdfs:label "Мярка за производство на студ"@bg, "Millora de producció de refrigeració"@ca, "Cool Production Measure"@en, "Mejora de producción de refrigeración"@es ;
     rdfs:comment "Substitution of the pipes", "Millora de producció de refrigeració"@ca, "Substitution of the pipes"@en, "Mejora de producción de refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure .
 
@@ -1821,7 +1821,7 @@ bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingFinalElementsMeasure.Coo
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingFinalElementsMeasure.CoolingUnderfloorInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Присъединяване към централизирано охлаждане"@bg, "Connexió al sistema de refrigeració urbana"@ca, "District Cooling Connection"@en, "Conexión del sistema de calefacción del edificio en la red de refrigeración urbana"@es ;
-    rdfs:comment "Installation of an underfloor cooling system ", "Connexió al sistema de refrigeració urbana"@ca, "Installation of an underfloor cooling system "@en, "Conexión del sistema de calefacción del edificio en la red de refrigeración urbana"@es ;
+    rdfs:comment "Installation of an underfloor cooling system ", "Connexió al sistema de refrigeració urbana"@ca, "Installation of an underfloor cooling system"@en, "Conexión del sistema de calefacción del edificio en la red de refrigeración urbana"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingFinalElementsMeasure .
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingFinalElementsMeasure.OtherCoolingFinalElementsMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1836,7 +1836,7 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure.DistrictH
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure.HeatProductionFuelConversion a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Монтаж на температурен датчик за отопление"@bg, "Instal·lació de sensors de temperatura per el control"@ca, "Heating Temperature Sensor Installation"@en, "Instalación de sensores de temperatura para el control"@es ;
-    rdfs:comment "Replacement of the heat production system with one that operates with a different fuel source ", "Instal·lació de sensors de temperatura per el control"@ca, "Replacement of the heat production system with one that operates with a different fuel source "@en, "Instalación de sensores de temperatura para el control"@es ;
+    rdfs:comment "Replacement of the heat production system with one that operates with a different fuel source ", "Instal·lació de sensors de temperatura per el control"@ca, "Replacement of the heat production system with one that operates with a different fuel source"@en, "Instalación de sensores de temperatura para el control"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure.HeatProductionSystemInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1856,11 +1856,11 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure.HeatingBu
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure.HeatingHeatExchangersReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Други мерки за управление на отоплението"@bg, "Altres millores de control de la calefacció"@ca, "Other Heating Control Measure"@en, "Otras mejoras de control de la calefacción"@es ;
-    rdfs:comment "Replacement of heat exchangers ", "Altres millores de control de la calefacció"@ca, "Replacement of heat exchangers "@en, "Otras mejoras de control de la calefacción"@es ;
+    rdfs:comment "Replacement of heat exchangers ", "Altres millores de control de la calefacció"@ca, "Replacement of heat exchangers"@en, "Otras mejoras de control de la calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure.HeatingHeatPumpReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Мярка за разпределение и съхранение на топлинна енергия "@bg, "Millora de distribució i emmagatzematge de calefacció"@ca, "Heating Distribution And Storage Measure"@en, "Mejora de distribución y almacenamiento de calefacción"@es ;
+    rdfs:label "Мярка за разпределение и съхранение на топлинна енергия"@bg, "Millora de distribució i emmagatzematge de calefacció"@ca, "Heating Distribution And Storage Measure"@en, "Mejora de distribución y almacenamiento de calefacción"@es ;
     rdfs:comment "Replacement of the heat pump with a more efficient one", "Millora de distribució i emmagatzematge de calefacció"@ca, "Replacement of the heat pump with a more efficient one"@en, "Mejora de distribución y almacenamiento de calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure .
 
@@ -1876,7 +1876,7 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure.OtherHeat
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingControlMeasure.HeatingStopStartOptimization a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на други елементи на отоплителната инсталация"@bg, "Substitució altres components de la distribució de calefacció"@ca, "Heating Distribution Other Component Replacement"@en, "Sustitución otros componentes de la distribución de calefacción"@es ;
-    rdfs:comment "Implementation of a control to optimize the start/stop of the heating system to reach the temperature setpoint ", "Substitució altres components de la distribució de calefacció"@ca, "Implementation of a control to optimize the start/stop of the heating system to reach the temperature setpoint "@en, "Sustitución otros componentes de la distribución de calefacción"@es ;
+    rdfs:comment "Implementation of a control to optimize the start/stop of the heating system to reach the temperature setpoint ", "Substitució altres components de la distribució de calefacció"@ca, "Implementation of a control to optimize the start/stop of the heating system to reach the temperature setpoint"@en, "Sustitución otros componentes de la distribución de calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingControlMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingControlMeasure.HeatingTemperatureSensorInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1885,7 +1885,7 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingControlMeasure.HeatingTe
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingControlMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingControlMeasure.HeatingThermostatInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Подмяна на разпределителната система на отоплителната инсталация "@bg, "Substitució sistema complert de distribució de calefacció"@ca, "Heating Distribution System Replacement"@en, "Sustitución sistema completo de distribución de calefacción"@es ;
+    rdfs:label "Подмяна на разпределителната система на отоплителната инсталация"@bg, "Substitució sistema complert de distribució de calefacció"@ca, "Heating Distribution System Replacement"@en, "Sustitución sistema completo de distribución de calefacción"@es ;
     rdfs:comment "Installation of a thermostat for the control of the heating system", "Substitució sistema complert de distribució de calefacció"@ca, "Installation of a thermostat for the control of the heating system"@en, "Sustitución sistema completo de distribución de calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingControlMeasure .
 
@@ -1911,7 +1911,7 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMe
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMeasure.HeatingDistributionBalancingAndFlowRegulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Изолация на резервоарите за съхранение на топлина"@bg, "Aïllament dipòsit d’inèrcia de calefacció"@ca, "Heating Storage Tank Insulation"@en, "Aislamiento depósito de inercia de calefacción"@es ;
-    rdfs:comment "Optimization of the heating distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) ", "Aïllament dipòsit d’inèrcia de calefacció"@ca, "Optimization of the heating distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) "@en, "Aislamiento depósito de inercia de calefacción"@es ;
+    rdfs:comment "Optimization of the heating distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers) ", "Aïllament dipòsit d’inèrcia de calefacció"@ca, "Optimization of the heating distribution through regulation of the water/airflow (eg. by means of balancing valves or dampers)"@en, "Aislamiento depósito de inercia de calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMeasure.HeatingDistributionFanReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1931,7 +1931,7 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMe
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMeasure.HeatingDistributionSystemReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на отоплителни уреди на отоплителната система"@bg, "Substitució elements finals de calefacció"@ca, "Heating Final Elements Replacement"@en, "Sustitución elementos finales de calefacción"@es ;
-    rdfs:comment "Complete change of the heating distribution system ", "Substitució elements finals de calefacció"@ca, "Complete change of the heating distribution system "@en, "Sustitución elementos finales de calefacción"@es ;
+    rdfs:comment "Complete change of the heating distribution system ", "Substitució elements finals de calefacció"@ca, "Complete change of the heating distribution system"@en, "Sustitución elementos finales de calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMeasure.HeatingDuctsInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -1981,7 +1981,7 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingFinalElementsMeasure.Hea
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingFinalElementsMeasure.HeatingUnderfloorInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Изолация на системата за производство на топлинна енергия"@bg, "Aïllament sistema de producció de calefacció"@ca, "Heat Production System Insulation"@en, "Aislamiento sistema de producción de calefacción"@es ;
-    rdfs:comment "Installation of an underfloor heating system ", "Aïllament sistema de producció de calefacció"@ca, "Installation of an underfloor heating system "@en, "Aislamiento sistema de producción de calefacción"@es ;
+    rdfs:comment "Installation of an underfloor heating system ", "Aïllament sistema de producció de calefacció"@ca, "Installation of an underfloor heating system"@en, "Aislamiento sistema de producción de calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingFinalElementsMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingFinalElementsMeasure.OtherHeatingFinalElementsMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2026,7 +2026,7 @@ bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterDistributionAndStorage
 
 bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterDistributionAndStorageMeasure.HotWaterDistributionSystemReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на разпределителната система за БГВ"@bg, "Substitució del sistema de distribució d’ACS"@ca, "Hot Water Distribution System Replacement"@en, "Sustitución del sistema de distribución de ACS"@es ;
-    rdfs:comment "Complete change of the hot water distribution system ", "Substitució del sistema de distribució d’ACS"@ca, "Complete change of the hot water distribution system "@en, "Sustitución del sistema de distribución de ACS"@es ;
+    rdfs:comment "Complete change of the hot water distribution system ", "Substitució del sistema de distribució d’ACS"@ca, "Complete change of the hot water distribution system"@en, "Sustitución del sistema de distribución de ACS"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterDistributionAndStorageMeasure .
 
 bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterDistributionAndStorageMeasure.HotWaterPipesInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2076,7 +2076,7 @@ bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure.HotW
 
 bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure.HotWaterHeatExchangersReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на топлообменници за БГВ"@bg, "Substitució de l’intercanviador de calor del sistema de producció d’aigua calenta sanitària (ACS)"@ca, "Hot Water Heat Exchangers Replacement"@en, "Sustitución de intercambiadores de calor producción ACS"@es ;
-    rdfs:comment "Replacement of heat exchangers ", "Substitució de l’intercanviador de calor del sistema de producció d’aigua calenta sanitària (ACS)"@ca, "Replacement of heat exchangers "@en, "Sustitución de intercambiadores de calor producción ACS"@es ;
+    rdfs:comment "Replacement of heat exchangers ", "Substitució de l’intercanviador de calor del sistema de producció d’aigua calenta sanitària (ACS)"@ca, "Replacement of heat exchangers"@en, "Sustitución de intercambiadores de calor producción ACS"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure.HotWaterHeatPumpReplacement a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2091,7 +2091,7 @@ bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure.HotW
 
 bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure.HotWaterProductionFuelConversion a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Производство на БГВ - Подмяна на горивна база"@bg, "Substitució de la caldera d’ACS amb conversió de combustible"@ca, "Hot Water Production Fuel Conversion"@en, "Sustitución del sistema de producción de calor por otro que funciona con una fuente de combustible distinta"@es ;
-    rdfs:comment "Replacement of the heat production system with one that operates with a different fuel source ", "Substitució de la caldera d’ACS amb conversió de combustible"@ca, "Replacement of the heat production system with one that operates with a different fuel source "@en, "Sustitución del sistema de producción de calor por otro que funciona con una fuente de combustible distinta"@es ;
+    rdfs:comment "Replacement of the heat production system with one that operates with a different fuel source ", "Substitució de la caldera d’ACS amb conversió de combustible"@ca, "Replacement of the heat production system with one that operates with a different fuel source"@en, "Sustitución del sistema de producción de calor por otro que funciona con una fuente de combustible distinta"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure .
 
 bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterProductionMeasure.HotWaterProductionSystemInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2135,7 +2135,7 @@ bigg:HVACAndHotWaterMeasure.MechanicalVentilationSystemMeasure.MechanicalVentila
     skos:broader bigg:HVACAndHotWaterMeasure.MechanicalVentilationSystemMeasure.MechanicalVentilationDistributionMeasure .
 
 bigg:HVACAndHotWaterMeasure.MechanicalVentilationSystemMeasure.MechanicalVentilationDistributionMeasure.VentilationHeatRecoveryInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Изграждане на вентилационна инсталация с рекуперация "@bg, "Instal·lació de recuperadors de calor per ventilació"@ca, "Ventilation Heat Recovery Installation"@en, "Instalación de recuperadores de calor por ventilación"@es ;
+    rdfs:label "Изграждане на вентилационна инсталация с рекуперация"@bg, "Instal·lació de recuperadors de calor per ventilació"@ca, "Ventilation Heat Recovery Installation"@en, "Instalación de recuperadores de calor por ventilación"@es ;
     rdfs:comment "Installation of a recovery system that uses the heat exhaust air to preheat incoming fresh air", "Instal·lació de recuperadors de calor per ventilació"@ca, "Installation of a recovery system that uses the heat exhaust air to preheat incoming fresh air"@en, "Instalación de recuperadores de calor por ventilación"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.MechanicalVentilationSystemMeasure.MechanicalVentilationDistributionMeasure .
 
@@ -2161,7 +2161,7 @@ bigg:LightingMeasure.LightingIndoorMeasure.IndoorLightingOperationalOptimization
 
 bigg:LightingMeasure.LightingIndoorMeasure.IndoorLightingOperationalOptimization.IndoorLightingUnitsCleaning a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Почистване на вътрешните осветителни тела"@bg, "Neteja unitats il·luminació interior"@ca, "Indoor Lighting Units Cleaning"@en, "Limpieza unidades iluminación interior"@es ;
-    rdfs:comment "Cleaning of the lamps or luminaries ", "Neteja unitats il·luminació interior"@ca, "Cleaning of the lamps or luminaries "@en, "Limpieza unidades iluminación interior"@es ;
+    rdfs:comment "Cleaning of the lamps or luminaries ", "Neteja unitats il·luminació interior"@ca, "Cleaning of the lamps or luminaries"@en, "Limpieza unidades iluminación interior"@es ;
     skos:broader bigg:LightingMeasure.LightingIndoorMeasure.IndoorLightingOperationalOptimization .
 
 bigg:LightingMeasure.LightingIndoorMeasure.IndoorLightingOperationalOptimization.IndoorNaturalLightMaximization a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2231,7 +2231,7 @@ bigg:LightingMeasure.LightingOutdoorMeasure.OutdoorLightingOperationalOptimizati
 
 bigg:LightingMeasure.LightingOutdoorMeasure.OutdoorLightingOperationalOptimization.OutdoorLightingUnitsCleaning a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Почистване на външни осветителни тела"@bg, "Neteja unitats d’ il·luminació exterior"@ca, "Outdoor Lighting Units Cleaning"@en, "Limpieza unidades de iluminación exterior"@es ;
-    rdfs:comment "Cleaning of the lamps or luminaries ", "Neteja unitats d’ il·luminació exterior"@ca, "Cleaning of the lamps or luminaries "@en, "Limpieza unidades de iluminación exterior"@es ;
+    rdfs:comment "Cleaning of the lamps or luminaries ", "Neteja unitats d’ il·luminació exterior"@ca, "Cleaning of the lamps or luminaries"@en, "Limpieza unidades de iluminación exterior"@es ;
     skos:broader bigg:LightingMeasure.LightingOutdoorMeasure.OutdoorLightingOperationalOptimization .
 
 bigg:LightingMeasure.LightingOutdoorMeasure.OutdoorLightingOperationalOptimization.OutdoorNaturalLightMaximization a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2296,7 +2296,7 @@ bigg:ManagementMeasure.EnergyManagerAppointment a bigg:EnergyEfficiencyMeasureTy
 
 bigg:ManagementMeasure.OtherManagementMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Други мерки за управление"@bg, "Altres millores de gestió"@ca, "Other Management Measure"@en, "Otras mejoras de gestión"@es ;
-    rdfs:comment "Other management measure ", "Altres millores de gestió"@ca, "Other management measure "@en, "Otras mejoras de gestión"@es ;
+    rdfs:comment "Other management measure ", "Altres millores de gestió"@ca, "Other management measure"@en, "Otras mejoras de gestión"@es ;
     skos:broader bigg:ManagementMeasure .
 
 bigg:ManagementMeasure.PersonnelTraining a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2326,7 +2326,7 @@ bigg:RefrigerationSystemsMeasure.RefrigerationOperationalOptimization.Refrigerat
 
 bigg:RefrigerationSystemsMeasure.RefrigerationOperationalOptimization.RefrigerationFloatingHeadPressureControlImplementation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Хладилна инсталация - Плаващ контрол на налягането на кондензация"@bg, "Implementació de control de pressió de capçal flotant de refrigeració"@ca, "Refrigeration Floating Head Pressure Control Implementation"@en, "Implementación de control de presión de cabezal flotante de refrigeración"@es ;
-    rdfs:comment "Implementation of a control to reduce the exit pressure of the compressor in function of the outside temperature ", "Implementació de control de pressió de capçal flotant de refrigeració"@ca, "Implementation of a control to reduce the exit pressure of the compressor in function of the outside temperature "@en, "Implementación de control de presión de cabezal flotante de refrigeración"@es ;
+    rdfs:comment "Implementation of a control to reduce the exit pressure of the compressor in function of the outside temperature ", "Implementació de control de pressió de capçal flotant de refrigeració"@ca, "Implementation of a control to reduce the exit pressure of the compressor in function of the outside temperature"@en, "Implementación de control de presión de cabezal flotante de refrigeración"@es ;
     skos:broader bigg:RefrigerationSystemsMeasure.RefrigerationOperationalOptimization .
 
 bigg:RefrigerationSystemsMeasure.RefrigerationSystemCompleteRenewal a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2341,7 +2341,7 @@ bigg:RefrigerationSystemsMeasure.RefrigerationTechnicalOptimization.OtherRefrige
 
 bigg:RefrigerationSystemsMeasure.RefrigerationTechnicalOptimization.RefrigeratedSpaceDoorsOrCurtainsInstallation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Монтаж на врати или завеси за охлаждани помещения"@bg, "Instal·lació de portes o cortines a l’espai refrigerat frigorígfic"@ca, "Refrigerated Space Doors Or Curtains Installation"@en, "Instalación de puertas o cortinas en el espacio refrigerado frigorífico"@es ;
-    rdfs:comment "Installation of doors or curtains to separate the fridges or refrigerated rooms from areas at ambient temperature ", "Instal·lació de portes o cortines a l’espai refrigerat frigorígfic"@ca, "Installation of doors or curtains to separate the fridges or refrigerated rooms from areas at ambient temperature "@en, "Instalación de puertas o cortinas en el espacio refrigerado frigorífico"@es ;
+    rdfs:comment "Installation of doors or curtains to separate the fridges or refrigerated rooms from areas at ambient temperature ", "Instal·lació de portes o cortines a l’espai refrigerat frigorígfic"@ca, "Installation of doors or curtains to separate the fridges or refrigerated rooms from areas at ambient temperature"@en, "Instalación de puertas o cortinas en el espacio refrigerado frigorífico"@es ;
     skos:broader bigg:RefrigerationSystemsMeasure.RefrigerationTechnicalOptimization .
 
 bigg:RefrigerationSystemsMeasure.RefrigerationTechnicalOptimization.RefrigeratedSpaceInsulation a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2522,12 +2522,12 @@ bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure a bigg:EnergyEfficiencyMeasure
     skos:broader bigg:HVACAndHotWaterMeasure .
 
 bigg:LightingMeasure.LightingIndoorMeasure.IndoorRelamp a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Подмяна на вътрешни осветители "@bg, "Canvi lluminària interior"@ca, "Indoor Relamp"@en, "Cambio luminaria interior"@es ;
+    rdfs:label "Подмяна на вътрешни осветители"@bg, "Canvi lluminària interior"@ca, "Indoor Relamp"@en, "Cambio luminaria interior"@es ;
     rdfs:comment "Replacement of the indoor lighting units or of their subcomponents", "Canvi lluminària interior"@ca, "Replacement of the indoor lighting units or of their subcomponents"@en, "Cambio luminaria interior"@es ;
     skos:broader bigg:LightingMeasure.LightingIndoorMeasure .
 
 bigg:LightingMeasure.LightingOutdoorMeasure.OutdoorRelamp a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Подмяна на външни осветители "@bg, "Canvi lluminàries exterior"@ca, "Outdoor Relamp"@en, "Cambio luminario exterior"@es ;
+    rdfs:label "Подмяна на външни осветители"@bg, "Canvi lluminàries exterior"@ca, "Outdoor Relamp"@en, "Cambio luminario exterior"@es ;
     rdfs:comment "Replacement of the outdoor lighting units or of their subcomponents", "Canvi lluminàries exterior"@ca, "Replacement of the outdoor lighting units or of their subcomponents"@en, "Cambio luminario exterior"@es ;
     skos:broader bigg:LightingMeasure.LightingOutdoorMeasure .
 
@@ -2595,8 +2595,8 @@ bigg:ElectricPowerSystemMeasure.ElectricEquipmentMeasure.ICTEquipmentMeasure a b
     skos:broader bigg:ElectricPowerSystemMeasure.ElectricEquipmentMeasure .
 
 bigg:ElectricPowerSystemMeasure.PowerSystemMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Мерки по захранващата ел. система "@bg, "Millora del sistema elèctric"@ca, "Power System Measure"@en, "Mejora del sistema eléctrico"@es ;
-    rdfs:comment "Measure that affects the building power system ", "Millora del sistema elèctric"@ca, "Measure that affects the building power system "@en, "Mejora del sistema eléctrico"@es ;
+    rdfs:label "Мерки по захранващата ел. система"@bg, "Millora del sistema elèctric"@ca, "Power System Measure"@en, "Mejora del sistema eléctrico"@es ;
+    rdfs:comment "Measure that affects the building power system ", "Millora del sistema elèctric"@ca, "Measure that affects the building power system"@en, "Mejora del sistema eléctrico"@es ;
     skos:broader bigg:ElectricPowerSystemMeasure .
 
 bigg:RenewableGenerationMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2634,17 +2634,17 @@ bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatProductionMeasure a bigg:En
 
 bigg:HVACAndHotWaterMeasure.MechanicalVentilationSystemMeasure.MechanicalVentilationDistributionMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Мярка по въздухопроводната мрежа на системата за механична вентилация"@bg, "Millora de la distribució de la ventilació mecànica"@ca, "Mechanical Ventilation Distribution Measure"@en, "Mejora de la distribución de la ventilación mecánica"@es ;
-    rdfs:comment "Measure that affects the air distribution ", "Millora de la distribució de la ventilació mecànica"@ca, "Measure that affects the air distribution "@en, "Mejora de la distribución de la ventilación mecánica"@es ;
+    rdfs:comment "Measure that affects the air distribution ", "Millora de la distribució de la ventilació mecànica"@ca, "Measure that affects the air distribution"@en, "Mejora de la distribución de la ventilación mecánica"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.MechanicalVentilationSystemMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure.HeatingAndHotWaterDistributionAndStorageMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Мярка за разпределение и съхранение на топлинна енерги и БГВ"@bg, "Millora de distribució i emmagatzematge de calor per calefacció i ACS"@ca, "Heating And Hot Water Distribution And Storage Measure"@en, "Mejora de distribución y almacenamiento de calor por calefacción y ACS"@es ;
-    rdfs:comment "Measure that affects the distribution subsystems of space/water heating ", "Millora de distribució i emmagatzematge de calor per calefacció i ACS"@ca, "Measure that affects the distribution subsystems of space/water heating "@en, "Mejora de distribución y almacenamiento de calor por calefacción y ACS"@es ;
+    rdfs:comment "Measure that affects the distribution subsystems of space/water heating ", "Millora de distribució i emmagatzematge de calor per calefacció i ACS"@ca, "Measure that affects the distribution subsystems of space/water heating"@en, "Mejora de distribución y almacenamiento de calor por calefacción y ACS"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CombinedHeatingHotWaterSystemMeasure .
 
 bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure.HotWaterDistributionAndStorageMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Мярка за разпределение и съхранение на БГВ"@bg, "Millora de distribució i emmagatzematge d’ACS"@ca, "Hot Water Distribution And Storage Measure"@en, "Mejora de distribución y almacenamiento de ACS"@es ;
-    rdfs:comment "Measure that affects the distribution or the storage subsystems of water heating ", "Millora de distribució i emmagatzematge d’ACS"@ca, "Measure that affects the distribution or the storage subsystems of water heating "@en, "Mejora de distribución y almacenamiento de ACS"@es ;
+    rdfs:comment "Measure that affects the distribution or the storage subsystems of water heating ", "Millora de distribució i emmagatzematge d’ACS"@ca, "Measure that affects the distribution or the storage subsystems of water heating"@en, "Mejora de distribución y almacenamiento de ACS"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HotWaterSystemMeasure .
 
 bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolingDistributionMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
@@ -2654,12 +2654,12 @@ bigg:HVACAndHotWaterMeasure.CombinedHeatingCoolingSystemMeasure.HeatingAndCoolin
 
 bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure.CoolingDistributionAndStorageMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Изолация на тръбите на охладителната система"@bg, "Aïllament de canonades de refrigeració"@ca, "Cooling Pipes Insulation"@en, "Mejora del aislamiento de las tuberías de agua refrigeración"@es ;
-    rdfs:comment "Measure that affects the distribution or the storage subsystems of space cooling ", "Aïllament de canonades de refrigeració"@ca, "Measure that affects the distribution or the storage subsystems of space cooling "@en, "Mejora del aislamiento de las tuberías de agua refrigeración"@es ;
+    rdfs:comment "Measure that affects the distribution or the storage subsystems of space cooling ", "Aïllament de canonades de refrigeració"@ca, "Measure that affects the distribution or the storage subsystems of space cooling"@en, "Mejora del aislamiento de las tuberías de agua refrigeración"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.CoolingSystemMeasure .
 
 bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure.HeatingDistributionAndStorageMeasure a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
     rdfs:label "Подмяна на тръби за отопление"@bg, "Substitució canonades de calefacció"@ca, "Heating Pipes Substitution"@en, "Sustitución tuberías de calefacción"@es ;
-    rdfs:comment "Measure that affects the distribution or the storage subsystems of space heating ", "Substitució canonades de calefacció"@ca, "Measure that affects the distribution or the storage subsystems of space heating "@en, "Sustitución tuberías de calefacción"@es ;
+    rdfs:comment "Measure that affects the distribution or the storage subsystems of space heating ", "Substitució canonades de calefacció"@ca, "Measure that affects the distribution or the storage subsystems of space heating"@en, "Sustitución tuberías de calefacción"@es ;
     skos:broader bigg:HVACAndHotWaterMeasure.HeatingSystemMeasure .
 
 
@@ -2691,109 +2691,123 @@ bigg:TrustedModel.Other a bigg:EstimationMethod, skos:Concept;
 
 
 bigg:KPI-AvoidanceCost a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Cost Evitat"@ca, "Avoidance Cost"@en, "Coste Evitado"@es ;
+    rdfs:label "Избегнати разходи"@bg, "Cost Evitat"@ca, "Avoidance Cost"@en, "Coste Evitado"@es ;
+    bigg:formula "AC= \\frac{EEM\\ Investment\\ [\\epsilon]}{ Energy\\  use\\ saving\\ EEM [kWh/year] \\times EEM \\ Lifespan [year]}" ;
     bigg:shortName "AC"@en ;
-    rdfs:comment "El Cost Evitat és el cost mitjà en euros per kWh d'energia estalviada durant la vida útil del Mesura d'Eficiència Energètica."@ca, "The avoided cost is the average cost in euros per kWh of energy saved during the lifetime of the EEM."@en, "El Coste Evitado es el coste medio en euros por kWh de energía ahorrada durante la vida útil del Medida de Eficiencia Energética."@es .
+    rdfs:comment "Избегнатият разход е средният разход в пари за kWh спестена енергия по време на живота на EEM."@bg, "El Cost Evitat és el cost mitjà en euros per kWh d'energia estalviada durant la vida útil del Mesura d'Eficiència Energètica."@ca, "The avoided cost is the average cost in euros per kWh of energy saved during the lifetime of the EEM."@en, "El Coste Evitado es el coste medio en euros por kWh de energía ahorrada durante la vida útil del Medida de Eficiencia Energética."@es .
 
 bigg:KPI-CoolingDegreeDays a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Graus  Dia de Refrigeració"@ca, "Cooling Degree Days"@en, "Grados Día de Refrigeración"@es ;
+    rdfs:label "Градус-Дни Охлаждане"@bg, "Graus  Dia de Refrigeració"@ca, "Cooling Degree Days"@en, "Grados Día de Refrigeración"@es ;
     bigg:shortName "CDD"@en ;
-    rdfs:comment "Graus dia de refrigeració. "@ca, "Cooling degree days."@en, "Grados día de refrigeración"@es .
+    rdfs:comment "Градус-дните за охлаждане  са разликата между средната дневна температура и температура над която е необходимо охлаждане за поддържане на комфорта. Ако средната температура е над 22°С, ние изваждаме 22 от средната стойност и резултатът е  градус-дни на охлаждане."@bg, "Graus dia de refrigeració."@ca, "Cooling degree days."@en, "Grados día de refrigeración"@es .
 
 bigg:KPI-EnergyCost a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Cost Energètic"@ca, "Energy Cost"@en, "Coste Energético"@es ;
+    rdfs:label "Разходи за Енергия"@bg, "Cost Energètic"@ca, "Energy Cost"@en, "Coste Energético"@es ;
     bigg:shortName "CE"@ca, "EC"@en, "CE"@es ;
-    rdfs:comment "Cost de l'energia per el període mostrat"@ca, "The energy cost for the presented period"@en, "Coste de la energia por el periodo mostrado"@es .
+    rdfs:comment "Разходите за енергия за представения период"@bg, "Cost de l'energia per el període mostrat"@ca, "The energy cost for the presented period"@en, "Coste de la energia por el periodo mostrado"@es .
 
 bigg:KPI-EnergyCostIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat de cost energètic"@ca, "Energy Cost Intensity"@en, "Intensidad de coste energético"@es ;
+    rdfs:label "Интензивност на Енергийните Разходи"@bg, "Intensitat de cost energètic"@ca, "Energy Cost Intensity"@en, "Intensidad de coste energético"@es ;
+    bigg:formula "ECI = \\frac{\\sum_{i=1}^{n}Energy\\ cost\\ source\\[i] [€/year]}{ Gross\\ floor\\ area [m^2]}" ;
     bigg:shortName "ICE"@ca, "ECI"@en, "ICE"@es ;
-    rdfs:comment "La Intensitat del Cost Energètic és un indicador del cost de l'ús d'energia d'un edifici. S'expressa en euros per metre quadrat i any."@ca, "Energy Cost Intensity is an indicator for the cost of the energy use of a building. It is expressed as Euro per square meter per year."@en, "La Intensidad del Coste Energético es un indicador del coste del uso de energía de un edificio. Se expresa en euros por metro cuadrado y año."@es .
+    rdfs:comment "Интензивността на енергийните разходи е показател за разходите за използване на енергия от една сграда. Изразява се в пари на квадратен метър годишно."@bg, "La Intensitat del Cost Energètic és un indicador del cost de l'ús d'energia d'un edifici. S'expressa en euros per metre quadrat i any."@ca, "Energy Cost Intensity is an indicator for the cost of the energy use of a building. It is expressed as Euro per square meter per year."@en, "La Intensidad del Coste Energético es un indicador del coste del uso de energía de un edificio. Se expresa en euros por metro cuadrado y año."@es .
 
 bigg:KPI-EnergyCostSavings a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Estalvi en Cost Energètic"@ca, "Energy Cost Savings"@en, "Ahorro en Coste Energético"@es ;
+    rdfs:label "Спестяване на разходи за енергия"@bg, "Estalvi en Cost Energètic"@ca, "Energy Cost Savings"@en, "Ahorro en Coste Energético"@es ;
     bigg:shortName "ECS"@en ;
-    rdfs:comment "Estalvi en cost produïut en un preíode de temps"@ca, "The Saving Cost producent in a period of time"@en, "Ahorro en coste producido en un periodo de tiempo"@es .
+    rdfs:comment "Спестените  разходи за енергия за определен период от време"@bg, "Estalvi en cost produïut en un preíode de temps"@ca, "The Saving Cost producent in a period of time"@en, "Ahorro en coste producido en un periodo de tiempo"@es .
 
 bigg:KPI-EnergyCostSavingsIntensity a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat d'Estalvi en Cost Energètic"@ca, "Energy Cost Savings Intensity"@en, "Intensidad de Ahorro en Coste Energètico"@es ;
+    rdfs:label "Интензивност на спестяване на енергийни разходи"@bg, "Intensitat d'Estalvi en Cost Energètic"@ca, "Energy Cost Savings Intensity"@en, "Intensidad de Ahorro en Coste Energètico"@es ;
+    bigg:formula "ECSI = \\frac{Cost\\ saving\\ EEM\\ [kWh/year]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "ECSI"@en ;
-    rdfs:comment "La intensitat de l'estalvi energètic és un indicador de l'estalvi de costos energètics produïts per metre quadrat."@ca, "Energy  Cost  Saving Intensity is  an  indicator  of  the energy cost  saving produced per square meter."@en, "La intensidad del ahorro energético es un indicador del ahorro de costes energéticos producidos por metro cuadrado."@es .
+    rdfs:comment "Интензивността на спестяване на енергийни разходи на квадратен метър от сградната площ за определен период от време."@bg, "La intensitat de l'estalvi energètic és un indicador de l'estalvi de costos energètics produïts per metre quadrat."@ca, "Energy  Cost  Saving Intensity is  an  indicator  of  the energy cost  saving produced per square meter."@en, "La intensidad del ahorro energético es un indicador del ahorro de costes energéticos producidos por metro cuadrado."@es .
 
 bigg:KPI-EnergyEmissions a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Emissions Energètiques"@ca, "Energy Emissions"@en, "Emisiones Energéticas"@es ;
+    rdfs:label "Енергийни емисии"@bg, "Emissions Energètiques"@ca, "Energy Emissions"@en, "Emisiones Energéticas"@es ;
     bigg:shortName "EE"@en ;
-    rdfs:comment "Les emissions de CO2 equivalents generades per el consum energètic en un període de temps."@ca, "CO2 equivalent emissions generated by energy consumption over a period of time."@en, "Las emisiones de CO2 equivalentes generadas por el consumo energético en un periodo de tiempo."@es .
+    rdfs:comment "CO2 еквивалентни емисии, генерирани от потреблението на енергия за определен период от време."@bg, "Les emissions de CO2 equivalents generades per el consum energètic en un període de temps."@ca, "CO2 equivalent emissions generated by energy consumption over a period of time."@en, "Las emisiones de CO2 equivalentes generadas por el consumo energético en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyEmissionsIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intesitat d'Emissions Energètiques"@ca, "Energy Emissions Intensity"@en, "Intensidad de Emisiones Energéticas"@es ;
+    rdfs:label "Интензивност на енергийните емисии"@bg, "Intesitat d'Emissions Energètiques"@ca, "Energy Emissions Intensity"@en, "Intensidad de Emisiones Energéticas"@es ;
+    bigg:formula "EEI = \\frac{\\sum_{i=1}^{n}Energy\\ use\\ source\\ _{i} [kWh/year]  \\times K_{i}^{CO2eq} [gCO2/kWh] }{ Gross\\ floor\\ area [m^2]}" ;
     bigg:shortName "EEI"@en ;
-    rdfs:comment "La intensitat de les emissions d'energia és un indicador del nivell d'emissions de CO2 associades a l'ús d'energia en l'edifici. S'expressa en gCO2 per metre quadrat i per període de temps."@ca, "Energy Emissions Intensity is an indicator of the level of  CO2 emissions associated with the energy use in the building. It is expressed as gCO2 per square meter per period of time."@en, "La intensidad de las emisiones de energía es un indicador del nivel de emisiones de CO2 asociadas al uso de energía en el edificio. Se expresa en gCO2 por metro cuadrado y por periodo de tiempo."@es .
+    rdfs:comment "Интензивността на енергийните емисии е индикатор за нивото на емисиите на CO2, свързани с използването на енергия в сградата. Изразява се като gCO2 на квадратен метър за период от време."@bg, "La intensitat de les emissions d'energia és un indicador del nivell d'emissions de CO2 associades a l'ús d'energia en l'edifici. S'expressa en gCO2 per metre quadrat i per període de temps."@ca, "Energy Emissions Intensity is an indicator of the level of  CO2 emissions associated with the energy use in the building. It is expressed as gCO2 per square meter per period of time."@en, "La intensidad de las emisiones de energía es un indicador del nivel de emisiones de CO2 asociadas al uso de energía en el edificio. Se expresa en gCO2 por metro cuadrado y por periodo de tiempo."@es .
 
 bigg:KPI-EnergyEmissionsSavings a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings"@en, "Ahorro de Emisiones Energéticas"@es ;
+    rdfs:label "Спестяване на енергийни емисии"@bg, "Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings"@en, "Ahorro de Emisiones Energéticas"@es ;
+    bigg:formula "EES = \\sum_{i=1}^{n}Energy\\ use\\ source\\ _{i} [kWh/year]  \\times K_{i}^{CO2eq} [gCO2/kWh]" ;
     bigg:shortName "EES"@en ;
-    rdfs:comment "Quantitat total d'emissions de CO2 procedents del consum energètic que s'han evitat en un període de temps."@ca, "Total amount of CO2 emissions from energy consumption avoided over a period of time."@en, "Cantidad total de emisiones de CO2 procedentes del consumo energético que se han evitado en un periodo de tiempo."@es .
+    rdfs:comment "Общо количество избегнати емисии на CO2 от консумация на енергия за определен период от време."@bg, "Quantitat total d'emissions de CO2 procedents del consum energètic que s'han evitat en un període de temps."@ca, "Total amount of CO2 emissions from energy consumption avoided over a period of time."@en, "Cantidad total de emisiones de CO2 procedentes del consumo energético que se han evitado en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyEmissionsSavingsIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat d'Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings Intensity"@en, "Intensidad de Ahorro de Emisiones Energéticas"@es ;
+    rdfs:label "Интензивност на спестяване на енергийни емисии"@bg, "Intensitat d'Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings Intensity"@en, "Intensidad de Ahorro de Emisiones Energéticas"@es ;
+    bigg:formula "EESI = \\frac{Emissions\\ saving\\ EEM\\ [gcCO2/year]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "EESI"@en ;
-    rdfs:comment "Intensitat d'Estalvi d'Emissions Energètiques es un indicador de la quantitat d'emissions de CO2 procedents del consum energètic que s'han evitat produir en un període de temps."@ca, "Energy Emission Savings Intensity is an indicator of the number of CO2 equivalent emissions from energy consumption that have been avoided over a period of time."@en, "Intensidad de Ahorro de Emisiones Energéticas se un indicador de la cantidad de emisiones de CO2 procedentes del consumo energético que se han evitado producir en un periodo de tiempo."@es .
+    rdfs:comment "Интензивносттс на спестяване на енергийни емисии е индикатор за броя на CO2 еквивалентните емисии от потреблението на енергия, които са били избегнати за определен период от време."@bg, "Intensitat d'Estalvi d'Emissions Energètiques es un indicador de la quantitat d'emissions de CO2 procedents del consum energètic que s'han evitat produir en un període de temps."@ca, "Energy Emission Savings Intensity is an indicator of the number of CO2 equivalent emissions from energy consumption that have been avoided over a period of time."@en, "Intensidad de Ahorro de Emisiones Energéticas se un indicador de la cantidad de emisiones de CO2 procedentes del consumo energético que se han evitado producir en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyUse a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Energia Consumida"@ca, "Energy Use"@en, "Energía Consumida"@es ;
+    rdfs:label "Използване на енергия"@bg, "Energia Consumida"@ca, "Energy Use"@en, "Energía Consumida"@es ;
     bigg:shortName "EU"@en ;
-    rdfs:comment "Quantitat total d'energia consumida en un període de temps."@ca, "Total amount of energy consumed in a period of time."@en, "Cantidad total de energía consumida en un periodo de tiempo."@es .
+    rdfs:comment "Общо количество консумирана енергия за период от време."@bg, "Quantitat total d'energia consumida en un període de temps."@ca, "Total amount of energy consumed in a period of time."@en, "Cantidad total de energía consumida en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyUseIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat de l'Ús d'Energia"@ca, "Energy Use Intensity"@en, "Intensidad del Uso de la Energía"@es ;
+    rdfs:label "Интензивност на използване на енергия"@bg, "Intensitat de l'Ús d'Energia"@ca, "Energy Use Intensity"@en, "Intensidad del Uso de la Energía"@es ;
+    bigg:formula "EUI = \\frac{Total\\ energy\\ use\\ [kWh/year]}{ Gross\\ floor\\ area [m^2]}" ;
     bigg:shortName "EUI"@en ;
-    rdfs:comment "La intensitat de l'ús de l'energia és un indicador de l'eficiència energètica del disseny i/o el funcionament d'un edifici. S'expressa com a energia per metre quadrat i per període de temps."@ca, "Energy Use Intensity is an indicator of the energy efficiency of a building’s design and/or operation. It is expressed as energy per square meter per period of time."@en, "La intensidad del uso de la energía es un indicador de la eficiencia energética del diseño y/o el funcionamiento de un edificio. Se expresa como energía por metro cuadrado y por periodo de tiempo."@es .
+    rdfs:comment "Интензивносттс на използване на енергия е индикатор за енергийната ефективност на дизайна и/или експлоатацията на сградата. Изразява се като енергия на квадратен метър за период от време."@bg, "La intensitat de l'ús de l'energia és un indicador de l'eficiència energètica del disseny i/o el funcionament d'un edifici. S'expressa com a energia per metre quadrat i per període de temps."@ca, "Energy Use Intensity is an indicator of the energy efficiency of a building’s design and/or operation. It is expressed as energy per square meter per period of time."@en, "La intensidad del uso de la energía es un indicador de la eficiencia energética del diseño y/o el funcionamiento de un edificio. Se expresa como energía por metro cuadrado y por periodo de tiempo."@es .
 
 bigg:KPI-EnergyUseSavings a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Estalvi de Consum Energètic"@ca, "Energy Use Savings"@en, "Ahorro de Consumo de Energía"@es ;
+    rdfs:label "Спестяване на енергия"@bg, "Estalvi de Consum Energètic"@ca, "Energy Use Savings"@en, "Ahorro de Consumo de Energía"@es ;
     bigg:shortName "EUS"@en ;
-    rdfs:comment "L'Estalvi de Consum Energètic fa referència a quantitat total d'energia que s'ha evitat consumir en un període de temps."@ca, "Energy Use Savings is the total amount of energy that has been avoided in a period of time."@en, " El Ahorro de Consumo energético se refiere a cantidad total de energía que se ha evitado consumir en un periodo de tiempo."@es .
+    rdfs:comment "Спестяването на енергия е общото количество енергия, което е избегнато за определен период от време."@bg, "L'Estalvi de Consum Energètic fa referència a quantitat total d'energia que s'ha evitat consumir en un període de temps."@ca, "Energy Use Savings is the total amount of energy that has been avoided in a period of time."@en, "El Ahorro de Consumo energético se refiere a cantidad total de energía que se ha evitado consumir en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyUseSavingsIntensity a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat d'Estalvi de Consum Energètic"@ca, "Energy Use Savings Intensity"@en, "Intensidad de Ahorro de Consumo Energético"@es ;
+    rdfs:label "Интензивност на спестяване на енергия"@bg, "Intensitat d'Estalvi de Consum Energètic"@ca, "Energy Use Savings Intensity"@en, "Intensidad de Ahorro de Consumo Energético"@es ;
+    bigg:formula "EUSI = \\frac{Energy\\ use\\ saving\\ source\\ [kWh/year]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "EUSI"@en ;
-    rdfs:comment "La Intensitat d'Estalvi de Consum Energètic és un indicador de l'estalvi energètic produït en un període de temps."@ca, "Energy Use SavingIntensity is an indicator of the energy saving produced on period of time."@en, "Intensidad de Ahorro de Consumo Energético es un indicador del ahorro energético producido en un periodo de tiempo."@es .
+    rdfs:comment "Индикатор за енергоспестяването, произведено за период от време."@bg, "La Intensitat d'Estalvi de Consum Energètic és un indicador de l'estalvi energètic produït en un període de temps."@ca, "Energy Use Saving Intensity is an indicator of the energy saving produced on period of time."@en, "Intensidad de Ahorro de Consumo Energético es un indicador del ahorro energético producido en un periodo de tiempo."@es .
 
 bigg:KPI-HeatingDegreeDays a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Graus dia de Calefacció"@ca, "Heating Degree Days"@en, "Grados día de Calefacción"@es ;
+    rdfs:label "Градус-Дни Отопление"@bg, "Graus dia de Calefacció"@ca, "Heating Degree Days"@en, "Grados día de Calefacción"@es ;
     bigg:shortName "HDD"@en ;
-    rdfs:comment "Graus dia de calefacció. "@ca, "Heating degree days. "@en, "Grados día de calefacción"@es .
+    rdfs:comment "Градус-дните за отопление са разликата между средната дневна температура и температура под която е необходимо отопление за поддържане на комфорта. Ако средната температура е над 15,5°С, ние изваждаме  15,5 от средната стойност и резултатът е  градус-дни на отопление."@bg, "Graus dia de calefacció."@ca, "Heating degree days."@en, "Grados día de calefacción"@es .
 
 bigg:KPI-InternalRateOfReturn a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Taxa Interna de Rendibilitat"@ca, "Internal Rate of Return"@en, "Tasa Interna de Rendibilidad"@es ;
+    rdfs:label "Вътрешна норма на възвръщаемост"@bg, "Taxa Interna de Rendibilitat"@ca, "Internal Rate of Return"@en, "Tasa Interna de Rendibilidad"@es ;
+    bigg:formula "\\sum_{t=i}^{EEM Lifespan}\\frac{ Cos\\ saving\\ EEM_{t}}{(1 + IRR)^{t}}- EEM\\ Investment=0" ;
     bigg:shortName "TIR"@ca, "IRR"@en, "TIR"@es ;
-    rdfs:comment "La Taxa Interna de Rendibilitat és una taxa de descompte que fa que el valor actual net (VAN) de tots els fluxs de caixa sigui igual a zero en una anàlisi de fluxs de caixa descomptats."@ca, "Internal Rate of Return is a discount rate that makes the net present value (NPV) of all cash flows equal to zero in a discounted cash flow analysis."@en, "La Tasa Interna de Rentabilidad es una tasa de descuento que hace que el valor actual neto (VAN) de todos los flujos de caja sea igual a cero en un análisis de flujos de caja descontados."@es .
+    rdfs:comment "Вътрешната норма на възвръщаемост е сконтов процент, който прави нетната настояща стойност (NPV) на всички парични потоци равна на нула при анализ на дисконтирания паричен поток."@bg, "La Taxa Interna de Rendibilitat és una taxa de descompte que fa que el valor actual net (VAN) de tots els fluxs de caixa sigui igual a zero en una anàlisi de fluxs de caixa descomptats."@ca, "Internal Rate of Return is a discount rate that makes the net present value (NPV) of all cash flows equal to zero in a discounted cash flow analysis."@en, "La Tasa Interna de Rentabilidad es una tasa de descuento que hace que el valor actual neto (VAN) de todos los flujos de caja sea igual a cero en un análisis de flujos de caja descontados."@es .
 
 bigg:KPI-NetPresentValue a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Valor Actual Net"@ca, "Net Present Value"@en, "Valor Actual Neto"@es ;
+    rdfs:label "Нетна настояща стойност"@bg, "Valor Actual Net"@ca, "Net Present Value"@en, "Valor Actual Neto"@es ;
+    bigg:formula "NPV= \\sum_{t=i}^{EEM Lifespan}\\frac{ Cost\\ saving\\ EEM_{t}}{(1 + Discount\\ rate)^{t}} - EEM\\ Investment" ;
     bigg:shortName "VAN"@ca, "NPV"@en, "VAN"@es ;
-    rdfs:comment "El Valor Actual Net és la diferència entre el valor actual de les entrades d'efectiu i el valor actual de les sortides d'efectiu al llarg d'un període de temps i s'utilitza per a calcular el valor actual total d'un flux futur de pagaments."@ca, "Net Present Value is the difference between the present value of cash inflows and the present value of cash outflows over a period of time and is used to calculate the total present value of a future stream of payments."@en, "El Valor Actual Neto es la diferencia entre el valor actual de las entradas de efectivo y el valor actual de las salidas de efectivo a lo largo de un periodo de tiempo y se utiliza para calcular el valor actual total de un flujo futuro de pagos."@es .
+    rdfs:comment "Нетната настояща стойност е разликата между настоящата стойност на входящите парични потоци и настоящата стойност на изходящите парични потоци за определен период от време и се използва за изчисляване на общата настояща стойност на бъдещ поток от плащания."@bg, "El Valor Actual Net és la diferència entre el valor actual de les entrades d'efectiu i el valor actual de les sortides d'efectiu al llarg d'un període de temps i s'utilitza per a calcular el valor actual total d'un flux futur de pagaments."@ca, "Net Present Value is the difference between the present value of cash inflows and the present value of cash outflows over a period of time and is used to calculate the total present value of a future stream of payments."@en, "El Valor Actual Neto es la diferencia entre el valor actual de las entradas de efectivo y el valor actual de las salidas de efectivo a lo largo de un periodo de tiempo y se utiliza para calcular el valor actual total de un flujo futuro de pagos."@es .
 
 bigg:KPI-NetPresentValueQuotient a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Quocient del Valor Actual Net"@ca, "Net Present Value Quotient"@en, "Cociente del Valor Actual Neto"@es ;
+    rdfs:label "Коефициент на нетна настояща стойност"@bg, "Quocient del Valor Actual Net"@ca, "Net Present Value Quotient"@en, "Cociente del Valor Actual Neto"@es ;
+    bigg:formula "NPVq=\\frac{ \\sum_{t=i}^{EEM Lifespan}\\frac{ Cos\\ saving\\ EEM_{t}}{(1 + Discount\\ rate)^{t}}- EEM\\ Investment}{EEM\\ Investment}" ;
     bigg:shortName "qVAN"@ca, "NPVq"@en, "qVAN"@es ;
-    rdfs:comment "El Quocient del Valor Actual Net és la relació entre el Valor Actual Net (VAN) i la inversió realitzada. Mostra quina quantitat descomptada es genera enfront d'una unitat d'inversió."@ca, "Net Present Value Quatient  is  the  ratio  between  the Net Present Value(NPV) and  the investment made. It shows what discounted amount is generated against a unit of investment."@en, "El Cociente del Valor Actual Neto  es la relación entre el Valor Actual Neto (VAN) y la inversión realizada. Muestra qué cantidad descontada se genera frente a una unidad de inversión."@es .
+    rdfs:comment "Количеството на нетната настояща стойност е съотношението между нетната настояща стойност (NPV) и направената инвестиция. Той показва каква отстъпка се генерира срещу единица инвестиция."@bg, "El Quocient del Valor Actual Net és la relació entre el Valor Actual Net (VAN) i la inversió realitzada. Mostra quina quantitat descomptada es genera enfront d'una unitat d'inversió."@ca, "Net Present Value Quatient  is  the  ratio  between  the Net Present Value(NPV) and  the investment made. It shows what discounted amount is generated against a unit of investment."@en, "El Cociente del Valor Actual Neto  es la relación entre el Valor Actual Neto (VAN) y la inversión realizada. Muestra qué cantidad descontada se genera frente a una unidad de inversión."@es .
 
 bigg:KPI-NormalisedInvestmentCost a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Cost d'Inversió Normalitzat"@ca, "Normalised Investment Cost"@en, "Coste de Inversión Normalizado"@es ;
+    rdfs:label "Нормализирани инвестиционни разходи"@bg, "Cost d'Inversió Normalitzat"@ca, "Normalised Investment Cost"@en, "Coste de Inversión Normalizado"@es ;
+    bigg:formula "NIC = \\frac{EEM\\ Investment\\ [€]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "CIN"@ca, "NIC"@en ;
-    rdfs:comment "El Cost d'Inversió Normalitzat és un indicador del cost de la mesura d'eficiència energètica per metre quadrat de superfície de l'edifici."@ca, "Normalised Investment Cost is an indicator of the cost of the Energy Efficiency Measure per square meter of building area."@en, "El coste de inversión normalizado es un indicador del coste de la medida de eficiencia energética por metro cuadrado de superficie del edificio."@es .
+    rdfs:comment "Нормализираната инвестиционна цена е показател за цената на мярката за енергийна ефективност на квадратен метър застроена площ."@bg, "El Cost d'Inversió Normalitzat és un indicador del cost de la mesura d'eficiència energètica per metre quadrat de superfície de l'edifici."@ca, "Normalised Investment Cost is an indicator of the cost of the Energy Efficiency Measure per square meter of building area."@en, "El coste de inversión normalizado es un indicador del coste de la medida de eficiencia energética por metro cuadrado de superficie del edificio."@es .
 
 bigg:KPI-ProfitabilityIndex a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Índex de Rendibilitat"@ca, "Profitability Index"@en, "Índice de Rentabilidad"@es ;
+    rdfs:label "Индекс на рентабилност"@bg, "Índex de Rendibilitat"@ca, "Profitability Index"@en, "Índice de Rentabilidad"@es ;
+    bigg:formula "PI=\\frac{ \\sum_{t=i}^{EEM Lifespan}\\frac{ Cos\\ saving\\ EEM_{t}}{(1 + Discount\\ rate)^{t}}}{EEM\\ Investment}" ;
     bigg:shortName "IR"@ca, "PI"@en, "IR"@es ;
-    rdfs:comment "L'Índex de Rendibilitat és la relació entre el valor actual dels fluxs de caixa futurs previstos i l'import inicial invertit en el projecte."@ca, "The Profitability Index is the ratio between the present  value of future expected cash flows and the initial amount invested in the project."@en, "El Índice de Rentabilidad es la relación entre el valor actual de los flujos de caja futuros previstos y el importe inicial invertido en el proyecto."@es .
+    rdfs:comment "Индексът на доходност е съотношението между настоящата стойност на очакваните бъдещи парични потоци и първоначалната сума, инвестирана в проекта."@bg, "L'Índex de Rendibilitat és la relació entre el valor actual dels fluxs de caixa futurs previstos i l'import inicial invertit en el projecte."@ca, "The Profitability Index is the ratio between the present  value of future expected cash flows and the initial amount invested in the project."@en, "El Índice de Rentabilidad es la relación entre el valor actual de los flujos de caja futuros previstos y el importe inicial invertido en el proyecto."@es .
 
 bigg:KPI-SimplePayback a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Temps d'Amortització Simple"@ca, "Simple Payback"@en, "Tiempo de Amortización Simple"@es ;
+    rdfs:label "Време за възвръщане на инвестицията"@bg, "Temps d'Amortització Simple"@ca, "Simple Payback"@en, "Tiempo de Amortización Simple"@es ;
+    bigg:formula "SP= \\frac{EEM\\ Investment\\ [\\epsilon]}{ Cost\\ saving\\ EEM [\\epsilon/year]}" ;
     bigg:shortName "TAS"@ca, "SP"@en ;
-    rdfs:comment "El Temps d'Amortització Simple es defineix com el nombre d'anys en què els diners estalviats després de la renovació cobrirà la inversió."@ca, "Simple payback time is defined as the number of years when money saved after the renovation will cover the investment."@en, "El Tiempo de Amortización Simple se define como el número de años en los que el dinero ahorrado tras la renovación cubrirá la inversión."@es .
+    rdfs:comment "Броят години за които парите спестени след обновяването ще покрият инвестицията."@bg, "El Temps d'Amortització Simple es defineix com el nombre d'anys en què els diners estalviats després de la renovació cobrirà la inversió."@ca, "Simple payback time is defined as the number of years when money saved after the renovation will cover the investment."@en, "El Tiempo de Amortización Simple se define como el número de años en los que el dinero ahorrado tras la renovación cubrirá la inversión."@es .
 
 
 
@@ -2824,7 +2838,7 @@ bigg:AdjustedEnergyConsumptionCombinedSpaceAndWaterHeating a bigg:MeasuredProper
     rdfs:comment "Adjusted total energy consumed for combined space and water heating end-use", "Adjusted total energy consumed for combined space and water heating end-use"@en .
 
 bigg:AdjustedEnergyConsumptionCombinedSpaceHeatingAndCooling a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане "@bg, "Consum d'Energia Ajustat Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios Ajustado"@es ;
+    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане"@bg, "Consum d'Energia Ajustat Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios Ajustado"@es ;
     rdfs:comment "Adjusted total energy consumed for combined space heating and cooling end-use", "Adjusted total energy consumed for combined space heating and cooling end-use"@en .
 
 bigg:AdjustedEnergyConsumptionDistrictCooling a bigg:MeasuredProperty, skos:Concept ;
@@ -2896,7 +2910,7 @@ bigg:Concentration a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "The quantity of solute present in a given quantity of solution", "The quantity of solute present in a given quantity of solution"@en .
 
 bigg:ConsumptionWater a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на вода"@bg, "Aigua"@ca, "Consum d'Aigua"@ca, "Water"@en, "Water Consumption"@en, "Agua"@es, "Consumo de Agua"@es ;
+    rdfs:label "Консумация на вода"@bg, "Aigua"@ca, "Water"@en, "Agua"@es ;
     rdfs:comment "Total water consumed", "Total water consumed"@en .
 
 bigg:CoolingDegreeDays a bigg:MeasuredProperty, skos:Concept ;
@@ -2920,15 +2934,15 @@ bigg:EnergyConsumptionAppliances a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for the use of appliances", "Total energy consumed for the use of appliances"@en .
 
 bigg:EnergyConsumptionBiofuels a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от биогорива"@bg, "Biocombustible"@ca, "Consum de Biofuel"@ca, "Biofuel"@en, "Biofuel Consumption"@en, "Biocombustible"@es, "Consumo de Biofuel"@es ;
+    rdfs:label "Потребление на енергия от биогорива"@bg, "Biocombustible"@ca, "Biofuel"@en, "Biocombustible"@es ;
     rdfs:comment "Total energy consumed from biofuel resources", "Total energy consumed from biofuel resources"@en .
 
 bigg:EnergyConsumptionCHP a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия от когенерация"@bg, "Cogeneració"@ca, "Consum de Cogeneració"@ca, "CHP"@en, "CHP Consumption"@en, "Cogeneración"@es, "Consumo de Cogeneración"@es ;
+    rdfs:label "Консумация на енергия от когенерация"@bg, "Cogeneració"@ca, "CHP"@en, "Cogeneración"@es ;
     rdfs:comment "Total energy consumed from CHP", "Total energy consumed from CHP"@en .
 
 bigg:EnergyConsumptionCoal a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от въглища"@bg, "Carbó "@ca, "Consum de Carbó"@ca, "Coal"@en, "Coal Consumption"@en, "Carbón"@es, "Consumo de Carbón"@es ;
+    rdfs:label "Потребление на енергия от въглища"@bg, "Carbó"@ca, "Coal"@en, "Carbón"@es ;
     rdfs:comment "Total energy consumed from coal resource, including coal-based products", "Total energy consumed from coal resource, including coal-based products"@en .
 
 bigg:EnergyConsumptionCombinedSpaceAndWaterHeating a bigg:MeasuredProperty, skos:Concept ;
@@ -2936,35 +2950,35 @@ bigg:EnergyConsumptionCombinedSpaceAndWaterHeating a bigg:MeasuredProperty, skos
     rdfs:comment "Total energy consumed for combined space and water heating end-use", "Total energy consumed for combined space and water heating end-use"@en .
 
 bigg:EnergyConsumptionCombinedSpaceHeatingAndCooling a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане "@bg, "Consum d'Energia Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios"@es ;
+    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане"@bg, "Consum d'Energia Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios"@es ;
     rdfs:comment "Total energy consumed for combined space heating and cooling end-use", "Total energy consumed for combined space heating and cooling end-use"@en .
 
 bigg:EnergyConsumptionDiesel a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от дизелово гориво"@bg, "Consum de Gasoil"@ca, "Gasoil"@ca, "Diesel "@en, "Diesel Consumption"@en, "Consumo de Gasóleo"@es, "Gasóleo"@es ;
+    rdfs:label "Потребление на енергия от дизелово гориво"@bg, "Gasoil"@ca, "Diesel"@en, "Gasóleo"@es ;
     rdfs:comment "Total energy consumed from diesel resource", "Total energy consumed from diesel resource"@en .
 
 bigg:EnergyConsumptionDistrictCooling a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия от центализирано охлаждане"@bg, "Consum de Fred"@ca, "Xarxa de Refrigeració"@ca, "Cool Consumption"@en, "District Cooling"@en, "Consumo de Frio"@es, "Red de refrigeración"@es ;
+    rdfs:label "Консумация на енергия от центализирано охлаждане"@bg, "Xarxa de Refrigeració"@ca, "District Cooling"@en, "Red de refrigeración"@es ;
     rdfs:comment "Total energy consumed from district cooling system", "Total energy consumed from district cooling system"@en .
 
 bigg:EnergyConsumptionDistrictHeating a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от центализирано охлаждане"@bg, "Consum de Calor"@ca, "Xarxa de Calefacció "@ca, "District Heating"@en, "Heat Consumption"@en, "Consumo de Calor"@es, "Red de Calefacción"@es ;
+    rdfs:label "Потребление на енергия от центализирано охлаждане"@bg, "Xarxa de Calefacció"@ca, "District Heating"@en, "Red de Calefacción"@es ;
     rdfs:comment "Total energy consumed from district heating system", "Total energy consumed from district heating system"@en .
 
 bigg:EnergyConsumptionGas a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия от пророден газ"@bg, "Consum de Gas"@ca, "Gas"@ca, "Gas"@en, "Gas Consumption"@en, "Consumo de Gas"@es, "Gas "@es ;
+    rdfs:label "Консумация на енергия от пророден газ"@bg, "Gas"@ca, "Gas"@en, "Gas"@es ;
     rdfs:comment "Total energy consumed from gas resource", "Total energy consumed from gas resource"@en .
 
 bigg:EnergyConsumptionGridElectricity a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на електроенергия от мрежата"@bg, "Consum Elèctric"@ca, "Electricitat"@ca, "Electricity"@en, "Electricity Consumption"@en, "Consumo Eléctrico"@es, "Consumo de Energía de Red Eléctrica"@es ;
+    rdfs:label "Потребление на електроенергия от мрежата"@bg, "Electricitat"@ca, "Electricity"@en, "Consumo de Energía de Red Eléctrica"@es ;
     rdfs:comment "Total energy consumed from the electricity grid", "Total energy consumed from the electricity grid"@en .
 
 bigg:EnergyConsumptionHeavyFuel a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от мазут"@bg, "Consum d'Energia de Combustible Pesat"@ca, "Consum de Combustibles Pesats"@ca, "Heavy Fuel Energy Consumption"@en, "Heavy Fuels Consumption"@en, "Consumo de Combustibles Pesados"@es, "Consumo de Energía de Combustible Pesado"@es ;
+    rdfs:label "Потребление на енергия от мазут"@bg, "Consum d'Energia de Combustible Pesat"@ca, "Heavy Fuel Energy Consumption"@en, "Consumo de Energía de Combustible Pesado"@es ;
     rdfs:comment "Total energy consumed from heavy fuel resource", "Total energy consumed from heavy fuel resource"@en .
 
 bigg:EnergyConsumptionLPG a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия за осветление"@bg, "Consum d'Energia d'Il·luminació"@ca, "Consum de LPG"@ca, "LPG Consumption"@en, "Lighting Energy Consumption"@en, "Consumo de Energía de Iluminación"@es, "Consumo de LPG"@es ;
+    rdfs:label "Консумация на енергия за осветление"@bg, "Consum d'Energia d'Il·luminació"@ca, "Lighting Energy Consumption"@en, "Consumo de Energía de Iluminación"@es ;
     rdfs:comment "Total energy consumed from LPG resource", "Total energy consumed from LPG resource"@en .
 
 bigg:EnergyConsumptionLighting a bigg:MeasuredProperty, skos:Concept ;
@@ -2972,11 +2986,11 @@ bigg:EnergyConsumptionLighting a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for lighting end-use", "Total energy consumed for lighting end-use"@en .
 
 bigg:EnergyConsumptionOther a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Друго потребление на енергия"@bg, "Altres"@ca, "Altres Consums"@ca, "Other Consumption"@en, "Others"@en, "Otros "@es, "Otros Consumos"@es ;
+    rdfs:label "Друго потребление на енергия"@bg, "Altres"@ca, "Others"@en, "Otros"@es ;
     rdfs:comment "Total energy consumption from other unspecified resources", "Total energy consumption from other unspecified resources"@en .
 
 bigg:EnergyConsumptionPellets a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от пелети"@bg, "Consum de Pellets"@ca, "Pellet"@ca, "Pellet"@en, "Pellets Consumption"@en, "Consumo de Pellets"@es, "Pellets"@es ;
+    rdfs:label "Потребление на енергия от пелети"@bg, "Pellet"@ca, "Pellet"@en, "Pellets"@es ;
     rdfs:comment "Total energy consumed from pellets resources", "Total energy consumed from pellets resources"@en .
 
 bigg:EnergyConsumptionRefrigeration a bigg:MeasuredProperty, skos:Concept ;
@@ -2984,11 +2998,11 @@ bigg:EnergyConsumptionRefrigeration a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for refrigeration (excluding space cooling) end-use", "Total energy consumed for refrigeration (excluding space cooling) end-use"@en .
 
 bigg:EnergyConsumptionRenewableElectricityAuto-Consumption a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Възобновяема електрическа енергия за собствено потребление"@bg, "Auto Consum"@ca, "Consum d'Energia d'Autoconsum d'Energia Elèctrica Renovable"@ca, "Auto Consumption"@en, "Renewable Electricity Self-Consumption Energy Consumption"@en, "Auto Consumo"@es, "Consumo de Energía de Autoconsumo de Energía Eléctrica Renovable"@es ;
+    rdfs:label "Възобновяема електрическа енергия за собствено потребление"@bg, "Consum d'Energia d'Autoconsum d'Energia Elèctrica Renovable"@ca, "Renewable Electricity Self-Consumption Energy Consumption"@en, "Consumo de Energía de Autoconsumo de Energía Eléctrica Renovable"@es ;
     rdfs:comment "Total energy consumed from renewable electricity generation", "Total energy consumed from renewable electricity generation"@en .
 
 bigg:EnergyConsumptionSolarThermal a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на топлинна енергия от слънце"@bg, "Consum d'Energia Solar Tèrmica"@ca, "Consum de Solar Tèrmica"@ca, "Solar Thermal Consumption"@en, "Solar Thermal Energy Consumption"@en, "Consumo de Energía Solar Térmica"@es, "Consumo de Solar Térmica"@es ;
+    rdfs:label "Консумация на топлинна енергия от слънце"@bg, "Consum d'Energia Solar Tèrmica"@ca, "Solar Thermal Energy Consumption"@en, "Consumo de Energía Solar Térmica"@es ;
     rdfs:comment "Total energy consumed from solar thermal generation", "Total energy consumed from solar thermal generation"@en .
 
 bigg:EnergyConsumptionSpaceCooling a bigg:MeasuredProperty, skos:Concept ;
@@ -2996,11 +3010,11 @@ bigg:EnergyConsumptionSpaceCooling a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for space cooling end-use", "Total energy consumed for space cooling end-use"@en .
 
 bigg:EnergyConsumptionSpaceHeating a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия за отопление "@bg, "Consum d'Energia d'Escalfament d'Espais"@ca, "Space Heating Energy Consumption"@en, "Consumo de Energía de Calentamiento de Espacios"@es ;
+    rdfs:label "Потребление на енергия за отопление"@bg, "Consum d'Energia d'Escalfament d'Espais"@ca, "Space Heating Energy Consumption"@en, "Consumo de Energía de Calentamiento de Espacios"@es ;
     rdfs:comment "Total energy consumed for space heating end-use", "Total energy consumed for space heating end-use"@en .
 
 bigg:EnergyConsumptionTotal a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Общо потребление на енергия"@bg, "Consum Total"@ca, "Consumo Total"@ca, "Total Consumption"@en, "Consumo Total"@es ;
+    rdfs:label "Общо потребление на енергия"@bg, "Consumo Total"@ca, "Total Consumption"@en, "Consumo Total"@es ;
     rdfs:comment "Total energy consumption", "Total energy consumption"@en .
 
 bigg:EnergyConsumptionVentilation a bigg:MeasuredProperty, skos:Concept ;
@@ -3012,7 +3026,7 @@ bigg:EnergyConsumptionWaterHeating a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for water heating end-use", "Total energy consumed for water heating end-use"@en .
 
 bigg:EnergyConsumptionWood a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от дървесина"@bg, "Consum de Fusta"@ca, "Fusta"@ca, "Wood"@en, "Wood Consumption"@en, "Consumo de Madera"@es, "Madera"@es ;
+    rdfs:label "Потребление на енергия от дървесина"@bg, "Fusta"@ca, "Wood"@en, "Madera"@es ;
     rdfs:comment "Total energy consumed from wood resources", "Total energy consumed from wood resources"@en .
 
 bigg:Flow a bigg:MeasuredProperty, skos:Concept ;
@@ -3040,7 +3054,7 @@ bigg:Motion a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "The phenomenon for which an object changes its position over time", "The phenomenon for which an object changes its position over time"@en .
 
 bigg:NOPROPERTY a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Без отличително качество"@bg, ""@ca, "CAP PROPIETAT"@ca, ""@en, "NO PROPERTY"@en, ""@es, "Sin Propiedad"@es ;
+    rdfs:label "Без отличително качество"@bg, "CAP PROPIETAT"@ca, "NO PROPERTY"@en, "Sin Propiedad"@es ;
     rdfs:comment "The measurement does not have a property", "The measurement does not have a property"@en .
 
 bigg:Occupancy a bigg:MeasuredProperty, skos:Concept ;
@@ -3158,10 +3172,10 @@ bigg:Cooling a bigg:MeasuredPropertyComponent, skos:Concept ;
     rdfs:label "Refrigeració"@ca, "Cooling"@en, "Refrigeración"@es .
 
 bigg:Heating a bigg:MeasuredPropertyComponent, skos:Concept ;
-    rdfs:label "Calefacció "@ca, "Heating"@en, "Calefacción"@es .
+    rdfs:label "Calefacció"@ca, "Heating"@en, "Calefacción"@es .
 
 bigg:Total a bigg:MeasuredPropertyComponent, skos:Concept ;
-    rdfs:label "Total "@ca, "Total"@en, "Total"@es .
+    rdfs:label "Total"@ca, "Total"@en, "Total"@es .
 
 
 bigg:Euro-M2 a bigg:MeasurementUnit,
@@ -3370,55 +3384,57 @@ bigg:SolarThermal a bigg:ResourceType, skos:Concept;
 
 
 bigg:BiofuelsUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Биогорива"@bg, "Biocombustibles "@ca, "Subministrament de Biofuel"@ca, "Biofuel Supply"@en, "Biofuels"@en, "Biocombustibles "@es, "Suministro de Biofuel"@es .
+    rdfs:label "Биогорива"@bg, "Biocombustibles"@ca, "Biofuels"@en, "Biocombustibles"@es .
 
 bigg:CHPUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Когенерация"@bg, "Cogeneració "@ca, "Subministrament de Cogeneració"@ca, "CHP Supply"@en, "Combined Heating Power "@en, "Cogeneración "@es, "Suministro de Cogeneración"@es .
+    rdfs:label "Когенерация"@bg, "Cogeneració"@ca, "Combined Heating Power"@en, "Cogeneración"@es .
 
 bigg:CoalUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Въглища"@bg, "Carbó"@ca, "Subministrament de Carbó"@ca, "Coal"@en, "Coal Supply"@en, "Carbón"@es, "Suministro de Carbón"@es .
+    rdfs:label "Въглища"@bg, "Carbó"@ca, "Coal"@en, "Carbón"@es .
 
 bigg:DieselUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Дизелово гориво/промишлен газьол"@bg, "Gasoil"@ca, "Subministrament de Gasoil"@ca, "Diesel Oil"@en, "Diesel Supply"@en, "Gasoleo"@es, "Suministro de Gasóleo"@es .
+    rdfs:label "Дизелово гориво/промишлен газьол"@bg, "Gasoil"@ca, "Diesel Oil"@en, "Gasoleo"@es .
 
 bigg:DistrictCoolingUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Централизирано охлаждане"@bg, "Subministrament de Fred"@ca, "Xarxa de refrigeració "@ca, "Coal Supply"@en, "District cooling"@en, "Red de refigeración"@es, "Suministro de Frio"@es .
+    rdfs:label "Централизирано охлаждане"@bg, "Xarxa de refrigeració"@ca, "District cooling"@en, "Red de refigeración"@es .
 
 bigg:DistrictHeatingUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Централизирано отопление"@bg, "Subministrament de Calor"@ca, "Xarxa de calor "@ca, "Heat Energy"@en, "Heat Supply"@en, "Red de calefacción"@es, "Suministro de Calor"@es .
+    rdfs:label "Централизирано отопление"@bg, "Xarxa de calor"@ca, "Heat Energy"@en, "Red de calefacción"@es .
 
 bigg:ElectricUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Електрическа енергия"@bg, "Electricitat"@ca, "Subministrament Elèctric"@ca, "Electric Supply"@en, "Electricity"@en, "Electricidad"@es, "Suministro Eléctrico"@es .
+    rdfs:label "Електрическа енергия"@bg, "Electricitat"@ca, "Electricity"@en, "Electricidad"@es .
 
 bigg:GasUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Природен газ"@bg, "Gas"@ca, "Subministrament de Gas"@ca, "Gas"@en, "Gas Supply"@en, "Gas"@es, "Suministro de Gas"@es .
+    rdfs:label "Природен газ"@bg, "Gas"@ca, "Gas"@en, "Gas"@es .
 
 bigg:HeavyFuelUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Мазут"@bg, "Fuel"@ca, "Subministrament de Combustibles Pesats"@ca, "Heavy Fuel Oil"@en, "Heavy Fuel Supply"@en, "Fuel"@es, "Suministro de Combustibles Pesados"@es .
+    rdfs:label "Мазут"@bg, "Fuel"@ca, "Heavy Fuel Oil"@en, "Fuel"@es .
 
 bigg:LPGUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Пропан-Бутан"@bg, "Gas Liquat del Pretoli "@ca, "Subministrament de LPG"@ca, "LPG Supply"@en, "Liquified Petroleum Gas"@en, "Gas Liquado de Petróleo"@es, "Suministro de LPG"@es .
+    rdfs:label "Пропан-Бутан"@bg, "Gas Liquat del Pretoli"@ca, "Liquified Petroleum Gas"@en, "Gas Liquado de Petróleo"@es .
 
 bigg:OtherUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Altres"@ca, "Subministrament (Altres)"@ca, "Other"@en, "Supply(Other)"@en, "Otros"@es, "Suministro (Otros)"@es .
+    rdfs:label "Други"@bg, "Altres"@ca, "Other"@en, "Otros"@es .
 
 bigg:PelletsUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Пелети"@bg, "Pellets"@ca, "Subministrament de Pellets"@ca, "Pellets"@en, "Pellets Supply"@en, "Pellets"@es, "Suministro de Pellets"@es .
+    rdfs:label "Пелети"@bg, "Pellets"@ca, "Pellets"@en, "Pellets"@es .
 
 bigg:RenewableElectricityUtilityAuto-Consumption a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Енергия от фотоволтаици за собствено потребление"@bg, "Autoconsum FV"@ca, "Subministrament d'Auto Consum"@ca, "Auto Consumption Supply"@en, "Electric Auto-consumption"@en, "Autoconsumo FV"@es, "Suministro de Auto Consumo"@es .
+    rdfs:label "Енергия от фотоволтаици за собствено потребление"@bg, "Autoconsum FV"@ca, "Electric Auto-consumption"@en, "Autoconsumo FV"@es .
 
-bigg:SolarThermal a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Слънчева топлинна енергия "@bg, "Solar tèrmica"@ca, "Subministrament de Solar Tèrmica"@ca, "Solar Thermal Supply"@en, "Solar thermal "@en, "Solar térmica"@es, "Suministro de Solar Térmica"@es .
+bigg:SolarThermal rdfs:label "Слънчева топлинна енергия"@bg, "Solar tèrmica"@ca, "Solar thermal"@en, "Solar térmica"@es .
+
+bigg:SolarThermalUtility a bigg:UtilityType, skos:Concept ;
+    rdfs:label "Слънчева топлинна енергия"@bg, "Solar tèrmica"@ca, "Solar thermal"@en, "Solar térmica"@es .
 
 bigg:TotalUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Общо"@bg, "Subministrament Total"@ca, "Total "@ca, "Supply Total"@en, "Total"@en, "Suministro Total"@es, "Total"@es .
+    rdfs:label "Общо"@bg, "Total"@ca, "Total"@en, "Total"@es .
 
 bigg:WaterUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Вода"@bg, "Aigua"@ca, "Subministrament d'Aigua"@ca, "Water"@en, "Water Supply"@en, "Agua"@es, "Suministro de Agua"@es .
+    rdfs:label "Вода"@bg, "Aigua"@ca, "Water"@en, "Agua"@es .
 
 bigg:WoodUtility a bigg:UtilityType, skos:Concept ;
-    rdfs:label "Дърва"@bg, "Fusta"@ca, "Subministrament de Fusta"@ca, "Wood"@en, "Wood Supply"@en, "Madera"@es, "Suministro de Madera"@es .
+    rdfs:label "Дърва"@bg, "Fusta"@ca, "Wood"@en, "Madera"@es .
 
 
 bigg:HeatingDegreeDays a bigg:BaselineInfluenceFactor, skos:Concept .

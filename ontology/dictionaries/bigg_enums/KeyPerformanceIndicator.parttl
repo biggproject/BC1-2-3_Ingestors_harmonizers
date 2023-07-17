@@ -2,107 +2,121 @@
 
 
 bigg:KPI-AvoidanceCost a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Cost Evitat"@ca, "Avoidance Cost"@en, "Coste Evitado"@es ;
+    rdfs:label "Избегнати разходи"@bg, "Cost Evitat"@ca, "Avoidance Cost"@en, "Coste Evitado"@es ;
+    bigg:formula "AC= \\frac{EEM\\ Investment\\ [\\epsilon]}{ Energy\\  use\\ saving\\ EEM [kWh/year] \\times EEM \\ Lifespan [year]}" ;
     bigg:shortName "AC"@en ;
-    rdfs:comment "El Cost Evitat és el cost mitjà en euros per kWh d'energia estalviada durant la vida útil del Mesura d'Eficiència Energètica."@ca, "The avoided cost is the average cost in euros per kWh of energy saved during the lifetime of the EEM."@en, "El Coste Evitado es el coste medio en euros por kWh de energía ahorrada durante la vida útil del Medida de Eficiencia Energética."@es .
+    rdfs:comment "Избегнатият разход е средният разход в пари за kWh спестена енергия по време на живота на EEM."@bg, "El Cost Evitat és el cost mitjà en euros per kWh d'energia estalviada durant la vida útil del Mesura d'Eficiència Energètica."@ca, "The avoided cost is the average cost in euros per kWh of energy saved during the lifetime of the EEM."@en, "El Coste Evitado es el coste medio en euros por kWh de energía ahorrada durante la vida útil del Medida de Eficiencia Energética."@es .
 
 bigg:KPI-CoolingDegreeDays a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Graus  Dia de Refrigeració"@ca, "Cooling Degree Days"@en, "Grados Día de Refrigeración"@es ;
+    rdfs:label "Градус-Дни Охлаждане"@bg, "Graus  Dia de Refrigeració"@ca, "Cooling Degree Days"@en, "Grados Día de Refrigeración"@es ;
     bigg:shortName "CDD"@en ;
-    rdfs:comment "Graus dia de refrigeració. "@ca, "Cooling degree days."@en, "Grados día de refrigeración"@es .
+    rdfs:comment "Градус-дните за охлаждане  са разликата между средната дневна температура и температура над която е необходимо охлаждане за поддържане на комфорта. Ако средната температура е над 22°С, ние изваждаме 22 от средната стойност и резултатът е  градус-дни на охлаждане."@bg, "Graus dia de refrigeració."@ca, "Cooling degree days."@en, "Grados día de refrigeración"@es .
 
 bigg:KPI-EnergyCost a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Cost Energètic"@ca, "Energy Cost"@en, "Coste Energético"@es ;
+    rdfs:label "Разходи за Енергия"@bg, "Cost Energètic"@ca, "Energy Cost"@en, "Coste Energético"@es ;
     bigg:shortName "CE"@ca, "EC"@en, "CE"@es ;
-    rdfs:comment "Cost de l'energia per el període mostrat"@ca, "The energy cost for the presented period"@en, "Coste de la energia por el periodo mostrado"@es .
+    rdfs:comment "Разходите за енергия за представения период"@bg, "Cost de l'energia per el període mostrat"@ca, "The energy cost for the presented period"@en, "Coste de la energia por el periodo mostrado"@es .
 
 bigg:KPI-EnergyCostIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat de cost energètic"@ca, "Energy Cost Intensity"@en, "Intensidad de coste energético"@es ;
+    rdfs:label "Интензивност на Енергийните Разходи"@bg, "Intensitat de cost energètic"@ca, "Energy Cost Intensity"@en, "Intensidad de coste energético"@es ;
+    bigg:formula "ECI = \\frac{\\sum_{i=1}^{n}Energy\\ cost\\ source\\[i] [€/year]}{ Gross\\ floor\\ area [m^2]}" ;
     bigg:shortName "ICE"@ca, "ECI"@en, "ICE"@es ;
-    rdfs:comment "La Intensitat del Cost Energètic és un indicador del cost de l'ús d'energia d'un edifici. S'expressa en euros per metre quadrat i any."@ca, "Energy Cost Intensity is an indicator for the cost of the energy use of a building. It is expressed as Euro per square meter per year."@en, "La Intensidad del Coste Energético es un indicador del coste del uso de energía de un edificio. Se expresa en euros por metro cuadrado y año."@es .
+    rdfs:comment "Интензивността на енергийните разходи е показател за разходите за използване на енергия от една сграда. Изразява се в пари на квадратен метър годишно."@bg, "La Intensitat del Cost Energètic és un indicador del cost de l'ús d'energia d'un edifici. S'expressa en euros per metre quadrat i any."@ca, "Energy Cost Intensity is an indicator for the cost of the energy use of a building. It is expressed as Euro per square meter per year."@en, "La Intensidad del Coste Energético es un indicador del coste del uso de energía de un edificio. Se expresa en euros por metro cuadrado y año."@es .
 
 bigg:KPI-EnergyCostSavings a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Estalvi en Cost Energètic"@ca, "Energy Cost Savings"@en, "Ahorro en Coste Energético"@es ;
+    rdfs:label "Спестяване на разходи за енергия"@bg, "Estalvi en Cost Energètic"@ca, "Energy Cost Savings"@en, "Ahorro en Coste Energético"@es ;
     bigg:shortName "ECS"@en ;
-    rdfs:comment "Estalvi en cost produïut en un preíode de temps"@ca, "The Saving Cost producent in a period of time"@en, "Ahorro en coste producido en un periodo de tiempo"@es .
+    rdfs:comment "Спестените  разходи за енергия за определен период от време"@bg, "Estalvi en cost produïut en un preíode de temps"@ca, "The Saving Cost producent in a period of time"@en, "Ahorro en coste producido en un periodo de tiempo"@es .
 
 bigg:KPI-EnergyCostSavingsIntensity a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat d'Estalvi en Cost Energètic"@ca, "Energy Cost Savings Intensity"@en, "Intensidad de Ahorro en Coste Energètico"@es ;
+    rdfs:label "Интензивност на спестяване на енергийни разходи"@bg, "Intensitat d'Estalvi en Cost Energètic"@ca, "Energy Cost Savings Intensity"@en, "Intensidad de Ahorro en Coste Energètico"@es ;
+    bigg:formula "ECSI = \\frac{Cost\\ saving\\ EEM\\ [kWh/year]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "ECSI"@en ;
-    rdfs:comment "La intensitat de l'estalvi energètic és un indicador de l'estalvi de costos energètics produïts per metre quadrat."@ca, "Energy  Cost  Saving Intensity is  an  indicator  of  the energy cost  saving produced per square meter."@en, "La intensidad del ahorro energético es un indicador del ahorro de costes energéticos producidos por metro cuadrado."@es .
+    rdfs:comment "Интензивността на спестяване на енергийни разходи на квадратен метър от сградната площ за определен период от време."@bg, "La intensitat de l'estalvi energètic és un indicador de l'estalvi de costos energètics produïts per metre quadrat."@ca, "Energy  Cost  Saving Intensity is  an  indicator  of  the energy cost  saving produced per square meter."@en, "La intensidad del ahorro energético es un indicador del ahorro de costes energéticos producidos por metro cuadrado."@es .
 
 bigg:KPI-EnergyEmissions a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Emissions Energètiques"@ca, "Energy Emissions"@en, "Emisiones Energéticas"@es ;
+    rdfs:label "Енергийни емисии"@bg, "Emissions Energètiques"@ca, "Energy Emissions"@en, "Emisiones Energéticas"@es ;
     bigg:shortName "EE"@en ;
-    rdfs:comment "Les emissions de CO2 equivalents generades per el consum energètic en un període de temps."@ca, "CO2 equivalent emissions generated by energy consumption over a period of time."@en, "Las emisiones de CO2 equivalentes generadas por el consumo energético en un periodo de tiempo."@es .
+    rdfs:comment "CO2 еквивалентни емисии, генерирани от потреблението на енергия за определен период от време."@bg, "Les emissions de CO2 equivalents generades per el consum energètic en un període de temps."@ca, "CO2 equivalent emissions generated by energy consumption over a period of time."@en, "Las emisiones de CO2 equivalentes generadas por el consumo energético en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyEmissionsIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intesitat d'Emissions Energètiques"@ca, "Energy Emissions Intensity"@en, "Intensidad de Emisiones Energéticas"@es ;
+    rdfs:label "Интензивност на енергийните емисии"@bg, "Intesitat d'Emissions Energètiques"@ca, "Energy Emissions Intensity"@en, "Intensidad de Emisiones Energéticas"@es ;
+    bigg:formula "EEI = \\frac{\\sum_{i=1}^{n}Energy\\ use\\ source\\ _{i} [kWh/year]  \\times K_{i}^{CO2eq} [gCO2/kWh] }{ Gross\\ floor\\ area [m^2]}" ;
     bigg:shortName "EEI"@en ;
-    rdfs:comment "La intensitat de les emissions d'energia és un indicador del nivell d'emissions de CO2 associades a l'ús d'energia en l'edifici. S'expressa en gCO2 per metre quadrat i per període de temps."@ca, "Energy Emissions Intensity is an indicator of the level of  CO2 emissions associated with the energy use in the building. It is expressed as gCO2 per square meter per period of time."@en, "La intensidad de las emisiones de energía es un indicador del nivel de emisiones de CO2 asociadas al uso de energía en el edificio. Se expresa en gCO2 por metro cuadrado y por periodo de tiempo."@es .
+    rdfs:comment "Интензивността на енергийните емисии е индикатор за нивото на емисиите на CO2, свързани с използването на енергия в сградата. Изразява се като gCO2 на квадратен метър за период от време."@bg, "La intensitat de les emissions d'energia és un indicador del nivell d'emissions de CO2 associades a l'ús d'energia en l'edifici. S'expressa en gCO2 per metre quadrat i per període de temps."@ca, "Energy Emissions Intensity is an indicator of the level of  CO2 emissions associated with the energy use in the building. It is expressed as gCO2 per square meter per period of time."@en, "La intensidad de las emisiones de energía es un indicador del nivel de emisiones de CO2 asociadas al uso de energía en el edificio. Se expresa en gCO2 por metro cuadrado y por periodo de tiempo."@es .
 
 bigg:KPI-EnergyEmissionsSavings a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings"@en, "Ahorro de Emisiones Energéticas"@es ;
+    rdfs:label "Спестяване на енергийни емисии"@bg, "Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings"@en, "Ahorro de Emisiones Energéticas"@es ;
+    bigg:formula "EES = \\sum_{i=1}^{n}Energy\\ use\\ source\\ _{i} [kWh/year]  \\times K_{i}^{CO2eq} [gCO2/kWh]" ;
     bigg:shortName "EES"@en ;
-    rdfs:comment "Quantitat total d'emissions de CO2 procedents del consum energètic que s'han evitat en un període de temps."@ca, "Total amount of CO2 emissions from energy consumption avoided over a period of time."@en, "Cantidad total de emisiones de CO2 procedentes del consumo energético que se han evitado en un periodo de tiempo."@es .
+    rdfs:comment "Общо количество избегнати емисии на CO2 от консумация на енергия за определен период от време."@bg, "Quantitat total d'emissions de CO2 procedents del consum energètic que s'han evitat en un període de temps."@ca, "Total amount of CO2 emissions from energy consumption avoided over a period of time."@en, "Cantidad total de emisiones de CO2 procedentes del consumo energético que se han evitado en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyEmissionsSavingsIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat d'Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings Intensity"@en, "Intensidad de Ahorro de Emisiones Energéticas"@es ;
+    rdfs:label "Интензивност на спестяване на енергийни емисии"@bg, "Intensitat d'Estalvi d'Emissions Energètiques"@ca, "Energy Emissions Savings Intensity"@en, "Intensidad de Ahorro de Emisiones Energéticas"@es ;
+    bigg:formula "EESI = \\frac{Emissions\\ saving\\ EEM\\ [gcCO2/year]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "EESI"@en ;
-    rdfs:comment "Intensitat d'Estalvi d'Emissions Energètiques es un indicador de la quantitat d'emissions de CO2 procedents del consum energètic que s'han evitat produir en un període de temps."@ca, "Energy Emission Savings Intensity is an indicator of the number of CO2 equivalent emissions from energy consumption that have been avoided over a period of time."@en, "Intensidad de Ahorro de Emisiones Energéticas se un indicador de la cantidad de emisiones de CO2 procedentes del consumo energético que se han evitado producir en un periodo de tiempo."@es .
+    rdfs:comment "Интензивносттс на спестяване на енергийни емисии е индикатор за броя на CO2 еквивалентните емисии от потреблението на енергия, които са били избегнати за определен период от време."@bg, "Intensitat d'Estalvi d'Emissions Energètiques es un indicador de la quantitat d'emissions de CO2 procedents del consum energètic que s'han evitat produir en un període de temps."@ca, "Energy Emission Savings Intensity is an indicator of the number of CO2 equivalent emissions from energy consumption that have been avoided over a period of time."@en, "Intensidad de Ahorro de Emisiones Energéticas se un indicador de la cantidad de emisiones de CO2 procedentes del consumo energético que se han evitado producir en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyUse a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Energia Consumida"@ca, "Energy Use"@en, "Energía Consumida"@es ;
+    rdfs:label "Използване на енергия"@bg, "Energia Consumida"@ca, "Energy Use"@en, "Energía Consumida"@es ;
     bigg:shortName "EU"@en ;
-    rdfs:comment "Quantitat total d'energia consumida en un període de temps."@ca, "Total amount of energy consumed in a period of time."@en, "Cantidad total de energía consumida en un periodo de tiempo."@es .
+    rdfs:comment "Общо количество консумирана енергия за период от време."@bg, "Quantitat total d'energia consumida en un període de temps."@ca, "Total amount of energy consumed in a period of time."@en, "Cantidad total de energía consumida en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyUseIntensity a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat de l'Ús d'Energia"@ca, "Energy Use Intensity"@en, "Intensidad del Uso de la Energía"@es ;
+    rdfs:label "Интензивност на използване на енергия"@bg, "Intensitat de l'Ús d'Energia"@ca, "Energy Use Intensity"@en, "Intensidad del Uso de la Energía"@es ;
+    bigg:formula "EUI = \\frac{Total\\ energy\\ use\\ [kWh/year]}{ Gross\\ floor\\ area [m^2]}" ;
     bigg:shortName "EUI"@en ;
-    rdfs:comment "La intensitat de l'ús de l'energia és un indicador de l'eficiència energètica del disseny i/o el funcionament d'un edifici. S'expressa com a energia per metre quadrat i per període de temps."@ca, "Energy Use Intensity is an indicator of the energy efficiency of a building’s design and/or operation. It is expressed as energy per square meter per period of time."@en, "La intensidad del uso de la energía es un indicador de la eficiencia energética del diseño y/o el funcionamiento de un edificio. Se expresa como energía por metro cuadrado y por periodo de tiempo."@es .
+    rdfs:comment "Интензивносттс на използване на енергия е индикатор за енергийната ефективност на дизайна и/или експлоатацията на сградата. Изразява се като енергия на квадратен метър за период от време."@bg, "La intensitat de l'ús de l'energia és un indicador de l'eficiència energètica del disseny i/o el funcionament d'un edifici. S'expressa com a energia per metre quadrat i per període de temps."@ca, "Energy Use Intensity is an indicator of the energy efficiency of a building’s design and/or operation. It is expressed as energy per square meter per period of time."@en, "La intensidad del uso de la energía es un indicador de la eficiencia energética del diseño y/o el funcionamiento de un edificio. Se expresa como energía por metro cuadrado y por periodo de tiempo."@es .
 
 bigg:KPI-EnergyUseSavings a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Estalvi de Consum Energètic"@ca, "Energy Use Savings"@en, "Ahorro de Consumo de Energía"@es ;
+    rdfs:label "Спестяване на енергия"@bg, "Estalvi de Consum Energètic"@ca, "Energy Use Savings"@en, "Ahorro de Consumo de Energía"@es ;
     bigg:shortName "EUS"@en ;
-    rdfs:comment "L'Estalvi de Consum Energètic fa referència a quantitat total d'energia que s'ha evitat consumir en un període de temps."@ca, "Energy Use Savings is the total amount of energy that has been avoided in a period of time."@en, " El Ahorro de Consumo energético se refiere a cantidad total de energía que se ha evitado consumir en un periodo de tiempo."@es .
+    rdfs:comment "Спестяването на енергия е общото количество енергия, което е избегнато за определен период от време."@bg, "L'Estalvi de Consum Energètic fa referència a quantitat total d'energia que s'ha evitat consumir en un període de temps."@ca, "Energy Use Savings is the total amount of energy that has been avoided in a period of time."@en, "El Ahorro de Consumo energético se refiere a cantidad total de energía que se ha evitado consumir en un periodo de tiempo."@es .
 
 bigg:KPI-EnergyUseSavingsIntensity a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Intensitat d'Estalvi de Consum Energètic"@ca, "Energy Use Savings Intensity"@en, "Intensidad de Ahorro de Consumo Energético"@es ;
+    rdfs:label "Интензивност на спестяване на енергия"@bg, "Intensitat d'Estalvi de Consum Energètic"@ca, "Energy Use Savings Intensity"@en, "Intensidad de Ahorro de Consumo Energético"@es ;
+    bigg:formula "EUSI = \\frac{Energy\\ use\\ saving\\ source\\ [kWh/year]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "EUSI"@en ;
-    rdfs:comment "La Intensitat d'Estalvi de Consum Energètic és un indicador de l'estalvi energètic produït en un període de temps."@ca, "Energy Use SavingIntensity is an indicator of the energy saving produced on period of time."@en, "Intensidad de Ahorro de Consumo Energético es un indicador del ahorro energético producido en un periodo de tiempo."@es .
+    rdfs:comment "Индикатор за енергоспестяването, произведено за период от време."@bg, "La Intensitat d'Estalvi de Consum Energètic és un indicador de l'estalvi energètic produït en un període de temps."@ca, "Energy Use Saving Intensity is an indicator of the energy saving produced on period of time."@en, "Intensidad de Ahorro de Consumo Energético es un indicador del ahorro energético producido en un periodo de tiempo."@es .
 
 bigg:KPI-HeatingDegreeDays a bigg:BuildingKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Graus dia de Calefacció"@ca, "Heating Degree Days"@en, "Grados día de Calefacción"@es ;
+    rdfs:label "Градус-Дни Отопление"@bg, "Graus dia de Calefacció"@ca, "Heating Degree Days"@en, "Grados día de Calefacción"@es ;
     bigg:shortName "HDD"@en ;
-    rdfs:comment "Graus dia de calefacció. "@ca, "Heating degree days. "@en, "Grados día de calefacción"@es .
+    rdfs:comment "Градус-дните за отопление са разликата между средната дневна температура и температура под която е необходимо отопление за поддържане на комфорта. Ако средната температура е над 15,5°С, ние изваждаме  15,5 от средната стойност и резултатът е  градус-дни на отопление."@bg, "Graus dia de calefacció."@ca, "Heating degree days."@en, "Grados día de calefacción"@es .
 
 bigg:KPI-InternalRateOfReturn a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Taxa Interna de Rendibilitat"@ca, "Internal Rate of Return"@en, "Tasa Interna de Rendibilidad"@es ;
+    rdfs:label "Вътрешна норма на възвръщаемост"@bg, "Taxa Interna de Rendibilitat"@ca, "Internal Rate of Return"@en, "Tasa Interna de Rendibilidad"@es ;
+    bigg:formula "\\sum_{t=i}^{EEM Lifespan}\\frac{ Cos\\ saving\\ EEM_{t}}{(1 + IRR)^{t}}- EEM\\ Investment=0" ;
     bigg:shortName "TIR"@ca, "IRR"@en, "TIR"@es ;
-    rdfs:comment "La Taxa Interna de Rendibilitat és una taxa de descompte que fa que el valor actual net (VAN) de tots els fluxs de caixa sigui igual a zero en una anàlisi de fluxs de caixa descomptats."@ca, "Internal Rate of Return is a discount rate that makes the net present value (NPV) of all cash flows equal to zero in a discounted cash flow analysis."@en, "La Tasa Interna de Rentabilidad es una tasa de descuento que hace que el valor actual neto (VAN) de todos los flujos de caja sea igual a cero en un análisis de flujos de caja descontados."@es .
+    rdfs:comment "Вътрешната норма на възвръщаемост е сконтов процент, който прави нетната настояща стойност (NPV) на всички парични потоци равна на нула при анализ на дисконтирания паричен поток."@bg, "La Taxa Interna de Rendibilitat és una taxa de descompte que fa que el valor actual net (VAN) de tots els fluxs de caixa sigui igual a zero en una anàlisi de fluxs de caixa descomptats."@ca, "Internal Rate of Return is a discount rate that makes the net present value (NPV) of all cash flows equal to zero in a discounted cash flow analysis."@en, "La Tasa Interna de Rentabilidad es una tasa de descuento que hace que el valor actual neto (VAN) de todos los flujos de caja sea igual a cero en un análisis de flujos de caja descontados."@es .
 
 bigg:KPI-NetPresentValue a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Valor Actual Net"@ca, "Net Present Value"@en, "Valor Actual Neto"@es ;
+    rdfs:label "Нетна настояща стойност"@bg, "Valor Actual Net"@ca, "Net Present Value"@en, "Valor Actual Neto"@es ;
+    bigg:formula "NPV= \\sum_{t=i}^{EEM Lifespan}\\frac{ Cost\\ saving\\ EEM_{t}}{(1 + Discount\\ rate)^{t}} - EEM\\ Investment" ;
     bigg:shortName "VAN"@ca, "NPV"@en, "VAN"@es ;
-    rdfs:comment "El Valor Actual Net és la diferència entre el valor actual de les entrades d'efectiu i el valor actual de les sortides d'efectiu al llarg d'un període de temps i s'utilitza per a calcular el valor actual total d'un flux futur de pagaments."@ca, "Net Present Value is the difference between the present value of cash inflows and the present value of cash outflows over a period of time and is used to calculate the total present value of a future stream of payments."@en, "El Valor Actual Neto es la diferencia entre el valor actual de las entradas de efectivo y el valor actual de las salidas de efectivo a lo largo de un periodo de tiempo y se utiliza para calcular el valor actual total de un flujo futuro de pagos."@es .
+    rdfs:comment "Нетната настояща стойност е разликата между настоящата стойност на входящите парични потоци и настоящата стойност на изходящите парични потоци за определен период от време и се използва за изчисляване на общата настояща стойност на бъдещ поток от плащания."@bg, "El Valor Actual Net és la diferència entre el valor actual de les entrades d'efectiu i el valor actual de les sortides d'efectiu al llarg d'un període de temps i s'utilitza per a calcular el valor actual total d'un flux futur de pagaments."@ca, "Net Present Value is the difference between the present value of cash inflows and the present value of cash outflows over a period of time and is used to calculate the total present value of a future stream of payments."@en, "El Valor Actual Neto es la diferencia entre el valor actual de las entradas de efectivo y el valor actual de las salidas de efectivo a lo largo de un periodo de tiempo y se utiliza para calcular el valor actual total de un flujo futuro de pagos."@es .
 
 bigg:KPI-NetPresentValueQuotient a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Quocient del Valor Actual Net"@ca, "Net Present Value Quotient"@en, "Cociente del Valor Actual Neto"@es ;
+    rdfs:label "Коефициент на нетна настояща стойност"@bg, "Quocient del Valor Actual Net"@ca, "Net Present Value Quotient"@en, "Cociente del Valor Actual Neto"@es ;
+    bigg:formula "NPVq=\\frac{ \\sum_{t=i}^{EEM Lifespan}\\frac{ Cos\\ saving\\ EEM_{t}}{(1 + Discount\\ rate)^{t}}- EEM\\ Investment}{EEM\\ Investment}" ;
     bigg:shortName "qVAN"@ca, "NPVq"@en, "qVAN"@es ;
-    rdfs:comment "El Quocient del Valor Actual Net és la relació entre el Valor Actual Net (VAN) i la inversió realitzada. Mostra quina quantitat descomptada es genera enfront d'una unitat d'inversió."@ca, "Net Present Value Quatient  is  the  ratio  between  the Net Present Value(NPV) and  the investment made. It shows what discounted amount is generated against a unit of investment."@en, "El Cociente del Valor Actual Neto  es la relación entre el Valor Actual Neto (VAN) y la inversión realizada. Muestra qué cantidad descontada se genera frente a una unidad de inversión."@es .
+    rdfs:comment "Количеството на нетната настояща стойност е съотношението между нетната настояща стойност (NPV) и направената инвестиция. Той показва каква отстъпка се генерира срещу единица инвестиция."@bg, "El Quocient del Valor Actual Net és la relació entre el Valor Actual Net (VAN) i la inversió realitzada. Mostra quina quantitat descomptada es genera enfront d'una unitat d'inversió."@ca, "Net Present Value Quatient  is  the  ratio  between  the Net Present Value(NPV) and  the investment made. It shows what discounted amount is generated against a unit of investment."@en, "El Cociente del Valor Actual Neto  es la relación entre el Valor Actual Neto (VAN) y la inversión realizada. Muestra qué cantidad descontada se genera frente a una unidad de inversión."@es .
 
 bigg:KPI-NormalisedInvestmentCost a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Cost d'Inversió Normalitzat"@ca, "Normalised Investment Cost"@en, "Coste de Inversión Normalizado"@es ;
+    rdfs:label "Нормализирани инвестиционни разходи"@bg, "Cost d'Inversió Normalitzat"@ca, "Normalised Investment Cost"@en, "Coste de Inversión Normalizado"@es ;
+    bigg:formula "NIC = \\frac{EEM\\ Investment\\ [€]}{ Gross\\ floor\\ area [m^2] \\times Fraction\\ of\\ affectation}" ;
     bigg:shortName "CIN"@ca, "NIC"@en ;
-    rdfs:comment "El Cost d'Inversió Normalitzat és un indicador del cost de la mesura d'eficiència energètica per metre quadrat de superfície de l'edifici."@ca, "Normalised Investment Cost is an indicator of the cost of the Energy Efficiency Measure per square meter of building area."@en, "El coste de inversión normalizado es un indicador del coste de la medida de eficiencia energética por metro cuadrado de superficie del edificio."@es .
+    rdfs:comment "Нормализираната инвестиционна цена е показател за цената на мярката за енергийна ефективност на квадратен метър застроена площ."@bg, "El Cost d'Inversió Normalitzat és un indicador del cost de la mesura d'eficiència energètica per metre quadrat de superfície de l'edifici."@ca, "Normalised Investment Cost is an indicator of the cost of the Energy Efficiency Measure per square meter of building area."@en, "El coste de inversión normalizado es un indicador del coste de la medida de eficiencia energética por metro cuadrado de superficie del edificio."@es .
 
 bigg:KPI-ProfitabilityIndex a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Índex de Rendibilitat"@ca, "Profitability Index"@en, "Índice de Rentabilidad"@es ;
+    rdfs:label "Индекс на рентабилност"@bg, "Índex de Rendibilitat"@ca, "Profitability Index"@en, "Índice de Rentabilidad"@es ;
+    bigg:formula "PI=\\frac{ \\sum_{t=i}^{EEM Lifespan}\\frac{ Cos\\ saving\\ EEM_{t}}{(1 + Discount\\ rate)^{t}}}{EEM\\ Investment}" ;
     bigg:shortName "IR"@ca, "PI"@en, "IR"@es ;
-    rdfs:comment "L'Índex de Rendibilitat és la relació entre el valor actual dels fluxs de caixa futurs previstos i l'import inicial invertit en el projecte."@ca, "The Profitability Index is the ratio between the present  value of future expected cash flows and the initial amount invested in the project."@en, "El Índice de Rentabilidad es la relación entre el valor actual de los flujos de caja futuros previstos y el importe inicial invertido en el proyecto."@es .
+    rdfs:comment "Индексът на доходност е съотношението между настоящата стойност на очакваните бъдещи парични потоци и първоначалната сума, инвестирана в проекта."@bg, "L'Índex de Rendibilitat és la relació entre el valor actual dels fluxs de caixa futurs previstos i l'import inicial invertit en el projecte."@ca, "The Profitability Index is the ratio between the present  value of future expected cash flows and the initial amount invested in the project."@en, "El Índice de Rentabilidad es la relación entre el valor actual de los flujos de caja futuros previstos y el importe inicial invertido en el proyecto."@es .
 
 bigg:KPI-SimplePayback a bigg:EEMKeyPerformanceIndicator, bigg:KeyPerformanceIndicator ;
-    rdfs:label "Temps d'Amortització Simple"@ca, "Simple Payback"@en, "Tiempo de Amortización Simple"@es ;
+    rdfs:label "Време за възвръщане на инвестицията"@bg, "Temps d'Amortització Simple"@ca, "Simple Payback"@en, "Tiempo de Amortización Simple"@es ;
+    bigg:formula "SP= \\frac{EEM\\ Investment\\ [\\epsilon]}{ Cost\\ saving\\ EEM [\\epsilon/year]}" ;
     bigg:shortName "TAS"@ca, "SP"@en ;
-    rdfs:comment "El Temps d'Amortització Simple es defineix com el nombre d'anys en què els diners estalviats després de la renovació cobrirà la inversió."@ca, "Simple payback time is defined as the number of years when money saved after the renovation will cover the investment."@en, "El Tiempo de Amortización Simple se define como el número de años en los que el dinero ahorrado tras la renovación cubrirá la inversión."@es .
+    rdfs:comment "Броят години за които парите спестени след обновяването ще покрият инвестицията."@bg, "El Temps d'Amortització Simple es defineix com el nombre d'anys en què els diners estalviats després de la renovació cobrirà la inversió."@ca, "Simple payback time is defined as the number of years when money saved after the renovation will cover the investment."@en, "El Tiempo de Amortización Simple se define como el número de años en los que el dinero ahorrado tras la renovación cubrirá la inversión."@es .
 

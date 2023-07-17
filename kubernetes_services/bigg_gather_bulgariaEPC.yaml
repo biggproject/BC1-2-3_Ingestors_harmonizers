@@ -1,0 +1,68 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: gather-bulgaria-epc
+spec:
+  suspend: false
+  schedule: "* * * * *"
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  startingDeadlineSeconds: 180
+  jobTemplate:
+    spec:
+      activeDeadlineSeconds: 43200
+      template:
+        spec:
+          hostAliases:
+            - ip: "10.0.88.76"
+              hostnames:
+                - "master1.internal"
+            - ip: "10.0.87.95"
+              hostnames:
+                - "master2.internal"
+            - ip: "10.0.88.132"
+              hostnames:
+                - "worker1.internal"
+            - ip: "10.0.86.33"
+              hostnames:
+                - "worker2.internal"
+            - ip: "10.0.87.145"
+              hostnames:
+                - "worker3.internal"
+            - ip: "10.0.86.214"
+              hostnames:
+                - "worker4.internal"
+            - ip: "10.0.129.220"
+              hostnames:
+                - "kafka1.internal"
+          containers:
+            - name: gather-bulgaria-epc
+              image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
+              command: [ "python3", "-m", "gather", "-so", "BulgariaEPC", "-st", "kafka", "-a", "-f", "/mnt/data/epc" ]
+              volumeMounts:
+              - name: entrack-harmonize-secret
+                mountPath: /home/ubuntu/bigg_entrack/config.json
+                subPath: config.json
+              - name: entrack-harmonize-secret
+                mountPath: /home/ubuntu/bigg_entrack/.env
+                subPath: .env
+              - name: entrack-persistent-storage
+                mountPath: /mnt/data
+          volumes:
+            - name: entrack-harmonize-secret
+              secret:
+                secretName: entrack-harmonize-secret
+                items:
+                - key: config.json
+                  path: config.json
+                - key: .env
+                  path: .env
+            - name: entrack-persistent-storage
+              persistentVolumeClaim:
+                claimName: entrack-claim
+
+          restartPolicy: OnFailure
+          imagePullSecrets:
+            - name: registrypullsecret
+
+

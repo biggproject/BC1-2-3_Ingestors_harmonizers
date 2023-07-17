@@ -27,7 +27,7 @@ bigg:AdjustedEnergyConsumptionCombinedSpaceAndWaterHeating a bigg:MeasuredProper
     rdfs:comment "Adjusted total energy consumed for combined space and water heating end-use", "Adjusted total energy consumed for combined space and water heating end-use"@en .
 
 bigg:AdjustedEnergyConsumptionCombinedSpaceHeatingAndCooling a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане "@bg, "Consum d'Energia Ajustat Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios Ajustado"@es ;
+    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане"@bg, "Consum d'Energia Ajustat Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios Ajustado"@es ;
     rdfs:comment "Adjusted total energy consumed for combined space heating and cooling end-use", "Adjusted total energy consumed for combined space heating and cooling end-use"@en .
 
 bigg:AdjustedEnergyConsumptionDistrictCooling a bigg:MeasuredProperty, skos:Concept ;
@@ -99,7 +99,7 @@ bigg:Concentration a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "The quantity of solute present in a given quantity of solution", "The quantity of solute present in a given quantity of solution"@en .
 
 bigg:ConsumptionWater a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на вода"@bg, "Aigua"@ca, "Consum d'Aigua"@ca, "Water"@en, "Water Consumption"@en, "Agua"@es, "Consumo de Agua"@es ;
+    rdfs:label "Консумация на вода"@bg, "Aigua"@ca, "Water"@en, "Agua"@es ;
     rdfs:comment "Total water consumed", "Total water consumed"@en .
 
 bigg:CoolingDegreeDays a bigg:MeasuredProperty, skos:Concept ;
@@ -123,15 +123,15 @@ bigg:EnergyConsumptionAppliances a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for the use of appliances", "Total energy consumed for the use of appliances"@en .
 
 bigg:EnergyConsumptionBiofuels a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от биогорива"@bg, "Biocombustible"@ca, "Consum de Biofuel"@ca, "Biofuel"@en, "Biofuel Consumption"@en, "Biocombustible"@es, "Consumo de Biofuel"@es ;
+    rdfs:label "Потребление на енергия от биогорива"@bg, "Biocombustible"@ca, "Biofuel"@en, "Biocombustible"@es ;
     rdfs:comment "Total energy consumed from biofuel resources", "Total energy consumed from biofuel resources"@en .
 
 bigg:EnergyConsumptionCHP a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия от когенерация"@bg, "Cogeneració"@ca, "Consum de Cogeneració"@ca, "CHP"@en, "CHP Consumption"@en, "Cogeneración"@es, "Consumo de Cogeneración"@es ;
+    rdfs:label "Консумация на енергия от когенерация"@bg, "Cogeneració"@ca, "CHP"@en, "Cogeneración"@es ;
     rdfs:comment "Total energy consumed from CHP", "Total energy consumed from CHP"@en .
 
 bigg:EnergyConsumptionCoal a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от въглища"@bg, "Carbó "@ca, "Consum de Carbó"@ca, "Coal"@en, "Coal Consumption"@en, "Carbón"@es, "Consumo de Carbón"@es ;
+    rdfs:label "Потребление на енергия от въглища"@bg, "Carbó"@ca, "Coal"@en, "Carbón"@es ;
     rdfs:comment "Total energy consumed from coal resource, including coal-based products", "Total energy consumed from coal resource, including coal-based products"@en .
 
 bigg:EnergyConsumptionCombinedSpaceAndWaterHeating a bigg:MeasuredProperty, skos:Concept ;
@@ -139,35 +139,35 @@ bigg:EnergyConsumptionCombinedSpaceAndWaterHeating a bigg:MeasuredProperty, skos
     rdfs:comment "Total energy consumed for combined space and water heating end-use", "Total energy consumed for combined space and water heating end-use"@en .
 
 bigg:EnergyConsumptionCombinedSpaceHeatingAndCooling a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане "@bg, "Consum d'Energia Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios"@es ;
+    rdfs:label "Коригирано потребление на енергия за отопление и охлаждане"@bg, "Consum d'Energia Combinat d'Escalfament i Refredament d'Espais"@ca, "Adjusted Combined Space Heating and Cooling Energy Consumption"@en, "Consumo de Energía Combinado de Calentamiento y Enfriamiento de Espacios"@es ;
     rdfs:comment "Total energy consumed for combined space heating and cooling end-use", "Total energy consumed for combined space heating and cooling end-use"@en .
 
 bigg:EnergyConsumptionDiesel a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от дизелово гориво"@bg, "Consum de Gasoil"@ca, "Gasoil"@ca, "Diesel "@en, "Diesel Consumption"@en, "Consumo de Gasóleo"@es, "Gasóleo"@es ;
+    rdfs:label "Потребление на енергия от дизелово гориво"@bg, "Gasoil"@ca, "Diesel"@en, "Gasóleo"@es ;
     rdfs:comment "Total energy consumed from diesel resource", "Total energy consumed from diesel resource"@en .
 
 bigg:EnergyConsumptionDistrictCooling a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия от центализирано охлаждане"@bg, "Consum de Fred"@ca, "Xarxa de Refrigeració"@ca, "Cool Consumption"@en, "District Cooling"@en, "Consumo de Frio"@es, "Red de refrigeración"@es ;
+    rdfs:label "Консумация на енергия от центализирано охлаждане"@bg, "Xarxa de Refrigeració"@ca, "District Cooling"@en, "Red de refrigeración"@es ;
     rdfs:comment "Total energy consumed from district cooling system", "Total energy consumed from district cooling system"@en .
 
 bigg:EnergyConsumptionDistrictHeating a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от центализирано охлаждане"@bg, "Consum de Calor"@ca, "Xarxa de Calefacció "@ca, "District Heating"@en, "Heat Consumption"@en, "Consumo de Calor"@es, "Red de Calefacción"@es ;
+    rdfs:label "Потребление на енергия от центализирано охлаждане"@bg, "Xarxa de Calefacció"@ca, "District Heating"@en, "Red de Calefacción"@es ;
     rdfs:comment "Total energy consumed from district heating system", "Total energy consumed from district heating system"@en .
 
 bigg:EnergyConsumptionGas a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия от пророден газ"@bg, "Consum de Gas"@ca, "Gas"@ca, "Gas"@en, "Gas Consumption"@en, "Consumo de Gas"@es, "Gas "@es ;
+    rdfs:label "Консумация на енергия от пророден газ"@bg, "Gas"@ca, "Gas"@en, "Gas"@es ;
     rdfs:comment "Total energy consumed from gas resource", "Total energy consumed from gas resource"@en .
 
 bigg:EnergyConsumptionGridElectricity a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на електроенергия от мрежата"@bg, "Consum Elèctric"@ca, "Electricitat"@ca, "Electricity"@en, "Electricity Consumption"@en, "Consumo Eléctrico"@es, "Consumo de Energía de Red Eléctrica"@es ;
+    rdfs:label "Потребление на електроенергия от мрежата"@bg, "Electricitat"@ca, "Electricity"@en, "Consumo de Energía de Red Eléctrica"@es ;
     rdfs:comment "Total energy consumed from the electricity grid", "Total energy consumed from the electricity grid"@en .
 
 bigg:EnergyConsumptionHeavyFuel a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от мазут"@bg, "Consum d'Energia de Combustible Pesat"@ca, "Consum de Combustibles Pesats"@ca, "Heavy Fuel Energy Consumption"@en, "Heavy Fuels Consumption"@en, "Consumo de Combustibles Pesados"@es, "Consumo de Energía de Combustible Pesado"@es ;
+    rdfs:label "Потребление на енергия от мазут"@bg, "Consum d'Energia de Combustible Pesat"@ca, "Heavy Fuel Energy Consumption"@en, "Consumo de Energía de Combustible Pesado"@es ;
     rdfs:comment "Total energy consumed from heavy fuel resource", "Total energy consumed from heavy fuel resource"@en .
 
 bigg:EnergyConsumptionLPG a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на енергия за осветление"@bg, "Consum d'Energia d'Il·luminació"@ca, "Consum de LPG"@ca, "LPG Consumption"@en, "Lighting Energy Consumption"@en, "Consumo de Energía de Iluminación"@es, "Consumo de LPG"@es ;
+    rdfs:label "Консумация на енергия за осветление"@bg, "Consum d'Energia d'Il·luminació"@ca, "Lighting Energy Consumption"@en, "Consumo de Energía de Iluminación"@es ;
     rdfs:comment "Total energy consumed from LPG resource", "Total energy consumed from LPG resource"@en .
 
 bigg:EnergyConsumptionLighting a bigg:MeasuredProperty, skos:Concept ;
@@ -175,11 +175,11 @@ bigg:EnergyConsumptionLighting a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for lighting end-use", "Total energy consumed for lighting end-use"@en .
 
 bigg:EnergyConsumptionOther a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Друго потребление на енергия"@bg, "Altres"@ca, "Altres Consums"@ca, "Other Consumption"@en, "Others"@en, "Otros "@es, "Otros Consumos"@es ;
+    rdfs:label "Друго потребление на енергия"@bg, "Altres"@ca, "Others"@en, "Otros"@es ;
     rdfs:comment "Total energy consumption from other unspecified resources", "Total energy consumption from other unspecified resources"@en .
 
 bigg:EnergyConsumptionPellets a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от пелети"@bg, "Consum de Pellets"@ca, "Pellet"@ca, "Pellet"@en, "Pellets Consumption"@en, "Consumo de Pellets"@es, "Pellets"@es ;
+    rdfs:label "Потребление на енергия от пелети"@bg, "Pellet"@ca, "Pellet"@en, "Pellets"@es ;
     rdfs:comment "Total energy consumed from pellets resources", "Total energy consumed from pellets resources"@en .
 
 bigg:EnergyConsumptionRefrigeration a bigg:MeasuredProperty, skos:Concept ;
@@ -187,11 +187,11 @@ bigg:EnergyConsumptionRefrigeration a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for refrigeration (excluding space cooling) end-use", "Total energy consumed for refrigeration (excluding space cooling) end-use"@en .
 
 bigg:EnergyConsumptionRenewableElectricityAuto-Consumption a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Възобновяема електрическа енергия за собствено потребление"@bg, "Auto Consum"@ca, "Consum d'Energia d'Autoconsum d'Energia Elèctrica Renovable"@ca, "Auto Consumption"@en, "Renewable Electricity Self-Consumption Energy Consumption"@en, "Auto Consumo"@es, "Consumo de Energía de Autoconsumo de Energía Eléctrica Renovable"@es ;
+    rdfs:label "Възобновяема електрическа енергия за собствено потребление"@bg, "Consum d'Energia d'Autoconsum d'Energia Elèctrica Renovable"@ca, "Renewable Electricity Self-Consumption Energy Consumption"@en, "Consumo de Energía de Autoconsumo de Energía Eléctrica Renovable"@es ;
     rdfs:comment "Total energy consumed from renewable electricity generation", "Total energy consumed from renewable electricity generation"@en .
 
 bigg:EnergyConsumptionSolarThermal a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Консумация на топлинна енергия от слънце"@bg, "Consum d'Energia Solar Tèrmica"@ca, "Consum de Solar Tèrmica"@ca, "Solar Thermal Consumption"@en, "Solar Thermal Energy Consumption"@en, "Consumo de Energía Solar Térmica"@es, "Consumo de Solar Térmica"@es ;
+    rdfs:label "Консумация на топлинна енергия от слънце"@bg, "Consum d'Energia Solar Tèrmica"@ca, "Solar Thermal Energy Consumption"@en, "Consumo de Energía Solar Térmica"@es ;
     rdfs:comment "Total energy consumed from solar thermal generation", "Total energy consumed from solar thermal generation"@en .
 
 bigg:EnergyConsumptionSpaceCooling a bigg:MeasuredProperty, skos:Concept ;
@@ -199,11 +199,11 @@ bigg:EnergyConsumptionSpaceCooling a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for space cooling end-use", "Total energy consumed for space cooling end-use"@en .
 
 bigg:EnergyConsumptionSpaceHeating a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия за отопление "@bg, "Consum d'Energia d'Escalfament d'Espais"@ca, "Space Heating Energy Consumption"@en, "Consumo de Energía de Calentamiento de Espacios"@es ;
+    rdfs:label "Потребление на енергия за отопление"@bg, "Consum d'Energia d'Escalfament d'Espais"@ca, "Space Heating Energy Consumption"@en, "Consumo de Energía de Calentamiento de Espacios"@es ;
     rdfs:comment "Total energy consumed for space heating end-use", "Total energy consumed for space heating end-use"@en .
 
 bigg:EnergyConsumptionTotal a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Общо потребление на енергия"@bg, "Consum Total"@ca, "Consumo Total"@ca, "Total Consumption"@en, "Consumo Total"@es ;
+    rdfs:label "Общо потребление на енергия"@bg, "Consumo Total"@ca, "Total Consumption"@en, "Consumo Total"@es ;
     rdfs:comment "Total energy consumption", "Total energy consumption"@en .
 
 bigg:EnergyConsumptionVentilation a bigg:MeasuredProperty, skos:Concept ;
@@ -215,7 +215,7 @@ bigg:EnergyConsumptionWaterHeating a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "Total energy consumed for water heating end-use", "Total energy consumed for water heating end-use"@en .
 
 bigg:EnergyConsumptionWood a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Потребление на енергия от дървесина"@bg, "Consum de Fusta"@ca, "Fusta"@ca, "Wood"@en, "Wood Consumption"@en, "Consumo de Madera"@es, "Madera"@es ;
+    rdfs:label "Потребление на енергия от дървесина"@bg, "Fusta"@ca, "Wood"@en, "Madera"@es ;
     rdfs:comment "Total energy consumed from wood resources", "Total energy consumed from wood resources"@en .
 
 bigg:Flow a bigg:MeasuredProperty, skos:Concept ;
@@ -243,7 +243,7 @@ bigg:Motion a bigg:MeasuredProperty, skos:Concept ;
     rdfs:comment "The phenomenon for which an object changes its position over time", "The phenomenon for which an object changes its position over time"@en .
 
 bigg:NOPROPERTY a bigg:MeasuredProperty, skos:Concept ;
-    rdfs:label "Без отличително качество"@bg, ""@ca, "CAP PROPIETAT"@ca, ""@en, "NO PROPERTY"@en, ""@es, "Sin Propiedad"@es ;
+    rdfs:label "Без отличително качество"@bg, "CAP PROPIETAT"@ca, "NO PROPERTY"@en, "Sin Propiedad"@es ;
     rdfs:comment "The measurement does not have a property", "The measurement does not have a property"@en .
 
 bigg:Occupancy a bigg:MeasuredProperty, skos:Concept ;

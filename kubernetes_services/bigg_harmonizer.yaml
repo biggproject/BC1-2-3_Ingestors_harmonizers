@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:	bigg-harmonizer
+  name:	harmonizer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: bigg-harmonizer
+      app: harmonizer
   strategy:
     type: Recreate
   template:
     metadata:
         labels:
-            app: bigg-harmonizer
+            app: harmonizer
     spec:
       hostAliases:
         - ip: "10.0.88.76"
@@ -37,28 +37,34 @@ spec:
           hostnames:
             - "kafka1.internal"
       containers:
-        - name: bigg-harmonizer
+        - name: harmonizer
           image: docker.tech.beegroup-cimne.com/jobs/importing_tool:latest
           command: ["python3", "-m", "harmonizer"]
           #command: ["/bin/sh", "-ec", "sleep 1000"]
           volumeMounts:
-          - name: main
+          - name: entrack-harmonize-secret
             mountPath: /home/ubuntu/bigg_entrack/config.json
             subPath: config.json
-          - name: main
+          - name: entrack-harmonize-secret
             mountPath: /home/ubuntu/bigg_entrack/.env
             subPath: .env
+          - name: entrack-persistent-storage
+            mountPath: /mnt/data
 
 
       imagePullSecrets:
         - name: registrypullsecret
             
       volumes:
-        - name: main
+        - name: entrack-harmonize-secret
           secret:
-            secretName: main
+            secretName: entrack-harmonize-secret
             items:
             - key: config.json
               path: config.json
             - key: .env
               path: .env
+        - name: entrack-persistent-storage
+          persistentVolumeClaim:
+            claimName: entrack-claim
+
