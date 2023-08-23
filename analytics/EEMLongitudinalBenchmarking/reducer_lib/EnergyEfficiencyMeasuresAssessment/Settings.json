@@ -3,14 +3,27 @@
     "MinimumDaysBeforeEEM": 180,
     "MinimumTimestepsBeforeEEM": 5,
     "MinimumDaysAfterEEM": 180,
-    "MaximumDaysAfterEEM": 365
+    "MaximumDaysAfterEEM": 365,
+    "MinDaysWithoutOutliers": 40,
+    "ForceAssessmentBySingleEEM": true,
+    "ForceAssignedEEMProjects": false,
+    "ForceConsiderEEMProjectInvestment": false
   },
   "EEMLifespan": {
     "BuildingFabricMeasure": 25,
     "LightingMeasure": 10,
     "RenewableGenerationMeasure": 25,
     "HVACAndHotWaterMeasure": 15,
+    "ElectricPowerSystemMeasure": 10,
     "default": 10
+  },
+  "EEMMeasuredPropertyComponents": {
+    "BuildingFabricMeasure": ["Heating","Cooling","Baseload","Total"],
+    "LightingMeasure": ["Baseload","Total"],
+    "RenewableGenerationMeasure": ["Heating","Cooling","Baseload","Total"],
+    "HVACAndHotWaterMeasure": ["Heating","Cooling","Baseload","Total"],
+    "ElectricPowerSystemMeasure": ["Heating","Cooling","Baseload","Total"],
+    "default": ["Heating","Cooling","Baseload","Total"]
   },
   "EEMDefaultShareOfAffectedElement": 100,
   "EEMDiscountRate": 5,
@@ -82,11 +95,15 @@
       "minInitialMonths": 6,
       "checkFor": "incrementAndDecrement",
       "minDecrementPercentualAffectation": 30,
-      "minIncrementPercentualAffectation": 120
+      "minIncrementPercentualAffectation": 120,
+      "defaultPeriod":{
+        "minDate": "2020-03-01",
+        "maxDate": "2020-08-31"
+      }
     }
   },
   "DailyLoadCurveClustering": {
-    "kMax": 4,
+    "kMax": 8,
     "kMin": 1,
     "inputVars": ["dailyConsumption","dailyTemperature","residualsGAM","daysHolidays"], 
     "balanceOutdoorTemperatures": null,

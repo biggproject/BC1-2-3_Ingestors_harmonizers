@@ -60,7 +60,7 @@ RUN printf "for (pack in c('matrixStats', 'qgam', 'devtools', 'pbs', 'ggplot2', 
 
 RUN printf 'devtools::install_version("onlineforecast",version="1.0.0", repos="http://cran.es.r-project.org")' | Rscript -
 # Install from GitHub
-RUN mkdir test
+RUN mkdir test1
 RUN printf 'devtools::install_github("biggproject/biggr", dep=F)' | Rscript -
 #ADD biggr biggr
 USER ubuntu

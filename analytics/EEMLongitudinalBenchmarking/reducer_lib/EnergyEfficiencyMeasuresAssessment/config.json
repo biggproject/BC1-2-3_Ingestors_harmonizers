@@ -17,6 +17,6 @@
     "Port": "27017",
     "User": "crossuser",
     "Password": "1sgd1AFH!gh-hBD2G-advln",
-    "DB": "crossectional_benchmarking"
+    "DB": "crossectional_benchmarking_dev"
   }
 }

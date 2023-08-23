@@ -1,5 +1,5 @@
 HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubject, identifier, settings, tz, eems, buildingGrossFloorArea, 
-                                                  measuredProperty, plots=T, results=NULL, updateHadoopStatus=F){
+                                                  measuredProperty, plots=T, results=NULL){
   
   suppressMessages(suppressWarnings(library(ggplot2)))
   suppressMessages(suppressWarnings(library(htmlwidgets)))
@@ -27,9 +27,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
   ####
   
   write("## Training process is starting",stderr())
-  if(updateHadoopStatus==T){
-    write(sprintf("reporter:status: TRAINING %s", identifier),stderr())
-  }
   
   if(plots){
     ts_p <- ggplot(
@@ -69,9 +66,7 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
   ) {
     
     write("* Detecting the time period with affectance by SARS-CoV2 lockdowns",stderr())
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: DETECTING SARS %s", identifier),stderr())
-    }
+    
     minIniDate = max(min(as.Date(df$time[is.finite(df$Qe)], tz=tz)) +
                        months(settings$DataCleaning$CheckForDisruption$minInitialMonths) ,
                      as.Date(settings$DataCleaning$CheckForDisruption$minIniDate))
@@ -102,9 +97,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
   
   # Detect holidays
   write("* Detecting the holidays",stderr())
-  if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: DETECTING HOLIDAYS %s", identifier),stderr())
-  }
   holidaysDates <- detect_holidays_in_tertiary_buildings(
     data = df, 
     consumptionColumn = "Qe", 
@@ -133,9 +125,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
   ####
   
   write("* Detecting the outliers",stderr())
-  if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: DETECTING OUTLIERS %s", identifier),stderr())
-  }
   if(all(c("value","window") %in% colnames(df)))
     df <- df %>% select(-value, -window)
   df <- 
@@ -189,10 +178,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
     ####
     
     write(sprintf("* [%s] Detecting the most common daily load curves",eemProject),stderr())
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: DETECTING CURVES %s", identifier),stderr())
-    }
-
     maxDateForClustering <- as.Date(max(df_by_eem$time[df_by_eem[,eemProject]==0]))
     clusteringResults <- clustering_dlc(
       data = df_by_eem,
@@ -221,12 +206,7 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
     if("s" %in% colnames(df_by_eem))
       df_by_eem <- df_by_eem %>% select(-s)
     df_by_eem <- df_by_eem %>% left_join(clusteringResults$dailyClassification, by="date")
-
-    write("* Detecting the most common daily load curves",stderr())
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: DETECTING CURVES 1 %s", identifier),stderr())
-    }
-
+    
     classif <- classification_dlc(
       data = df_by_eem, 
       consumptionFeature = "Qe",
@@ -296,9 +276,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
     # Check weather dependence by group of daily load curves ----
     ###
     write(sprintf("* [%s] Detecting if exists any weather dependence in energy consumption",eemProject),stderr())
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: DETECTING WEATHER %s", identifier),stderr())
-    }
     if(plots){
       pdf(paste(paste(settings$OutputDataDirectory,"plots",sep="/"),
                 "clustering_dlc_wdep.pdf",sep="/"),4,3)
@@ -327,9 +304,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
     ###
     
     write("* Setting model parameters and transformations",stderr())
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: SETTING PARAMETERS %s", identifier),stderr())
-    }
     generalParams <- list(
       "nhar"=list(
         "datatype"="integer",
@@ -525,9 +499,7 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
     ###
     
     write("* Training of the model and loading process to MLFlow",stderr())
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: TRAINING LOADING %s", identifier),stderr())
-    }
+    
     model <- function(df, weatherDependenceByCluster, clusteringResults, generalParams, 
                       generalTransformationSentences, best_params=NULL){
       
@@ -566,9 +538,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
             clusteringResults = args$clusteringResults
           )
         }
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 1 %s", identifier),stderr())
-        }
         if(is.null(best_params)){
         best_params <- hyperparameters_tuning(
           opt_criteria = "minimise",
@@ -591,9 +560,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
           weatherDependenceByCluster = weatherDependenceByCluster,
           clusteringResults = clusteringResults
         )}
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 2 %s", identifier),stderr())
-        }
         mod <- HC_model(best_params, df = df,
                         transformationSentences = transformationSentences,
                         weatherDependenceByCluster = weatherDependenceByCluster,
@@ -628,9 +594,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
             clusteringResults = args$clusteringResults
           )
         }
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 3 %s", identifier),stderr())
-        }
         if(is.null(best_params)){
         best_params <- hyperparameters_tuning(
           opt_criteria = "minimise",
@@ -653,9 +616,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
           weatherDependenceByCluster = weatherDependenceByCluster,
           clusteringResults = clusteringResults
         )}
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 4 %s", identifier),stderr())
-        }
         mod <- H_model(best_params, df = df,
                        transformationSentences = transformationSentences,
                        weatherDependenceByCluster = weatherDependenceByCluster,
@@ -689,9 +649,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
             clusteringResults = args$clusteringResults
           )
         }
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 5 %s", identifier),stderr())
-        }
         if(is.null(best_params)){
         best_params <- hyperparameters_tuning(
           opt_criteria = "minimise",
@@ -714,9 +671,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
           weatherDependenceByCluster = weatherDependenceByCluster,
           clusteringResults = clusteringResults
         )}
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 6 %s", identifier),stderr())
-        }
         mod <- C_model(best_params, df = df,
                        transformationSentences = transformationSentences,
                        weatherDependenceByCluster = weatherDependenceByCluster,
@@ -747,9 +701,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
             clusteringResults = args$clusteringResults
           )
         }
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 7 %s", identifier),stderr())
-        }
         if(is.null(best_params)){
         best_params <- hyperparameters_tuning(
           opt_criteria = "minimise",
@@ -771,9 +722,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
           transformationSentences = transformationSentences,
           clusteringResults = clusteringResults
         )}
-        if(updateHadoopStatus==T){
-            write(sprintf("reporter:status: TRAINING LOADING 8 %s", identifier),stderr())
-        }
         mod <- CAL_model(best_params, df = df,
                          transformationSentences = transformationSentences,
                          clusteringResults = clusteringResults
@@ -788,9 +736,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
       clusteringResults = clusteringResults,
       generalParams = generalParams,
       generalTransformationSentences = generalTransformationSentences)
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: TRAINING LOADING 9 %s", identifier),stderr())
-    }
     trained_models <- list(
       "baseline" = baseline$mod,
       "after_eem" = model(
@@ -801,10 +746,7 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
         generalTransformationSentences = generalTransformationSentences, 
         best_params = baseline$best_params)$mod
     )
-
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: TRAINING LOADING 10 %s", identifier),stderr())
-    }
+    
     # Generate the predictor objects
     predictor <- carrier::crate(function(x, baseline, forceGlobalInputFeatures = NULL, predictionIntervals = F){
       mod <- !!trained_models
@@ -815,10 +757,7 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
         predictionIntervals = predictionIntervals
       )
     })
-
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: TRAINING LOADING 11 %s", identifier),stderr())
-    }
+    
     counterfactual <- weather_dependence_disaggregator(
       predictor = predictor, 
       df = df_by_eem[df_by_eem[,eemProject] %in% c(0,1),], 
@@ -826,9 +765,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
       forceNoHeating = list("heatingLpf2"=0, "heatingLpf"=0, "heatingLpfBool"=0),
       baseline = T
     )
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: TRAINING LOADING 12 %s", identifier),stderr())
-    }
     after_eem <- weather_dependence_disaggregator(
       predictor = predictor, 
       df = df_by_eem[df_by_eem[,eemProject]==1 & df_by_eem$outliers==F & !is.na(df_by_eem$outliers),], 
@@ -836,14 +772,11 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
       forceNoHeating = list("heatingLpf2"=0, "heatingLpf"=0, "heatingLpfBool"=0),
       baseline = F
     )
-    if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: TRAINING LOADING 13 %s", identifier),stderr())
-    }
     results <- after_eem %>% 
       left_join(counterfactual, by="time", suffix=c(".after_eem",".counterfactual")) %>%
       left_join(df_by_eem, by="time")
     results_ <- df_by_eem %>% 
-      left_join(counterfactual, by="time")
+      left_join(counterfactual, by="time", suffix=c("",".y"))
     
     ###
     ### Load to MLFlow if needed ----
@@ -859,9 +792,7 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
           experiment$experiment_id
         }
       )
-      if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: STORING %s", identifier),stderr())
-     }
+      
       with(
         mlflow::mlflow_start_run(experiment_id = experimentId), {
            
@@ -1050,10 +981,10 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
     )
     
     for (measuredPropertyComponent in c("Heating","Cooling","Baseload","Total")){
-
-      if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: HARMONIZING %s: %s", measuredPropertyComponent, identifier),stderr())
-     }
+      if(!any(eems[eems$eemProjectId==strsplit(eemProject,"\\.")[[1]][2],
+                  paste0("MeasuredPropertyComponent_",measuredPropertyComponent)])){
+        next
+      }
       harmonised_results <- generate_eem_assessment_indicators(
         data = results, 
         indicators = unlist(settings$Indicators[c("Energy","Cost","Emissions")]), 
@@ -1073,6 +1004,7 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
           paste0(measuredPropertyComponentsMapping[["counterfactual"]][measuredPropertyComponent],".counterfactual"), 
         buildingGrossFloorArea = buildingGrossFloorArea, 
         eemProjectDf = eems[eems$eemProjectId==strsplit(eemProject,"\\.")[[1]][2],],
+        forceAssessmentSingleEEM = settings$EEMAssessmentConditions$ForceAssessmentBySingleEEM,
         carbonEmissionsColumn = "Qe_emissionsFactor", 
         energyPriceColumn = "Qe_price", 
         modelName = modelName, 
@@ -1086,9 +1018,6 @@ HourlyMeasurementAndVerificationModel <- function(df, buildingId, buildingSubjec
   }
   
   write("* Estimation successful!",stderr())
-  if(updateHadoopStatus==T){
-        write(sprintf("reporter:status: TRAINING SUCCESS %s", identifier),stderr())
-  }
   
   return(harmonised_results)
 }
