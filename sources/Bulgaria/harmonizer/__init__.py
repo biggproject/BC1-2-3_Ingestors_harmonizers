@@ -18,7 +18,7 @@ def harmonize_command_line(arguments, config=None, settings=None):
     hbase_table = utils.nomenclature.raw_nomenclature("Bulgaria", RAW_MODE.STATIC, data_type="BuildingInfo",
                                                       user=args.user)
     i = 0
-    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=100):
+    for data in utils.hbase.get_hbase_data_batch(hbase_conn, hbase_table, batch_size=150):
         dic_list = []
         print("parsing hbase")
         for u_c, x in data:
@@ -31,9 +31,6 @@ def harmonize_command_line(arguments, config=None, settings=None):
             item.update({"id": id})
             dic_list.append(item)
         print(f"parsed. Mapping...{i}")
-        if i < 500:
-            i += len(dic_list)
-            continue
         i += len(dic_list)
         harmonize_all(dic_list, namespace=args.namespace, user=args.user, config=config)
 

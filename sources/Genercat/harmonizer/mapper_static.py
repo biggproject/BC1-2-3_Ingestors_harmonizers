@@ -29,6 +29,7 @@ def prepare_data(df):
                                              default="Other")
     df['measurement_type'] = df.apply(create_measurement, axis=1).map(eem_type_taxonomy). \
         apply(partial(to_object_property, namespace=bigg_enums))
+    df["""Inversió \n(€) \n(IVA no inclòs)"""] = df["""Inversió \n(€) \n(IVA no inclòs)"""].fillna("0")
     df['operation_date'] = (df["""Data de finalització de l'obra / millora"""].astype('datetime64')).dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 

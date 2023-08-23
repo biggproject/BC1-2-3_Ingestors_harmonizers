@@ -1384,7 +1384,7 @@ bigg:RefrigerationSystemsMeasure.RefrigerationOperationalOptimization a bigg:Ene
     skos:broader bigg:RefrigerationSystemsMeasure .
 
 bigg:RefrigerationSystemsMeasure.RefrigerationTechnicalOptimization a bigg:EnergyEfficiencyMeasureType, skos:Concept ;
-    rdfs:label "Оптимизация на системата за охлаждане"@bg, "Millora dels equips frigorífics"@ca, "Refrigeration Technical Optimization"@en, "Mejora de los equipos frigoríficos"@es ;
+    rdfs:label "Оптимизация на системата за охлаждане"@bg, "Millores neveres i cambres frigorífiques"@ca, "Refrigeration Technical Optimization"@en, "Mejora de los equipos frigoríficos"@es ;
     rdfs:comment "Technical optimization of the refrigeration system by component renewal, supplement, or maintenance", "Millora dels equips frigorífics"@ca, "Technical optimization of the refrigeration system by component renewal, supplement, or maintenance"@en, "Mejora de los equipos frigoríficos"@es ;
     skos:broader bigg:RefrigerationSystemsMeasure .
 

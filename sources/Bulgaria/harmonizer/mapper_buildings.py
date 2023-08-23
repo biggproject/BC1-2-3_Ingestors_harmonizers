@@ -274,6 +274,9 @@ def bulgaria_eem_calculator(df):
         df[f"{kpi_name}~{kpi_items[1]}~{kpi_unit}"] = \
             df[kpi_item]/pd.to_numeric(df["building_area"], errors='coerce')
 
+    df["EnergyEmissionsSavings~EnergyConsumptionTotal~KiloGM-CO2"] = df['EnergyEmissionsSavings~EnergyConsumptionTotal~KiloGM-CO2'] * 1000
+    df["EnergyEmissionsSavingsIntensity~EnergyConsumptionTotal~KiloGM-CO2-M2"] = df['EnergyEmissionsSavingsIntensity~EnergyConsumptionTotal~KiloGM-CO2-M2'] * 1000
+
     df["NormalisedInvestmentCost~~BulgarianLev-M2"] = df["eem_investment"]/df["building_area"]
     kpis.append("NormalisedInvestmentCost")
 
@@ -327,7 +330,7 @@ def bulgaria_eem_calculator(df):
 
 def clean_factor_kpi(df_orig):
     df = df_orig.copy(deep=True)
-    df['emission_factor'] = df["Total from the project_Savings_Emission reduction_tCO2/a"].astype(float) / df["Total from the project_Savings_Total_kWh/a"].astype(float)
+    df['emission_factor'] = df["Total from the project_Savings_Emission reduction_tCO2/a"].astype(float) * 1000 / df["Total from the project_Savings_Total_kWh/a"].astype(float)
     df['cost_factor'] = df["Total from the project_Savings_Finacial savings_BGN/a"].astype(float) / df["Total from the project_Savings_Total_kWh/a"].astype(float)
     df['emission_before'] = df['emission_factor'] * df['Annual energy consumption - before_Total energy consumpion (by invoices)_kWh/a'].astype(float)
     df['cost_before'] = df['cost_factor'] * df['Annual energy consumption - before_Total energy consumpion (by invoices)_kWh/a'].astype(float)
@@ -465,6 +468,7 @@ def save_harmonized(df, config_save, n, user, config):
             data['measuredPropertyComponent'] = str(bigg_enums.Total)
             data['unit'] = str(config_save['unit_uri'])
             data['modelSubject'] = None
+            data['modelBased'] = False
             data['year'] = data['start'].dt.tz_convert("Europe/Sofia").dt.year
             new_doc = data.to_dict(orient="records")
             filter = data[["individualSubject", "measuredProperty", "measuredPropertyComponent", "year", "unit", "isReal"]].to_dict(orient="records")
@@ -489,12 +493,12 @@ def harmonize_all(data, **kwargs):
     :param kwargs: the set of parameters for the harmonizer (user, namespace and config)
     :return:
     """
-    harmonize_static(data, **kwargs)
-    for s in range(0, 2):
-        harmonize_kpi(data, split=s, **kwargs)
+    # harmonize_static(data, **kwargs)
+    # for s in range(0, 2):
+    #     harmonize_kpi(data, split=s, **kwargs)
     for s in range(0, 25):
         harmonize_eem_kpi(data, split=s, **kwargs)
-    harmonize_ts(data, **kwargs)
+    # harmonize_ts(data, **kwargs)
 
 
 def harmonize_static(data, **kwargs):
@@ -528,13 +532,18 @@ def harmonize_eem_kpi(data, split=None, **kwargs):
     :param kwargs: the set of parameters for the harmonizer (user, namespace and config)
     :return:
     """
-    prop_kpi = ["EnergyUseSavings", "EnergyUseSavingsIntensity"]
-    total_kpi = ["EnergyEmissionsSavings", "EnergyEmissionsSavingsIntensity", "EnergyCostSavings", "EnergyCostSavingsIntensity"]
-    no_prop_kpi = ['NormalisedInvestmentCost', 'AvoidanceCost', 'SimplePayback', 'NetPresentValue', 'ProfitabilityIndex',
-                   'NetPresentValueQuotient', 'InternalRateOfReturn']
+    # prop_kpi = ["EnergyUseSavings", "EnergyUseSavingsIntensity"]
+    prop_kpi = []
+    # total_kpi = ["EnergyEmissionsSavings", "EnergyEmissionsSavingsIntensity", "EnergyCostSavings", "EnergyCostSavingsIntensity"]
+    total_kpi = ["EnergyEmissionsSavingsIntensity"]
+    # no_prop_kpi = ['NormalisedInvestmentCost', 'AvoidanceCost', 'SimplePayback', 'NetPresentValue', 'ProfitabilityIndex',
+    #                'NetPresentValueQuotient', 'InternalRateOfReturn']
+    no_prop_kpi = ['ProfitabilityIndex', 'InternalRateOfReturn']
     kpi_list = list(itertools.chain.from_iterable([[[f"{kpi}~{prop}"] for prop in consumption_sources_mapping.values()] for kpi in prop_kpi]))
     kpi_list += [[f"{kpi}~EnergyConsumptionTotal"] for kpi in total_kpi]
     kpi_list += [[i] for i in no_prop_kpi]
+    if split >= len(kpi_list):
+        return
     kpi_list = kpi_list[split]
     namespace = kwargs['namespace']
     user = kwargs['user']
