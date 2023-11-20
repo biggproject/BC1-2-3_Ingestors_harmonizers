@@ -1,9 +1,0 @@
-
-
-
-bigg:BaselineModel a bigg:ModelType,
-        skos:Concept .
-
-bigg:DynamicModel a bigg:ModelType,
-        skos:Concept .
-
