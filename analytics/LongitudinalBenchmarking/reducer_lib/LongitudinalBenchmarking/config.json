@@ -1,0 +1,22 @@
+{
+  "storeFailed": ["https://icaen.cat#BUILDING-00108", "https://icaen.cat#BUILDING-01431"],
+  "PYTHON3_BIN": "/usr/bin/python3",
+  "MLFlow": {
+    "ModelTrainingPeriodicity": "P1M",
+    "ForceModelTraining": false,
+    "MLFLOW_BIN": "/usr/local/bin/mlflow",
+    "TrackingUri": "http://kafka1.internal:5000",
+    "IncludeArtifacts": true
+
+  },
+  "InputDataDirectory": "input",
+  "OutputDataDirectory": "output",
+  "userMap": {"https://icaen.cat":"icaen", "https://bulgaria.bg":"bulgaria"},
+  "MongoConnection":{
+    "Host": "database3.odin.tech.beegroup-cimne.com",
+    "Port": "27017",
+    "User": "crossuser",
+    "Password": "1sgd1AFH!gh-hBD2G-advln",
+    "DB": "crossectional_benchmarking"
+  }
+}

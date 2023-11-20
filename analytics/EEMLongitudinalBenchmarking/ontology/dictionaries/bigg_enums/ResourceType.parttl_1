@@ -1,0 +1,140 @@
+
+
+
+
+bigg:Biofuels a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Biofuels ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionBiofuels ;
+    bigg:relatedUtilityType bigg:BiofuelsUtility ;
+    rdfs:comment "Biofuel resources",
+        "Biofuel resources"@en .
+
+bigg:CHP a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.CHP ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionCHP ;
+    bigg:relatedUtilityType bigg:CHPUtility ;
+    rdfs:comment "Resource of combined heat and power system",
+        "Resource of combined heat and power system"@en .
+
+bigg:Coal a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Coal ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionCoal ;
+    bigg:relatedUtilityType bigg:CoalUtility ;
+    rdfs:comment "Coal resource, including coal-based products",
+        "Coal resource, including coal-based products"@en .
+
+bigg:Cool a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Cool ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionDistrictCooling ;
+    bigg:relatedUtilityType bigg:DistrictCoolingUtility ;
+    rdfs:comment "Cooling resource",
+        "Cooling resource"@en .
+
+bigg:Diesel a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Diesel ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionDiesel ;
+    bigg:relatedUtilityType bigg:DieselUtility ;
+    rdfs:comment "Diesel resource",
+        "Diesel resource"@en .
+
+bigg:Electricity a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Electricity ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionGridElectricity ;
+    bigg:relatedUtilityType bigg:ElectricUtility ;
+    rdfs:comment "Electric resource",
+        "Electric resource"@en .
+
+bigg:Gas a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Gas ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionGas ;
+    bigg:relatedUtilityType bigg:GasUtility ;
+    rdfs:comment "Gas resource",
+        "Gas resource"@en .
+
+bigg:Heat a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Heat ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionDistrictHeating ;
+    bigg:relatedUtilityType bigg:DistrictHeatingUtility ;
+    rdfs:comment "Heating resource",
+        "Heating resource"@en .
+
+bigg:HeavyFuel a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.HeavyFuel ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionHeavyFuel ;
+    bigg:relatedUtilityType bigg:HeavyFuelUtility ;
+    rdfs:comment "HeavyFuel resource",
+        "HeavyFuel resource"@en .
+
+bigg:LPG a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.LPG ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionLPG ;
+    bigg:relatedUtilityType bigg:LPGUtility ;
+    rdfs:comment "LPG resource",
+        "LPG resource"@en .
+
+bigg:OtherEnergy a bigg:ReferenceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Other ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionOther ;
+    bigg:relatedUtilityType bigg:OtherUtility ;
+    rdfs:comment "A group of energy resources combined",
+        "A group of energy resources combined"@en .
+
+bigg:Pellets a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Pellets ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionPellets ;
+    bigg:relatedUtilityType bigg:PelletsUtility ;
+    rdfs:comment "Pellets resources",
+        "Pellets resources"@en .
+
+bigg:RenewableElectricityAuto-Consumption a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.RenewableElectricityAuto-Consumption ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionRenewableElectricityAuto-Consumption ;
+    bigg:relatedUtilityType bigg:RenewableElectricityUtilityAuto-Consumption ;
+    rdfs:comment "Renewable electricity auto-Consumption resource",
+        "Renewable electricity auto-Consumption resource"@en .
+
+bigg:SolarThermal a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.SolarThermal ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionSolarThermal ;
+    bigg:relatedUtilityType bigg:SolarThermalUtility ;
+    rdfs:comment "Solar thermal resource",
+        "Solar thermal resource"@en .
+
+bigg:TotalEnergy a bigg:ReferenceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Total ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionTotal ;
+    bigg:relatedUtilityType bigg:TotalUtility ;
+    rdfs:comment "A group of energy resources combined",
+        "A group of energy resources combined"@en .
+
+bigg:Water a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.IfcFlowMeter.Water ;
+    bigg:relatedMeasuredProperty bigg:ConsumptionWater ;
+    bigg:relatedUtilityType bigg:WaterUtility ;
+    rdfs:comment "Cooling resource",
+        "Cooling resource"@en .
+
+bigg:Wood a bigg:ResourceType,
+        skos:Concept ;
+    bigg:relatedDeviceType bigg:Meter.EnergyMeter.Wood ;
+    bigg:relatedMeasuredProperty bigg:EnergyConsumptionWood ;
+    bigg:relatedUtilityType bigg:WoodUtility ;
+    rdfs:comment "Wood resources",
+        "Wood resources"@en .
+
